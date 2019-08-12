@@ -1,0 +1,6 @@
+framework module WKWindowManagerFramework {
+  umbrella header "WKWindowManagerFramework.h"
+
+  export *
+  module * { export * }
+}
