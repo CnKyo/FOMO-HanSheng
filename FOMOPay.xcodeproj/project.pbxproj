@@ -139,6 +139,10 @@
 				1863DA5423011A08000969FE /* LaunchScreen.storyboard */,
 				1863DA5723011A08000969FE /* Info.plist */,
 				1863DA5823011A08000969FE /* main.m */,
+				1863DA9C230142BA000969FE /* Home */,
+				1863DA9D230142C1000969FE /* History */,
+				1863DA9E230142C8000969FE /* Collection */,
+				1863DA9F230142D2000969FE /* Me */,
 				1863DA86230120DF000969FE /* HeaderFile */,
 				1863DA8123012062000969FE /* NetWorkManager */,
 				1863DA7E2301203A000969FE /* BaseManager */,
@@ -261,6 +265,66 @@
 				1863DA9323013A87000969FE /* YHPDFImageDraw.m */,
 			);
 			path = YHPDFImageLoader;
+			sourceTree = "<group>";
+		};
+		1863DA9C230142BA000969FE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1863DAA0230142E4000969FE /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1863DA9D230142C1000969FE /* History */ = {
+			isa = PBXGroup;
+			children = (
+				1863DAA1230142EA000969FE /* Views */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		1863DA9E230142C8000969FE /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				1863DAA2230142EE000969FE /* Views */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		1863DA9F230142D2000969FE /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				1863DAA3230142F2000969FE /* Views */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		1863DAA0230142E4000969FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1863DAA1230142EA000969FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1863DAA2230142EE000969FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1863DAA3230142F2000969FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5B0969EA28DD697F78833E54 /* Pods */ = {
