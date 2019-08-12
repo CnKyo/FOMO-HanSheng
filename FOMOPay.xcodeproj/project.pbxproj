@@ -17,6 +17,12 @@
 		1863DA6323011A08000969FE /* FOMOPayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA6223011A08000969FE /* FOMOPayTests.m */; };
 		1863DA6E23011A08000969FE /* FOMOPayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA6D23011A08000969FE /* FOMOPayUITests.m */; };
 		1863DA83230120AB000969FE /* WKWindowManagerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1863DA82230120AB000969FE /* WKWindowManagerFramework.framework */; };
+		1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA8A23013A87000969FE /* YHPDFImageCache.m */; };
+		1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA8D23013A87000969FE /* NSString+YHMD5.m */; };
+		1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA8E23013A87000969FE /* YHPDFImagePath.m */; };
+		1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9123013A87000969FE /* YHPDFImageLoader.m */; };
+		1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9223013A87000969FE /* UIImage+YHPDFIcon.m */; };
+		1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9323013A87000969FE /* YHPDFImageDraw.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +60,19 @@
 		1863DA6D23011A08000969FE /* FOMOPayUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FOMOPayUITests.m; sourceTree = "<group>"; };
 		1863DA6F23011A08000969FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1863DA82230120AB000969FE /* WKWindowManagerFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WKWindowManagerFramework.framework; sourceTree = "<group>"; };
+		1863DA8923013A87000969FE /* YHPDFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPDFImageLoader.h; sourceTree = "<group>"; };
+		1863DA8A23013A87000969FE /* YHPDFImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPDFImageCache.m; sourceTree = "<group>"; };
+		1863DA8B23013A87000969FE /* YHPDFImageDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPDFImageDraw.h; sourceTree = "<group>"; };
+		1863DA8C23013A87000969FE /* UIImage+YHPDFIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+YHPDFIcon.h"; sourceTree = "<group>"; };
+		1863DA8D23013A87000969FE /* NSString+YHMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YHMD5.m"; sourceTree = "<group>"; };
+		1863DA8E23013A87000969FE /* YHPDFImagePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPDFImagePath.m; sourceTree = "<group>"; };
+		1863DA8F23013A87000969FE /* YHPDFImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPDFImageCache.h; sourceTree = "<group>"; };
+		1863DA9023013A87000969FE /* YH_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YH_config.h; sourceTree = "<group>"; };
+		1863DA9123013A87000969FE /* YHPDFImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPDFImageLoader.m; sourceTree = "<group>"; };
+		1863DA9223013A87000969FE /* UIImage+YHPDFIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YHPDFIcon.m"; sourceTree = "<group>"; };
+		1863DA9323013A87000969FE /* YHPDFImageDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPDFImageDraw.m; sourceTree = "<group>"; };
+		1863DA9423013A87000969FE /* NSString+YHMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YHMD5.h"; sourceTree = "<group>"; };
+		1863DA9523013A87000969FE /* YHPDFImagePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPDFImagePath.h; sourceTree = "<group>"; };
 		365F37B62573D6AD38920DD0 /* Pods-FOMOPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.release.xcconfig"; sourceTree = "<group>"; };
 		3F1006515BE60B5DD9F894BA /* Pods-FOMOPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.debug.xcconfig"; sourceTree = "<group>"; };
 		59884581E113A0DB27EEB629 /* libPods-FOMOPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FOMOPay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +145,7 @@
 				1863DA7D23012032000969FE /* Tools */,
 				1863DA7C23012026000969FE /* ImageResource */,
 				1863DA7B2301200D000969FE /* OtherFrameworks */,
+				1863DA8723013A6A000969FE /* OtherResource */,
 			);
 			path = FOMOPay;
 			sourceTree = "<group>";
@@ -213,6 +233,34 @@
 			children = (
 			);
 			path = HeaderFile;
+			sourceTree = "<group>";
+		};
+		1863DA8723013A6A000969FE /* OtherResource */ = {
+			isa = PBXGroup;
+			children = (
+				1863DA8823013A87000969FE /* YHPDFImageLoader */,
+			);
+			path = OtherResource;
+			sourceTree = "<group>";
+		};
+		1863DA8823013A87000969FE /* YHPDFImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				1863DA9023013A87000969FE /* YH_config.h */,
+				1863DA8923013A87000969FE /* YHPDFImageLoader.h */,
+				1863DA9123013A87000969FE /* YHPDFImageLoader.m */,
+				1863DA8C23013A87000969FE /* UIImage+YHPDFIcon.h */,
+				1863DA9223013A87000969FE /* UIImage+YHPDFIcon.m */,
+				1863DA9423013A87000969FE /* NSString+YHMD5.h */,
+				1863DA8D23013A87000969FE /* NSString+YHMD5.m */,
+				1863DA9523013A87000969FE /* YHPDFImagePath.h */,
+				1863DA8E23013A87000969FE /* YHPDFImagePath.m */,
+				1863DA8F23013A87000969FE /* YHPDFImageCache.h */,
+				1863DA8A23013A87000969FE /* YHPDFImageCache.m */,
+				1863DA8B23013A87000969FE /* YHPDFImageDraw.h */,
+				1863DA9323013A87000969FE /* YHPDFImageDraw.m */,
+			);
+			path = YHPDFImageLoader;
 			sourceTree = "<group>";
 		};
 		5B0969EA28DD697F78833E54 /* Pods */ = {
@@ -416,7 +464,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,
+				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
+				1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
+				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
+				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
+				1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */,
+				1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */,
 				1863DA4B23011A07000969FE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
