@@ -23,6 +23,8 @@
 		1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9123013A87000969FE /* YHPDFImageLoader.m */; };
 		1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9223013A87000969FE /* UIImage+YHPDFIcon.m */; };
 		1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9323013A87000969FE /* YHPDFImageDraw.m */; };
+		1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAA723014511000969FE /* WRNavigationBar.m */; };
+		1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAAA23014511000969FE /* WRCustomNavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,10 @@
 		1863DA9323013A87000969FE /* YHPDFImageDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPDFImageDraw.m; sourceTree = "<group>"; };
 		1863DA9423013A87000969FE /* NSString+YHMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YHMD5.h"; sourceTree = "<group>"; };
 		1863DA9523013A87000969FE /* YHPDFImagePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPDFImagePath.h; sourceTree = "<group>"; };
+		1863DAA723014511000969FE /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
+		1863DAA823014511000969FE /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
+		1863DAA923014511000969FE /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
+		1863DAAA23014511000969FE /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
 		365F37B62573D6AD38920DD0 /* Pods-FOMOPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.release.xcconfig"; sourceTree = "<group>"; };
 		3F1006515BE60B5DD9F894BA /* Pods-FOMOPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.debug.xcconfig"; sourceTree = "<group>"; };
 		59884581E113A0DB27EEB629 /* libPods-FOMOPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FOMOPay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +248,7 @@
 		1863DA8723013A6A000969FE /* OtherResource */ = {
 			isa = PBXGroup;
 			children = (
+				1863DAA623014511000969FE /* WRNavigationBar */,
 				1863DA8823013A87000969FE /* YHPDFImageLoader */,
 			);
 			path = OtherResource;
@@ -325,6 +332,17 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1863DAA623014511000969FE /* WRNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				1863DAA923014511000969FE /* WRNavigationBar.h */,
+				1863DAA723014511000969FE /* WRNavigationBar.m */,
+				1863DAA823014511000969FE /* WRCustomNavigationBar.h */,
+				1863DAAA23014511000969FE /* WRCustomNavigationBar.m */,
+			);
+			path = WRNavigationBar;
 			sourceTree = "<group>";
 		};
 		5B0969EA28DD697F78833E54 /* Pods */ = {
@@ -529,10 +547,12 @@
 			files = (
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
+				1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */,
 				1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
+				1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */,
 				1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */,
 				1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */,
 				1863DA4B23011A07000969FE /* AppDelegate.m in Sources */,
