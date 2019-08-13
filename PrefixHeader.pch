@@ -42,8 +42,10 @@
 #import "FOMOPay/Home/CLHomeViewController.h"
 #import "FOMOPay/Home/CLHomeViewController.h"
 #import "CLTitleView.h"
-
-
+#import "FOMOPay/Home/CLMainTabBarControllerConfig.h"
+#import "FOMOPay/Home/CLHistoryViewController.h"
+#import "FOMOPay/Home/CLCollectionViewController.h"
+#import "FOMOPay/Home/CLMeViewController.h"
 
 
 
