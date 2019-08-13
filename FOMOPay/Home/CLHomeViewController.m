@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self LoadNavType:0];
+//    [self addTabView];
     // Do any additional setup after loading the view.
 }
 

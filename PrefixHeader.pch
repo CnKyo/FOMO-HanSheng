@@ -42,11 +42,14 @@
 
 
 
-
-
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #
 #endif /* PrefixHeader_pch */
+typedef enum : NSUInteger {
+    LoadNavType_Default =0,
+    LoadNavType_Other =1,
+    LoadNavType_Style = 2,
+} Type;
 
 

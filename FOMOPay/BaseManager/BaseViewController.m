@@ -8,22 +8,24 @@
 
 #import "BaseViewController.h"
 @interface BaseViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic,strong)UIView *View;
+
 @end
 
 @implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+   
 
     // Do any additional setup after loading the view.
 }
 - (void)addTabView{
-    self.TabView = [UITableView new];
-    [self.view addSubview:self.TabView];
-    self.TabView.delegate = self;
-    self.TabView.dataSource = self;
-    [self.TabView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.mTabView = [UITableView new];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
         make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight );
         
@@ -31,8 +33,8 @@
 }
 
 
-- (void)LoadNavType:(NSUInteger)type{
-    if (type == 0) {
+- (void)LoadNavType:(NSUInteger)Type{
+    if (Type == 0) {
         CLTitleView *Title = [CLTitleView LoadXib];
             [self.view addSubview:Title];
     }
