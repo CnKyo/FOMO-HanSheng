@@ -11,6 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BaseViewController : ViewController
+@property (nonatomic,strong)NSString *a;
+@property (nonatomic,strong)UITableView *TabView;
+@property (nonatomic,strong)NSMutableArray *DataSource;
+
+- (void)LoadNavType:(NSUInteger )type;
+
+- (void)addTabView;
 
 @end
 

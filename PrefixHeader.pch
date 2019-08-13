@@ -8,8 +8,45 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
+#define kAppStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height
+
+
+
+
+#import <UIKit/UIKit.h>
+#import "Pods/AFNetworking/AFNetworking/AFNetworking.h"
+#import "Pods/CYLTabBarController/CYLTabBarController/CYLTabBar.h"
+#import "Pods/FLAnimatedImage/FLAnimatedImage/FLAnimatedImage.h"
+#import "Pods/GBDeviceInfo/GBDeviceInfo/GBDeviceInfo.h"
+
+#import "Pods/IQKeyboardManager/IQKeyboardManager/IQKeyboardManager.h"
+#import "Pods/LJContactManager/LJContactManager/LJPerson.h"
+#import "Pods/Masonry/Masonry/Masonry.h"
+#import "Pods/MBProgressHUD/MBProgressHUD.h"
+#import "Pods/MJRefresh/MJRefresh/MJRefresh.h"
+#import "Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkCache.h"
+#import "Pods/SDWebImage/SDWebImage/SDImageCache.h"
+#import "Pods/YYCache/YYCache/YYCache.h"
+#import "Pods/YYModel/YYModel/YYModel.h"
+#import "FOMOPay/OtherResource/WRNavigationBar/WRNavigationBar.h"
+#import "FOMOPay/OtherResource/YHPDFImageLoader/UIImage+YHPDFIcon.h"
+#import "FOMOPay/BaseManager/BaseViewController.h"
+
+
+#import "CLTitleView.h"
+#import "FOMOPay/Home/CLHomeViewController.h"
+
+
+
+
+
+
+
+
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-
+#
 #endif /* PrefixHeader_pch */
+
+

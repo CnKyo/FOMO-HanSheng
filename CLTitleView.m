@@ -17,5 +17,22 @@
     // Drawing code
 }
 */
-
++(CLTitleView *)LoadXib{
+  CLTitleView *TabBarView = [[[NSBundle mainBundle]loadNibNamed:@"CLTitleView" owner:self options:nil]firstObject];
+//
+        CGRect screen = [[UIScreen mainScreen]bounds];
+        TabBarView.backgroundColor = [UIColor whiteColor];
+        TabBarView.frame = CGRectMake(0, 0,screen.size.width, 44+ kAppStatusBarHeight);
+        return  TabBarView;
+    
+}
+- (void)awakeFromNib{
+    [super awakeFromNib];
+  
+    self.CLTitleImage.image = [UIImage yh_imageNamed:@"pdf_home_title.pdf"];
+//    [_CLTitleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.top.offset(35);
+//    }];
+}
 @end
