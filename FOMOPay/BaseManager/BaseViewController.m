@@ -25,6 +25,7 @@
 - (void)LoadNavType:(NSUInteger)Type{
     if (Type == 0) {
         CLTitleView *Title = [CLTitleView LoadXib];
+        [Title mTitleViewStyle:0];
         [self.view addSubview:Title];
     }
 }

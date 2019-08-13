@@ -13,5 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CLTitleView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *CLTitleImage;
 +(CLTitleView *)LoadXib;
+- (void)mTitleViewStyle:(NSInteger)Type;
 @end
 NS_ASSUME_NONNULL_END

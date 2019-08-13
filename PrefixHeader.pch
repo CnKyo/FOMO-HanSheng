@@ -17,27 +17,33 @@
 
 
 #import <UIKit/UIKit.h>
-#import "Pods/AFNetworking/AFNetworking/AFNetworking.h"
-#import "Pods/CYLTabBarController/CYLTabBarController/CYLTabBar.h"
-#import "Pods/FLAnimatedImage/FLAnimatedImage/FLAnimatedImage.h"
-#import "Pods/GBDeviceInfo/GBDeviceInfo/GBDeviceInfo.h"
+#import <AFNetworking.h>
+#import <CYLTabBarController.h>
+#import <FLAnimatedImage.h>
+#import <GBDeviceInfo.h>
+#import <GYEasyForm.h>
+#import <IQKeyboardManager.h>
+#import <LJContactManager.h>
+#import <Masonry.h>
+#import <MBProgressHUD.h>
+#import <MJRefresh.h>
+#import <PPNetworkHelper.h>
+#import <SDImageCache.h>
+#import <YYCache.h>
+#import <YYModel.h>
 
-#import "Pods/IQKeyboardManager/IQKeyboardManager/IQKeyboardManager.h"
-#import "Pods/LJContactManager/LJContactManager/LJPerson.h"
-#import "Pods/Masonry/Masonry/Masonry.h"
-#import "Pods/MBProgressHUD/MBProgressHUD.h"
-#import "Pods/MJRefresh/MJRefresh/MJRefresh.h"
-#import "Pods/PPNetworkHelper/PPNetworkHelper/PPNetworkHelper/PPNetworkCache.h"
-#import "Pods/SDWebImage/SDWebImage/SDImageCache.h"
-#import "Pods/YYCache/YYCache/YYCache.h"
-#import "Pods/YYModel/YYModel/YYModel.h"
+
+
+
+#import "FOMOPay/BaseManager/BaseViewController.h"
 #import "FOMOPay/OtherResource/WRNavigationBar/WRNavigationBar.h"
 #import "FOMOPay/OtherResource/YHPDFImageLoader/UIImage+YHPDFIcon.h"
-#import "FOMOPay/BaseManager/BaseViewController.h"
-
 #import "FOMOPay/Home/Views/CLTableViewCell.h"
-#import "CLTitleView.h"
 #import "FOMOPay/Home/CLHomeViewController.h"
+#import "FOMOPay/Home/CLHomeViewController.h"
+#import "CLTitleView.h"
+
+
 
 
 

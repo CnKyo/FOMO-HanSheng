@@ -28,11 +28,15 @@
 }
 - (void)awakeFromNib{
     [super awakeFromNib];
-  
-    self.CLTitleImage.image = [UIImage yh_imageNamed:@"pdf_home_title.pdf"];
-    [_CLTitleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+  }
 
-        make.top.offset(35);
-    }];
+- (void)mTitleViewStyle:(NSInteger)Type{
+    if (Type == 0) {
+        self.CLTitleImage.image = [UIImage yh_imageNamed:@"pdf_home_title.pdf"];
+        [_CLTitleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.top.offset(35);
+        }];
+    }
 }
 @end
