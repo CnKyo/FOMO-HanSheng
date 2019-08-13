@@ -8,8 +8,8 @@
 
 #import "CLHomeViewController.h"
 
-@interface CLHomeViewController ()
-
+@interface CLHomeViewController () <UITableViewDelegate,UITableViewDataSource>
+@property NSArray *Array;
 @end
 
 @implementation CLHomeViewController
@@ -19,18 +19,31 @@
 //    self.view.backgroundColor = [UIColor whiteColor];
     
     [self LoadNavType:0];
-//    [self addTabView];
+    [self LoadCellType:2];
+   
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    [cell CellStyle:2];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 81;
+}
 
 @end

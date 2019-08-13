@@ -9,8 +9,11 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 #define kAppStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height
-
-
+//RGB跟hex颜色的z设置
+#define ssRGB(r, g, b)             [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:1.0]
+#define ssRGBAlpha(r, g, b, a)     [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
+#define ssRGBHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define ssRGBHexAlpha(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:(a)]
 
 
 #import <UIKit/UIKit.h>
@@ -32,7 +35,7 @@
 #import "FOMOPay/OtherResource/YHPDFImageLoader/UIImage+YHPDFIcon.h"
 #import "FOMOPay/BaseManager/BaseViewController.h"
 
-
+#import "FOMOPay/Home/Views/CLTableViewCell.h"
 #import "CLTitleView.h"
 #import "FOMOPay/Home/CLHomeViewController.h"
 
@@ -49,7 +52,8 @@
 typedef enum : NSUInteger {
     LoadNavType_Default =0,
     LoadNavType_Other =1,
-    LoadNavType_Style = 2,
+    LoadCellType_Style1 =2,
+    LoadCellType_Style2 =3,
 } Type;
 
 

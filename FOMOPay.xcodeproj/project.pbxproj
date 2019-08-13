@@ -25,6 +25,12 @@
 		1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9323013A87000969FE /* YHPDFImageDraw.m */; };
 		1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAA723014511000969FE /* WRNavigationBar.m */; };
 		1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAAA23014511000969FE /* WRCustomNavigationBar.m */; };
+		CF36E26C23025DAF00F1AE2B /* pdf_home_transfer_2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */; };
+		CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */; };
+		CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */; };
+		CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */; };
+		CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */; };
+		CF36E2792302B1FD00F1AE2B /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36E2782302B1FD00F1AE2B /* CLModel.m */; };
 		CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFE796582301548E004C09C4 /* pdf_home_title.pdf */; };
 		CFE7965C230155AA004C09C4 /* CLTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7965B230155AA004C09C4 /* CLTitleView.m */; };
 		CFE7965E230155CD004C09C4 /* CLTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE7965D230155CD004C09C4 /* CLTitleView.xib */; };
@@ -87,6 +93,14 @@
 		365F37B62573D6AD38920DD0 /* Pods-FOMOPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.release.xcconfig"; sourceTree = "<group>"; };
 		3F1006515BE60B5DD9F894BA /* Pods-FOMOPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.debug.xcconfig"; sourceTree = "<group>"; };
 		59884581E113A0DB27EEB629 /* libPods-FOMOPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FOMOPay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_transfer_2.pdf; sourceTree = "<group>"; };
+		CF36E26E23025E0400F1AE2B /* CLTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTableViewCell.h; sourceTree = "<group>"; };
+		CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLTableViewCell.m; sourceTree = "<group>"; };
+		CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLTableViewCell.xib; sourceTree = "<group>"; };
+		CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_cell_out.pdf; sourceTree = "<group>"; };
+		CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_transfer_1.pdf; sourceTree = "<group>"; };
+		CF36E2772302B1FD00F1AE2B /* CLModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLModel.h; path = FOMOPay/Home/Views/CLModel.h; sourceTree = SOURCE_ROOT; };
+		CF36E2782302B1FD00F1AE2B /* CLModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLModel.m; path = FOMOPay/Home/Views/CLModel.m; sourceTree = SOURCE_ROOT; };
 		CFE79654230148D1004C09C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		CFE796582301548E004C09C4 /* pdf_home_title.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_title.pdf; sourceTree = "<group>"; };
 		CFE7965A230155A9004C09C4 /* CLTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTitleView.h; sourceTree = SOURCE_ROOT; };
@@ -203,7 +217,10 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */,
+				CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */,
 				CFE796582301548E004C09C4 /* pdf_home_title.pdf */,
+				CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */,
 			);
 			path = ImageResource;
 			sourceTree = "<group>";
@@ -236,6 +253,8 @@
 		1863DA84230120C1000969FE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CF36E2772302B1FD00F1AE2B /* CLModel.h */,
+				CF36E2782302B1FD00F1AE2B /* CLModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +343,9 @@
 				CFE7965A230155A9004C09C4 /* CLTitleView.h */,
 				CFE7965B230155AA004C09C4 /* CLTitleView.m */,
 				CFE7965D230155CD004C09C4 /* CLTitleView.xib */,
+				CF36E26E23025E0400F1AE2B /* CLTableViewCell.h */,
+				CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */,
+				CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -486,6 +508,10 @@
 				CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
 				1863DA5123011A07000969FE /* Main.storyboard in Resources */,
+				CF36E26C23025DAF00F1AE2B /* pdf_home_transfer_2.pdf in Resources */,
+				CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */,
+				CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */,
+				CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */,
 				CFE7965E230155CD004C09C4 /* CLTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,11 +592,13 @@
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
 				1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */,
 				1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */,
+				CF36E2792302B1FD00F1AE2B /* CLModel.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
 				CFE7966123016589004C09C4 /* BaseViewController.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
+				CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */,
 				1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */,
 				1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */,
 				1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */,
