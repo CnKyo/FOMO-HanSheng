@@ -17,16 +17,49 @@
 - (void)LoadNavType:(NSUInteger)Type{
     if (Type == 0) {
         [self addNavView1];
+    }else if(Type == 1){
+        [self addNavView2];
     }
 }
 
 -(void)addNavView1{
+   
     CLTitleView *Title = [CLTitleView LoadXib];
     [Title mTitleViewStyle:0];
     [self.view addSubview:Title];
     
+  
+    
 }
 
+-(void)addNavView2{
+    CLTitleView *Title = [CLTitleView LoadXib];
+    [Title mTitleViewStyle:1];
+    [self.view addSubview:Title];
+    UIButton *btn= [UIButton new];
+//    btn.backgroundColor  = [UIColor redColor];
+    [btn setTitle:@"添加" forState:UIControlStateNormal];
+    [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+   
+    btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+    [Title addSubview:btn];
+   
+    [btn addTarget:self action:@selector(onClickAdd:) forControlEvents:UIControlEventTouchUpInside];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(Title).offset(35);
+        make.right.equalTo(Title).offset(-10);
+        make.bottom.equalTo(Title).offset(-12);
+      
+    }];
+    
+}
+
+- (void)onClickAdd:(id)sender{
+    NSLog(@"1231321323131231231231231");
+}
+
+
+#warning 没有设置button font的字体
 //下面是列表上场了
 - (void)LoadCellType:(NSUInteger )Type{
     if (Type == 2){
@@ -35,6 +68,10 @@
         [self addTabView2];
     }
 }
+
+
+    
+
 
 
 
@@ -69,20 +106,20 @@
 }
 
 - (void)addTabView2{
-    UINib *nib2 = [UINib nibWithNibName:@"CLTableViewCell" bundle:nil];
-    [self.mTabView2 registerNib:nib2 forCellReuseIdentifier:@"cell"];
-    [self.view addSubview:self.mTabView2];
+    UINib *nib = [UINib nibWithNibName:@"CLHiStoryTableViewCell" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
     self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.mTabView.separatorInset = UIEdgeInsetsZero;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
     [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    self.mTabView2.backgroundColor = ssRGBHex(0xF6F6F6);
-    self.mTabView2.delegate = self;
-    self.mTabView2.dataSource = self;
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
    
-    [self.mTabView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(81 + 44 + kAppStatusBarHeight );
+        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
         
     }];
 }

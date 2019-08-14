@@ -33,18 +33,20 @@
 
 
 
-#import "FOMOPay/BaseManager/BaseViewController.h"
-#import "FOMOPay/OtherResource/WRNavigationBar/WRNavigationBar.h"
-#import "FOMOPay/OtherResource/YHPDFImageLoader/UIImage+YHPDFIcon.h"
-#import "FOMOPay/Home/Views/CLTableViewCell.h"
-#import "FOMOPay/Home/CLHomeViewController.h"
-#import "FOMOPay/Home/CLHomeViewController.h"
+#import "BaseViewController.h"
+#import "WRNavigationBar.h"
+#import "UIImage+YHPDFIcon.h"
+#import "CLTableViewCell.h"
+#import "CLHomeViewController.h"
+#import "CLHomeViewController.h"
 #import "CLTitleView.h"
-#import "FOMOPay/Home/CLMainTabBarControllerConfig.h"
-#import "FOMOPay/Home/CLHistoryViewController.h"
-#import "FOMOPay/Home/CLCollectionViewController.h"
-#import "FOMOPay/Home/CLMeViewController.h"
+#import "CLMainTabBarControllerConfig.h"
+#import "CLHistoryViewController.h"
+#import "CLCollectionViewController.h"
+#import "CLMeViewController.h"
 
+
+#import "CLHiStoryTableViewCell.h"
 
 
 

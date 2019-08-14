@@ -37,10 +37,10 @@
         
         _tabBarController = tabBarController;
         
-//        [self customizeTabBarAppearance:_tabBarController];
+        [self customizeTabBarAppearance:_tabBarController];
         
         //参考来自https://blog.csdn.net/man_liang/article/details/56671353
-        
+       
     }
     
     return _tabBarController;
@@ -71,28 +71,7 @@
                                              CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_me_tabbar.pdf"],
                                              CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_me_tabbarselected.pdf"]
                                              };
-    
-    
-    
-//    NSDictionary *tabBarItems2Attributes = @{
-//                                             CYLTabBarItemTitle:@"汇款",
-//                                             CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_home_tabbarpdf"],
-//                                             CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_home_tabbarselected.pdf"]
-//                                             };
-//
-//    NSDictionary *tabBarItems3Attributes = @{
-//                                             CYLTabBarItemTitle:@"汇款",
-//                                             CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_home_tabbarpdf"],
-//                                             CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_home_tabbarselected.pdf"]
-//                                             };
-//
-//    NSDictionary *tabBarItems4Attributes = @{
-//                                             CYLTabBarItemTitle:@"汇款",
-//                                             CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_home_tabbarpdf"],
-//                                             CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_home_tabbarselected.pdf"]
-//                                             };
-
-    NSArray *tabBarItemsAttributes = @[tabBarItems1Attributes,tabBarItems2Attributes,tabBarItems3Attributes,tabBarItems4Attributes];
+NSArray *tabBarItemsAttributes = @[tabBarItems1Attributes,tabBarItems2Attributes,tabBarItems3Attributes,tabBarItems4Attributes];
     return tabBarItemsAttributes;
     
 }
@@ -104,17 +83,21 @@
     
     // set the text color for unselected state
     // 普通状态下的文字属性
-//    NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
+    NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
 //    normalAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
 //
+    normalAttrs[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
 //    // set the text color for selected state
 //    // 选中状态下的文字属性
-//    NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
+    NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
 //    selectedAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    selectedAttrs[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
 //
 //    // set the text Attributes
 //    // 设置文字属性
 //    UITabBarItem *tabBar = [UITabBarItem appearance];
+//    tabBar[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
+    
 //    [tabBar setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];
 //    [tabBar setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
     
@@ -128,32 +111,32 @@
     // [tabBarAppearance setBackgroundImage:[UIImage imageNamed:@"tabbar_background_ios7"]];
 }
 
-+ (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius {
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    UIGraphicsBeginImageContext(rect.size);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Begin a new image that will be the new image with the rounded corners
-    // (here with the size of an UIImageView)
-    UIGraphicsBeginImageContext(size);
-    
-    // Add a clip before drawing anything, in the shape of an rounded rect
-    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius] addClip];
-    // Draw your image
-    [image drawInRect:rect];
-    
-    // Get the image, here setting the UIImageView image
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Lets forget about that we were drawing
-    UIGraphicsEndImageContext();
-    return image;
-}  
+//+ (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius {
+//    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+//    UIGraphicsBeginImageContext(rect.size);
+//
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextSetFillColorWithColor(context, [color CGColor]);
+//    CGContextFillRect(context, rect);
+//
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//
+//    // Begin a new image that will be the new image with the rounded corners
+//    // (here with the size of an UIImageView)
+//    UIGraphicsBeginImageContext(size);
+//
+//    // Add a clip before drawing anything, in the shape of an rounded rect
+//    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius] addClip];
+//    // Draw your image
+//    [image drawInRect:rect];
+//
+//    // Get the image, here setting the UIImageView image
+//    image = UIGraphicsGetImageFromCurrentImageContext();
+//
+//    // Lets forget about that we were drawing
+//    UIGraphicsEndImageContext();
+//    return image;
+//}
 
 @end

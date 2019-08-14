@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self LoadNavType:1];
     // Do any additional setup after loading the view.
 }
 

@@ -43,6 +43,9 @@
 		CF6BBB5F2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5B2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf */; };
 		CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5C2303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf */; };
 		CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */; };
+		CF6BBC942304033200EB5BBB /* NotoSansHans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBC932304033200EB5BBB /* NotoSansHans-Light.otf */; };
+		CF6BBC9D2304138700EB5BBB /* CLHiStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6BBC9B2304138700EB5BBB /* CLHiStoryTableViewCell.m */; };
+		CF6BBC9E2304138700EB5BBB /* CLHiStoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBC9C2304138700EB5BBB /* CLHiStoryTableViewCell.xib */; };
 		CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFE796582301548E004C09C4 /* pdf_home_title.pdf */; };
 		CFE7965C230155AA004C09C4 /* CLTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7965B230155AA004C09C4 /* CLTitleView.m */; };
 		CFE7965E230155CD004C09C4 /* CLTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE7965D230155CD004C09C4 /* CLTitleView.xib */; };
@@ -129,6 +132,10 @@
 		CF6BBB5B2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_me_tabbar.pdf; sourceTree = "<group>"; };
 		CF6BBB5C2303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_collection_tabbarselected.pdf; sourceTree = "<group>"; };
 		CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_collection_tabbar.pdf; sourceTree = "<group>"; };
+		CF6BBC932304033200EB5BBB /* NotoSansHans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansHans-Light.otf"; sourceTree = "<group>"; };
+		CF6BBC9A2304138700EB5BBB /* CLHiStoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLHiStoryTableViewCell.h; path = FOMOPay/Home/Views/CLHiStoryTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		CF6BBC9B2304138700EB5BBB /* CLHiStoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLHiStoryTableViewCell.m; path = FOMOPay/Home/Views/CLHiStoryTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		CF6BBC9C2304138700EB5BBB /* CLHiStoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CLHiStoryTableViewCell.xib; path = FOMOPay/Home/Views/CLHiStoryTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		CFE79654230148D1004C09C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		CFE796582301548E004C09C4 /* pdf_home_title.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_title.pdf; sourceTree = "<group>"; };
 		CFE7965A230155A9004C09C4 /* CLTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTitleView.h; sourceTree = SOURCE_ROOT; };
@@ -313,6 +320,7 @@
 		1863DA8723013A6A000969FE /* OtherResource */ = {
 			isa = PBXGroup;
 			children = (
+				CF6BBC922304033200EB5BBB /* Fonts */,
 				1863DAA623014511000969FE /* WRNavigationBar */,
 				1863DA8823013A87000969FE /* YHPDFImageLoader */,
 			);
@@ -397,6 +405,9 @@
 		1863DAA1230142EA000969FE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF6BBC9A2304138700EB5BBB /* CLHiStoryTableViewCell.h */,
+				CF6BBC9B2304138700EB5BBB /* CLHiStoryTableViewCell.m */,
+				CF6BBC9C2304138700EB5BBB /* CLHiStoryTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -441,6 +452,14 @@
 				59884581E113A0DB27EEB629 /* libPods-FOMOPay.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF6BBC922304033200EB5BBB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CF6BBC932304033200EB5BBB /* NotoSansHans-Light.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */,
+				CF6BBC9E2304138700EB5BBB /* CLHiStoryTableViewCell.xib in Resources */,
 				1863DA5623011A08000969FE /* LaunchScreen.storyboard in Resources */,
 				CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */,
 				CF6BBB552303AB4400EB5BBB /* pdf_home_home_tabbar.pdf in Resources */,
@@ -563,6 +583,7 @@
 				CF6BBB5E2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf in Resources */,
 				CFE7965E230155CD004C09C4 /* CLTitleView.xib in Resources */,
 				CF6BBB5F2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf in Resources */,
+				CF6BBC942304033200EB5BBB /* NotoSansHans-Light.otf in Resources */,
 				CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */,
 				CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */,
 			);
@@ -649,6 +670,7 @@
 				CCA748CC2303082600846BDF /* CLHistoryViewController.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
 				CFE7966123016589004C09C4 /* BaseViewController.m in Sources */,
+				CF6BBC9D2304138700EB5BBB /* CLHiStoryTableViewCell.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				CCA748D22303098F00846BDF /* CLMeViewController.m in Sources */,

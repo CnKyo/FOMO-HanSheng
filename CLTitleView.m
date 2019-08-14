@@ -23,6 +23,8 @@
         CGRect screen = [[UIScreen mainScreen]bounds];
         TabBarView.backgroundColor = [UIColor whiteColor];
         TabBarView.frame = CGRectMake(0, 0,screen.size.width, 44+ kAppStatusBarHeight);
+        
+
         return  TabBarView;
     
 }
@@ -33,16 +35,19 @@
 - (void)mTitleViewStyle:(NSInteger)Type{
     if (Type == 0) {
         self.CLTitleImage.image = [UIImage yh_imageNamed:@"pdf_home_title.pdf"];
-       
         
+        [_CLTitleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.top.offset(35);
+        }];
+    }else if(Type == 1) {
+        self.CLTitleImage.image = [UIImage yh_imageNamed:@"pdf_home_title.pdf"];
         [_CLTitleImage mas_makeConstraints:^(MASConstraintMaker *make) {
             
             make.top.offset(35);
         }];
     }
 }
-
-
 
 
 @end
