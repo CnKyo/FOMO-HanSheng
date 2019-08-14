@@ -34,6 +34,8 @@
     self.CLTableViewCellRightViewTwo.layer.borderWidth = 2;
     self.CLTableViewCellRightViewTwo.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
     [self.CLTabViewCellLeftOutButton setBackgroundImage:[UIImage yh_imageNamed:@"pdf_home_cell_out.pdf"] forState:UIControlStateNormal];
+   
+    
 }
 
 
@@ -67,5 +69,7 @@
 
     // Configure the view for the selected state
 }
+
+
 
 @end

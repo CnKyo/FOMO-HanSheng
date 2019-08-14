@@ -13,21 +13,18 @@
 
 @implementation BaseViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = ssRGBHex(0xF6F6F6);
-   
-
-    // Do any additional setup after loading the view.
-}
-
 //状态栏
 - (void)LoadNavType:(NSUInteger)Type{
     if (Type == 0) {
-        CLTitleView *Title = [CLTitleView LoadXib];
-        [Title mTitleViewStyle:0];
-        [self.view addSubview:Title];
+        [self addNavView1];
     }
+}
+
+-(void)addNavView1{
+    CLTitleView *Title = [CLTitleView LoadXib];
+    [Title mTitleViewStyle:0];
+    [self.view addSubview:Title];
+    
 }
 
 //下面是列表上场了
@@ -40,16 +37,33 @@
 }
 
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = ssRGBHex(0xF6F6F6);
+   
+
+    // Do any additional setup after loading the view.
+}
+
+
+
+
 //tabviewcell
 - (void)addTabView1{
     UINib *nib = [UINib nibWithNibName:@"CLTableViewCell" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
+//    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleNone];  //去除cell分割线
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
-    
+   
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight + 1 );
+        make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight  );
         
     }];
 }
@@ -58,12 +72,17 @@
     UINib *nib2 = [UINib nibWithNibName:@"CLTableViewCell" bundle:nil];
     [self.mTabView2 registerNib:nib2 forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView2];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     self.mTabView2.backgroundColor = ssRGBHex(0xF6F6F6);
     self.mTabView2.delegate = self;
     self.mTabView2.dataSource = self;
+   
     [self.mTabView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(81 + 44 + kAppStatusBarHeight + 1 );
+        make.top.equalTo(self.view).offset(81 + 44 + kAppStatusBarHeight );
         
     }];
 }

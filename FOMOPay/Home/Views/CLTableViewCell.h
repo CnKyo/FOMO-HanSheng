@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)awakeFromNib2; // cell样式2
 - (void)awakeFromNib3;// cell样式3
 - (void)CellStyle:(NSInteger)Type;
+
 @end
 
 NS_ASSUME_NONNULL_END
