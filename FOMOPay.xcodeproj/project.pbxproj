@@ -280,6 +280,8 @@
 			children = (
 				CFE7965F23016589004C09C4 /* BaseViewController.h */,
 				CFE7966023016589004C09C4 /* BaseViewController.m */,
+				18B7BEE02304E9CD007B496A /* NavgationBarView */,
+				18B7BEDF2304E976007B496A /* BaseTabbarController */,
 			);
 			path = BaseManager;
 			sourceTree = "<group>";
@@ -352,8 +354,6 @@
 			children = (
 				CFE7966223016614004C09C4 /* CLHomeViewController.h */,
 				CFE7966323016614004C09C4 /* CLHomeViewController.m */,
-				CCA748C72303046400846BDF /* CLMainTabBarControllerConfig.h */,
-				CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */,
 				1863DAA0230142E4000969FE /* Views */,
 			);
 			path = Home;
@@ -435,6 +435,22 @@
 				1863DAAA23014511000969FE /* WRCustomNavigationBar.m */,
 			);
 			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
+		18B7BEDF2304E976007B496A /* BaseTabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				CCA748C72303046400846BDF /* CLMainTabBarControllerConfig.h */,
+				CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */,
+			);
+			path = BaseTabbarController;
+			sourceTree = "<group>";
+		};
+		18B7BEE02304E9CD007B496A /* NavgationBarView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavgationBarView;
 			sourceTree = "<group>";
 		};
 		5B0969EA28DD697F78833E54 /* Pods */ = {

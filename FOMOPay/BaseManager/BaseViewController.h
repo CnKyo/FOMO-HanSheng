@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)addNavView2;
 
 
+- (void)addNavgationLine;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -160,6 +160,15 @@
 }
 
 //
-
+- (void)addNavgationLine{
+    UIView *mLine = [UIView new];
+    mLine.backgroundColor = kLightgrayColor;
+    [self.view addSubview:mLine];
+    [mLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view).offset(0);
+        make.top.equalTo(self.view).offset(45+kAppStatusBarHeight);
+        make.height.offset(0.5);
+    }];
+}
 
 @end

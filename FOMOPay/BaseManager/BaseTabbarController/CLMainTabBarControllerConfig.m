@@ -9,25 +9,22 @@
 #import "CLMainTabBarControllerConfig.h"
 @implementation CLMainTabBarControllerConfig
 
-
-
-
 -(CYLTabBarController *)tabBarController{
     if(!_tabBarController){
         CLHomeViewController *mNavHome = [CLHomeViewController new];
-        UIViewController *mNavHomeController = [[UINavigationController alloc]initWithRootViewController:mNavHome];
+        UINavigationController *mNavHomeController = [[UINavigationController alloc]initWithRootViewController:mNavHome];
        
         CLHistoryViewController *mNavHistory = [CLHistoryViewController new];
-        UIViewController *mNavHistoryController = [[UINavigationController alloc]initWithRootViewController:mNavHistory];
+        UINavigationController *mNavHistoryController = [[UINavigationController alloc]initWithRootViewController:mNavHistory];
        
         CLCollectionViewController *mNavCollection = [CLCollectionViewController new];
-        UIViewController *mNavCollectionController = [[UINavigationController alloc]initWithRootViewController:mNavCollection];
+        UINavigationController *mNavCollectionController = [[UINavigationController alloc]initWithRootViewController:mNavCollection];
        
         CLMeViewController *mNavMe = [CLMeViewController new];
-        UIViewController *mNavMeController = [[UINavigationController alloc]initWithRootViewController:mNavMe];
+        UINavigationController *mNavMeController = [[UINavigationController alloc]initWithRootViewController:mNavMe];
         
         NSArray *tabBarItemsAttributes = [self tabBarItemsAttributes];
-        NSArray *viewControllers = @[mNavHome,mNavHistory,mNavCollection,mNavMe];
+        NSArray *viewControllers = @[mNavHomeController,mNavHistoryController,mNavCollectionController,mNavMeController];
        
         CYLTabBarController *tabBarController = [CYLTabBarController new];
        

@@ -47,9 +47,23 @@
 
 
 #import "CLHiStoryTableViewCell.h"
+#import "WRCustomNavigationBar.h"
 
+#define kLightgrayColor [UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1]
 
+#define _SHOW_DEBUG_LOG_
 
+#ifdef _SHOW_DEBUG_LOG_
+#define DebugLog(format,...) NSLog(@"%s --->" format,__PRETTY_FUNCTION__,##__VA_ARGS__)
+#else
+#define DebugLog(...)
+#endif
+
+#define kAppStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height
+#define kBottomToolBarHeight   (CGFloat)(iPhoneX?(34):(0))
+#define kScreenWidth    [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight   [[UIScreen mainScreen] bounds].size.height
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
 
 

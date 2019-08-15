@@ -11,12 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLMainTabBarControllerConfig : NSObject
+
 @property (nonatomic, strong) CYLTabBarController * tabBarController;
-
-//@property (nonatomic,strong)CYLTabBarController *mainTabBarContoller;
-//@property (nonatomic,strong)NSArray *tabBarItemsAttributes;
-//@property (nonatomic,strong)NSArray *viewControlles;
-
 
 @end
 
