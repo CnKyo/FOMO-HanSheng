@@ -23,23 +23,25 @@
      CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
         UIButton *btn= [UIButton new];
         [btn setTitle:@"添加" forState:UIControlStateNormal];
+        btn.tag =1;
         [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-        UIView *mView = [UIView new];
+    
         [view addSubview:btn];
+   
+    
     
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(mView).offset(-20);
-            make.top.equalTo(mView).offset(0);
-            make.bottom.equalTo(mView).offset(0);
+            make.right.equalTo(view).offset(-20);
+            make.top.equalTo(view).offset(0);
+            make.bottom.equalTo(view).offset(0);
         }];
 
-    return nil;
+    return view;
    
 }
--(void)mBtnAction:(UIButton *)sender{
-    if(self.mBtnBlock){
-        self.mBtnBlock(sender.tag);
-}
-}
+
+
+
+
 @end

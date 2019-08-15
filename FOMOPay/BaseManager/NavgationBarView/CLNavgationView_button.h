@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^CLNavgationView_buttonBtnBlock)(NSInteger tag);
 @interface CLNavgationView_button : UIView
 @property (copy,nonatomic) CLNavgationView_buttonBtnBlock mBtnBlock;
+@property (weak, nonatomic) IBOutlet UIView *mRightView;
+@property (weak, nonatomic) IBOutlet UIButton *mRightButton;
 
 + (CLNavgationView_button *)shareDefaultNavRightButton;
 
