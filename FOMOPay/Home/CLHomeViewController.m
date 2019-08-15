@@ -19,11 +19,29 @@
 //    self.view.backgroundColor = [UIColor whiteColor];
     [self setMNavTitle:@"首页"];
 //    self.title = @"首页";
-//    [self LoadNavType:0];  ⬇️替换成新的方法
+//    [self LoadNavType:0]; // ⬇️替换成新的方法
     
 //    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
-    [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
+    
+    
+   // //////////////////////////////////
+//    UIButton *btn= [UIButton new];
+//    [btn setTitle:@"添加" forState:UIControlStateNormal];
+//    [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+//    btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+//    UIView *mView = [UIView new];
+//    [mView addSubview:btn];
+//
+//    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(mView).offset(-20);
+//        make.top.equalTo(mView).offset(0);
+//        make.bottom.equalTo(mView).offset(0);
+//    }];
 
+    CLNavModel *model = [CLNavModel new];
+    model.mRightView = [CLNavgationView_button shareDefaultNavRightButton]  ;//可以直接调用封装在一起的mView;
+    [self CLAddNavType:CLNavType_home andModel:model completion:^(NSInteger tag) {
+// [self CLAddNavType:CLNavType_other andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
             case 0:
             {

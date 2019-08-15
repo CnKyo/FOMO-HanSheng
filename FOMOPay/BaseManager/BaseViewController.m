@@ -28,58 +28,23 @@
     
 }
 //状态栏
-- (void)LoadNavType:(NSUInteger)Type{
-    if (Type == 0) {
-        [self addNavView1];
-    }else if(Type == 1){
-        [self addNavView2];
-    }
-}
 
--(void)addNavView1{
-   
-    CLTitleView *Title = [CLTitleView LoadXib];
-    [Title mTitleViewStyle:0];
-    [self.view addSubview:Title];
-    
-  
-    
-}
 
--(void)addNavView2{
-    CLTitleView *Title = [CLTitleView LoadXib];
-    [Title mTitleViewStyle:1];
-    [self.view addSubview:Title];
-    UIButton *btn= [UIButton new];
-//    btn.backgroundColor  = [UIColor redColor];
-    [btn setTitle:@"添加" forState:UIControlStateNormal];
-    [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
-   
-    btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-    [Title addSubview:btn];
-   
-    [btn addTarget:self action:@selector(onClickAdd:) forControlEvents:UIControlEventTouchUpInside];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(Title).offset(35);
-        make.right.equalTo(Title).offset(-10);
-        make.bottom.equalTo(Title).offset(-12);
-      
-    }];
-    
-}
 
 - (void)onClickAdd:(id)sender{
     NSLog(@"1231321323131231231231231");
 }
 
 
-#warning 没有设置button font的字体
+
 //下面是列表上场了
 - (void)LoadCellType:(NSUInteger )Type{
     if (Type == 2){
         [self addTabView1];
     }else if(Type == 3){
         [self addTabView2];
+    }else if(Type == 4){
+        [self addTabView3];
     }
 }
 
@@ -91,7 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = ssRGBHex(0xF6F6F6);
+    self.view.backgroundColor = ssRGBHex(0xF6F5FA);
    
 
     // Do any additional setup after loading the view.
@@ -131,6 +96,25 @@
     self.mTabView.delegate = self;
     self.mTabView.dataSource = self;
    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+        
+    }];
+}
+
+- (void)addTabView3{
+    UINib *nib = [UINib nibWithNibName:@"CLCollectionTableViewCell" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);
         make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
@@ -203,6 +187,7 @@
         CLNavgationView *mNav = [CLNavgationView shareNormalNavView];
         mNav.mLeftImg.hidden = mHidden;
         mNav.mLeftBtn.hidden = mHidden;
+       
         [mNav updateView:model];
         mNav.mBtnBlock = ^(NSInteger tag) {
             if (tag == 0) {
@@ -226,7 +211,9 @@
         [self.mCustomNavBar addSubview:mNav];
         
     }else{
+        
         CLNavgationView *mNav = [CLNavgationView shareNormalNavView];
+       
         [mNav updateView:model];
         mNav.mBtnBlock = ^(NSInteger tag) {
             if (tag == 0) {
@@ -253,5 +240,7 @@
     }
     return _mCustomNavBar;
 }
+
+
 
 @end

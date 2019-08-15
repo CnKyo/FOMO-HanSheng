@@ -16,7 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self LoadNavType:0];
+//    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
+            [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
+        
+        switch (tag) {
+            case 0:
+            {
+                DebugLog(@"左边按钮");
+            }
+                break;
+            case 1:
+            {
+                DebugLog(@"右边按钮");
+            }
+                break;
+            default:
+                break;
+        }
+    }];
     [self LoadCellType:3];
     // Do any additional setup after loading the view.
 }

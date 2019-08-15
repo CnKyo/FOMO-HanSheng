@@ -44,8 +44,8 @@
 #import "CLHistoryViewController.h"
 #import "CLCollectionViewController.h"
 #import "CLMeViewController.h"
-
-
+#import "CLCollectionTableViewCell.h"
+#import "CLNavgationView_button.h"
 #import "CLHiStoryTableViewCell.h"
 #import "WRCustomNavigationBar.h"
 

@@ -19,6 +19,7 @@ typedef enum : NSUInteger {
     LoadNavType_Other =1,
     LoadCellType_Style1 =2,
     LoadCellType_Style2 =3,
+    LoadCellType_Style3 =4,
 } Type;
 
 

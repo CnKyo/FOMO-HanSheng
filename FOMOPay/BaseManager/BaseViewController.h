@@ -16,18 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong)UIView *mView;
 @property (nonatomic,strong)UITableView *mTabView;
-@property (nonatomic,strong)UITableView *mTabView2;
+
 @property (nonatomic,strong)NSMutableArray *DataSource;
 
-- (void)LoadNavType:(NSUInteger )Type;
+
 - (void)LoadCellType:(NSUInteger )Type;
 
 - (void)addTabView1;
 - (void)addTabView2;
 
 
--(void)addNavView1;
--(void)addNavView2;
+
 
 
 - (void)addNavgationLine;

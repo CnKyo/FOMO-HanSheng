@@ -28,6 +28,7 @@
     view.mLeftImg.image = [UIImage yh_imageNamed:@"pdf_nav_back"];
     return view;
 }
+
 - (IBAction)mBtnAction:(UIButton *)sender {
     if (self.mBtnBlock) {
         self.mBtnBlock(sender.tag);
@@ -36,6 +37,13 @@
 - (void)updateView:(CLNavModel *)data{
     if (data.mTitle.length>0) {
         self.mTitle.text = data.mTitle;
+        }
+    if (data.mRightView) {
+        data.mRightView.frame = self.mrightView.bounds;
+        [self.mrightView addSubview:data.mRightView];
+        
     }
 }
+
+
 @end
