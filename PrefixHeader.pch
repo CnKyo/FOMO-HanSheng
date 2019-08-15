@@ -49,6 +49,8 @@
 #import "CLHiStoryTableViewCell.h"
 #import "WRCustomNavigationBar.h"
 
+#import "CLNavgationView.h"
+#import "Header.h"
 #define kLightgrayColor [UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1]
 
 #define _SHOW_DEBUG_LOG_
@@ -71,12 +73,5 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #
 #endif /* PrefixHeader_pch */
-
-typedef enum : NSUInteger {
-    LoadNavType_Default =0,
-    LoadNavType_Other =1,
-    LoadCellType_Style1 =2,
-    LoadCellType_Style2 =3,
-} Type;
 
 

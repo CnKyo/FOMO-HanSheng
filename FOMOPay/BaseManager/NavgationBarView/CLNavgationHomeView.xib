@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CLNavgationView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSI-zN-ZuG">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grT-7d-24R">
+                            <rect key="frame" x="0.0" y="0.0" width="83" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y82-eU-Lfc">
+                            <rect key="frame" x="133" y="14" width="148" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="4ch-Hm-Bcx"/>
+                                <constraint firstAttribute="width" constant="148" id="LmE-d1-j9P"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8h-Mh-kMr">
+                            <rect key="frame" x="331" y="0.0" width="83" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1U-GU-WPi">
+                            <rect key="frame" x="0.0" y="43.5" width="414" height="0.5"/>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="Hfz-8O-LBT"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Y82-eU-Lfc" firstAttribute="centerY" secondItem="CSI-zN-ZuG" secondAttribute="centerY" id="0qI-I0-wgd"/>
+                        <constraint firstItem="B8h-Mh-kMr" firstAttribute="top" secondItem="CSI-zN-ZuG" secondAttribute="top" id="E9c-xo-JGU"/>
+                        <constraint firstItem="grT-7d-24R" firstAttribute="leading" secondItem="CSI-zN-ZuG" secondAttribute="leading" id="JG0-v3-Utn"/>
+                        <constraint firstAttribute="trailing" secondItem="w1U-GU-WPi" secondAttribute="trailing" id="RMl-7n-ET1"/>
+                        <constraint firstItem="grT-7d-24R" firstAttribute="bottom" secondItem="B8h-Mh-kMr" secondAttribute="bottom" id="VMA-NT-zlv"/>
+                        <constraint firstItem="B8h-Mh-kMr" firstAttribute="width" secondItem="CSI-zN-ZuG" secondAttribute="width" multiplier="1:5" id="ZTM-Ih-qFH"/>
+                        <constraint firstAttribute="bottom" secondItem="B8h-Mh-kMr" secondAttribute="bottom" id="fp8-7Z-Fne"/>
+                        <constraint firstItem="w1U-GU-WPi" firstAttribute="leading" secondItem="CSI-zN-ZuG" secondAttribute="leading" id="gkz-fT-Teu"/>
+                        <constraint firstAttribute="bottom" secondItem="w1U-GU-WPi" secondAttribute="bottom" id="jR9-13-So8"/>
+                        <constraint firstAttribute="trailing" secondItem="B8h-Mh-kMr" secondAttribute="trailing" id="jhj-sh-6oh"/>
+                        <constraint firstItem="grT-7d-24R" firstAttribute="width" secondItem="B8h-Mh-kMr" secondAttribute="width" id="ko7-yS-cHq"/>
+                        <constraint firstItem="Y82-eU-Lfc" firstAttribute="centerX" secondItem="CSI-zN-ZuG" secondAttribute="centerX" id="nq0-Uu-C7b"/>
+                        <constraint firstItem="grT-7d-24R" firstAttribute="top" secondItem="B8h-Mh-kMr" secondAttribute="top" id="rbl-xp-KVJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="CSI-zN-ZuG" secondAttribute="top" id="4gp-4Y-w5V"/>
+                <constraint firstItem="CSI-zN-ZuG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FYU-NY-Dzi"/>
+                <constraint firstItem="CSI-zN-ZuG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="RDe-um-vJk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CSI-zN-ZuG" secondAttribute="trailing" id="cNE-1P-rif"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="mLeftView" destination="grT-7d-24R" id="ciO-kJ-Imu"/>
+                <outlet property="mTitleImage" destination="Y82-eU-Lfc" id="zqF-Uo-aZK"/>
+                <outlet property="mrightView" destination="B8h-Mh-kMr" id="ABx-r3-iif"/>
+            </connections>
+        </view>
+    </objects>
+</document>

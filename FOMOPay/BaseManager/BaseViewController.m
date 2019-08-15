@@ -9,10 +9,24 @@
 #import "BaseViewController.h"
 @interface BaseViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic,strong)WRCustomNavigationBar *mCustomNavBar;
+
 @end
 
 @implementation BaseViewController
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    
+}
 //状态栏
 - (void)LoadNavType:(NSUInteger)Type{
     if (Type == 0) {
@@ -169,6 +183,75 @@
         make.top.equalTo(self.view).offset(45+kAppStatusBarHeight);
         make.height.offset(0.5);
     }];
+}
+- (void)setMNavTitle:(NSString *)mNavTitle{
+    self.title = mNavTitle;
+}
+- (void)CLAddNavType:(CLNavType)type andModel:(CLNavModel *)model completion:(void(^)(NSInteger tag))handel{
+    DebugLog(@"当前控制器堆栈:%lu",(unsigned long)self.navigationController.viewControllers.count);
+    WS(weakSelf);
+    BOOL mHidden = !(self.navigationController.viewControllers.count-1);
+
+    [self.view addSubview:self.mCustomNavBar];
+
+    if (!model) {
+        CLNavModel *mNewModel = [CLNavModel new];
+        mNewModel.mTitle = self.title;
+        model = mNewModel;
+    }
+    if (type == CLNavType_default) {
+        CLNavgationView *mNav = [CLNavgationView shareNormalNavView];
+        mNav.mLeftImg.hidden = mHidden;
+        mNav.mLeftBtn.hidden = mHidden;
+        [mNav updateView:model];
+        mNav.mBtnBlock = ^(NSInteger tag) {
+            if (tag == 0) {
+                [weakSelf CLNavBackAction];
+            }
+            
+            handel(tag);
+        };
+        mNav.frame =self.mCustomNavBar.bounds;
+        [self.mCustomNavBar addSubview:mNav];
+    }else if (type == CLNavType_home){
+        CLNavgationView *mNav = [CLNavgationView shareHomeNavView];
+        [mNav updateView:model];
+        mNav.mBtnBlock = ^(NSInteger tag) {
+            if (tag == 0) {
+                [weakSelf CLNavBackAction];
+            }
+            handel(tag);
+        };
+        mNav.frame =self.mCustomNavBar.bounds;
+        [self.mCustomNavBar addSubview:mNav];
+        
+    }else{
+        CLNavgationView *mNav = [CLNavgationView shareNormalNavView];
+        [mNav updateView:model];
+        mNav.mBtnBlock = ^(NSInteger tag) {
+            if (tag == 0) {
+                [weakSelf CLNavBackAction];
+            }
+            handel(tag);
+        };
+        mNav.frame =self.mCustomNavBar.bounds;
+        [self.mCustomNavBar addSubview:mNav];
+        
+    }
+}
+- (void)pushToViewController:(UIViewController *)vc{
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)CLNavBackAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(WRCustomNavigationBar *)mCustomNavBar{
+    if (!_mCustomNavBar) {
+        _mCustomNavBar = [WRCustomNavigationBar CustomNavigationBar];
+    }
+    return _mCustomNavBar;
 }
 
 @end

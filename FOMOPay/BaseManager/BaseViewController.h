@@ -7,10 +7,13 @@
 //
 
 #import "ViewController.h"
-
+#import "Header.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BaseViewController : ViewController
+
+@property (strong,nonatomic) NSString *mNavTitle;
+
 @property(nonatomic,strong)UIView *mView;
 @property (nonatomic,strong)UITableView *mTabView;
 @property (nonatomic,strong)UITableView *mTabView2;
@@ -28,6 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)addNavgationLine;
+
+- (void)CLAddNavType:(CLNavType)type andModel:(CLNavModel *)model completion:(void(^)(NSInteger tag))handel;
+
+- (void)pushToViewController:(UIViewController *)vc;
+
+- (void)CLNavBackAction;
+
+
 
 @end
 
