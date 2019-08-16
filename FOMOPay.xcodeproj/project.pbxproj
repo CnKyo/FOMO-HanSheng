@@ -47,6 +47,17 @@
 		CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */; };
 		CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */; };
 		CF36E2792302B1FD00F1AE2B /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36E2782302B1FD00F1AE2B /* CLModel.m */; };
+		CF5A8C352306831000745FE9 /* CLMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A8C332306831000745FE9 /* CLMeTableViewCell.m */; };
+		CF5A8C362306831000745FE9 /* CLMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C342306831000745FE9 /* CLMeTableViewCell.xib */; };
+		CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */; };
+		CF5A8C542306A1DE00745FE9 /* pdf_me_callme.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */; };
+		CF5A8C552306A1DE00745FE9 /* pdf_me_logout.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */; };
+		CF5A8C562306A1DE00745FE9 /* pdf_me_language.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C512306A1DD00745FE9 /* pdf_me_language.pdf */; };
+		CF5A8C572306A1DE00745FE9 /* pdf_me_pact.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C522306A1DD00745FE9 /* pdf_me_pact.pdf */; };
+		CF5A8C582306A1DE00745FE9 /* pdf_me_message.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C532306A1DD00745FE9 /* pdf_me_message.pdf */; };
+		CF5A8C5E2306B7E000745FE9 /* CLMeLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A8C5D2306B7E000745FE9 /* CLMeLanguageViewController.m */; };
+		CF5A8C612306BA9C00745FE9 /* CLMeCallMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A8C602306BA9C00745FE9 /* CLMeCallMeViewController.m */; };
+		CF5A8C642306BACB00745FE9 /* CLMeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A8C632306BACB00745FE9 /* CLMeMessageViewController.m */; };
 		CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */; };
 		CF6BBB552303AB4400EB5BBB /* pdf_home_home_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB542303AB4400EB5BBB /* pdf_home_home_tabbar.pdf */; };
 		CF6BBB582303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */; };
@@ -153,6 +164,21 @@
 		CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_transfer_1.pdf; sourceTree = "<group>"; };
 		CF36E2772302B1FD00F1AE2B /* CLModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLModel.h; path = FOMOPay/Home/Views/CLModel.h; sourceTree = SOURCE_ROOT; };
 		CF36E2782302B1FD00F1AE2B /* CLModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLModel.m; path = FOMOPay/Home/Views/CLModel.m; sourceTree = SOURCE_ROOT; };
+		CF5A8C322306831000745FE9 /* CLMeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLMeTableViewCell.h; path = FOMOPay/BaseManager/NavgationBarView/CLMeTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		CF5A8C332306831000745FE9 /* CLMeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLMeTableViewCell.m; path = FOMOPay/BaseManager/NavgationBarView/CLMeTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		CF5A8C342306831000745FE9 /* CLMeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CLMeTableViewCell.xib; path = FOMOPay/BaseManager/NavgationBarView/CLMeTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_userImage.pdf; sourceTree = "<group>"; };
+		CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_callme.pdf; sourceTree = "<group>"; };
+		CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_logout.pdf; sourceTree = "<group>"; };
+		CF5A8C512306A1DD00745FE9 /* pdf_me_language.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_language.pdf; sourceTree = "<group>"; };
+		CF5A8C522306A1DD00745FE9 /* pdf_me_pact.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_pact.pdf; sourceTree = "<group>"; };
+		CF5A8C532306A1DD00745FE9 /* pdf_me_message.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_message.pdf; sourceTree = "<group>"; };
+		CF5A8C5C2306B7E000745FE9 /* CLMeLanguageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLMeLanguageViewController.h; path = FOMOPay/CLMeLanguageViewController.h; sourceTree = SOURCE_ROOT; };
+		CF5A8C5D2306B7E000745FE9 /* CLMeLanguageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLMeLanguageViewController.m; path = FOMOPay/CLMeLanguageViewController.m; sourceTree = SOURCE_ROOT; };
+		CF5A8C5F2306BA9C00745FE9 /* CLMeCallMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLMeCallMeViewController.h; path = FOMOPay/CLMeCallMeViewController.h; sourceTree = SOURCE_ROOT; };
+		CF5A8C602306BA9C00745FE9 /* CLMeCallMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLMeCallMeViewController.m; path = FOMOPay/CLMeCallMeViewController.m; sourceTree = SOURCE_ROOT; };
+		CF5A8C622306BACB00745FE9 /* CLMeMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLMeMessageViewController.h; path = FOMOPay/CLMeMessageViewController.h; sourceTree = SOURCE_ROOT; };
+		CF5A8C632306BACB00745FE9 /* CLMeMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLMeMessageViewController.m; path = FOMOPay/CLMeMessageViewController.m; sourceTree = SOURCE_ROOT; };
 		CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbarselected.pdf; sourceTree = "<group>"; };
 		CF6BBB542303AB4400EB5BBB /* pdf_home_home_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbar.pdf; sourceTree = "<group>"; };
 		CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_history_tabbar.pdf; sourceTree = "<group>"; };
@@ -280,6 +306,12 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */,
+				CF5A8C512306A1DD00745FE9 /* pdf_me_language.pdf */,
+				CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */,
+				CF5A8C532306A1DD00745FE9 /* pdf_me_message.pdf */,
+				CF5A8C522306A1DD00745FE9 /* pdf_me_pact.pdf */,
+				CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */,
 				CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */,
 				CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */,
 				18B7BEED2304FB8E007B496A /* pdf_nav_back.pdf */,
@@ -415,9 +447,15 @@
 		1863DA9F230142D2000969FE /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				1863DAA3230142F2000969FE /* Views */,
 				CCA748D02303098F00846BDF /* CLMeViewController.h */,
 				CCA748D12303098F00846BDF /* CLMeViewController.m */,
+				CF5A8C5C2306B7E000745FE9 /* CLMeLanguageViewController.h */,
+				CF5A8C5D2306B7E000745FE9 /* CLMeLanguageViewController.m */,
+				CF5A8C5F2306BA9C00745FE9 /* CLMeCallMeViewController.h */,
+				CF5A8C602306BA9C00745FE9 /* CLMeCallMeViewController.m */,
+				CF5A8C622306BACB00745FE9 /* CLMeMessageViewController.h */,
+				CF5A8C632306BACB00745FE9 /* CLMeMessageViewController.m */,
+				1863DAA3230142F2000969FE /* Views */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -458,6 +496,9 @@
 		1863DAA3230142F2000969FE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF5A8C322306831000745FE9 /* CLMeTableViewCell.h */,
+				CF5A8C332306831000745FE9 /* CLMeTableViewCell.m */,
+				CF5A8C342306831000745FE9 /* CLMeTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -629,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B7BEEE2304FB8F007B496A /* pdf_nav_back.pdf in Resources */,
+				CF5A8C572306A1DE00745FE9 /* pdf_me_pact.pdf in Resources */,
 				CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */,
 				CF6BBC9E2304138700EB5BBB /* CLHiStoryTableViewCell.xib in Resources */,
 				18B7BEE52304EC82007B496A /* CLNavgationHomeView.xib in Resources */,
@@ -636,12 +678,18 @@
 				CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */,
 				CF6BBB552303AB4400EB5BBB /* pdf_home_home_tabbar.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
+				CF5A8C582306A1DE00745FE9 /* pdf_me_message.pdf in Resources */,
 				1863DA5123011A07000969FE /* Main.storyboard in Resources */,
 				CF6BBB582303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf in Resources */,
 				CF36E26C23025DAF00F1AE2B /* pdf_home_transfer_2.pdf in Resources */,
+				CF5A8C552306A1DE00745FE9 /* pdf_me_logout.pdf in Resources */,
 				CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */,
 				18B7BEE72304ECFD007B496A /* CLNavgationNormalView.xib in Resources */,
+				CF5A8C542306A1DE00745FE9 /* pdf_me_callme.pdf in Resources */,
 				CF277DB32305750800A37B5C /* CLNavgationViewButton.xib in Resources */,
+				CF5A8C362306831000745FE9 /* CLMeTableViewCell.xib in Resources */,
+				CF5A8C562306A1DE00745FE9 /* pdf_me_language.pdf in Resources */,
+				CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */,
 				CF6BBB592303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf in Resources */,
 				CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */,
 				CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */,
@@ -740,16 +788,20 @@
 				CFE7966123016589004C09C4 /* BaseViewController.m in Sources */,
 				18B7BEE32304EBE3007B496A /* CLNavgationView.m in Sources */,
 				CF6BBC9D2304138700EB5BBB /* CLHiStoryTableViewCell.m in Sources */,
+				CF5A8C612306BA9C00745FE9 /* CLMeCallMeViewController.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				CCA748D22303098F00846BDF /* CLMeViewController.m in Sources */,
+				CF5A8C5E2306B7E000745FE9 /* CLMeLanguageViewController.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
 				CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */,
 				CF277DAB23054BB800A37B5C /* CLCollectionTableViewCell.m in Sources */,
+				CF5A8C352306831000745FE9 /* CLMeTableViewCell.m in Sources */,
 				1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */,
 				1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */,
 				CCA748CF230308CF00846BDF /* CLCollectionViewController.m in Sources */,
 				1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */,
+				CF5A8C642306BACB00745FE9 /* CLMeMessageViewController.m in Sources */,
 				18B7BEEC2304F572007B496A /* CLNavModel.m in Sources */,
 				CFE7965C230155AA004C09C4 /* CLTitleView.m in Sources */,
 				1863DA4B23011A07000969FE /* AppDelegate.m in Sources */,

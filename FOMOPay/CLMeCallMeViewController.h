@@ -1,8 +1,8 @@
 //
-//  CLHomeDetailVC.h
+//  CLMeCallMeViewController.h
 //  FOMOPay
 //
-//  Created by apple on 2019/8/15.
+//  Created by clkj on 2019/8/16.
 //  Copyright © 2019 王钶. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CLHomeDetailVC : BaseViewController
-@property (nonatomic,strong)NSString *mTitle;
+@interface CLMeCallMeViewController : BaseViewController
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,8 +8,10 @@
 
 #import "CLMeViewController.h"
 
-@interface CLMeViewController ()
-
+@interface CLMeViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,strong) UITableView *personalTableView;
+@property (nonatomic,strong) NSArray *mMeDataSource;
+@property (nonatomic,strong) NSArray *mMeImageDataSource;
 @end
 
 @implementation CLMeViewController
@@ -33,17 +35,132 @@
                 break;
         }
     }];
-    // Do any additional setup after loading the view.
+    [self LoadCellType:5];
+    _mMeDataSource=@[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+   _mMeImageDataSource=@[@"pdf_me_language.pdf",@"pdf_me_callme.pdf",@"pdf_me_pact.pdf",@"pdf_me_message.pdf",@"pdf_me_logout.pdf"];
+
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark tableViewDelegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    //分组数 也就是section数
+    return 2;
 }
-*/
+
+//设置每个分组下tableview的行数
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 1;
+    }else if (section==1) {
+        return self.mMeDataSource.count;
+    }else{
+        return 1;
+    }
+}
+//每个分组上边预留的空白高度
+
+
+//每个分组下边预留的空白高度
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    UIView *view = [UIView new];
+    view.backgroundColor = ssRGBHex(0xF6F5FA);
+    return view;
+   
+}
+
+//每一个分组下对应的tableview 高度
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==0) {
+        return 78;
+    }
+    return 48;
+}
+
+//设置每行对应的cell（展示的内容）
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifer=@"cell";
+    CLMeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    if (cell==nil) {
+        cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+    }
+    if (indexPath.section==0) {
+        cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userinfo"];
+        UIImageView *UserimageView=[[UIImageView alloc]init];
+        UserimageView.image=[UIImage yh_imageNamed:@"pdf_me_userImage.pdf"];
+        UserimageView.layer.cornerRadius = 24;
+        UserimageView.layer.masksToBounds = YES;
+        [cell.contentView addSubview:UserimageView];
+        [UserimageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(cell).offset(15);
+            make.bottom.equalTo(cell).offset(-15);
+            make.left.equalTo(cell).offset(15);
+        }];
+
+        UILabel *nameLabel=[[UILabel alloc]init];
+        nameLabel.text=@"张三";
+        [nameLabel setFont: [UIFont fontWithName:@"PingFangSC-Regular" size:18]];
+        [cell.contentView addSubview:nameLabel];
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(cell).offset(19);
+            make.left.equalTo(cell).offset(84);
+            
+        }];
+        UILabel *phoneLabel  = [[UILabel alloc]init];
+        phoneLabel.text = @"****1234";
+        [phoneLabel setFont: [UIFont fontWithName:@"PingFangSC-Regular" size:14]];
+        [cell.contentView addSubview:phoneLabel];
+        [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(cell).offset(47);
+            make.left.equalTo(cell).offset(78);
+        }];
+    }
+    
+    if (indexPath.section==1) {
+        if(indexPath.row){
+            
+      
+        cell.mMeLeftImage.image =[UIImage yh_imageNamed:[_mMeImageDataSource objectAtIndex:indexPath.row]];
+        cell.mMeLeftLable.text = [_mMeDataSource objectAtIndex:indexPath.row];
+        cell.mMeLanguage.hidden = YES;
+       
+        }else{
+            cell.mMeLanguage.text = @"简体中文" ;   //设置显示的语言的text
+            cell.mMeLanguage.hidden = NO;
+            cell.mMeLeftImage.image =[UIImage yh_imageNamed:[_mMeImageDataSource objectAtIndex:indexPath.row]];
+            cell.mMeLeftLable.text = [_mMeDataSource objectAtIndex:indexPath.row];
+        }
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.section == 1){
+    if(indexPath.row == 0){
+        CLMeLanguageViewController *vc = [CLMeLanguageViewController new];
+        [self pushToViewController:vc];
+    }else if(indexPath.row == 1){
+        CLMeCallMeViewController *vc = [CLMeCallMeViewController new];
+        [self pushToViewController:vc];
+    }else if(indexPath.row == 2){
+        
+    }else if(indexPath.row == 3){
+        CLMeMessageViewController *vc = [CLMeMessageViewController new];
+        [self pushToViewController:vc];
+    }
+}
+}
 
 @end

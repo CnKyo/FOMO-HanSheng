@@ -28,7 +28,7 @@
    
     self.CLTableViewCellImage.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2.pdf"];
     self.CLTableViewCellImage.layer.cornerRadius = 20;
-    self.CLTableViewCellImage.layer.masksToBounds = YES;
+    self.CLTableViewCellImage.layer. masksToBounds = YES;
     // Initialization code
     self.CLTableViewCellRightViewOne.backgroundColor = ssRGBHex(0xD7EAFF);
     self.CLTableViewCellRightViewTwo.layer.borderWidth = 2;

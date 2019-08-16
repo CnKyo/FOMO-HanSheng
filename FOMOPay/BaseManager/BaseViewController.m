@@ -45,6 +45,8 @@
         [self addTabView2];
     }else if(Type == 4){
         [self addTabView3];
+    }else if(Type == 5){
+        [self addTabView4];
     }
 }
 
@@ -122,15 +124,30 @@
     }];
 }
 
-
+-(void)addTabView4{
+    UINib *nib = [UINib nibWithNibName:@"CLMeTableViewCell" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+        
+    }];
+}
 
 - (UITableView *)mTabView{
     if (!_mTabView) {
       _mTabView= [[UITableView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20) style:UITableViewStylePlain];
         self.mTabView.delegate = self;
         self.mTabView.dataSource = self;
-//        self.mTabView.delegate = self;
-//        self.mTabView.dataSource = self;
     }
     return _mTabView;
 }

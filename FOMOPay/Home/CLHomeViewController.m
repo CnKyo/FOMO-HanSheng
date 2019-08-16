@@ -10,6 +10,7 @@
 #import "CLHomeDetailVC.h"
 @interface CLHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 @property NSArray *Array;
+
 @end
 
 @implementation CLHomeViewController
@@ -88,6 +89,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     CLHomeDetailVC *vc = [CLHomeDetailVC new];
+    vc.mTitle =self.title;
     [self pushToViewController:vc];
 }
 @end

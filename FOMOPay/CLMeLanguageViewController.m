@@ -1,25 +1,22 @@
 //
-//  CLHomeDetailVC.m
+//  CLMeLanguageViewController.m
 //  FOMOPay
 //
-//  Created by apple on 2019/8/15.
+//  Created by clkj on 2019/8/16.
 //  Copyright © 2019 王钶. All rights reserved.
 //
 
-#import "CLHomeDetailVC.h"
+#import "CLMeLanguageViewController.h"
 
-@interface CLHomeDetailVC ()
+@interface CLMeLanguageViewController ()
 
 @end
 
-@implementation CLHomeDetailVC
+@implementation CLMeLanguageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.title = @"首页详情";
-    self.title  = [NSString stringWithFormat:@"传过来的字符串是:%@",self.mTitle];
-    
+    self.title = @"选择语言";
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
             case 0:
@@ -38,6 +35,9 @@
     }];
 }
 
+    // Do any additional setup after loading the view.
+
+
 /*
 #pragma mark - Navigation
 
@@ -47,6 +47,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 
 @end
