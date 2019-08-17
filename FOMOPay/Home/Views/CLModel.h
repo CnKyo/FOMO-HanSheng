@@ -17,6 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)NSArray *Subhead;
 @property (nonatomic,strong)NSArray *RightTitle;
 
+
+
+@property (strong,nonatomic) NSString *Title;
+
+@property (assign,nonatomic) BOOL selected;
+
+@property (assign,nonatomic) NSInteger number;
 -(instancetype)initWithDic:(NSDictionary *)dic ;
 
 +(instancetype)CLModelObjectWithDic:(NSDictionary *)dic;

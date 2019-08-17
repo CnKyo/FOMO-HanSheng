@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addTabView2;
 - (void)addTabView3;
 - (void)addTabView4;
-
+- (void)addTabView5;
 
 
 - (void)addNavgationLine;

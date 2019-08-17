@@ -8,8 +8,9 @@
 
 #import "CLMeCallMeViewController.h"
 
-@interface CLMeCallMeViewController ()
-
+@interface CLMeCallMeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong) NSArray *mMeCallmeDateSource;
+@property (nonatomic,strong) NSArray *mMeCallmeRightDataSource;
 @end
 
 @implementation CLMeCallMeViewController
@@ -33,18 +34,53 @@
                 break;
         }
     }];
+    [self LoadCellType:6];
+    _mMeCallmeDateSource = @[@"电话",@"传真",@"邮箱",@"地址",@"个人资料保护法案\n(PDPA)相关查询",@"联系技术支持"];
+    _mMeCallmeRightDataSource=@[@"+6565386280",@"+6565386288",@"hello@hanshanmoney.com",@"People's Park Complex\n 1 Park Road #02-K87/88\n Singapore 059108",@"pdpa@hanshanmoney.com",@"tech@hanshanmoney.com"];
 }
-    // Do any additional setup after loading the view.
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _mMeCallmeDateSource.count;
 }
-*/
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.mMeLanguageLeftLabel.text = [_mMeCallmeDateSource objectAtIndex:indexPath.row];
+    cell.mMeLanguageLeftLabel.numberOfLines = 0;//表示label可以多行显示
+    cell.mMeLanguageLeftLabel.lineBreakMode = UILineBreakModeCharacterWrap;//换行模式，与上面的计算保持一致。
+    
+    UILabel *RightLabel = [UILabel new];
+    [cell.contentView addSubview:RightLabel];
+    RightLabel.text = [_mMeCallmeRightDataSource objectAtIndex:indexPath.row];
+    RightLabel.numberOfLines = 0;//表示label可以多行显示
+    RightLabel.textAlignment = NSTextAlignmentRight;
+    RightLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+    
+    
+    
+    [RightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cell).offset(23);
+        make.right.equalTo(cell).offset(-15);
+    }];
+//    UIImageView *SelectedImage=[[UIImageView alloc]init];
+//    SelectedImage.image=[UIImage yh_imageNamed:@"pdf_me_language_selected"];
+//
+//    [cell.contentView addSubview:SelectedImage];
+//    [SelectedImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(cell).offset(12);
+//        make.bottom.equalTo(cell).offset(-12);
+//        make.right.equalTo(cell).offset(-10);
+//    }];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 3){
+        return 110;
+    }else if(indexPath.row == 4){
+        return 86;
+    }
+    return 62;
+}
 @end

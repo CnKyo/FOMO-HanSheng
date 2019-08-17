@@ -8,8 +8,8 @@
 
 #import "CLMeLanguageViewController.h"
 
-@interface CLMeLanguageViewController ()
-
+@interface CLMeLanguageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong) NSArray *mMeSwitchDateSource;
 @end
 
 @implementation CLMeLanguageViewController
@@ -33,19 +33,43 @@
                 break;
         }
     }];
+    [self LoadCellType:6];
+    _mMeSwitchDateSource = @[@"简体中文",@"English"];
 }
 
-    // Do any additional setup after loading the view.
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _mMeSwitchDateSource.count;
 }
-*/
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.mMeLanguageLeftLabel.text = [_mMeSwitchDateSource objectAtIndex:indexPath.row];
+    UIImageView *SelectedImage=[[UIImageView alloc]init];
+    SelectedImage.image=[UIImage yh_imageNamed:@"pdf_me_language_selected"];
+   
+    [cell.contentView addSubview:SelectedImage];
+    [SelectedImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cell).offset(12);
+        make.bottom.equalTo(cell).offset(-12);
+        make.right.equalTo(cell).offset(-10);
+    }];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 48;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headView = [UIView new];
+    headView.backgroundColor = ssRGBHex(0xF6F6F6);
+    return headView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
 @end
