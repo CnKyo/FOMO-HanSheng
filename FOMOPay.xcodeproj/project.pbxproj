@@ -38,6 +38,7 @@
 		CCBCE3D82307C8C400EE5DA1 /* CLMeLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBCE3D62307C8C400EE5DA1 /* CLMeLanguage.m */; };
 		CCBCE3D92307C8C400EE5DA1 /* CLMeLanguage.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCBCE3D72307C8C400EE5DA1 /* CLMeLanguage.xib */; };
 		CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */; };
+		CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */; };
 		CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */; };
 		CF277DA7230544C200A37B5C /* pdf_collection_unfold.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */; };
 		CF277DAB23054BB800A37B5C /* CLCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF277DA923054BB800A37B5C /* CLCollectionTableViewCell.m */; };
@@ -155,6 +156,7 @@
 		CCBCE3D62307C8C400EE5DA1 /* CLMeLanguage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLMeLanguage.m; path = Views/Views/CLMeLanguage.m; sourceTree = SOURCE_ROOT; };
 		CCBCE3D72307C8C400EE5DA1 /* CLMeLanguage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CLMeLanguage.xib; path = Views/Views/CLMeLanguage.xib; sourceTree = SOURCE_ROOT; };
 		CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_language_selected.pdf; sourceTree = "<group>"; };
+		CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_message_logo.pdf; sourceTree = "<group>"; };
 		CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_shrink.pdf; sourceTree = "<group>"; };
 		CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_unfold.pdf; sourceTree = "<group>"; };
 		CF277DA823054BB800A37B5C /* CLCollectionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLCollectionTableViewCell.h; path = FOMOPay/Home/Views/CLCollectionTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -313,6 +315,7 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */,
 				CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */,
 				CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */,
 				CF5A8C512306A1DD00745FE9 /* pdf_me_language.pdf */,
@@ -709,6 +712,7 @@
 				CF5A8C362306831000745FE9 /* CLMeTableViewCell.xib in Resources */,
 				CF5A8C562306A1DE00745FE9 /* pdf_me_language.pdf in Resources */,
 				CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */,
+				CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */,
 				CF6BBB592303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf in Resources */,
 				CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */,
 				CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */,

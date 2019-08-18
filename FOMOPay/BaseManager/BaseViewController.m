@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = ssRGBHex(0xF6F5FA);
-   
+  
 
     // Do any additional setup after loading the view.
 }
@@ -79,7 +79,7 @@
     self.mTabView.separatorInset = UIEdgeInsetsZero;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
     [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
    
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self.view);

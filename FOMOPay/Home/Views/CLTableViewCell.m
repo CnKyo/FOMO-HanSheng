@@ -25,7 +25,6 @@
     }
 }
 - (void)awakeFromNib1{
-   
     self.CLTableViewCellImage.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2.pdf"];
     self.CLTableViewCellImage.layer.cornerRadius = 20;
     self.CLTableViewCellImage.layer. masksToBounds = YES;
@@ -34,6 +33,9 @@
     self.CLTableViewCellRightViewTwo.layer.borderWidth = 2;
     self.CLTableViewCellRightViewTwo.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
     [self.CLTabViewCellLeftOutButton setBackgroundImage:[UIImage yh_imageNamed:@"pdf_home_cell_out.pdf"] forState:UIControlStateNormal];
+    [self.CLTableViewCellRightViewTwo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.CLTableViewCellRightViewOne).offset(11);
+    }];
    
     
 }

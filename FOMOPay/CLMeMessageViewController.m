@@ -33,6 +33,42 @@
                 break;
         }
     }];
+    UIImageView *MessageView = [UIImageView new];
+    MessageView.image= [UIImage yh_imageNamed:@"pdf_me_message_logo.pdf"];
+    [self.view addSubview:MessageView];
+    UIButton *NoOpenMessage = [[UIButton alloc]init];
+    UIButton *OpenMessage = [[UIButton alloc]init];
+    NoOpenMessage.backgroundColor = ssRGBHex(0xF6F5FA);
+    OpenMessage.backgroundColor = ssRGBHex(0x005CB6);
+   NoOpenMessage.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
+    NoOpenMessage.layer.borderWidth = 1;
+    NoOpenMessage.layer.cornerRadius = 5;
+     OpenMessage.layer.cornerRadius = 5;
+    [NoOpenMessage setTitle:@"不打开" forState:UIControlStateNormal];
+     [OpenMessage setTitle:@"打开" forState:UIControlStateNormal];
+    [NoOpenMessage setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+    [self.view addSubview:OpenMessage];
+    [self.view addSubview:NoOpenMessage];
+    [MessageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(162);
+        make.left.equalTo(self.view).offset(86);
+        make.right.equalTo(self.view).offset(-87);
+    }];
+    [NoOpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view).offset(200);
+      
+        make.bottom.equalTo(self.view).offset(-44 );
+        make.left.equalTo(self.view).offset(4);
+        make.width.offset(181);
+        make.height.offset(42);
+      
+    }];
+    [OpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-44);
+        make.right.equalTo(self.view).offset(-4);
+        make.width.offset(181);
+        make.height.offset(42);
+    }];
 }
     // Do any additional setup after loading the view.
 

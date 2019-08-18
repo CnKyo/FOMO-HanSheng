@@ -17,9 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self setMNavTitle:@"首页"];
-//    self.title = @"首页";
+//    self.title = @"首页";1
 //    [self LoadNavType:0]; // ⬇️替换成新的方法
     
 //    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
@@ -61,6 +61,19 @@
     
     
     [self LoadCellType:2];
+    UIButton *OpenExchangerate = [UIButton new];
+    [OpenExchangerate setTitle:@"汇款" forState:(UIControlStateNormal)];
+    OpenExchangerate.backgroundColor = [UIColor redColor];
+    [self.view addSubview:OpenExchangerate];
+    CLMainTabBarControllerConfig *new = [CLMainTabBarControllerConfig new];
+    [OpenExchangerate mas_makeConstraints:^(MASConstraintMaker *make) {
+        //        make.bottom.equalTo(self.mTabView).offset(10);
+        make.left.equalTo(self.mTabView).offset(10);
+        make.right.equalTo(self.mTabView).offset(-10);
+//        make.bottom.equalTo(new.tabBarController.tabBarItemsAttributes).offset(-50);
+        make.bottom.offset(-100);
+        make.width.offset(kScreenWidth);
+    }];
    
     // Do any additional setup after loading the view.
 }
@@ -73,13 +86,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    {
+        if (section==0) {
+            return 2;
+        }else if (section==1) {
+            return 1;
+        }else{
+            return 1;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+//   
     [cell CellStyle:2];
-    
+   
     return cell;
 }
 
@@ -92,4 +114,39 @@
     vc.mTitle =self.title;
     [self pushToViewController:vc];
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    
+    return 39;
+}
+
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *mView= [UIView new];
+//    mView.backgroundColor = [UIColor redColor];
+    mView.backgroundColor = ssRGBHex(0xF6F5FA);
+    if (section == 0) {
+        UILabel * Exchangerate = [UILabel new];
+        Exchangerate.text = @"汇率";
+        UILabel * ExchangerateValue = [UILabel new];
+        ExchangerateValue.text = @"5.0647";
+        
+        [mView addSubview:Exchangerate];
+        [mView addSubview:ExchangerateValue];
+        [Exchangerate mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(mView).offset(149);
+            make.top.equalTo(mView).offset(10);
+        }];
+        [ExchangerateValue mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(mView).offset(-17);
+            make.top.equalTo(mView).offset(10);
+        }];
+        return mView;
+    }
+    
+    
+    return mView;
+}
+
 @end
