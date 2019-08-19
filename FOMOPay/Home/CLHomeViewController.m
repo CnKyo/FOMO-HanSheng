@@ -39,9 +39,8 @@
 //        make.bottom.equalTo(mView).offset(0);
 //    }];
 
-    CLNavModel *model = [CLNavModel new];
-    model.mRightView = [CLNavgationView_button shareDefaultNavRightButton]  ;//可以直接调用封装在一起的mView;
-    [self CLAddNavType:CLNavType_home andModel:model completion:^(NSInteger tag) {
+   //可以直接调用封装在一起的mView;
+    [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
 // [self CLAddNavType:CLNavType_other andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
             case 0:

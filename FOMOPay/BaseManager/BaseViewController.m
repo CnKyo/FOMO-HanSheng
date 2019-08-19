@@ -96,7 +96,7 @@
     self.mTabView.separatorInset = UIEdgeInsetsZero;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
     [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+     self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
     self.mTabView.delegate = self;
     self.mTabView.dataSource = self;
    
@@ -113,9 +113,10 @@
     [self.view addSubview:self.mTabView];
     self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.mTabView.separatorInset = UIEdgeInsetsZero;
+    self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
-    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+//    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
     self.mTabView.delegate = self;
     self.mTabView.dataSource = self;
     
@@ -130,11 +131,12 @@
     UINib *nib = [UINib nibWithNibName:@"CLMeTableViewCell" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
+    
     self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.mTabView.separatorInset = UIEdgeInsetsZero;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
     [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+     self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
     self.mTabView.delegate = self;
     self.mTabView.dataSource = self;
     
@@ -152,8 +154,9 @@
     self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.mTabView.separatorInset = UIEdgeInsetsZero;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
+       self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    self.mTabView.backgroundColor = ssRGBHex(0xF6F6F6);
+     self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
     self.mTabView.delegate = self;
     self.mTabView.dataSource = self;
     

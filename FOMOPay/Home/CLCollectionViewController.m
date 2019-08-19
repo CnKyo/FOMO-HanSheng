@@ -17,8 +17,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
+    UIButton *btn= [UIButton new];
+        [btn setTitle:@"添加" forState:UIControlStateNormal];
+        [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+        UIView *mView = [UIView new];
+        [mView addSubview:btn];
+    [btn addTarget:self action:@selector(Add:) forControlEvents:UIControlEventTouchUpInside];
+
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(mView).offset(-20);
+            make.top.equalTo(mView).offset(0);
+            make.bottom.equalTo(mView).offset(0);
+        }];
+    CLNavModel *model = [CLNavModel new];
+    model.mRightView = mView  ;
+    [self CLAddNavType:CLNavType_home andModel:model completion:^(NSInteger tag) {
         
         switch (tag) {
             case 0:
@@ -44,12 +58,12 @@
 - (void)loadData {
     
     NSArray * secArr = @[@"CNY", @"MYR"];
-    NSArray * rowsArr = @[@(12), @(10), @(15), @(13), @(22)];
+    NSArray * rowsArr = @[@(12),@(10)];
     
     for (int i = 0; i < secArr.count; i++) {
         
         NSMutableArray * friendArr = [[NSMutableArray alloc] init];
-        for (int j = 0; j < [rowsArr[i] intValue]; j++) {
+        for (int j = 0; j < 2 ;j++) {
             
             [friendArr addObject:@(j)];
         }
@@ -88,6 +102,10 @@
     
     CLCollectionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         //  自定义填充数据的地方
+    [cell CellStyle:2];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
+    
     return cell;
 }
 
@@ -120,14 +138,34 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 46;
+    return 35;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 98;
+    return 108;
 }
 
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *mLineView = [UIView new];
+    mLineView.backgroundColor  = ssRGBHex(0xF6F5FA);
+   
+    UIView *aview = [UIView new];
+    aview.backgroundColor  = ssRGBHex(0xCCCCCC);
+    [mLineView addSubview:aview];
+    [aview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(mLineView).offset(0);
+        make.height.offset(1);
+        make.width.offset(kScreenWidth);
+    }];
+     return mLineView;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 11;
+}
 #pragma mark - action
 - (void)tapGR:(UITapGestureRecognizer *)tapGR {
     
@@ -160,5 +198,11 @@
         _boolArr = [[NSMutableArray alloc] init];
     }
     return _boolArr;
+}
+
+-(void)Add:(id)sender{
+    DebugLog(@"点击了按钮吧");
+    CLCollectionAdd *vc = [CLCollectionAdd new];
+    [self pushToViewController:vc];
 }
 @end

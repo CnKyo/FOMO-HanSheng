@@ -47,14 +47,14 @@
     CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.mMeLanguageLeftLabel.text = [_mMeCallmeDateSource objectAtIndex:indexPath.row];
     cell.mMeLanguageLeftLabel.numberOfLines = 0;//表示label可以多行显示
-    cell.mMeLanguageLeftLabel.lineBreakMode = UILineBreakModeCharacterWrap;//换行模式，与上面的计算保持一致。
+//    cell.mMeLanguageLeftLabel.lineBreakMode = UILineBreakModeCharacterWrap;//换行模式，与上面的计算保持一致。
     
     UILabel *RightLabel = [UILabel new];
     [cell.contentView addSubview:RightLabel];
     RightLabel.text = [_mMeCallmeRightDataSource objectAtIndex:indexPath.row];
     RightLabel.numberOfLines = 0;//表示label可以多行显示
     RightLabel.textAlignment = NSTextAlignmentRight;
-    RightLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+//    RightLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     
     
     
