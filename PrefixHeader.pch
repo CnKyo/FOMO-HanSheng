@@ -31,7 +31,7 @@
 #import <YYModel.h>
 
 
-
+#import "CLTool.h"
 #import "CLModel.h"
 #import "CLMeLanguage.h"
 #import "CLMeMessageViewController.h"
@@ -71,7 +71,11 @@
 #define kScreenHeight   [[UIScreen mainScreen] bounds].size.height
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
-
+#define TabBarHeight            ([CLTool bottmHeight] + 49)
+// 标签栏高度
+#define BottomHeight             [CLTool bottmHeight]
+// 判断是否是iPhone X
+#define IS_iPhoneX              [CLTool isIphoneX]
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

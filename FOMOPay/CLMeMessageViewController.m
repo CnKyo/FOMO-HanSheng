@@ -57,14 +57,14 @@
     [NoOpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.view).offset(200);
       
-        make.bottom.equalTo(self.view).offset(-44 );
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 4  );
         make.left.equalTo(self.view).offset(4);
         make.width.offset(181);
         make.height.offset(42);
       
     }];
     [OpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-44);
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 4 );
         make.right.equalTo(self.view).offset(-4);
         make.width.offset(181);
         make.height.offset(42);

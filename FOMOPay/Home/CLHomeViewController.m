@@ -64,15 +64,16 @@
     UIButton *OpenExchangerate = [UIButton new];
     [OpenExchangerate setTitle:@"汇款" forState:(UIControlStateNormal)];
     OpenExchangerate.backgroundColor = [UIColor redColor];
+    OpenExchangerate.layer.cornerRadius = 5;
     [self.view addSubview:OpenExchangerate];
-    CLMainTabBarControllerConfig *new = [CLMainTabBarControllerConfig new];
     [OpenExchangerate mas_makeConstraints:^(MASConstraintMaker *make) {
         //        make.bottom.equalTo(self.mTabView).offset(10);
-        make.left.equalTo(self.mTabView).offset(10);
-        make.right.equalTo(self.mTabView).offset(-10);
-//        make.bottom.equalTo(new.tabBarController.tabBarItemsAttributes).offset(-50);
-        make.bottom.offset(-100);
+        make.left.equalTo(self.view).offset(10);
+        make.right.equalTo(self.view).offset(-10);
+       make.bottom.equalTo(self.view).offset( - TabBarHeight - 10);
+//        make.bottom.offset(-100);
         make.width.offset(kScreenWidth);
+        make.height.offset(44);
     }];
    
     // Do any additional setup after loading the view.

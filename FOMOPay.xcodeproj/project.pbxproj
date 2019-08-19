@@ -72,6 +72,7 @@
 		CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */; };
 		CF6BBC9D2304138700EB5BBB /* CLHiStoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6BBC9B2304138700EB5BBB /* CLHiStoryTableViewCell.m */; };
 		CF6BBC9E2304138700EB5BBB /* CLHiStoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBC9C2304138700EB5BBB /* CLHiStoryTableViewCell.xib */; };
+		CF70EBFF230A360200695E7B /* CLTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CF70EBFE230A360200695E7B /* CLTool.m */; };
 		CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFE796582301548E004C09C4 /* pdf_home_title.pdf */; };
 		CFE7965C230155AA004C09C4 /* CLTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7965B230155AA004C09C4 /* CLTitleView.m */; };
 		CFE7965E230155CD004C09C4 /* CLTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE7965D230155CD004C09C4 /* CLTitleView.xib */; };
@@ -199,6 +200,8 @@
 		CF6BBC9A2304138700EB5BBB /* CLHiStoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLHiStoryTableViewCell.h; path = FOMOPay/Home/Views/CLHiStoryTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		CF6BBC9B2304138700EB5BBB /* CLHiStoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLHiStoryTableViewCell.m; path = FOMOPay/Home/Views/CLHiStoryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		CF6BBC9C2304138700EB5BBB /* CLHiStoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CLHiStoryTableViewCell.xib; path = FOMOPay/Home/Views/CLHiStoryTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		CF70EBFD230A360200695E7B /* CLTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLTool.h; path = FOMOPay/CLTool.h; sourceTree = SOURCE_ROOT; };
+		CF70EBFE230A360200695E7B /* CLTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLTool.m; path = FOMOPay/CLTool.m; sourceTree = SOURCE_ROOT; };
 		CFE79654230148D1004C09C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		CFE796582301548E004C09C4 /* pdf_home_title.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_title.pdf; sourceTree = "<group>"; };
 		CFE7965A230155A9004C09C4 /* CLTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTitleView.h; sourceTree = SOURCE_ROOT; };
@@ -345,6 +348,8 @@
 		1863DA7D23012032000969FE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				CF70EBFD230A360200695E7B /* CLTool.h */,
+				CF70EBFE230A360200695E7B /* CLTool.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -817,6 +822,7 @@
 				CF5A8C612306BA9C00745FE9 /* CLMeCallMeViewController.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
+				CF70EBFF230A360200695E7B /* CLTool.m in Sources */,
 				CCA748D22303098F00846BDF /* CLMeViewController.m in Sources */,
 				CF5A8C5E2306B7E000745FE9 /* CLMeLanguageViewController.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
