@@ -46,6 +46,10 @@
 		CF277DAC23054BB800A37B5C /* CLCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF277DAA23054BB800A37B5C /* CLCollectionTableViewCell.xib */; };
 		CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF277DAE23055C0100A37B5C /* CLNavgationView_button.m */; };
 		CF277DB32305750800A37B5C /* CLNavgationViewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF277DB22305750800A37B5C /* CLNavgationViewButton.xib */; };
+		CF317215230BC530003F6D03 /* pdf_collection_select.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF317214230BC530003F6D03 /* pdf_collection_select.pdf */; };
+		CF31721E230BE754003F6D03 /* CLCollectionAddSelectTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF31721C230BE754003F6D03 /* CLCollectionAddSelectTableView.m */; };
+		CF31721F230BE754003F6D03 /* CLCollectionAddSelectTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF31721D230BE754003F6D03 /* CLCollectionAddSelectTableView.xib */; };
+		CF317222230BE78B003F6D03 /* CLCollectionAddSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = CF317221230BE78B003F6D03 /* CLCollectionAddSelect.m */; };
 		CF36E26C23025DAF00F1AE2B /* pdf_home_transfer_2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */; };
 		CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */; };
 		CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */; };
@@ -171,6 +175,12 @@
 		CF277DAD23055C0100A37B5C /* CLNavgationView_button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView_button.h; sourceTree = "<group>"; };
 		CF277DAE23055C0100A37B5C /* CLNavgationView_button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLNavgationView_button.m; sourceTree = "<group>"; };
 		CF277DB22305750800A37B5C /* CLNavgationViewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLNavgationViewButton.xib; sourceTree = "<group>"; };
+		CF317214230BC530003F6D03 /* pdf_collection_select.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_select.pdf; sourceTree = "<group>"; };
+		CF31721B230BE754003F6D03 /* CLCollectionAddSelectTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCollectionAddSelectTableView.h; sourceTree = "<group>"; };
+		CF31721C230BE754003F6D03 /* CLCollectionAddSelectTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCollectionAddSelectTableView.m; sourceTree = "<group>"; };
+		CF31721D230BE754003F6D03 /* CLCollectionAddSelectTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLCollectionAddSelectTableView.xib; sourceTree = "<group>"; };
+		CF317220230BE78B003F6D03 /* CLCollectionAddSelect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLCollectionAddSelect.h; path = Views/Views/Views/CLCollectionAddSelect.h; sourceTree = SOURCE_ROOT; };
+		CF317221230BE78B003F6D03 /* CLCollectionAddSelect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLCollectionAddSelect.m; path = Views/Views/Views/CLCollectionAddSelect.m; sourceTree = SOURCE_ROOT; };
 		CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_transfer_2.pdf; sourceTree = "<group>"; };
 		CF36E26E23025E0400F1AE2B /* CLTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTableViewCell.h; sourceTree = "<group>"; };
 		CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLTableViewCell.m; sourceTree = "<group>"; };
@@ -327,6 +337,7 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				CF317214230BC530003F6D03 /* pdf_collection_select.pdf */,
 				CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */,
 				CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */,
 				CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */,
@@ -466,6 +477,8 @@
 				CCA748CE230308CF00846BDF /* CLCollectionViewController.m */,
 				CFEC1068230A995200FB2CBA /* CLCollectionAdd.h */,
 				CFEC1069230A995200FB2CBA /* CLCollectionAdd.m */,
+				CF317220230BE78B003F6D03 /* CLCollectionAddSelect.h */,
+				CF317221230BE78B003F6D03 /* CLCollectionAddSelect.m */,
 				1863DAA2230142EE000969FE /* Views */,
 			);
 			path = Collection;
@@ -520,6 +533,7 @@
 				CF277DA823054BB800A37B5C /* CLCollectionTableViewCell.h */,
 				CF277DA923054BB800A37B5C /* CLCollectionTableViewCell.m */,
 				CF277DAA23054BB800A37B5C /* CLCollectionTableViewCell.xib */,
+				CF317217230BCA01003F6D03 /* Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -605,6 +619,17 @@
 			);
 			path = Views;
 			sourceTree = "<group>";
+		};
+		CF317217230BCA01003F6D03 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF31721B230BE754003F6D03 /* CLCollectionAddSelectTableView.h */,
+				CF31721C230BE754003F6D03 /* CLCollectionAddSelectTableView.m */,
+				CF31721D230BE754003F6D03 /* CLCollectionAddSelectTableView.xib */,
+			);
+			name = Views;
+			path = Views/Views/Views;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -712,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B7BEEE2304FB8F007B496A /* pdf_nav_back.pdf in Resources */,
+				CF317215230BC530003F6D03 /* pdf_collection_select.pdf in Resources */,
 				CF5A8C572306A1DE00745FE9 /* pdf_me_pact.pdf in Resources */,
 				CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */,
 				CF6BBC9E2304138700EB5BBB /* CLHiStoryTableViewCell.xib in Resources */,
@@ -741,6 +767,7 @@
 				CFE7965E230155CD004C09C4 /* CLTitleView.xib in Resources */,
 				CF277DA7230544C200A37B5C /* pdf_collection_unfold.pdf in Resources */,
 				CF277DAC23054BB800A37B5C /* CLCollectionTableViewCell.xib in Resources */,
+				CF31721F230BE754003F6D03 /* CLCollectionAddSelectTableView.xib in Resources */,
 				CF6BBB5F2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf in Resources */,
 				CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */,
 				CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */,
@@ -839,8 +866,10 @@
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				CF70EBFF230A360200695E7B /* CLTool.m in Sources */,
+				CF317222230BE78B003F6D03 /* CLCollectionAddSelect.m in Sources */,
 				CCA748D22303098F00846BDF /* CLMeViewController.m in Sources */,
 				CF5A8C5E2306B7E000745FE9 /* CLMeLanguageViewController.m in Sources */,
+				CF31721E230BE754003F6D03 /* CLCollectionAddSelectTableView.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
 				CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */,
 				CF277DAB23054BB800A37B5C /* CLCollectionTableViewCell.m in Sources */,

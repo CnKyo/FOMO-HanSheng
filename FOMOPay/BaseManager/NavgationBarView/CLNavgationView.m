@@ -26,8 +26,11 @@
 + (CLNavgationView *)shareNormalNavView{
     CLNavgationView *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationNormalView" owner:self options:nil] objectAtIndex:0];
     view.mLeftImg.image = [UIImage yh_imageNamed:@"pdf_nav_back"];
+    
     return view;
 }
+
+
 
 - (IBAction)mBtnAction:(UIButton *)sender {
     if (self.mBtnBlock) {

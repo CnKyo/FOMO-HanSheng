@@ -94,8 +94,6 @@
 
 -(void)switchAction:(id)sender
 {
-//    UISwitch *switchButton = (UISwitch*)sender;
-//    BOOL isButtonOn = [switchButton isOn];
     if (self.MessageSwitch.isOn) {
         self.mFootViewLable.text = @"消息通知已打开,您将可以更快了解您的汇款状态.";
     }else {
