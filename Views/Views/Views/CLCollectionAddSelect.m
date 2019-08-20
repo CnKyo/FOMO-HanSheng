@@ -10,17 +10,16 @@
 
 @interface CLCollectionAddSelect ()<UITableViewDataSource,UITableViewDelegate>
 /// 列表数据
-//@property (nonatomic,strong) NSArray *modelArray;
 @property (nonatomic) NSInteger mHeight;
+@property (nonatomic) NSInteger i;
 @end
-
+//初始化数据
 @implementation CLCollectionAddSelect
-//-(void)initWithModelArray:(NSArray *)modelArray{
-//    self.modelArray = modelArray;
-//    _mHeight  = self.modelArray.count;
-//    
-//    
-//}
+- (void)initWithModelArray:(NSArray *)modelLeftArray and:(NSInteger)i{
+    self.mAddLeftDateSource = modelLeftArray;
+    self.i = i;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self LoadCellType:7];
@@ -55,13 +54,14 @@
     UIView *mheadView = [UIView new];
     mheadView.backgroundColor = ssRGBHex(0xF2F2F2);
     UILabel *mCenterLable = [UILabel new];
-    mCenterLable.text =@"国籍";
+    mCenterLable.text =[_mAddLeftDateSource objectAtIndex:self.i];
     [mheadView addSubview:mCenterLable];
     UIButton * mLeftButton = [UIButton new];
     UIButton *mRightButton = [UIButton new];
     mLeftButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     mRightButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
     [mLeftButton setTitle:@"取消" forState:UIControlStateNormal];
+    [mLeftButton addTarget:self action:@selector(CloseButton:) forControlEvents:UIControlEventTouchUpInside];
     [mRightButton setTitle:@"确定" forState:UIControlStateNormal];
     [mLeftButton setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
     [mRightButton setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
@@ -88,5 +88,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return  44;
+}
+
+-(void)CloseButton:(id)sender{
+    DebugLog(@"点击了取消按钮即将实现取消操作");
+    [self.view removeFromSuperview];
+    self.view.userInteractionEnabled=TRUE;
 }
 @end

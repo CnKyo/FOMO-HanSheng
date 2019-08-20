@@ -107,11 +107,12 @@
     if(indexPath.row == 1){
         NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
         self.mSelectView = [CLCollectionAddSelect new];
+       
         self.mSelectView.modelArray  = modelArray;
+      
         [self.view addSubview:self.mSelectView.view];
         
-        
-//        [self.mSelectView initWithModelArray:modelArray];
+        [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
      
 //        self.mSelectView.view.alpha = 0.5;
 //        self.mSelectView.view.backgroundColor = ssRGBAlpha(120, 120, 122, 0.8);

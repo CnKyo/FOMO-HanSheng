@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CLCollectionAddSelect : BaseViewController
 /// 初始化数据
 @property(nonatomic,strong) NSArray *modelArray;
-//- (void)initWithModelArray:(NSArray *)modelArray;
+@property(nonatomic,strong) NSArray *mAddLeftDateSource;
+- (void)initWithModelArray:(NSArray *)modelLeftArray  and:(NSInteger)i;
 @end
 
 NS_ASSUME_NONNULL_END
