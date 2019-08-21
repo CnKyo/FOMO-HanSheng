@@ -76,7 +76,7 @@
         }];
     }
     if(indexPath.row == 1){
-<<<<<<< HEAD
+
         self.mLabel = [UILabel new];
         self.mLabel.text = _mModeString;
         self.mLabel.textAlignment = NSTextAlignmentRight;
@@ -100,8 +100,7 @@
         }];
     }
     if(indexPath.row == 2){
-=======
->>>>>>> parent of 12df9f1... 更新了文件
+
         UILabel *mLabel = [UILabel new];
         mLabel.text = @"请选择";
        
@@ -141,21 +140,19 @@
         [self.view addSubview:self.mSelectView.view];
         
         [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
-<<<<<<< HEAD
+
        
     
        
         
-=======
-     
->>>>>>> parent of 12df9f1... 更新了文件
+
 //        self.mSelectView.view.alpha = 0.5;
 //        self.mSelectView.view.backgroundColor = ssRGBAlpha(120, 120, 122, 0.8);
         
         
     }
     }
-<<<<<<< HEAD
+
 //-(void)initWithModelString:(NSString *)modelString{
 //    self.mModeString = modelString;
 //    DebugLog(@"接受到传递过来的值为%@",self.mModeString);
@@ -165,9 +162,5 @@
     DebugLog(@"%@",_mModeString);
     [self.mTabView reloadData];
 }
-=======
-    
-    
 
->>>>>>> parent of 12df9f1... 更新了文件
 @end

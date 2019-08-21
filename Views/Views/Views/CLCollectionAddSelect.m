@@ -90,9 +90,9 @@
     return  44;
 }
 
-<<<<<<< HEAD
-[self.view removeFromSuperview];
-}
+
+
+
 
 -(void)EnterButton:(id)sender{
 //    CLCollectionAdd *new = [CLCollectionAdd new];
@@ -101,11 +101,12 @@
     [self.delegate changeValue:self.EnterString];
     DebugLog(@"准备传递的值为%@",self.EnterString);
     [self.view removeFromSuperview];
-=======
+
 -(void)CloseButton:(id)sender{
     DebugLog(@"点击了取消按钮即将实现取消操作");
     [self.view removeFromSuperview];
     self.view.userInteractionEnabled=TRUE;
->>>>>>> parent of 12df9f1... 更新了文件
+    
+
 }
 @end
