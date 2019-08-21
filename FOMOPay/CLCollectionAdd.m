@@ -11,6 +11,8 @@
 @interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
+@property (nonatomic,strong) UILabel *mLabel;
+@property (nonatomic,strong) NSString *mModeString;
 @end
 
 @implementation CLCollectionAdd
@@ -74,17 +76,15 @@
         }];
     }
     if(indexPath.row == 1){
-        UILabel *mLabel = [UILabel new];
-        mLabel.text = @"请选择";
-       
-       
-        mLabel.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:mLabel];
+        _mLabel = [UILabel new];
+        _mLabel.text = @"请选择";
+        _mLabel.textAlignment = NSTextAlignmentRight;
+        [cell.contentView addSubview:_mLabel];
         
         UIImageView *mImageView = [UIImageView new];
         mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
         [cell.contentView addSubview:mImageView];
-        [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell).offset(-42);
             make.centerY.equalTo(cell.mMeLanguageLeftLabel);
            
@@ -96,7 +96,49 @@
             make.right.equalTo(cell).offset(-10);
         }];
     }
+    if(indexPath.row == 2){
+        UILabel *mLabel = [UILabel new];
+        mLabel.text = @"请选择";
+        mLabel.textAlignment = NSTextAlignmentRight;
+        [cell.contentView addSubview:mLabel];
+        
+        UIImageView *mImageView = [UIImageView new];
+        mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
+        [cell.contentView addSubview:mImageView];
+        [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(cell).offset(-42);
+            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
+            
+        }];
+        [mImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.offset(24);
+            make.width.offset(24);
+            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
+            make.right.equalTo(cell).offset(-10);
+        }];
+    }
     
+    if(indexPath.row == 3){
+        UILabel *mLabel = [UILabel new];
+        mLabel.text = @"请选择";
+        mLabel.textAlignment = NSTextAlignmentRight;
+        [cell.contentView addSubview:mLabel];
+        
+        UIImageView *mImageView = [UIImageView new];
+        mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
+        [cell.contentView addSubview:mImageView];
+        [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(cell).offset(-42);
+            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
+            
+        }];
+        [mImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.offset(24);
+            make.width.offset(24);
+            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
+            make.right.equalTo(cell).offset(-10);
+        }];
+    }
     
     
     return cell;
@@ -113,14 +155,18 @@
         [self.view addSubview:self.mSelectView.view];
         
         [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
+       
      
+       
+        
 //        self.mSelectView.view.alpha = 0.5;
 //        self.mSelectView.view.backgroundColor = ssRGBAlpha(120, 120, 122, 0.8);
         
         
     }
     }
-    
-    
-
+-(void)initWithModelString:(NSString *)modelString{
+    self.mModeString = modelString;
+    DebugLog(@"接受到传递过来的值为%@",self.mModeString);
+}
 @end
