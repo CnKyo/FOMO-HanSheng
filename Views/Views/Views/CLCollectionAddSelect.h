@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong) NSArray *modelArray;
 @property(nonatomic,strong) NSArray *mAddLeftDateSource;
-@property(nonatomic,strong) NSString *EnterString;
 - (void)initWithModelArray:(NSArray *)modelLeftArray  and:(NSInteger)i;
 @end
 

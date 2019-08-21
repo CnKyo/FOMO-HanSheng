@@ -11,8 +11,6 @@
 @interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TwoViewDelegate>
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
-@property (nonatomic,strong) UILabel *mLabel;
-@property (nonatomic,strong) NSString *mModeString;
 @end
 
 @implementation CLCollectionAdd
@@ -78,6 +76,7 @@
         }];
     }
     if(indexPath.row == 1){
+<<<<<<< HEAD
         self.mLabel = [UILabel new];
         self.mLabel.text = _mModeString;
         self.mLabel.textAlignment = NSTextAlignmentRight;
@@ -101,8 +100,12 @@
         }];
     }
     if(indexPath.row == 2){
+=======
+>>>>>>> parent of 12df9f1... 更新了文件
         UILabel *mLabel = [UILabel new];
         mLabel.text = @"请选择";
+       
+       
         mLabel.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:mLabel];
         
@@ -112,7 +115,7 @@
         [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell).offset(-42);
             make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-            
+           
         }];
         [mImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.offset(24);
@@ -122,27 +125,6 @@
         }];
     }
     
-    if(indexPath.row == 3){
-        UILabel *mLabel = [UILabel new];
-        mLabel.text = @"请选择";
-        mLabel.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:mLabel];
-        
-        UIImageView *mImageView = [UIImageView new];
-        mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
-        [cell.contentView addSubview:mImageView];
-        [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell).offset(-42);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-            
-        }];
-        [mImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.offset(24);
-            make.width.offset(24);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-            make.right.equalTo(cell).offset(-10);
-        }];
-    }
     
     
     return cell;
@@ -159,16 +141,21 @@
         [self.view addSubview:self.mSelectView.view];
         
         [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
+<<<<<<< HEAD
        
     
        
         
+=======
+     
+>>>>>>> parent of 12df9f1... 更新了文件
 //        self.mSelectView.view.alpha = 0.5;
 //        self.mSelectView.view.backgroundColor = ssRGBAlpha(120, 120, 122, 0.8);
         
         
     }
     }
+<<<<<<< HEAD
 //-(void)initWithModelString:(NSString *)modelString{
 //    self.mModeString = modelString;
 //    DebugLog(@"接受到传递过来的值为%@",self.mModeString);
@@ -178,4 +165,9 @@
     DebugLog(@"%@",_mModeString);
     [self.mTabView reloadData];
 }
+=======
+    
+    
+
+>>>>>>> parent of 12df9f1... 更新了文件
 @end
