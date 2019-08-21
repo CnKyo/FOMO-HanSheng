@@ -8,7 +8,7 @@
 
 #import "CLCollectionAdd.h"
 
-@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TwoViewDelegate>
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
 @property (nonatomic,strong) UILabel *mLabel;
@@ -39,6 +39,8 @@
     [self LoadCellType:6];
    
     [self loadData];
+    _mModeString = @"请选择";
+   
 }
 
 - (void)loadData{
@@ -76,10 +78,12 @@
         }];
     }
     if(indexPath.row == 1){
-        _mLabel = [UILabel new];
-        _mLabel.text = @"请选择";
-        _mLabel.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:_mLabel];
+        self.mLabel = [UILabel new];
+        self.mLabel.text = _mModeString;
+        self.mLabel.textAlignment = NSTextAlignmentRight;
+        [cell.contentView addSubview:self.mLabel];
+        
+        
         
         UIImageView *mImageView = [UIImageView new];
         mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
@@ -149,14 +153,14 @@
     if(indexPath.row == 1){
         NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
         self.mSelectView = [CLCollectionAddSelect new];
-       
+        self.mSelectView.delegate = self;//实现他的代理方法
         self.mSelectView.modelArray  = modelArray;
       
         [self.view addSubview:self.mSelectView.view];
         
         [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
        
-     
+    
        
         
 //        self.mSelectView.view.alpha = 0.5;
@@ -165,8 +169,13 @@
         
     }
     }
--(void)initWithModelString:(NSString *)modelString{
-    self.mModeString = modelString;
-    DebugLog(@"接受到传递过来的值为%@",self.mModeString);
+//-(void)initWithModelString:(NSString *)modelString{
+//    self.mModeString = modelString;
+//    DebugLog(@"接受到传递过来的值为%@",self.mModeString);
+//}
+- (void)changeValue:(NSString *)value{
+    _mModeString = value;
+    DebugLog(@"%@",_mModeString);
+    [self.mTabView reloadData];
 }
 @end

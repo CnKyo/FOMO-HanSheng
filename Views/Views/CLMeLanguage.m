@@ -21,10 +21,5 @@
     // Configure the view for the selected state
 }
 
--(void)setItem:(CLModel *)Item{
-    if(!Item.selected){
-    
-    }
-}
 
 @end

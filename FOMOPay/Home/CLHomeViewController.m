@@ -8,8 +8,16 @@
 
 #import "CLHomeViewController.h"
 #import "CLHomeDetailVC.h"
+#import "HomeListCell.h"
+#import "HomeDataObject.h"
+
+#import "LogInViewController.h"
+
 @interface CLHomeViewController () <UITableViewDelegate,UITableViewDataSource>
-@property NSArray *Array;
+
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UIButton *OpenExchangerate;
+@property (nonatomic, strong) NSArray *dataSourceArray;
 
 @end
 
@@ -18,30 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setMNavTitle:@"首页"];
-//    self.title = @"首页";1
-//    [self LoadNavType:0]; // ⬇️替换成新的方法
-    
-//    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
-    
-    
-   // //////////////////////////////////
-//    UIButton *btn= [UIButton new];
-//    [btn setTitle:@"添加" forState:UIControlStateNormal];
-//    [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
-//    btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-//    UIView *mView = [UIView new];
-//    [mView addSubview:btn];
-//
-//    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(mView).offset(-20);
-//        make.top.equalTo(mView).offset(0);
-//        make.bottom.equalTo(mView).offset(0);
-//    }];
-
-   //可以直接调用封装在一起的mView;
+    self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
     [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
-// [self CLAddNavType:CLNavType_other andModel:nil completion:^(NSInteger tag) {
+        
         switch (tag) {
             case 0:
             {
@@ -57,96 +44,79 @@
                 break;
         }
     }];
-    
-    
-    [self LoadCellType:2];
-    UIButton *OpenExchangerate = [UIButton new];
-    [OpenExchangerate setTitle:@"汇款" forState:(UIControlStateNormal)];
-    OpenExchangerate.backgroundColor = [UIColor redColor];
-    OpenExchangerate.layer.cornerRadius = 5;
-    [self.view addSubview:OpenExchangerate];
-    [OpenExchangerate mas_makeConstraints:^(MASConstraintMaker *make) {
-        //        make.bottom.equalTo(self.mTabView).offset(10);
-        make.left.equalTo(self.view).offset(10);
-        make.right.equalTo(self.view).offset(-10);
-       make.bottom.equalTo(self.view).offset( - TabBarHeight - 10);
-//        make.bottom.offset(-100);
-        make.width.offset(kScreenWidth);
-        make.height.offset(44);
-    }];
-   
-    // Do any additional setup after loading the view.
+
+    [self loadTableView];
 }
 
+- (void)loadTableView{
+    
+    NSInteger tabbarHeight = self.tabBarController.tabBar.bounds.size.height;
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
 
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _myTableView.dataSource = self;
+    _myTableView.delegate = self;
+    _myTableView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_myTableView];
+    
+    [_myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(-10-tabbarHeight);
+        make.top.equalTo(self.view).offset(44 + rectStatus.size.height);
+    }];
+    
+    [_myTableView registerNib:[UINib nibWithNibName:@"HomeListCell" bundle:nil] forCellReuseIdentifier:@"HomeListCell"];
+}
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+- (void)exchageerateButtonClicked{
+    
+    LogInViewController *VC = [[LogInViewController alloc] init];
+    [self pushToViewController:VC];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    {
-        if (section==0) {
-            return 2;
-        }else if (section==1) {
-            return 1;
-        }else{
-            return 1;
-        }
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-//   
-    [cell CellStyle:2];
-   
-    return cell;
+    
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 81;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CLHomeDetailVC *vc = [CLHomeDetailVC new];
-    vc.mTitle =self.title;
-    [self pushToViewController:vc];
-}
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
     
-    return 39;
+    return _myTableView.frame.size.height;
 }
 
-
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *mView= [UIView new];
-//    mView.backgroundColor = [UIColor redColor];
-    mView.backgroundColor = ssRGBHex(0xF6F5FA);
-    if (section == 0) {
-        UILabel * Exchangerate = [UILabel new];
-        Exchangerate.text = @"汇率";
-        UILabel * ExchangerateValue = [UILabel new];
-        ExchangerateValue.text = @"5.0647";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    HomeListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeListCell"];
+    if (!cell) {
         
-        [mView addSubview:Exchangerate];
-        [mView addSubview:ExchangerateValue];
-        [Exchangerate mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(mView).offset(149);
-            make.top.equalTo(mView).offset(10);
-        }];
-        [ExchangerateValue mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(mView).offset(-17);
-            make.top.equalTo(mView).offset(10);
-        }];
-        return mView;
+        cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeListCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+
+    cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+        
+        if (tag == 4000) {  //汇出
+            
+            
+            
+        }else if (tag == 4001){ //获得
+            
+            
+        }else{  //总金额
+            
+            
+        }
+    };
     
+    cell.HomeListCellButtonBlock = ^{
+        
+        //汇款
+   
+    };
     
-    return mView;
+    return cell;
 }
 
 @end

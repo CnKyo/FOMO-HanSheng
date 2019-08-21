@@ -112,9 +112,12 @@
 }
 
 -(void)EnterButton:(id)sender{
-    CLCollectionAdd *new = [CLCollectionAdd new];
-    [new initWithModelString:_EnterString];
-      DebugLog(@"准备传递的值为%@",_EnterString);
+//    CLCollectionAdd *new = [CLCollectionAdd new];
+//    [new initWithModelString:_EnterString];
+//
+    [self.delegate changeValue:self.EnterString];
+    DebugLog(@"准备传递的值为%@",self.EnterString);
+    [self.view removeFromSuperview];
 }
 
 @end
