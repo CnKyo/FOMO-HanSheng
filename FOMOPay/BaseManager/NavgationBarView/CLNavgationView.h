@@ -33,6 +33,7 @@ typedef void(^CLNavgationViewBtnBlock)(NSInteger tag);
 
 @property (weak, nonatomic) IBOutlet UILabel *mTitle;
 
+
 + (CLNavgationView *)shareNormalNavView;
 
 - (void)updateView:(CLNavModel *)data;

@@ -34,29 +34,80 @@
         }
     }];
     UIImageView *MessageView = [UIImageView new];
+    
     MessageView.image= [UIImage yh_imageNamed:@"pdf_me_message_logo.pdf"];
+    
     [self.view addSubview:MessageView];
+    
+    UILabel *OpenLabel = [UILabel new];
+    
+    OpenLabel.text = @"打开消息通知";
+    
+    [OpenLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:18]];
+    
+    UILabel *OpenLabelHint = [UILabel new];
+    
+    OpenLabelHint.text = @"打开汇款实时通知,可以更快了解您的汇款状态";
+    
+    [OpenLabelHint setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14]];
+    
+    [OpenLabelHint setTextColor:ssRGBHex(0x8C9091)];
+    
+    [self.view addSubview:OpenLabel];
+    
+    [self.view addSubview:OpenLabelHint];
+    
     UIButton *NoOpenMessage = [[UIButton alloc]init];
+    
     UIButton *OpenMessage = [[UIButton alloc]init];
+    [NoOpenMessage addTarget:self action:@selector(PushSetMessage:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [OpenMessage addTarget:self action:@selector(PushSetMessage:) forControlEvents:UIControlEventTouchUpInside];
+    
     NoOpenMessage.backgroundColor = ssRGBHex(0xF6F5FA);
+    
     OpenMessage.backgroundColor = ssRGBHex(0x005CB6);
-   NoOpenMessage.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
+    
+    NoOpenMessage.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
+    
     NoOpenMessage.layer.borderWidth = 1;
+    
     NoOpenMessage.layer.cornerRadius = 5;
-     OpenMessage.layer.cornerRadius = 5;
+    
+    OpenMessage.layer.cornerRadius = 5;
+    
     [NoOpenMessage setTitle:@"不打开" forState:UIControlStateNormal];
-     [OpenMessage setTitle:@"打开" forState:UIControlStateNormal];
+    
+    [OpenMessage setTitle:@"打开" forState:UIControlStateNormal];
+    
     [NoOpenMessage setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+    
     [self.view addSubview:OpenMessage];
+    
     [self.view addSubview:NoOpenMessage];
+    
     [MessageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(162);
-        make.left.equalTo(self.view).offset(86);
-        make.right.equalTo(self.view).offset(-87);
+        make.height.offset(151);
+        make.width.offset(204);
+        make.centerX.equalTo(OpenLabel);
+        make.bottom.equalTo(OpenLabel.mas_top).offset(-21);
+
     }];
+    
+    [OpenLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.height.offset(18);
+    }];
+    
+    [OpenLabelHint mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(OpenLabel);
+        make.top.equalTo(OpenLabel.mas_bottom).offset(15);
+        make.height.offset(14);
+    }];
+
+    
+    
     [NoOpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view).offset(200);
-      
         make.bottom.equalTo(self.view).offset( - BottomHeight - 4  );
         make.left.equalTo(self.view).offset(4);
         make.width.offset(181);
@@ -70,17 +121,9 @@
         make.height.offset(42);
     }];
 }
-    // Do any additional setup after loading the view.
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)PushSetMessage:(id)sender{
+    CLMeMessageSetViewController *vc = [CLMeMessageSetViewController new];
+    [self pushToViewController:vc];
 }
-*/
-
 @end

@@ -96,10 +96,8 @@
                     <constraint firstItem="Sbn-oB-Xve" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="1RV-jL-db5"/>
                     <constraint firstItem="Ool-PH-Jai" firstAttribute="leading" secondItem="Dl8-lM-nin" secondAttribute="trailing" constant="11" id="3yr-g4-oS8"/>
                     <constraint firstItem="fk6-ak-S9y" firstAttribute="top" secondItem="Dl8-lM-nin" secondAttribute="bottom" constant="10" id="BG9-Hp-xxG"/>
-                    <constraint firstItem="Ool-PH-Jai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-10" id="GrX-5k-eVn"/>
                     <constraint firstItem="QbR-f4-vdM" firstAttribute="leading" secondItem="fk6-ak-S9y" secondAttribute="leading" id="P78-Ac-zem"/>
                     <constraint firstItem="Dl8-lM-nin" firstAttribute="leading" secondItem="Be5-j7-DmT" secondAttribute="trailing" constant="12" id="PzM-g8-S5n"/>
-                    <constraint firstItem="Ool-PH-Jai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="45" id="SU1-h7-NsY"/>
                     <constraint firstAttribute="bottom" secondItem="Sbn-oB-Xve" secondAttribute="bottom" constant="34" id="Zpr-pC-PtC"/>
                     <constraint firstAttribute="trailing" secondItem="Sbn-oB-Xve" secondAttribute="trailing" constant="16" id="aDG-wv-dXW"/>
                     <constraint firstItem="Ool-PH-Jai" firstAttribute="baseline" secondItem="Dl8-lM-nin" secondAttribute="baseline" id="cDe-CN-smI"/>

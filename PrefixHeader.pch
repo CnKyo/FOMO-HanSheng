@@ -37,7 +37,7 @@
 #import <YYCache.h>
 #import <YYModel.h>
 
-
+#import "CLMeMessageSetViewController.h"
 #import "CLTool.h"
 #import "CLMeLanguage.h"
 #import "CLMeMessageViewController.h"
@@ -66,6 +66,11 @@
 #import "PublicHeader.h"
 #import "WKBaseModel.h"
 #import "WKNetWorkManager.h"
+
+#import "CLCollectionAdd.h"
+#import "CLMeClauseOfTreaty.h"
+#import "CLCollectionAddSelect.h"
+#import "CLCollectionAddSelectTableView.h"
 
 #define kLightgrayColor [UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1]
 

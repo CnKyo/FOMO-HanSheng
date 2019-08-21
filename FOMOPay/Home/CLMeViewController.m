@@ -155,7 +155,8 @@
         CLMeCallMeViewController *vc = [CLMeCallMeViewController new];
         [self pushToViewController:vc];
     }else if(indexPath.row == 2){
-        
+        CLMeClauseOfTreaty *vc = [CLMeClauseOfTreaty new];
+        [self pushToViewController:vc];
     }else if(indexPath.row == 3){
         CLMeMessageViewController *vc = [CLMeMessageViewController new];
         [self pushToViewController:vc];
