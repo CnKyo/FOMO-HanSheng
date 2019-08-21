@@ -8,11 +8,14 @@
 
 #import "CLCollectionAdd.h"
 
-@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TwoViewDelegate>
+@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CLCollectionAddSelectDelegate>
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
 @property (nonatomic,strong) NSString *mModeString;
 @property (nonatomic,strong) UILabel *mLabel;
+@property (nonatomic,strong) UIImageView *mImageView ;
+@property (nonatomic,strong) NSArray *modelArray;
+
 @end
 
 @implementation CLCollectionAdd
@@ -37,14 +40,15 @@
     }];
     
     [self LoadCellType:6];
-   
+    
+    self.mImageView = [UIImageView new];
     [self loadData];
     _mModeString = @"请选择";
-   
+    _modelArray = @[@[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"],@[@"123",@"234",@"345",@"456",@"567"]];
 }
 
 - (void)loadData{
-    _mAddLeftDateSource=@ [@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"账号号码"];
+    _mAddLeftDateSource=@ [@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码"];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _mAddLeftDateSource.count;
@@ -56,104 +60,54 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.mMeLanguageLeftLabel.text = [_mAddLeftDateSource objectAtIndex:indexPath.row];
-    [cell.mMeLanguageLeftLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14]];
-    [cell.mMeLanguageLeftLabel setTextColor:ssRGBHex(0x8C9091)];
+    if (!cell) {
+        cell = [[CLMeLanguage alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
-    if(indexPath.row ==0){
-        UITextField *mNameText = [UITextField new];
-        mNameText.backgroundColor  = [UIColor redColor];
-        mNameText.delegate = self;
-        mNameText.textAlignment = NSTextAlignmentRight;
-        mNameText.clearButtonMode = UITextFieldViewModeAlways;
-        [cell.contentView addSubview:mNameText];
-//       cell.separatorInset = UIEdgeInsetsMake(0, kScreenWidth, 0, 0);自定义下划线
+    cell.mMeLanguageLeftLabel.text = _mAddLeftDateSource[indexPath.row];
+    if(indexPath.row == 0 ){
+    cell.mIndexPath = indexPath;
+    [cell updateView:CLMeLanguageType_textFiled and:nil];
+    cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
+        DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
         
-        [mNameText mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell).offset(-10);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-            make.height.offset(30);
-            make.width.offset(200);
-        }];
-    }
-    if(indexPath.row == 1){
-
-        self.mLabel = [UILabel new];
-        self.mLabel.text = _mModeString;
-        self.mLabel.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:self.mLabel];
-        
-        
-        
-        UIImageView *mImageView = [UIImageView new];
-        mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
-        [cell.contentView addSubview:mImageView];
-        [_mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell).offset(-42);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-           
-        }];
-        [mImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.offset(24);
-            make.width.offset(24);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-            make.right.equalTo(cell).offset(-10);
-        }];
-    }
-    if(indexPath.row == 2){
-
-        UILabel *mLabel = [UILabel new];
-        mLabel.text = @"请选择";
-       
-       
-        mLabel.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:mLabel];
-        
-        UIImageView *mImageView = [UIImageView new];
-        mImageView.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
-        [cell.contentView addSubview:mImageView];
-        [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell).offset(-42);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-           
-        }];
-        [mImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.offset(24);
-            make.width.offset(24);
-            make.centerY.equalTo(cell.mMeLanguageLeftLabel);
-            make.right.equalTo(cell).offset(-10);
-        }];
-    }
+    };}
     
-    
+    if(indexPath.row == 1 || indexPath.row == 2 ||indexPath.row == 3 || indexPath.row ==6){
+        cell.mIndexPath = indexPath;
+        [cell updateView:CLMeLanguageType_button and:_mModeString];
+        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
+            NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+                    self.mSelectView = [CLCollectionAddSelect new];
+                    self.mSelectView.delegate = self;//实现他的代理方法
+                    self.mSelectView.modelArray  = modelArray;//把当前数据传入另一个j控制器的moderarrl里面;
+                    [self.view addSubview:self.mSelectView.view];
+        };
+        
+        
+        
+//        cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
+//            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+//        };}
+    }
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //在当前控制器添加子控制器的view的调用方法
-    if(indexPath.row == 1){
-        NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
-        self.mSelectView = [CLCollectionAddSelect new];
-        self.mSelectView.delegate = self;//实现他的代理方法
-        self.mSelectView.modelArray  = modelArray;
-      
-        [self.view addSubview:self.mSelectView.view];
-        
-        [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
-
-       
-    
-       
-        
-
-//        self.mSelectView.view.alpha = 0.5;
-//        self.mSelectView.view.backgroundColor = ssRGBAlpha(120, 120, 122, 0.8);
-        
-        
-    }
-    }
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    //在当前控制器添加子控制器的view的调用方法
+//    if(indexPath.row == 1){
+//        NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+//        self.mSelectView = [CLCollectionAddSelect new];
+//        self.mSelectView.delegate = self;//实现他的代理方法
+//        self.mSelectView.modelArray  = modelArray;//把当前数据传入另一个j控制器的moderarrl里面;
+//      
+//        [self.view addSubview:self.mSelectView.view];
+//        
+//        [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
+//        }
+//    }
 
 //-(void)initWithModelString:(NSString *)modelString{
 //    self.mModeString = modelString;
@@ -164,5 +118,6 @@
     DebugLog(@"%@",_mModeString);
     [self.mTabView reloadData];
 }
+
 
 @end

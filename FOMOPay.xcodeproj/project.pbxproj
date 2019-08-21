@@ -533,12 +533,12 @@
 		1863DA9E230142C8000969FE /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				CCA748CD230308CF00846BDF /* CLCollectionViewController.h */,
+				CCA748CE230308CF00846BDF /* CLCollectionViewController.m */,
 				CFC33F87230D197A00C04207 /* CLCollectionAdd.h */,
 				CFC33F86230D197A00C04207 /* CLCollectionAdd.m */,
 				CFC33F7F230D18D300C04207 /* CLCollectionAddSelect.h */,
 				CFC33F82230D18D300C04207 /* CLCollectionAddSelect.m */,
-				CCA748CD230308CF00846BDF /* CLCollectionViewController.h */,
-				CCA748CE230308CF00846BDF /* CLCollectionViewController.m */,
 				1863DAA2230142EE000969FE /* Views */,
 			);
 			path = Collection;
