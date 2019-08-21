@@ -12,6 +12,7 @@
 /// 列表数据
 @property (nonatomic) NSInteger mHeight;
 @property (nonatomic) NSInteger i;
+@property (nonatomic,strong) NSString *EnterString;
 @end
 //初始化数据
 @implementation CLCollectionAddSelect
@@ -101,6 +102,8 @@
     [self.delegate changeValue:self.EnterString];
     DebugLog(@"准备传递的值为%@",self.EnterString);
     [self.view removeFromSuperview];
+
+}
 
 -(void)CloseButton:(id)sender{
     DebugLog(@"点击了取消按钮即将实现取消操作");

@@ -11,6 +11,8 @@
 @interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TwoViewDelegate>
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
+@property (nonatomic,strong) NSString *mModeString;
+@property (nonatomic,strong) UILabel *mLabel;
 @end
 
 @implementation CLCollectionAdd
