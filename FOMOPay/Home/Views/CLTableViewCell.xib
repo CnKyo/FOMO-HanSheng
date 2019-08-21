@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,15 +47,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG0-ky-ZZY">
-                        <rect key="frame" x="115" y="29" width="24" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="24" id="Wqw-Zg-jcx"/>
-                            <constraint firstAttribute="height" constant="24" id="nJC-QN-jFj"/>
-                        </constraints>
-                    </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzK-rX-Yws" userLabel="View1">
-                        <rect key="frame" x="149" y="0.0" width="226" height="81.5"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzK-rX-Yws" userLabel="View1">
+                        <rect key="frame" x="150" y="0.0" width="225" height="81.5"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.0" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04P-Jd-EA4">
@@ -91,7 +84,6 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zG0-ky-ZZY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2X0-9T-M0M"/>
                     <constraint firstAttribute="bottom" secondItem="DYJ-sf-0xE" secondAttribute="bottom" constant="42" id="50D-me-8hv"/>
                     <constraint firstItem="04P-Jd-EA4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="5MD-nX-nIc"/>
                     <constraint firstItem="mNZ-mc-ous" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="6H2-nh-zig"/>
@@ -99,21 +91,18 @@
                     <constraint firstItem="GzK-rX-Yws" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EQ0-7o-smy"/>
                     <constraint firstItem="DYJ-sf-0xE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="HRI-i4-JDk"/>
                     <constraint firstItem="hlu-Ef-goN" firstAttribute="leading" secondItem="mNZ-mc-ous" secondAttribute="trailing" constant="12" id="Q64-fD-MJv"/>
+                    <constraint firstItem="GzK-rX-Yws" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="T0n-Ku-vJf"/>
                     <constraint firstItem="hlu-Ef-goN" firstAttribute="top" secondItem="DYJ-sf-0xE" secondAttribute="bottom" constant="9" id="cBR-bR-KMV"/>
                     <constraint firstAttribute="bottom" secondItem="mNZ-mc-ous" secondAttribute="bottom" constant="26" id="dAH-5K-2Cm"/>
-                    <constraint firstItem="GzK-rX-Yws" firstAttribute="centerY" secondItem="zG0-ky-ZZY" secondAttribute="centerY" id="gHn-P2-dnf"/>
                     <constraint firstItem="DYJ-sf-0xE" firstAttribute="leading" secondItem="mNZ-mc-ous" secondAttribute="trailing" constant="12" id="hLu-2Q-kOu"/>
                     <constraint firstAttribute="bottom" secondItem="hlu-Ef-goN" secondAttribute="bottom" constant="19" id="r30-bZ-pDc"/>
-                    <constraint firstItem="GzK-rX-Yws" firstAttribute="leading" secondItem="zG0-ky-ZZY" secondAttribute="trailing" constant="10" id="rBa-Ok-ecx"/>
                     <constraint firstAttribute="trailing" secondItem="04P-Jd-EA4" secondAttribute="trailing" constant="15" id="ru0-9g-Vy1"/>
-                    <constraint firstItem="zG0-ky-ZZY" firstAttribute="leading" secondItem="DYJ-sf-0xE" secondAttribute="trailing" constant="5" id="s6B-QM-jhs"/>
                     <constraint firstAttribute="trailing" secondItem="GzK-rX-Yws" secondAttribute="trailing" id="xhI-WA-KQs"/>
                     <constraint firstAttribute="bottom" secondItem="04P-Jd-EA4" secondAttribute="bottom" constant="13" id="zzd-aO-dq7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
-                <outlet property="CLTabViewCellLeftOutButton" destination="zG0-ky-ZZY" id="dSO-NR-A2x"/>
                 <outlet property="CLTableViewCellImage" destination="mNZ-mc-ous" id="3Yy-aO-oSV"/>
                 <outlet property="CLTableViewCellRightViewOne" destination="GzK-rX-Yws" id="3oF-pb-SjZ"/>
                 <outlet property="CLTableViewCellRightViewTwo" destination="04P-Jd-EA4" id="uAg-Uf-3Xa"/>

@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLMeLanguage : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *mMeLanguageLeftLabel;
-@property (strong,nonatomic) CLModel *Item;
 @end
 
 NS_ASSUME_NONNULL_END
