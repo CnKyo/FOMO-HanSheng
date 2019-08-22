@@ -11,6 +11,7 @@
 @interface CLCollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray * sectionArr;
 @property (nonatomic, strong) NSMutableArray * boolArr;
+@property (nonatomic,strong)  NSString *mPushData;
 @end
 
 @implementation CLCollectionViewController
@@ -105,7 +106,7 @@
     [cell CellStyle:2];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
-    
+    [cell.CLCollectionDelete addTarget:self action:@selector(mDelete:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -205,4 +206,53 @@
     CLCollectionAdd *vc = [CLCollectionAdd new];
     [self pushToViewController:vc];
 }
+//- (void)initWithModelData:(NSString *)modelLeftArray{
+//    _mPushData = modelLeftArray;
+//    NSLog(@"传输过来的值为%@",self.mPushData);
+//
+////    UIImageView *mImg = [UIImageView new];
+//    
+////        [self performSelector:@selector(showAlter) withObject:nil afterDelay:1.5];
+////       [self showAlter];
+//
+//}
+
+-(void)showAlter{
+    DebugLog(@"调用showAlter的值为%@",self.mPushData);
+    UIImageView *mImg = [UIImageView new];
+    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint.pdf"];
+    [self.view addSubview:mImg];
+    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
+    //设置动画
+    CATransition * transion = [CATransition animation];
+    
+    transion.type = @"push";//设置动画方式
+    transion.subtype = @"fromRight";//设置动画从那个方向开始
+    //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
+    [mImg.layer addAnimation:transion forKey:nil];
+    //不占用主线程
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+        [mImg removeFromSuperview];
+    });
+}
+
+-(void)mDelete:(id)sender{
+    DebugLog(@"点击了删除按钮");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除收款人" message:@"是否要删除此收款人" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *NoAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        
+    }];
+    
+    UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        
+    }];
+    [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
+    [alertController addAction:NoAction];
+    [alertController addAction:YesAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 @end

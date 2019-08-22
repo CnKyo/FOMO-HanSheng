@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger mHeight;
 @property (nonatomic) NSInteger i;
 @property (nonatomic,strong) NSString *EnterString;
+
 @end
 //初始化数据
 @implementation CLCollectionAddSelect

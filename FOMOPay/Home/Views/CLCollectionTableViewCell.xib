@@ -62,7 +62,7 @@
                         <rect key="frame" x="287.5" y="35.5" width="51.5" height="29"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKa-aP-6G0">
-                                <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
+                                <rect key="frame" x="0.0" y="-36" width="67" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="删除" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvX-e3-kwX">
@@ -75,7 +75,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0VY-5r-Vmy">
                                 <rect key="frame" x="10" y="8" width="13" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.83529411760000005" green="0.0" blue="0.2156862745" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDy-ae-5gF">
                                 <rect key="frame" x="0.0" y="0.0" width="1" height="29"/>
@@ -113,6 +112,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="CLCollectionDelete" destination="HKa-aP-6G0" id="h26-HM-9IB"/>
+                <outlet property="CLCollectionDeleteIcon" destination="0VY-5r-Vmy" id="dXA-If-KGR"/>
+                <outlet property="CLCollectionLeftImage" destination="Be5-j7-DmT" id="uY6-Fz-BH8"/>
+            </connections>
             <point key="canvasLocation" x="132.60869565217394" y="112.5"/>
         </tableViewCell>
     </objects>

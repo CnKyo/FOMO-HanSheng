@@ -18,6 +18,8 @@
 
 @property (strong,nonatomic) UILabel *mLb;
 
+@property (strong,nonatomic) NSMutableArray *mData;
+
 @end
 
 @implementation CLMeLanguage
@@ -36,6 +38,9 @@
 - (void)updateView:(CLMeLanguageType)type and:(nonnull NSString *)EnterString{
     for (UIView *vvv in self.mRightView.subviews) {
         [vvv removeFromSuperview];
+    }
+    if (!_mData) {
+        _mData = [NSMutableArray arrayWithObjects:@"请选择",@"请选择",@"请选择" ,@"请选择",@"请选择",@"请选择",@"请选择",@"请选择", nil];
     }
     if (type == CLMeLanguageType_textFiled) {
         self.mTextF = [UITextField new];
@@ -56,7 +61,7 @@
     }else if (type == CLMeLanguageType_button){
         self.mBtn = [UIButton new];
         [self.mBtn addTarget:self action:@selector(OpenSelect:) forControlEvents:UIControlEventTouchUpInside];
-        self.mBtn.backgroundColor = [UIColor yellowColor];
+//        self.mBtn.backgroundColor = [UIColor yellowColor];
 //        self.mBtn.titleLabel.font = kCommonFont(14);
         [self.mRightView addSubview:self.mBtn];
         self.mImageV = [UIImageView new];
@@ -65,13 +70,37 @@
         self.mLb = [UILabel new];
         self.mLb.font = kCommonFont(14);
         self.mLb.textColor = ssRGBHex(0xCCCCCC);
-        if(![EnterString isEqual:@"请选择"]){
+//        if(EnterString){
+//                 [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
+//            }
+     
+//        if(EnterString){
+//            [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
+////        [self.mData insertObject:EnterString atIndex:_mIndexPath.row];
+////            for(int i=0;i<_mData.count;i++){
+//////                if (i == _mIndexPath.row) {
+//////                    [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
+////                    [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
+//////                     DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
+//////                }
+//            }
+//            [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
+             DebugLog(@"数据为%@,下标为%ld",self.mData,_mIndexPath.row);
+//        }
+        
+    
         self.mLb.text = EnterString;
-        self.mLb.textColor = ssRGBHex(0x2B2B2B);
+//        DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
+        if([self.mLb.text isEqual:@"请选择"]){
+            self.mLb.textColor = ssRGBHex(0xCCCCCC);
         }else{
-        self.mLb.text = @"请选择";
-        self.mLb.textColor = ssRGBHex(0xCCCCCC);
-        }
+             self.mLb.textColor = ssRGBHex(0x2B2B2B);
+        };
+//            self.mLb.textColor = ssRGBHex(0x2B2B2B);
+//        }else{
+//        self.mLb.text = @"请选择";
+//        self.mLb.textColor = ssRGBHex(0xCCCCCC);
+//        }
 //
         self.mLb.textAlignment = NSTextAlignmentRight;
         [self.mBtn addSubview:self.mLb];
@@ -96,6 +125,7 @@
         
     }
     
+    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
@@ -112,8 +142,8 @@
 }
 
 -(void)OpenSelect:(id)sender{
-    if(_mDataBlock){
-        _mDataBlock(_mIndexPath);
+    if(self.mDataBlock){
+        self.mDataBlock(self.mIndexPath);
     }
     
 }
