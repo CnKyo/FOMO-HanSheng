@@ -114,6 +114,7 @@
     
     //创建header的view
     UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    headerView.backgroundColor = ssRGBHex(0xF6F5FA);
     headerView.tag = 2019 + section;
     //添加imageview
     UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-40, 22, 12 , 7)];
@@ -201,6 +202,11 @@
     return _boolArr;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DebugLog(@"点击了列表");
+    CLCollectionAlter *vc = [CLCollectionAlter new];
+    [self pushToViewController:vc];
+}
 -(void)Add:(id)sender{
     DebugLog(@"点击了按钮吧");
     CLCollectionAdd *vc = [CLCollectionAdd new];

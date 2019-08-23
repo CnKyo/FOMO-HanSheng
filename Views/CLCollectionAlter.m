@@ -1,30 +1,29 @@
 //
-//  CLCollectionAdd.m
+//  CLCollectionAlter.m
 //  FOMOPay
 //
-//  Created by clkj on 2019/8/19.
+//  Created by clkj on 2019/8/23.
 //  Copyright © 2019 王钶. All rights reserved.
 //
+#import <WKWindowManagerFramework/WKWindowManagerFramework.h>
+#import "CLCollectionAlter.h"
 
-#import "CLCollectionAdd.h"
-
-@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CLCollectionAddSelectDelegate>
-@property (nonatomic,strong) NSArray *mAddLeftDateSource;
-@property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
+@interface CLCollectionAlter ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CLCollectionAddSelectDelegate>
 @property (nonatomic,strong) NSString *mModeString;
 @property (nonatomic,strong) UILabel *mLabel;
 @property (nonatomic,strong) UIImageView *mImageView ;
 @property (nonatomic,strong) NSArray *modelArray;
 @property (nonatomic,strong) NSIndexPath *mIndex;
 @property (nonatomic,strong) UIButton *mSendButton;
-
+@property (nonatomic,strong) NSArray *mAddLeftDateSource;
+@property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
 @end
 
-@implementation CLCollectionAdd
+@implementation CLCollectionAlter
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"添加新收款人";
+    // Do any additional setup after loading the view.
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
             case 0:
@@ -41,8 +40,8 @@
                 break;
         }
     }];
-    
     [self LoadCellType:6];
+    [self loadData];
     self.mSendButton = [UIButton new];
     [self.mSendButton setTitle:@"提交" forState:UIControlStateNormal];
     self.mSendButton.backgroundColor = clBlueRGB;
@@ -55,16 +54,13 @@
         make.width.offset(kScreenWidth);
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-10);
-        }];
-    
-    self.mImageView = [UIImageView new];
-    [self loadData];
+    }];
 }
 
 - (void)loadData{
     _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码",@""];
     _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
-     _mModeString = @"请选择";
+    _mModeString = @"请选择";
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _mAddLeftDateSource.count;
@@ -85,37 +81,37 @@
     cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     cell.mMeLanguageLeftLabel.text = _mAddLeftDateSource[indexPath.row];
     if(indexPath.row == 0 ){
-    cell.mIndexPath = indexPath;
-    [cell updateView:CLMeLanguageType_textFiled and:nil];
-    cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-        DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-        
-    };}
+        cell.mIndexPath = indexPath;
+        [cell updateView:CLMeLanguageType_textFiled and:nil];
+        cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
+            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+            
+        };}
     
     if(indexPath.row == 1){
         cell.mIndexPath = indexPath;
         [cell updateView:CLMeLanguageType_button and:_mModeString];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-//            NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
-                    self.mSelectView = [CLCollectionAddSelect new];
-                    self.mSelectView.delegate = self;//实现他的代理方法
-                    self.mSelectView.modelArray  = [self.modelArray objectAtIndex:0];//把当前数据传入另一个j控制器的moderarrl里面;
-                    [self.view addSubview:self.mSelectView.view];
-                     [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
-                    self.mIndex = indexPath;
+            //            NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+            self.mSelectView = [CLCollectionAddSelect new];
+            self.mSelectView.delegate = self;//实现他的代理方法
+            self.mSelectView.modelArray  = [self.modelArray objectAtIndex:0];//把当前数据传入另一个j控制器的moderarrl里面;
+            [self.view addSubview:self.mSelectView.view];
+            [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
+            self.mIndex = indexPath;
         };}
-        if(indexPath.row == 2){
-            cell.mIndexPath = indexPath;
-            [cell updateView:CLMeLanguageType_button and:_mModeString];
-            cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-
-                self.mSelectView = [CLCollectionAddSelect new];
-                self.mSelectView.delegate = self;//实现他的代理方法
-                self.mSelectView.modelArray  = [self.modelArray objectAtIndex:1];//把当前数据传入另一个j控制器的moderarrl里面;
-                [self.view addSubview:self.mSelectView.view];
-                [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
-                 self.mIndex = indexPath;
-            };}
+    if(indexPath.row == 2){
+        cell.mIndexPath = indexPath;
+        [cell updateView:CLMeLanguageType_button and:_mModeString];
+        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
+            
+            self.mSelectView = [CLCollectionAddSelect new];
+            self.mSelectView.delegate = self;//实现他的代理方法
+            self.mSelectView.modelArray  = [self.modelArray objectAtIndex:1];//把当前数据传入另一个j控制器的moderarrl里面;
+            [self.view addSubview:self.mSelectView.view];
+            [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
+            self.mIndex = indexPath;
+        };}
     if(indexPath.row == 3){
         cell.mIndexPath = indexPath;
         [cell updateView:CLMeLanguageType_button and:_mModeString];
@@ -128,7 +124,7 @@
             [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
             self.mIndex = indexPath;
         };}
-  
+    
     if(indexPath.row == 6){
         cell.mIndexPath = indexPath;
         [cell updateView:CLMeLanguageType_button and:_mModeString];
@@ -158,7 +154,7 @@
         };
         
     }
-
+    
     
     if(indexPath.row == 7){
         cell.mIndexPath = indexPath;
@@ -167,7 +163,7 @@
             DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
             
         };}
-
+    
     
     if(indexPath.row == 8){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -182,9 +178,9 @@
 //        self.mSelectView = [CLCollectionAddSelect new];
 //        self.mSelectView.delegate = self;//实现他的代理方法
 //        self.mSelectView.modelArray  = modelArray;//把当前数据传入另一个j控制器的moderarrl里面;
-//      
+//
 //        [self.view addSubview:self.mSelectView.view];
-//        
+//
 //        [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
 //        }
 //    }
@@ -197,43 +193,17 @@
 - (void)changeValue:(NSString *)value{
     _mModeString = value;
     DebugLog(@"%@",_mModeString);
-//    [self.mTabView reloadData];
+    //    [self.mTabView reloadData];
     
     [self.mTabView reloadRowsAtIndexPaths:@[_mIndex] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 -(void)successfullyadd:(id)sender{
     DebugLog("点击了提交按钮");
-//    CLCollectionViewController *mDatajump = [CLCollectionViewController new];
+    //    CLCollectionViewController *mDatajump = [CLCollectionViewController new];
+    CLCollectionAddSelect *vc = [CLCollectionAddSelect new];
+    [WKTopWindow showWithViewController:vc];
+  //  [self.navigationController popToRootViewControllerAnimated:YES];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
-//    [ mDatajump initWithModelData:_mModeString];
-//    CLCollectionViewController *vc = [CLCollectionViewController new];
-//    UIImageView *mImg = [UIImageView new];
-//    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint.pdf"];
-////    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(200  , 200, 40, 40)];
-////    label.backgroundColor = [UIColor redColor];
-////    label.font = [UIFont systemFontOfSize:14];
-////    label.text = @”提示信息
-////    [self.view addSubview:label];
-//    [self.view addSubview:mImg];
-//    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self.view);
-//    }];
-//    //设置动画
-//    CATransition * transion = [CATransition animation];
-//    
-//    transion.type = @"push";//设置动画方式
-//    transion.subtype = @"fromRight";//设置动画从那个方向开始
-////    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
-//    [mImg.layer addAnimation:transion forKey:nil];
-//    //不占用主线程
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-////        [label removeFromSuperview];
-//        [mImg removeFromSuperview];
-//    });
-//    [vc dismissViewControllerAnimated:YES completion:NULL];
-    
-
 }
 @end

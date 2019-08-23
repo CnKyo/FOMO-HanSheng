@@ -21,12 +21,30 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
+        
+        switch (tag) {
+            case 0:
+            {
+                DebugLog(@"左边按钮");
+            }
+                break;
+            case 1:
+            {
+                DebugLog(@"右边按钮");
+            }
+                break;
+            default:
+                break;
+        }
+    }];
     
-    self.navigationItem.title = @"身份验证";
+//    self.navigationItem.title = @"身份验证";
     
     __weak typeof(self) weakSelf = self;
     _verifyCodeView = [LogInVerifyCodeView shareView];
