@@ -247,12 +247,12 @@
         CLNavModel *mNewModel = [CLNavModel new];
         mNewModel.mTitle = self.title;
         model = mNewModel;
-    }
+    }else{
+        model.mTitle = self.title;}
     if (type == CLNavType_default) {
         CLNavgationView *mNav = [CLNavgationView shareNormalNavView];
         mNav.mLeftImg.hidden = mHidden;
         mNav.mLeftBtn.hidden = mHidden;
-       
         [mNav updateView:model];
         mNav.mBtnBlock = ^(NSInteger tag) {
             if (tag == 0) {

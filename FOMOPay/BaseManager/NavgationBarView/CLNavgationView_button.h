@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 typedef void(^CLNavgationView_buttonBtnBlock)(NSInteger tag);
+
 @interface CLNavgationView_button : UIView
-@property (copy,nonatomic) CLNavgationView_buttonBtnBlock mBtnBlock;
+@property (copy,nonatomic) CLNavgationView_buttonBtnBlock  mRightBtnBlock;
 @property (weak, nonatomic) IBOutlet UIView *mRightView;
-@property (weak, nonatomic) IBOutlet UIButton *mRightButton;
+@property (weak, nonatomic) IBOutlet UIImageView *mRightImg;
+@property (weak, nonatomic) IBOutlet UIButton *mRightBtn;
 
 + (CLNavgationView_button *)shareDefaultNavRightButton;
-
++ (CLNavgationView_button *)shareDefaultNavRightButtonOther;
 @end
 
-NS_ASSUME_NONNULL_END
+

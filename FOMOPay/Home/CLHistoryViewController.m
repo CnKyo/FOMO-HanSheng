@@ -57,4 +57,9 @@
     return 81;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
+    [self pushToViewController:vc];
+}
+
 @end

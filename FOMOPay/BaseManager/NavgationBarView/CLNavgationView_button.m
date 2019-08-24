@@ -19,29 +19,37 @@
 */
 
 
-+ (CLNavgationView_button *)shareDefaultNavRightButton{
-     CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
-        UIButton *btn= [UIButton new];
-        [btn setTitle:@"添加" forState:UIControlStateNormal];
-        btn.tag =1;
-        [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-    
-        [view addSubview:btn];
-   
-    
-    
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(view).offset(-20);
-            make.top.equalTo(view).offset(0);
-            make.bottom.equalTo(view).offset(0);
-        }];
-
+//+ (CLNavgationView_button *)shareDefaultNavRightButton{
+//     CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
+//        UIButton *btn= [UIButton new];
+//        [btn setTitle:@"添加" forState:UIControlStateNormal];
+//        btn.tag =1;
+//        [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+//        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+//    
+//        [view addSubview:btn];
+//   
+//    
+//    
+//        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(view).offset(-20);
+//            make.top.equalTo(view).offset(0);
+//            make.bottom.equalTo(view).offset(0);
+//        }];
+//
+//    return view;
+//   
+//}
++ (CLNavgationView_button *)shareDefaultNavRightButtonOther{
+    CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
+    view.mRightImg.image = [UIImage yh_imageNamed:@"pdf_history_remittanceplan.pdf"];
     return view;
-   
 }
 
 
-
-
+- (IBAction)mRightBtnAction:(UIButton *)sender {
+    if (self.mRightBtnBlock) {
+        self.mRightBtnBlock(sender.tag);
+    }
+}
 @end

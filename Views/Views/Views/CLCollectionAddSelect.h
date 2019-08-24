@@ -9,13 +9,13 @@
 #import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@protocol TwoViewDelegate <NSObject>
+@protocol CLCollectionAddSelectDelegate <NSObject>
 
 - (void)changeValue:(NSString *)value;
 
 @end///////////
 @interface CLCollectionAddSelect : BaseViewController
-@property (nonatomic,weak)id<TwoViewDelegate>delegate;////////
+@property (nonatomic,weak)id<CLCollectionAddSelectDelegate>delegate;////////
 
 
 /// 初始化数据

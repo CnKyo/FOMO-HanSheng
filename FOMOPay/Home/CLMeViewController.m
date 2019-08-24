@@ -160,6 +160,9 @@
     }else if(indexPath.row == 3){
         CLMeMessageViewController *vc = [CLMeMessageViewController new];
         [self pushToViewController:vc];
+    }else {
+        LogInViewController *vc = [LogInViewController new];
+        [self pushToViewController:vc];
     }
 }
 }
