@@ -35,16 +35,16 @@
         
         _isLogIn = [[NSUserDefaults standardUserDefaults] objectForKey:kLogInKey];
         
-//        if (_isLogIn) {
-//
-//            CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
-//            [self.window setRootViewController:tabbarConfig.tabBarController];
-//
-//        }else{
+        if (_isLogIn) {
+
+            CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
+            [self.window setRootViewController:tabbarConfig.tabBarController];
+
+        }else{
         
             UINavigationController *mNavHomeController = [[UINavigationController alloc] initWithRootViewController:[LogInViewController new]];
             self.window.rootViewController = mNavHomeController;
-//        }
+        }
     }
     
     return YES;
