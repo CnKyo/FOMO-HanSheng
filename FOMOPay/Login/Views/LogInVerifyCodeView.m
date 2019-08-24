@@ -25,6 +25,7 @@
     
     view.mPayView = [WKCustomCodeView shareViewWithType:WKCustomCodeTypeDisplay];
     view.mPayView.mTextBlock = ^(NSString *mText) {
+        
         if (mText.length >= 6) {
             
             if ([weakView.delegate respondsToSelector:@selector(WKNewForgetLoginOneTimeOTPviewTextFieldDidEndEditing:)]) {

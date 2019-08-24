@@ -9,8 +9,9 @@
 #import "LogInVerifyViewController.h"
 
 #import "LogInVerifyCodeView.h"
+#import "AppDelegate.h"
 
-@interface LogInVerifyViewController ()
+@interface LogInVerifyViewController ()<LogInVerifyCodeViewDelegate>
 
 @property (nonatomic, strong) LogInVerifyCodeView *verifyCodeView;
 @property (nonatomic, copy) NSString *mCodeStr;
@@ -21,29 +22,24 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"身份验证";
-    
-    __weak typeof(self) weakSelf = self;
-    _verifyCodeView = [LogInVerifyCodeView shareView];
-    _verifyCodeView.verifyCodeAlertLabel.text = [NSString stringWithFormat:@"请输入发送到****%@的6位验证码",[_mobile substringFromIndex:_mobile.length - 4]];
-    [_verifyCodeView.mReSendBtn addTarget:self action:@selector(mResendAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    _verifyCodeView.mTextBlock = ^(NSString *mText) {
+    CLNavModel *mNewModel = [CLNavModel new];
+    mNewModel.mTitle = @"身份验证";
+    [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
         
-        NSLog(@"you are inpput %@",mText);
-        if (mText.length >= 6) {
-            
-            weakSelf.mCodeStr = mText;
-            [weakSelf verifyCode];
-        }
-    };
+    }];
     
+    _verifyCodeView = [LogInVerifyCodeView shareView];
+    _verifyCodeView.delegate = self;
+    _verifyCodeView.verifyCodeAlertLabel.text = [NSString stringWithFormat:@"请输入发送到****%@的6位验证码",[_mobile substringFromIndex:_mobile.length - 4]];
     [self.view addSubview:_verifyCodeView];
+    
     [_verifyCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.right.bottom.equalTo(self.view).offset(0);
@@ -54,6 +50,7 @@
 }
 
 - (void)mBackAction{
+    
     __block typeof(self) blockSelf = self;
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"您确定要返回吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -114,8 +111,15 @@
 //    }];
 }
 
-
 - (void)verifyCode{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
+    [appdelegate.window setRootViewController:tabbarConfig.tabBarController];
+    
     //
 //    NSDictionary *parama = @{
 //                             @"mobile":self.mMobileString,
@@ -164,8 +168,19 @@
 //        [self.mView WKClearText];
 //    }];
     
-    
 }
+
+- (void)WKNewForgetLoginOneTimeOTPviewTextFieldDidEndEditing:(NSString *)mText{
+    
+    [self verifyCode];
+}
+
+- (void)WKNewForgetLoginOneTimeOTPviewResendOTP{
+    
+    //重新发送验证码
+    [self mResendAction];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

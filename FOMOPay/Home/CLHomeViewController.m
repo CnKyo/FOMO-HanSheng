@@ -10,13 +10,11 @@
 #import "CLHomeDetailVC.h"
 #import "HomeListCell.h"
 #import "HomeDataObject.h"
-
-#import "LogInViewController.h"
+#import "HomeRefundViewController.h"
 
 @interface CLHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) UIButton *OpenExchangerate;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 
 @end
@@ -29,22 +27,8 @@
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
     [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
         
-        switch (tag) {
-            case 0:
-            {
-                DebugLog(@"左边按钮");
-            }
-                break;
-            case 1:
-            {
-                DebugLog(@"右边按钮");
-            }
-                break;
-            default:
-                break;
-        }
     }];
-
+    
     [self loadTableView];
 }
 
@@ -68,12 +52,6 @@
     }];
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeListCell" bundle:nil] forCellReuseIdentifier:@"HomeListCell"];
-}
-
-- (void)exchageerateButtonClicked{
-    
-    LogInViewController *VC = [[LogInViewController alloc] init];
-    [self pushToViewController:VC];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -110,12 +88,43 @@
         }
     };
     
-    cell.HomeListCellButtonBlock = ^{
+    cell.HomeListCellButtonBlock = ^(NSString * _Nonnull unit) {
         
+        NSString *string = nil;
+        if ([unit isEqualToString:@"SGD"]) {    //新加坡
+            
+            string = @"新加坡";
+            
+        }else if ([unit isEqualToString:@"CNY"]){   //中国
+            
+            string = @"中国";
+
+        }else if ([unit isEqualToString:@"TWD"]){   //台湾
+
+            string = @"台湾";
+
+        }else if ([unit isEqualToString:@"MYR"]){   //马来西亚
+
+            string = @"马来西亚";
+
+        }else if ([unit isEqualToString:@"HKD"]){   //香港
+
+            string = @"香港";
+
+        }else if ([unit isEqualToString:@"IDR"]){   //印尼
+
+            string = @"印尼";
+
+        }else if ([unit isEqualToString:@"PHP"]){   //菲律宾
+
+            string = @"菲律宾";
+        }
         //汇款
-   
+        HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+        vc.unitString = string;
+        [self pushToViewController:vc];
     };
-    
+
     return cell;
 }
 

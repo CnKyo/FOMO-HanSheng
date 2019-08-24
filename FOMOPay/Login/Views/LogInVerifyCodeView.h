@@ -33,7 +33,6 @@ typedef void(^LogInVerifyCodeViewBlock)(NSString *text);
 
 @property (weak, nonatomic) IBOutlet UIButton *mReSendBtn;
 
-@property (nonatomic, copy) LogInVerifyCodeViewBlock mTextBlock;
 @property (nonatomic, strong) WKCustomCodeView *mPayView;
 
 @property (weak,nonatomic) id <LogInVerifyCodeViewDelegate> delegate;

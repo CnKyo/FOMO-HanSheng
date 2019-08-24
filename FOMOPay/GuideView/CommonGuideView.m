@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIImageView *showImageView;
 @property (nonatomic, strong) UIButton *chageButton;
+@property (nonatomic, strong) UIButton *languageButton;
+@property (nonatomic, strong) UIButton *languageButton1;
 
 @end
 
@@ -61,26 +63,6 @@
     [_myScrollView setShowsHorizontalScrollIndicator:NO];
     [self addSubview:_myScrollView];
     
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 135, 60, 99, 20)];
-    _titleLabel.text = @"简体中文";
-    _titleLabel.textColor = [UIColor blackColor];
-    _titleLabel.textAlignment = NSTextAlignmentRight;
-    _titleLabel.font = kCommonFont(14);
-    _titleLabel.hidden = YES;
-    [_myScrollView addSubview:_titleLabel];
-    
-    _showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 7, 67, 12, 7)];
-    _showImageView.image = [UIImage yh_imageNamed:@""];
-    _showImageView.hidden = YES;
-    [_myScrollView addSubview:_showImageView];
-    
-    _chageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _chageButton.frame = CGRectMake(self.frame.size.width - 135, 55, 120, 30);
-    [_chageButton setBackgroundColor:[UIColor clearColor]];
-    _chageButton.hidden = YES;
-    [_chageButton addTarget:self action:@selector(changeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_myScrollView addSubview:_chageButton];
-    
     [self loadImageView];
 }
 
@@ -88,13 +70,14 @@
     
     NSMutableArray *arr = [NSMutableArray new];
     
-    if ([_titleLabel.text isEqualToString:@"简体中文"]) {
-        
-        [arr addObjectsFromArray:_imageNameArray];
-        
-    }else{
+    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
+    if ([string isEqualToString:@"English"]) {
         
         [arr addObjectsFromArray:_englishImageNameArray];
+
+    }else{
+        
+        [arr addObjectsFromArray:_imageNameArray];
     }
     //添加图片
     for (int i = 0; i < arr.count; i++) {
@@ -104,33 +87,33 @@
         imageView.image = [UIImage yh_imageNamed:imageName];
         imageView.userInteractionEnabled = YES;
         [_myScrollView addSubview:imageView];
-        
-        if (i == 0) {
-            
-            _titleLabel.hidden = NO;
-            _showImageView.hidden = NO;
-            _chageButton.hidden = NO;
-            
-            [self bringSubviewToFront:_titleLabel];
-            [self bringSubviewToFront:_showImageView];
-            [self bringSubviewToFront:_chageButton];
-
-        }else{
-            
-            _titleLabel.hidden = YES;
-            _showImageView.hidden = YES;
-            _chageButton.hidden = YES;
-        }
     }
 }
 
 - (void)loadEnterButton{
     
     _enterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _enterButton.frame = CGRectMake((self.frame.size.width - 150)/2, self.frame.size.height - 200, 150, 200);
+    _enterButton.frame = CGRectMake((self.frame.size.width - 250)/2, self.frame.size.height - 200, 250, 200);
     [_enterButton setBackgroundColor:[UIColor clearColor]];
     _enterButton.hidden = YES;
     [self addSubview:_enterButton];
+    
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 135, 60, 99, 20)];
+    _titleLabel.text = @"简体中文";
+    _titleLabel.textColor = [UIColor blackColor];
+    _titleLabel.textAlignment = NSTextAlignmentRight;
+    _titleLabel.font = kCommonFont(14);
+    [self addSubview:_titleLabel];
+    
+    _showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 7, 67, 12, 7)];
+    _showImageView.image = [UIImage yh_imageNamed:@""];
+    [self addSubview:_showImageView];
+    
+    _chageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _chageButton.frame = CGRectMake(self.frame.size.width - 135, 55, 120, 30);
+    [_chageButton setBackgroundColor:[UIColor clearColor]];
+    [_chageButton addTarget:self action:@selector(changeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_chageButton];
 }
 
 - (void)loadChangeLanguageView{
@@ -142,29 +125,31 @@
     _languageView.layer.cornerRadius = 5.0;
     [self addSubview:_languageView];
     
-    UIButton *languageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    languageButton.frame = CGRectMake(10, 0, 85, 44);
-    [languageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [languageButton setBackgroundColor:[UIColor clearColor]];
-    languageButton.tag = 102;
-    [languageButton addTarget:self action:@selector(languageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_languageView addSubview:languageButton];
+    _languageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _languageButton.frame = CGRectMake(10, 0, 85, 44);
+    [_languageButton setTitle:@"简体中文" forState:UIControlStateNormal];
+    [_languageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_languageButton setBackgroundColor:[UIColor clearColor]];
+    _languageButton.tag = 102;
+    [_languageButton addTarget:self action:@selector(languageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_languageView addSubview:_languageButton];
     
-    UIButton *languageButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    languageButton1.frame = CGRectMake(10, 44, 85, 44);
-    [languageButton1 setBackgroundColor:[UIColor clearColor]];
-    [languageButton1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    languageButton1.tag = 103;
-    [languageButton1 addTarget:self action:@selector(languageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_languageView addSubview:languageButton1];
+    _languageButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    _languageButton1.frame = CGRectMake(10, 44, 85, 44);
+    [_languageButton1 setTitle:@"English" forState:UIControlStateNormal];
+    [_languageButton1 setBackgroundColor:[UIColor clearColor]];
+    [_languageButton1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _languageButton1.tag = 103;
+    [_languageButton1 addTarget:self action:@selector(languageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_languageView addSubview:_languageButton1];
     
     if ([_titleLabel.text isEqualToString:@"简体中文"]) {
         
-        [languageButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
+        [_languageButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
 
     }else{
         
-        [languageButton1 setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
+        [_languageButton1 setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
     }
 }
 
@@ -192,6 +177,20 @@
         _titleLabel.text = @"English";
     }
     
+    [[NSUserDefaults standardUserDefaults] setObject:_titleLabel.text forKey:kLanguageKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([_titleLabel.text isEqualToString:@"简体中文"]) {
+        
+        [_languageButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
+        [_languageButton1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    }else{
+        
+        [_languageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_languageButton1 setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
+    }
+    
     _languageView.hidden = YES;
     
     for (UIView *view in self.subviews) {
@@ -211,12 +210,25 @@
     //根据scrollviewW的滚动位置显示page的第几页
     CGFloat scrollW = scrollView.frame.size.width;
     int page = (scrollView.contentOffset.x + scrollW * 0.5) / scrollW;
-    if (page == 2) {
+    if (page == 0) {
         
+        _titleLabel.hidden = NO;
+        _showImageView.hidden = NO;
+        _chageButton.hidden = NO;
+        _enterButton.hidden = YES;
+
+    }else if (page == 3){
+        
+        _titleLabel.hidden = YES;
+        _showImageView.hidden = YES;
+        _chageButton.hidden = YES;
         _enterButton.hidden = NO;
         
     }else{
         
+        _titleLabel.hidden = YES;
+        _showImageView.hidden = YES;
+        _chageButton.hidden = YES;
         _enterButton.hidden = YES;
     }
 }
@@ -224,6 +236,9 @@
 - (void)initialView{
     
     self.backgroundColor = [UIColor whiteColor];
+    
+//    [[NSUserDefaults standardUserDefaults] setObject:@"简体中文" forKey:kLanguageKey];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     //初始化数据
     _imageNameArray = [NSArray arrayWithObjects:@"pdf.guideView_icon_china_1", @"pdf.guideView_icon_china_2", @"pdf.guideView_icon_china_3",@"pdf.guideView_icon_china_4", nil];

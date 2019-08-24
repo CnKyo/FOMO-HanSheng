@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomeListCell : UITableViewCell
 
 @property (nonatomic, copy) void(^HomeListCellBlock)(NSString *string,NSInteger tag);
-@property (nonatomic, copy) void(^HomeListCellButtonBlock)(void);
+@property (nonatomic, copy) void(^HomeListCellButtonBlock)(NSString *unit);
 
 @end
 

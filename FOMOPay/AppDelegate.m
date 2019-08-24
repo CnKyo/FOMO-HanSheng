@@ -8,18 +8,45 @@
 
 #import "AppDelegate.h"
 
+#import "CommonGuideViewController.h"
+#import "LogInViewController.h"
+
 @interface AppDelegate ()
+
+@property (nonatomic, assign) BOOL isLoadGuide;
+@property (nonatomic, assign) BOOL isLogIn;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
-    [self.window setRootViewController:tabbarConfig.tabBarController];
+    
+    _isLoadGuide = [[NSUserDefaults standardUserDefaults] objectForKey:kLoadGuideKey];
+
+    if (!_isLoadGuide) {
+        
+        UINavigationController *mNavHomeController = [[UINavigationController alloc] initWithRootViewController:[CommonGuideViewController new]];
+        self.window.rootViewController = mNavHomeController;
+        
+    }else{
+        
+        _isLogIn = [[NSUserDefaults standardUserDefaults] objectForKey:kLogInKey];
+        
+//        if (_isLogIn) {
+//
+//            CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
+//            [self.window setRootViewController:tabbarConfig.tabBarController];
+//
+//        }else{
+        
+            UINavigationController *mNavHomeController = [[UINavigationController alloc] initWithRootViewController:[LogInViewController new]];
+            self.window.rootViewController = mNavHomeController;
+//        }
+    }
+    
     return YES;
 }
 

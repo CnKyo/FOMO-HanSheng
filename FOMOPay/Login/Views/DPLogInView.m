@@ -31,13 +31,7 @@
     [view.myTextField addTarget:view action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
-    if (string.length == 0) {
-        
-        [[NSUserDefaults standardUserDefaults] setObject:@"简体中文" forKey:kLanguageKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    view.languageLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
+    view.languageLabel.text = string.length > 0 ? string:@"简体中文";
     view.logoImage.image = [UIImage yh_imageNamed:@"pdf_login_icon"];
     view.allowImage.image = [UIImage yh_imageNamed:@"pdf_login_language"];
     

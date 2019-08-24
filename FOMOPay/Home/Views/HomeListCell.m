@@ -81,7 +81,7 @@
     _exchangeRateButton.layer.cornerRadius = 5.0;
     
     _array1 = @[@"",@"",@"",@"",@"",@""];
-    _array2 = @[@"CNY",@"TWD",@"MYR",@"HKD ",@"IDR",@"PHP"];
+    _array2 = @[@"CNY",@"TWD",@"MYR",@"HKD",@"IDR",@"PHP"];
     _array3 = @[@"(人民币)",@"(新台币)",@"(令吉)",@"(港元)",@"(印尼卢比)",@"(菲律宾比索)"];
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -190,7 +190,7 @@
     
     if (_HomeListCellButtonBlock) {
         
-        _HomeListCellButtonBlock();
+        _HomeListCellButtonBlock(_unitNameLabel.text);
     }
 }
 
