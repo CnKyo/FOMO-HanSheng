@@ -17,6 +17,7 @@
 @property (nonatomic,strong) NSArray *modelArray;
 @property (nonatomic,strong) NSIndexPath *mIndex;
 @property (nonatomic,strong) UIButton *mSendButton;
+@property (nonatomic,strong) NSMutableArray *mMdate;
 
 @end
 
@@ -65,12 +66,16 @@
     _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码",@""];
     _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
      _mModeString = @"请选择";
+     self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _mAddLeftDateSource.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 8) {
+        return 34;
+    }
     return 49;
 }
 
@@ -89,6 +94,8 @@
     [cell updateView:CLMeLanguageType_textFiled and:nil];
     cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
         DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+         [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
+        DebugLog(@"当前的text的值是%@",self.mMdate);
         
     };}
     
@@ -103,6 +110,7 @@
                     [self.view addSubview:self.mSelectView.view];
                      [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
                     self.mIndex = indexPath;
+    
         };}
         if(indexPath.row == 2){
             cell.mIndexPath = indexPath;
@@ -145,6 +153,7 @@
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
             DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+             [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             
         };}
     
@@ -154,6 +163,7 @@
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
             DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+             [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             
         };
         
@@ -165,7 +175,7 @@
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
             DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-            
+             [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
         };}
 
     
@@ -195,10 +205,12 @@
 //}
 
 - (void)changeValue:(NSString *)value{
+//    self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
     _mModeString = value;
-    DebugLog(@"%@",_mModeString);
-//    [self.mTabView reloadData];
-    
+//    [self.mMdate insertString:@"123" atIndex:0];
+    [self.mMdate replaceObjectAtIndex:_mIndex.row withObject:value];
+    DebugLog(@"接受到了%@",_mModeString);
+    DebugLog(@"我现在的字符串的值为%@-----位置为%ld",self.mMdate,(long)_mIndex.row);
     [self.mTabView reloadRowsAtIndexPaths:@[_mIndex] withRowAnimation:UITableViewRowAnimationNone];
 }
 

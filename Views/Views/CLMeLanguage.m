@@ -46,7 +46,15 @@
         self.mTextF = [UITextField new];
         self.mTextF.frame = self.mRightView.bounds;
         self.mTextF.textAlignment = NSTextAlignmentRight;
-        self.mTextF.placeholder = @"请输入内容";
+        if (_mIndexPath.row == 0) {
+            self.mTextF.placeholder = @"请输入全名";
+        }else if(_mIndexPath.row == 4){
+            self.mTextF.placeholder = @"请输入开户城市";
+        }else if(_mIndexPath.row == 5){
+            self.mTextF.placeholder = @"请输入账号号码";
+        }else if(_mIndexPath.row == 7){
+            self.mTextF.placeholder = @"请输入联系号码";
+        }
         self.mTextF.font = kCommonFont(14);
         self.mTextF.clearButtonMode = UITextFieldViewModeAlways;
         self.mTextF.delegate = self;
@@ -70,38 +78,13 @@
         self.mLb = [UILabel new];
         self.mLb.font = kCommonFont(14);
         self.mLb.textColor = ssRGBHex(0xCCCCCC);
-//        if(EnterString){
-//                 [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-//            }
-     
-//        if(EnterString){
-//            [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-////        [self.mData insertObject:EnterString atIndex:_mIndexPath.row];
-////            for(int i=0;i<_mData.count;i++){
-//////                if (i == _mIndexPath.row) {
-//////                    [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-////                    [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-//////                     DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
-//////                }
-//            }
-//            [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-             DebugLog(@"数据为%@,下标为%ld",self.mData,_mIndexPath.row);
-//        }
-        
-    
         self.mLb.text = EnterString;
-//        DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
+//      DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
         if([self.mLb.text isEqual:@"请选择"]){
             self.mLb.textColor = ssRGBHex(0xCCCCCC);
         }else{
              self.mLb.textColor = ssRGBHex(0x2B2B2B);
         };
-//            self.mLb.textColor = ssRGBHex(0x2B2B2B);
-//        }else{
-//        self.mLb.text = @"请选择";
-//        self.mLb.textColor = ssRGBHex(0xCCCCCC);
-//        }
-//
         self.mLb.textAlignment = NSTextAlignmentRight;
         [self.mBtn addSubview:self.mLb];
         [self.mBtn mas_makeConstraints:^(MASConstraintMaker *make) {
