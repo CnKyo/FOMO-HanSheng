@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)changeValue:(NSString *)value;
 
-@end///////////
+@end///////////代理传值第一步
 @interface CLCollectionAddSelect : BaseViewController
-@property (nonatomic,weak)id<CLCollectionAddSelectDelegate>delegate;////////
+@property (nonatomic,weak)id<CLCollectionAddSelectDelegate>delegate;////////代理传值第二步
 
 
 /// 初始化数据

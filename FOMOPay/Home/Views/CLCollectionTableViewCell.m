@@ -53,7 +53,7 @@
     frame.size.width -= 2* frame.origin.x;
     frame.origin.y +=margin;
     frame.size.height -= margin;
-    NSLog(@"他的height为%f",frame.size.height);
+   
     //    frame.origin.y +=50;
     //    frame.size.height -=10;
     

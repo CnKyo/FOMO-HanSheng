@@ -51,7 +51,12 @@
         }else if(_mIndexPath.row == 4){
             self.mTextF.placeholder = @"请输入开户城市";
         }else if(_mIndexPath.row == 5){
-            self.mTextF.placeholder = @"请输入账号号码";
+            if (_mTextF.text.length >0) {
+                _mTextF.text = EnterString;
+            }else{
+                 self.mTextF.placeholder = @"请输入账号号码";
+            }
+           
         }else if(_mIndexPath.row == 7){
             self.mTextF.placeholder = @"请输入联系号码";
         }
@@ -121,6 +126,39 @@
     if (self.mBlock) {
         self.mBlock(self.mIndexPath,textField.text);
     }
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if(_mIndexPath.row ==5){
+    // 每间隔4个字符插入一个空格并在删除时去掉
+    NSMutableString *strmText = [NSMutableString stringWithString:textField.text];
+    if ([textField.text length] == range.location) {
+        
+        // 插入
+        if ([textField.text length]%5 == 4) {
+            
+            [strmText appendString:@" "];
+        }
+        
+    } else {
+        
+        // 删除
+        if ([textField.text length] && [textField.text length]%5 == 0) {
+            
+            strmText = [NSMutableString stringWithString:[strmText substringToIndex:strmText.length - 1]];
+        }
+    }
+        
+    textField.text = strmText;
+}
+    
+//    if(_mIndexPath.row == 7 ){
+//        if ([textField.text length] >11) {
+//            DebugLog(@"请输入正确的联系号码");
+//        }
+//    }
     return YES;
 }
 

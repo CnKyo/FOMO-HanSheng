@@ -40,17 +40,17 @@
 //下面是列表上场了
 - (void)LoadCellType:(NSUInteger )Type{
     if (Type == 2){
-        [self addTabView1];
+        [self addHomeTabView];
     }else if(Type == 3){
-        [self addTabView2];
+        [self addHiStoryTabView];
     }else if(Type == 4){
-        [self addTabView3];
+        [self addCollectionTabView];
     }else if(Type == 5){
-        [self addTabView4];
+        [self addMeTabView];
     }else if(Type == 6){
-        [self addTabView5];
+        [self addMeLanguageTabView];
     }else if(Type == 7){
-        [self addTabView6];
+        [self addCollectionSelectTabView];
     }
 }
 
@@ -72,7 +72,7 @@
 
 
 //tabviewcell
-- (void)addTabView1{
+- (void)addHomeTabView{
     UINib *nib = [UINib nibWithNibName:@"CLTableViewCell" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
@@ -90,7 +90,7 @@
     }];
 }
 
-- (void)addTabView2{
+- (void)addHiStoryTabView{
     UINib *nib = [UINib nibWithNibName:@"CLHiStoryTableViewCell" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
@@ -109,7 +109,7 @@
     }];
 }
 
-- (void)addTabView3{
+- (void)addCollectionTabView{
     UINib *nib = [UINib nibWithNibName:@"CLCollectionTableViewCell" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
@@ -129,7 +129,7 @@
     }];
 }
 
--(void)addTabView4{
+-(void)addMeTabView{
     UINib *nib = [UINib nibWithNibName:@"CLMeTableViewCell" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
@@ -149,7 +149,7 @@
     }];
 }
 
--(void)addTabView5{
+-(void)addMeLanguageTabView{
     UINib *nib = [UINib nibWithNibName:@"CLMeLanguage" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];
@@ -169,7 +169,7 @@
     }];
 }
 
--(void)addTabView6{
+-(void)addCollectionSelectTabView{
     UINib *nib = [UINib nibWithNibName:@"CLCollectionAddSelectTableView" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];

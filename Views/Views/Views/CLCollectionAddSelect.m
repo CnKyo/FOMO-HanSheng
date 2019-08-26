@@ -113,7 +113,7 @@
 //    CLCollectionAdd *new = [CLCollectionAdd new];
 //    [new initWithModelString:_EnterString];
 //
-    [self.delegate changeValue:self.EnterString];
+    [self.delegate changeValue:self.EnterString];//代理传值第三步
     DebugLog(@"准备传递的值为%@",self.EnterString);
     [self.view removeFromSuperview];
 

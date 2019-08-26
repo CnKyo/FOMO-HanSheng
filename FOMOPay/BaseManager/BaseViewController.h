@@ -21,11 +21,11 @@
 
 - (void)LoadCellType:(NSUInteger )Type;
 
-- (void)addTabView1;
-- (void)addTabView2;
-- (void)addTabView3;
-- (void)addTabView4;
-- (void)addTabView5;
+//- (void)addHomeTabView;
+//- (void)addHiStoryTabView;
+//- (void)addCollectionTabView;
+//- (void)addMeTabView;
+//- (void)addMeLanguageTabView;
 
 
 - (void)addNavgationLine;
