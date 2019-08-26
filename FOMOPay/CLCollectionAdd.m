@@ -99,8 +99,8 @@
         cell = [[CLMeLanguage alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         
     }
-//    __block typeof(self) WeakSelf  = self;
-//    __block typeof(cell) WeakCell = cell;
+    __block typeof(self) WeakSelf  = self;
+    __block typeof(cell) WeakCell = cell;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
@@ -208,31 +208,29 @@
         }];
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-            self.mDl  = mText;
-          
-            
-            
-//            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-            
+                self.mDl  = mText;
+           
             if(mText.length >11){
                 DebugLog(@"请输入正确的账户号码");
 //                self.mDl = mText;
                 self.mTabView.rowHeight = UITableViewAutomaticDimension;
                 mLineView.backgroundColor = ssRGBHex(0xD50037);
                 mHint.text = @"请输入正确的账户号码";
-                [self.mTabView reloadRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-            }else{
+                }else{
                 mLineView.backgroundColor = ssRGBHex(0xcccccc);
-                //                [WeakSelf.mHint removeFromSuperview];
+                //[WeakSelf.mHint removeFromSuperview];
                 mHint.text = @"";
 //                 self.mDl = mText;
-                [self.mTabView reloadRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+//                [self.mTabView reloadRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationNone];
                 [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             }
+            
+             [self.mTabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//            CLMeLanguage *new = [CLMeLanguage new];
+//            [new initWithModelString:self.mDl];
         };}
 
-    
-    
+
     
     
     
@@ -286,6 +284,7 @@
     }
     return cell;
 }
+
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    //在当前控制器添加子控制器的view的调用方法

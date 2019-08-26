@@ -30,6 +30,7 @@ typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
 
 - (void)updateView:(CLMeLanguageType)type and:(NSString *)EnterString;
+- (void)initWithModelString:(NSString *)model;
 @end
 
 

@@ -20,6 +20,8 @@
 
 @property (strong,nonatomic) NSMutableArray *mData;
 
+@property (strong,nonatomic) NSString *m;
+
 @end
 
 @implementation CLMeLanguage
@@ -33,6 +35,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)initWithModelString:(NSString *)model{
+    self.m = model;
 }
 
 - (void)updateView:(CLMeLanguageType)type and:(nonnull NSString *)EnterString{
@@ -52,7 +58,8 @@
             self.mTextF.placeholder = @"请输入开户城市";
         }else if(_mIndexPath.row == 5){
             if (_mTextF.text.length >0) {
-                _mTextF.text = EnterString;
+                _mTextF.text = self.m;
+                DebugLog("我的self的m的值%@",self.m);
             }else{
                  self.mTextF.placeholder = @"请输入账号号码";
             }
