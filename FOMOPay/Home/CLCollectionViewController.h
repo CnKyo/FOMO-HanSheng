@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLCollectionViewController : BaseViewController
-//- (void)initWithModelData:(NSString *)modelLeftArray;
+
+//- (void)initWithModelData:(NSArray *)modelLeftArray;
+@property (nonatomic,strong)  NSArray *mPushData;
 @end
 
 NS_ASSUME_NONNULL_END

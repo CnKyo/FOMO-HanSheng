@@ -40,7 +40,7 @@
 #import <SDImageCache.h>
 #import <YYCache.h>
 #import <YYModel.h>
-
+#import <WKWindowManagerFramework/WKWindowManagerFramework.h>
 //用户自定义头文件
 #import "CLTool.h"
 #import "CLMeLanguage.h"

@@ -20,6 +20,8 @@
 
 @property (strong,nonatomic) NSMutableArray *mData;
 
+@property (strong,nonatomic) NSString *m;
+
 @end
 
 @implementation CLMeLanguage
@@ -35,6 +37,10 @@
     // Configure the view for the selected state
 }
 
+-(void)initWithModelString:(NSString *)model{
+    self.m = model;
+}
+
 - (void)updateView:(CLMeLanguageType)type and:(nonnull NSString *)EnterString{
     for (UIView *vvv in self.mRightView.subviews) {
         [vvv removeFromSuperview];
@@ -46,7 +52,21 @@
         self.mTextF = [UITextField new];
         self.mTextF.frame = self.mRightView.bounds;
         self.mTextF.textAlignment = NSTextAlignmentRight;
-        self.mTextF.placeholder = @"请输入内容";
+        if (_mIndexPath.row == 0) {
+            self.mTextF.placeholder = @"请输入全名";
+        }else if(_mIndexPath.row == 4){
+            self.mTextF.placeholder = @"请输入开户城市";
+        }else if(_mIndexPath.row == 5){
+            if (_mTextF.text.length >0) {
+                _mTextF.text = self.m;
+                DebugLog("我的self的m的值%@",self.m);
+            }else{
+                 self.mTextF.placeholder = @"请输入账号号码";
+            }
+           
+        }else if(_mIndexPath.row == 7){
+            self.mTextF.placeholder = @"请输入联系号码";
+        }
         self.mTextF.font = kCommonFont(14);
         self.mTextF.clearButtonMode = UITextFieldViewModeAlways;
         self.mTextF.delegate = self;
@@ -70,38 +90,13 @@
         self.mLb = [UILabel new];
         self.mLb.font = kCommonFont(14);
         self.mLb.textColor = ssRGBHex(0xCCCCCC);
-//        if(EnterString){
-//                 [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-//            }
-     
-//        if(EnterString){
-//            [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-////        [self.mData insertObject:EnterString atIndex:_mIndexPath.row];
-////            for(int i=0;i<_mData.count;i++){
-//////                if (i == _mIndexPath.row) {
-//////                    [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-////                    [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-//////                     DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
-//////                }
-//            }
-//            [self.mData replaceObjectAtIndex:_mIndexPath.row withObject:EnterString];
-             DebugLog(@"数据为%@,下标为%ld",self.mData,_mIndexPath.row);
-//        }
-        
-    
         self.mLb.text = EnterString;
-//        DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
+//      DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
         if([self.mLb.text isEqual:@"请选择"]){
             self.mLb.textColor = ssRGBHex(0xCCCCCC);
         }else{
              self.mLb.textColor = ssRGBHex(0x2B2B2B);
         };
-//            self.mLb.textColor = ssRGBHex(0x2B2B2B);
-//        }else{
-//        self.mLb.text = @"请选择";
-//        self.mLb.textColor = ssRGBHex(0xCCCCCC);
-//        }
-//
         self.mLb.textAlignment = NSTextAlignmentRight;
         [self.mBtn addSubview:self.mLb];
         [self.mBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -138,6 +133,39 @@
     if (self.mBlock) {
         self.mBlock(self.mIndexPath,textField.text);
     }
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if(_mIndexPath.row ==5){
+    // 每间隔4个字符插入一个空格并在删除时去掉
+    NSMutableString *strmText = [NSMutableString stringWithString:textField.text];
+    if ([textField.text length] == range.location) {
+        
+        // 插入
+        if ([textField.text length]%5 == 4) {
+            
+            [strmText appendString:@" "];
+        }
+        
+    } else {
+        
+        // 删除
+        if ([textField.text length] && [textField.text length]%5 == 0) {
+            
+            strmText = [NSMutableString stringWithString:[strmText substringToIndex:strmText.length - 1]];
+        }
+    }
+        
+    textField.text = strmText;
+}
+    
+//    if(_mIndexPath.row == 7 ){
+//        if ([textField.text length] >11) {
+//            DebugLog(@"请输入正确的联系号码");
+//        }
+//    }
     return YES;
 }
 

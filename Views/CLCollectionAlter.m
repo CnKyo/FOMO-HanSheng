@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"修改收款人信息";
     // Do any additional setup after loading the view.
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
