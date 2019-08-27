@@ -48,7 +48,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CLHiStoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-   
+    if(cell == nil){
+        cell = [[CLHiStoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+    self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     return cell;
 }

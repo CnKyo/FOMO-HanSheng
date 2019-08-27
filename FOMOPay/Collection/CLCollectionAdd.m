@@ -19,7 +19,7 @@
 @property (nonatomic,strong) UIButton *mSendButton;
 @property (nonatomic,strong) NSMutableArray *mMdate;
 @property (nonatomic,strong) NSString *mDl;
-@property (nonatomic,strong) UILabel * mHint;
+
 @end
 
 @implementation CLCollectionAdd

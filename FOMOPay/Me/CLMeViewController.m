@@ -59,7 +59,7 @@
         return 1;
     }
 }
-//每个分组上边预留的空白高度
+
 
 
 //每个分组下边预留的空白高度
@@ -89,13 +89,15 @@
 //设置每行对应的cell（展示的内容）
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifer=@"cell";
-    CLMeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    
+    CLMeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell==nil) {
-        cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    
     if (indexPath.section==0) {
         cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userinfo"];
+        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
         UIImageView *UserimageView=[[UIImageView alloc]init];
         UserimageView.image=[UIImage yh_imageNamed:@"pdf_me_userImage.pdf"];
         UserimageView.layer.cornerRadius = 24;
