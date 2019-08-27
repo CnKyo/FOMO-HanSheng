@@ -29,6 +29,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.mTextF = [UITextField new];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -37,9 +38,7 @@
     // Configure the view for the selected state
 }
 
--(void)initWithModelString:(NSString *)model{
-    self.m = model;
-}
+
 
 - (void)updateView:(CLMeLanguageType)type and:(nonnull NSString *)EnterString{
     for (UIView *vvv in self.mRightView.subviews) {
@@ -49,7 +48,8 @@
         _mData = [NSMutableArray arrayWithObjects:@"请选择",@"请选择",@"请选择" ,@"请选择",@"请选择",@"请选择",@"请选择",@"请选择", nil];
     }
     if (type == CLMeLanguageType_textFiled) {
-        self.mTextF = [UITextField new];
+//        self.mTextF = [UITextField new];
+//        [self.mTextF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         self.mTextF.frame = self.mRightView.bounds;
         self.mTextF.textAlignment = NSTextAlignmentRight;
         if (_mIndexPath.row == 0) {
@@ -57,13 +57,7 @@
         }else if(_mIndexPath.row == 4){
             self.mTextF.placeholder = @"请输入开户城市";
         }else if(_mIndexPath.row == 5){
-            if (_mTextF.text.length >0) {
-                _mTextF.text = self.m;
-                DebugLog("我的self的m的值%@",self.m);
-            }else{
-                 self.mTextF.placeholder = @"请输入账号号码";
-            }
-           
+            self.mTextF.placeholder = @"请输入账号号码";
         }else if(_mIndexPath.row == 7){
             self.mTextF.placeholder = @"请输入联系号码";
         }
@@ -81,7 +75,7 @@
     }else if (type == CLMeLanguageType_button){
         self.mBtn = [UIButton new];
         [self.mBtn addTarget:self action:@selector(OpenSelect:) forControlEvents:UIControlEventTouchUpInside];
-//        self.mBtn.backgroundColor = [UIColor yellowColor];
+        self.mBtn.backgroundColor = [UIColor yellowColor];
 //        self.mBtn.titleLabel.font = kCommonFont(14);
         [self.mRightView addSubview:self.mBtn];
         self.mImageV = [UIImageView new];
@@ -137,30 +131,30 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
+
     if(_mIndexPath.row ==5){
     // 每间隔4个字符插入一个空格并在删除时去掉
     NSMutableString *strmText = [NSMutableString stringWithString:textField.text];
     if ([textField.text length] == range.location) {
-        
+
         // 插入
         if ([textField.text length]%5 == 4) {
-            
+
             [strmText appendString:@" "];
         }
-        
+
     } else {
-        
+
         // 删除
         if ([textField.text length] && [textField.text length]%5 == 0) {
-            
+
             strmText = [NSMutableString stringWithString:[strmText substringToIndex:strmText.length - 1]];
         }
     }
-        
+
     textField.text = strmText;
 }
-    
+
 //    if(_mIndexPath.row == 7 ){
 //        if ([textField.text length] >11) {
 //            DebugLog(@"请输入正确的联系号码");
@@ -168,6 +162,14 @@
 //    }
     return YES;
 }
+
+//- (void)textFieldDidChange:(UITextField *)textField{//点击事件
+//    
+//    if (self.mBlock) {
+//        self.mBlock(self.mIndexPath,textField.text);
+//    }
+//}
+
 
 -(void)OpenSelect:(id)sender{
     if(self.mDataBlock){

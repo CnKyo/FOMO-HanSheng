@@ -19,8 +19,7 @@
 @property (nonatomic,strong) UIButton *mSendButton;
 @property (nonatomic,strong) NSMutableArray *mMdate;
 @property (nonatomic,strong) NSString *mDl;
-
-
+@property (nonatomic,strong) UILabel * mHint;
 @end
 
 @implementation CLCollectionAdd
@@ -44,7 +43,6 @@
                 break;
         }
     }];
-    
     [self LoadCellType:6];
     self.mSendButton = [UIButton new];
     [self.mSendButton setTitle:@"提交" forState:UIControlStateNormal];
@@ -59,7 +57,6 @@
         make.left.equalTo(self.view).offset(10);
         make.right.equalTo(self.view).offset(-10);
         }];
-    
     self.mImageView = [UIImageView new];
     [self loadData];
 }
@@ -128,7 +125,7 @@
                     self.mIndex = indexPath;
     
         };}
-        if(indexPath.row == 2){
+    if(indexPath.row == 2){
             cell.mIndexPath = indexPath;
             [cell updateView:CLMeLanguageType_button and:_mModeString];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
@@ -164,6 +161,10 @@
             [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
             self.mIndex = indexPath;
         };}
+    
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////以下为textfiled
     if(indexPath.row == 4 ){
         cell.mIndexPath = indexPath;
         [cell updateView:CLMeLanguageType_textFiled and:nil];
@@ -172,16 +173,6 @@
              [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             
         };}
-    
-    
-//    if(indexPath.row == 5 ){
-//        cell.mIndexPath = indexPath;
-//        [cell updateView:CLMeLanguageType_textFiled and:nil];
-//        cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-//            //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-//            [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-//
-//        };}
 
     if(indexPath.row == 5){
         cell.mIndexPath = indexPath;
@@ -209,35 +200,30 @@
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 self.mDl  = mText;
-           
-            if(mText.length >11){
-                DebugLog(@"请输入正确的账户号码");
+                if(mText.length >11){
 //                self.mDl = mText;
                 self.mTabView.rowHeight = UITableViewAutomaticDimension;
                 mLineView.backgroundColor = ssRGBHex(0xD50037);
                 mHint.text = @"请输入正确的账户号码";
+                    NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
+                    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
                 }else{
                 mLineView.backgroundColor = ssRGBHex(0xcccccc);
                 //[WeakSelf.mHint removeFromSuperview];
                 mHint.text = @"";
+                    NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
+                    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];//刷新末尾的cell来实现重定义高度
 //                 self.mDl = mText;
 //                [self.mTabView reloadRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-                [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
+                    [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             }
-            
-             [self.mTabView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+//             [self.mTabView reloadRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationNone];
 //            CLMeLanguage *new = [CLMeLanguage new];
 //            [new initWithModelString:self.mDl];
         };}
 
-
-    
-    
-    
-    
-    
-    
-    
     
     if(indexPath.row == 7){
         cell.mIndexPath = indexPath;
@@ -267,7 +253,6 @@
 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
             
             if(mText.length >11){
-                DebugLog(@"请输入正确的联系号码");
             mLineView.backgroundColor = ssRGBHex(0xD50037);
                mHint.text = @"请输入正确的联系号码";
             }else{
@@ -282,6 +267,15 @@
     if(indexPath.row == 8){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
+//    for (int i = 0;i<8 ; i++) {
+//        if([self.mMdate[i] isEqual:@""]){
+//            self.mSendButton.enabled = NO;
+//            self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+//        }else{
+//            self.mSendButton.enabled = YES;
+//            self.mSendButton.backgroundColor = clBlueRGB;
+//        }
+//    }
     return cell;
 }
 
@@ -317,11 +311,19 @@
 
 -(void)successfullyadd:(id)sender{
     DebugLog("点击了提交按钮");
+//    for (int i=0; i<self.mMdate.count; i++) {
+//        if ([self.mMdate[i] isEqual:@""] ) {
+//            DebugLog(@"这个值为空,%@",self.mMdate);
+//        }
+//    }
+   
+    
 //    CLCollectionViewController *vc = [CLCollectionViewController new];
 //    [vc initWithModelData:self.mMdate];
 //    [self pushToViewController:vc];
     [self.delegate changeArray:self.mMdate];
     DebugLog(@"提交的时候的Mdata的值%@",self.mMdate);
+    DebugLog(@"提交的时候的mdata的个数为%ld",self.mMdate.count);
 //    [self.delegate changg:self.EnterString];
     [self.navigationController popToRootViewControllerAnimated:YES];
 //    [ mDatajump initWithModelData:_mModeString];

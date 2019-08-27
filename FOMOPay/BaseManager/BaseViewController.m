@@ -51,7 +51,8 @@
         [self addMeLanguageTabView];
     }else if(Type == 7){
         [self addCollectionSelectTabView];
-    }
+    }else if(Type == 8)
+        [self addMeSwitchTabView];
 }
 
 
@@ -189,6 +190,26 @@
 //    }];
 }
 
+
+-(void)addMeSwitchTabView{
+    UINib *nib = [UINib nibWithNibName:@"CLMeSwitchLanguage" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+        
+    }];
+}
 
 
 - (UITableView *)mTabView{

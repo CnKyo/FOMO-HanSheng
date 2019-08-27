@@ -69,7 +69,7 @@
 #import "CLHistoryRenittabcePlanView.h"
 #import "CLCollectionAlter.h"
 #import "LogInViewController.h"
-
+#import "CLMeSwitchLanguage.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"

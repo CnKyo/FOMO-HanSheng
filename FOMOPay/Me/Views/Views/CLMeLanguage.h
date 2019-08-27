@@ -17,11 +17,11 @@ typedef enum : NSUInteger {
 } CLMeLanguageType;
 
 typedef void(^CLMeLanguageBlock)(NSIndexPath *mIndexPath,NSString *mText);
-typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);
+typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);  //block 第一步
 @interface CLMeLanguage : UITableViewCell
 
 @property (copy,nonatomic) CLMeLanguageBlock mBlock;
-@property (copy,nonatomic) CLCollectionBlock mDataBlock;
+@property (copy,nonatomic) CLCollectionBlock mDataBlock; //block第二步
 
 @property (weak, nonatomic) IBOutlet UILabel *mMeLanguageLeftLabel;
 
@@ -29,8 +29,13 @@ typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);
 
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
 
+
+
 - (void)updateView:(CLMeLanguageType)type and:(NSString *)EnterString;
-- (void)initWithModelString:(NSString *)model;
+
+
+
+
 @end
 
 

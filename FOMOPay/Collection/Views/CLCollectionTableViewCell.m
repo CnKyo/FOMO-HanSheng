@@ -23,11 +23,14 @@
 -  (void)CellStyle:(NSInteger)Type{
     if (Type == 2) {
         [self awakeFromNib1];
-    }else if(Type == 3){
-        [self awakeFromNib2];
+   
+
         
-    }else{
-        [self awakeFromNib3];
+}
+}
+- (IBAction)mDelAction:(UIButton *)sender {
+    if (self.mDeleteBlock) {
+        self.mDeleteBlock(self.mInd);
     }
 }
 
@@ -59,4 +62,5 @@
     
     [super setFrame:frame];
 }
+
 @end

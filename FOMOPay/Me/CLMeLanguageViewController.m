@@ -10,6 +10,7 @@
 
 @interface CLMeLanguageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) NSArray *mMeSwitchDateSource;
+
 @end
 
 @implementation CLMeLanguageViewController
@@ -33,9 +34,13 @@
                 break;
         }
     }];
-    [self LoadCellType:6];
+    [self LoadCellType:8];
     _mMeSwitchDateSource = @[@"简体中文",@"English"];
+    
 }
+
+
+
 
 
 
@@ -45,18 +50,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.mMeLanguageLeftLabel.text = [_mMeSwitchDateSource objectAtIndex:indexPath.row];
-    UIImageView *SelectedImage=[[UIImageView alloc]init];
-    SelectedImage.image=[UIImage yh_imageNamed:@"pdf_me_language_selected"];
+    CLMeSwitchLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    if(!cell){
+        cell = [[CLMeSwitchLanguage alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.mLeftName.text = [_mMeSwitchDateSource objectAtIndex:indexPath.row];
    
-    [cell.contentView addSubview:SelectedImage];
-    [SelectedImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(cell).offset(12);
-        make.bottom.equalTo(cell).offset(-12);
-        make.right.equalTo(cell).offset(-10);
-    }];
-    
+//    UIImageView *SelectedImage=[[UIImageView alloc]init];
+//    SelectedImage.image=[UIImage yh_imageNamed:@"pdf_me_language_selected"];
+   
+//    [cell.contentView addSubview:SelectedImage];
+//    [SelectedImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(cell).offset(12);
+//        make.bottom.equalTo(cell).offset(-12);
+//        make.right.equalTo(cell).offset(-10);
+//    }];
+//    
     return cell;
 }
 
@@ -71,5 +80,13 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"触发点击事件");
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+
 }
 @end

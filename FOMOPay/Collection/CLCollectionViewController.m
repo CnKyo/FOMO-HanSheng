@@ -100,7 +100,7 @@
         
         return [self.DataSource[section] count];  ////////每组有多少个
 //        return [self.mPushData[section] count];
-        
+//        return 1;
     }
 }
 
@@ -113,7 +113,19 @@
     }
     [cell CellStyle:2];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.mIdx = indexPath;
+ 
+//    self.mDeleteBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
+//        [self.DataSource removeObject:mIndexPath];
+//        [self.mTabView beginUpdates];
+//        [self.mTabView deleteRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        [self.mTabView endUpdates];
+//    };
+    cell.mInd = indexPath;
+    [cell.CLCollectionDelete addTarget:self action:@selector(mDelete:) forControlEvents:UIControlEventTouchUpInside];
+    cell.mDeleteBlock = ^(NSIndexPath * _Nonnull mIndex) {
+        self.mIdx = mIndex;
+        
+    };
 //    cell.mName.text=[self.mPushData objectAtIndex:0];
 //    cell.mAccountNumber.text = [self.mPushData objectAtIndex:5];
 //    if([[self.mPushData objectAtIndex:1]isEqual:@"中国"]){
@@ -264,19 +276,21 @@
 //}
 
 -(void)mDelete:(id)sender{
+   
     DebugLog(@"点击了删除按钮");
     DebugLog(@"当前行%@",self.mIdx);
+    DebugLog(@"当前组%ld",(long)self.mIdx.section);
+    DebugLog(@"当前行%ld",(long)self.mIdx.row);
      __block typeof(self) WeakSelf = self;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除收款人" message:@"是否要删除此收款人" preferredStyle:UIAlertControllerStyleAlert];
    __block  UIAlertAction *NoAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-        
+       
     }];
     
     __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         if(YesAction){
-//        [WeakSelf.DataSource removeObject:0];
-        [WeakSelf.mTabView reloadData];
-//        [WeakSelf.mTabView deleteRowsAtIndexPaths:[NSArray arrayWithObject:WeakSelf.mIdx] withRowAnimation:UITableViewRowAnimationAutomatic];
+             [WeakSelf.DataSource removeObjectAtIndex:WeakSelf.mIdx.row];
+             [self.mTabView reloadData ];
         }
     }];
     [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
