@@ -10,13 +10,17 @@
 
 #import "HomeDataObject.h"
 
-NS_ASSUME_NONNULL_BEGIN
+typedef NS_ENUM(NSInteger,HomeListCellType) {
+    
+    HomeListCellTypeHome = 0,
+    HomeListCellTypeChangeAmount,
+};
 
 @interface HomeListCell : UITableViewCell
 
+@property (nonatomic, assign) HomeListCellType type;
 @property (nonatomic, copy) void(^HomeListCellBlock)(NSString *string,NSInteger tag);
 @property (nonatomic, copy) void(^HomeListCellButtonBlock)(NSString *unit);
 
 @end
 
-NS_ASSUME_NONNULL_END

@@ -80,7 +80,6 @@
     if (!cell) {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"selectBankCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, tableView.frame.size.width - 30, 44)];
         titleLabel.tag = 555;

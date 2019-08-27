@@ -1,38 +1,29 @@
 //
-//  HomeRefundViewController.m
+//  HomeChangePayeeVC.m
 //  FOMOPay
 //
-//  Created by mac_clkj on 2019/8/24.
+//  Created by mac_clkj on 2019/8/27.
 //  Copyright © 2019 王钶. All rights reserved.
 //
 
-#import "HomeRefundViewController.h"
-#import "HomeRefundListCell.h"
-#import "HomeSelectPayeeViewController.h"
+#import "HomeChangePayeeVC.h"
+#import "HomeChangePayeeCell.h"
 
-@interface HomeRefundViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomeChangePayeeVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 
-@property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *number;
-@property (nonatomic, copy) NSString *bank;
-
 @end
 
-@implementation HomeRefundViewController
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
+@implementation HomeChangePayeeVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
     CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"退款账户";
+    mNewModel.mTitle = @"修改收款人信息";
     [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
         
     }];
@@ -53,7 +44,6 @@
         
         bottomSafeHeight = 0;
     }
-    
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
     
     _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -70,7 +60,7 @@
         make.top.equalTo(self.view).offset(44 + rectStatus.size.height);
     }];
     
-    [_myTableView registerNib:[UINib nibWithNibName:@"HomeRefundListCell" bundle:nil] forCellReuseIdentifier:@"HomeRefundListCell"];
+    [_myTableView registerNib:[UINib nibWithNibName:@"HomeChangePayeeCell" bundle:nil] forCellReuseIdentifier:@"HomeChangePayeeCell"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -85,46 +75,46 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    HomeRefundListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeRefundListCell"];
+    HomeChangePayeeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeChangePayeeCell"];
     if (!cell) {
         
-        cell = [[HomeRefundListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeRefundListCell"];
+        cell = [[HomeChangePayeeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeChangePayeeCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    __weak __typeof(self)weakSelf = self;
-    
-    [cell updateTitle:_unitString];
-    cell.HomeRefundListCellBlock = ^(NSString *string, NSInteger tag) {
+    cell.HomeChangePayeeCellText = ^(NSString *text, NSInteger tag) {
         
-        if (tag == 3000) {  //城市
-            
-            weakSelf.city = string;
-            
-        }else if (tag == 3001){ //账户名称
-            
-            weakSelf.name = string;
-            
-        }else if (tag == 3002){ //账户号码
-            
-            weakSelf.number = string;
-
-        }else { //开户银行
-            
-            weakSelf.bank = string;
-        }
+        
     };
     
-    cell.HomeRefundListCellButtonBlock = ^{
+    cell.HomeChangePayeeCellButton = ^(NSInteger tag) {
         
-        //下一步
-        HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-        vc.type = ShowButtonTypeDefault;
-        [weakSelf pushToViewController:vc];
+        if (tag == 4) {  //删除
+            
+            UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"删除收款人" message:@"是否要删除此收款人信息" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+                NSLog(@"点击了取消按钮");
+            }];
+            
+            UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                NSLog(@"点击了确定按钮");
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+            [alertVc addAction:cancle];
+            [alertVc addAction:confirm];
+            
+            [self presentViewController:alertVc animated:YES completion:^{}];
+            
+        }else if (tag == 5){ //提交
+            
+        }
     };
     
     return cell;
 }
-
 
 @end

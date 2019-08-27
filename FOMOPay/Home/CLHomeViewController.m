@@ -7,7 +7,7 @@
 //
 
 #import "CLHomeViewController.h"
-#import "CLHomeDetailVC.h"
+
 #import "HomeListCell.h"
 #import "HomeDataObject.h"
 #import "HomeRefundViewController.h"
@@ -72,6 +72,7 @@
         cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeListCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    cell.type = HomeListCellTypeHome;
 
     cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
         

@@ -105,6 +105,11 @@
             
             weakSelf.bankLabel.text = string;
             weakSelf.bankLabel.textColor = [UIColor blackColor];
+            
+            if (weakSelf.HomeRefundListCellBlock) {
+                
+                weakSelf.HomeRefundListCellBlock(string,3003);
+            }
         }
     };
     

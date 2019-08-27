@@ -1,42 +1,32 @@
 //
-//  HomeRefundViewController.m
+//  HomeChangeAmountVC.m
 //  FOMOPay
 //
-//  Created by mac_clkj on 2019/8/24.
+//  Created by mac_clkj on 2019/8/27.
 //  Copyright © 2019 王钶. All rights reserved.
 //
 
-#import "HomeRefundViewController.h"
-#import "HomeRefundListCell.h"
-#import "HomeSelectPayeeViewController.h"
+#import "HomeChangeAmountVC.h"
+#import "HomeListCell.h"
 
-@interface HomeRefundViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomeChangeAmountVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 
-@property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *number;
-@property (nonatomic, copy) NSString *bank;
-
 @end
 
-@implementation HomeRefundViewController
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
+@implementation HomeChangeAmountVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
     CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"退款账户";
+    mNewModel.mTitle = @"修改汇款金额";
     [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
         
     }];
-    
     [self loadTableView];
 }
 
@@ -53,7 +43,6 @@
         
         bottomSafeHeight = 0;
     }
-    
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
     
     _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -70,7 +59,7 @@
         make.top.equalTo(self.view).offset(44 + rectStatus.size.height);
     }];
     
-    [_myTableView registerNib:[UINib nibWithNibName:@"HomeRefundListCell" bundle:nil] forCellReuseIdentifier:@"HomeRefundListCell"];
+    [_myTableView registerNib:[UINib nibWithNibName:@"HomeListCell" bundle:nil] forCellReuseIdentifier:@"HomeListCell"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -85,46 +74,65 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    HomeRefundListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeRefundListCell"];
+    HomeListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeListCell"];
     if (!cell) {
         
-        cell = [[HomeRefundListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeRefundListCell"];
+        cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeListCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    __weak __typeof(self)weakSelf = self;
-    
-    [cell updateTitle:_unitString];
-    cell.HomeRefundListCellBlock = ^(NSString *string, NSInteger tag) {
-        
-        if (tag == 3000) {  //城市
-            
-            weakSelf.city = string;
-            
-        }else if (tag == 3001){ //账户名称
-            
-            weakSelf.name = string;
-            
-        }else if (tag == 3002){ //账户号码
-            
-            weakSelf.number = string;
+    cell.type = HomeListCellTypeChangeAmount;
 
-        }else { //开户银行
+    cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+        
+        if (tag == 4000) {  //汇出
             
-            weakSelf.bank = string;
+            
+            
+        }else if (tag == 4001){ //获得
+            
+            
+        }else{  //总金额
+            
+            
         }
     };
     
-    cell.HomeRefundListCellButtonBlock = ^{
+    cell.HomeListCellButtonBlock = ^(NSString * _Nonnull unit) {
         
-        //下一步
-        HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-        vc.type = ShowButtonTypeDefault;
-        [weakSelf pushToViewController:vc];
+        NSString *string = nil;
+        if ([unit isEqualToString:@"SGD"]) {    //新加坡
+            
+            string = @"新加坡";
+            
+        }else if ([unit isEqualToString:@"CNY"]){   //中国
+            
+            string = @"中国";
+            
+        }else if ([unit isEqualToString:@"TWD"]){   //台湾
+            
+            string = @"台湾";
+            
+        }else if ([unit isEqualToString:@"MYR"]){   //马来西亚
+            
+            string = @"马来西亚";
+            
+        }else if ([unit isEqualToString:@"HKD"]){   //香港
+            
+            string = @"香港";
+            
+        }else if ([unit isEqualToString:@"IDR"]){   //印尼
+            
+            string = @"印尼";
+            
+        }else if ([unit isEqualToString:@"PHP"]){   //菲律宾
+            
+            string = @"菲律宾";
+        }
+
     };
     
     return cell;
 }
-
 
 @end
