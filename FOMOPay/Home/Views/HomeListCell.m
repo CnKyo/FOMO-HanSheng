@@ -96,6 +96,18 @@
     [_myCollectionView registerNib:[UINib nibWithNibName:@"HomeListCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"HomeListCollectionCell"];
 }
 
+- (void)setType:(HomeListCellType)type{
+    
+    if (type == HomeListCellTypeHome) {
+        
+        [_exchangeRateButton setTitle:@"汇款" forState:UIControlStateNormal];
+        
+    }else{
+        
+        [_exchangeRateButton setTitle:@"修改" forState:UIControlStateNormal];
+    }
+}
+
 - (void)isShowGetAmountView:(BOOL)isShow{
     
     if (isShow) {
