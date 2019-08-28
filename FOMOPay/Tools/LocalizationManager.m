@@ -113,15 +113,10 @@ static NSString *UserLanguage = @"UserLanguage";
 
                 [(CLMeViewController *)vc changeLanguage];
             }
-                
-
-           
-            
         }
     }
-    
-    
 }
+
 +(NSString *)getSystemLanguage
 {
     NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
