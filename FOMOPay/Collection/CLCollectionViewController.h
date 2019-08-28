@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 //- (void)initWithModelData:(NSArray *)modelLeftArray;
 @property (nonatomic,strong)  NSArray *mPushData;
-
+-(void)backa;
+-(void)show;
 @end
 
 NS_ASSUME_NONNULL_END

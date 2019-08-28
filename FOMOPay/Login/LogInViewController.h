@@ -11,7 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LogInViewController : BaseViewController
-
 @end
 
 NS_ASSUME_NONNULL_END

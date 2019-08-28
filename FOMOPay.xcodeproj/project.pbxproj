@@ -103,6 +103,8 @@
 		CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */; };
 		CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */; };
 		CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */; };
+		CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48882523164B5B00582B44 /* LocalizationManager.m */; };
+		CF48882E23164F3400582B44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF48883023164F3500582B44 /* Localizable.strings */; };
 		CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */; };
 		CF5A8C542306A1DE00745FE9 /* pdf_me_callme.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */; };
 		CF5A8C552306A1DE00745FE9 /* pdf_me_logout.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */; };
@@ -315,6 +317,12 @@
 		CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLTableViewCell.xib; sourceTree = "<group>"; };
 		CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_cell_out.pdf; sourceTree = "<group>"; };
 		CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_transfer_1.pdf; sourceTree = "<group>"; };
+		CF48882423164B5B00582B44 /* LocalizationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizationManager.h; sourceTree = "<group>"; };
+		CF48882523164B5B00582B44 /* LocalizationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalizationManager.m; sourceTree = "<group>"; };
+		CF48882C23164F2E00582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		CF48882D23164F2E00582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		CF48882F23164F3500582B44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CF48883123164F3800582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_userImage.pdf; sourceTree = "<group>"; };
 		CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_callme.pdf; sourceTree = "<group>"; };
 		CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_logout.pdf; sourceTree = "<group>"; };
@@ -451,6 +459,7 @@
 				1863DA5423011A08000969FE /* LaunchScreen.storyboard */,
 				1863DA5723011A08000969FE /* Info.plist */,
 				1863DA5823011A08000969FE /* main.m */,
+				CF48883023164F3500582B44 /* Localizable.strings */,
 				772D73B0230A3ED50068AB48 /* Login */,
 				772D73AC230A3DCF0068AB48 /* GuideView */,
 				1863DA86230120DF000969FE /* HeaderFile */,
@@ -542,6 +551,8 @@
 			children = (
 				CF626525231527A8001AF5FC /* CLTool.h */,
 				CF626524231527A8001AF5FC /* CLTool.m */,
+				CF48882423164B5B00582B44 /* LocalizationManager.h */,
+				CF48882523164B5B00582B44 /* LocalizationManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1056,6 +1067,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 1863DA3D23011A07000969FE;
 			productRefGroup = 1863DA4723011A07000969FE /* Products */;
@@ -1147,6 +1159,7 @@
 				772D73C4230A798C0068AB48 /* pdf_login_icon.pdf in Resources */,
 				77BE820F23151C4A00519F66 /* HomeChangePayeeCell.xib in Resources */,
 				77DD6BB12313D98F00BFDD11 /* HomeSureInfoEditCell.xib in Resources */,
+				CF48882E23164F3400582B44 /* Localizable.strings in Resources */,
 				CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */,
 				770239AD230BFD2A00EE8C31 /* pdf.guideView_icon_china_2.pdf in Resources */,
 			);
@@ -1240,6 +1253,7 @@
 				77DD6BB52313E12A00BFDD11 /* HomeSureInfoListCell.m in Sources */,
 				777EAEB7230CEA6B009D7B22 /* WKBaseModel.m in Sources */,
 				772D73B3230A3F670068AB48 /* LogInViewController.m in Sources */,
+				CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */,
 				771501892311176B0016B449 /* HomeRefundListCell.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
 				7702398C230B83C100EE8C31 /* HomeListCell.m in Sources */,
@@ -1329,6 +1343,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1863DA5023011A07000969FE /* Base */,
+				CF48882C23164F2E00582B44 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1337,8 +1352,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				1863DA5523011A08000969FE /* Base */,
+				CF48882D23164F2E00582B44 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CF48883023164F3500582B44 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF48882F23164F3500582B44 /* en */,
+				CF48883123164F3800582B44 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1348,6 +1373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1407,6 +1433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

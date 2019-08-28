@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  FOMOPay
+
+  Created by clkj on 2019/8/28.
+  Copyright © 2019 王钶. All rights reserved.
+*/
+"Language" = "English";
+"Me"  = "Me";
+"Payee" = "Payee";
+"History" = "History";
+"Remittance" = "Remittance";
+"Notify" = "Notify";
+"Open Message Notification" = "Open Message Notification";
+"Open real-time remittance notification, you can faster understand your remittance status" = "Open real-time remittance notification, you can faster understand your remittance status";
+"language"  = "Language";
+"Contact Us" ="Contact Us";
+"Treaty Clauses" = "Treaty Clauses";
+"Logout" = "Logout";
+"Message Notification" = "Message Notification";
+"Choosing Language" = "Choosing Language" ;

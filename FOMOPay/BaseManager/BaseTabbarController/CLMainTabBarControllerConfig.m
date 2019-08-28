@@ -46,25 +46,25 @@
 
 - (NSArray *)tabBarItemsAttributes{
     NSDictionary *tabBarItems1Attributes = @{
-                                                CYLTabBarItemTitle:@"汇款",
+                                                CYLTabBarItemTitle:languageStr(@"Remittance"),
                                                 CYLTabBarItemImage : [UIImage yh_imageNamed:@"pdf_home_home_tabbar.pdf"],
                                                 CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_home_tabbarselected.pdf"]
     };
     
     NSDictionary *tabBarItems2Attributes = @{
-                                             CYLTabBarItemTitle:@"历史",
+                                             CYLTabBarItemTitle:languageStr(@"History"),
                                              CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_history_tabbar.pdf"],
                                              CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_history_tabbarselected.pdf"]
                                              };
     
     NSDictionary *tabBarItems3Attributes = @{
-                                             CYLTabBarItemTitle:@"收款人",
+                                             CYLTabBarItemTitle:languageStr(@"Payee"),
                                              CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_collection_tabbar.pdf"],
                                              CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_collection_tabbarselected.pdf"]
                                              };
     
     NSDictionary *tabBarItems4Attributes = @{
-                                             CYLTabBarItemTitle:@"我",
+                                             CYLTabBarItemTitle:languageStr(@"Me"),
                                              CYLTabBarItemImage: [UIImage yh_imageNamed:@"pdf_home_me_tabbar.pdf"],
                                              CYLTabBarItemSelectedImage:[UIImage yh_imageNamed:@"pdf_home_me_tabbarselected.pdf"]
                                              };

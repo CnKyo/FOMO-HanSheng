@@ -9,15 +9,24 @@
 #import "CLMeLanguageViewController.h"
 
 @interface CLMeLanguageViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic,strong) NSArray *mMeSwitchDateSource;
+@property (nonatomic,strong) NSArray *languageArray;
+@property (nonatomic,strong)NSIndexPath *indexPath;
 
 @end
 
 @implementation CLMeLanguageViewController
+-(NSArray *)languageArray
+{
+    if (!_languageArray) {
+        _languageArray=@[@"简体中文",@"English"];
+    }
+    return _languageArray;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"选择语言";
+    self.title = languageStr(@"Choosing Language");
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
             case 0:
@@ -35,18 +44,29 @@
         }
     }];
     [self LoadCellType:8];
-    _mMeSwitchDateSource = @[@"简体中文",@"English"];
-    
+    [self languageArray];
+    [self setDefaultLanguage];
+}
+
+-(void)setDefaultLanguage
+{
+    // 假装只有两种语言·=-= ·
+    if([[LocalizationManager userLanguage] isEqualToString:@"en"])
+    {
+        self.indexPath=[NSIndexPath indexPathForRow:1 inSection:0];
+    }
+    else
+    {
+        self.indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+    }
 }
 
 
 
 
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _mMeSwitchDateSource.count;
+    return self.languageArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,18 +74,12 @@
     if(!cell){
         cell = [[CLMeSwitchLanguage alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.mLeftName.text = [_mMeSwitchDateSource objectAtIndex:indexPath.row];
-   
-//    UIImageView *SelectedImage=[[UIImageView alloc]init];
-//    SelectedImage.image=[UIImage yh_imageNamed:@"pdf_me_language_selected"];
-   
-//    [cell.contentView addSubview:SelectedImage];
-//    [SelectedImage mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(cell).offset(12);
-//        make.bottom.equalTo(cell).offset(-12);
-//        make.right.equalTo(cell).offset(-10);
-//    }];
-//    
+    cell.mLeftName.text = [_languageArray objectAtIndex:indexPath.row];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    if (indexPath.row==self.indexPath.row) {
+        cell.mRightImg.image = [UIImage yh_imageNamed:@"pdf_me_language_selected.pdf"];
+    }
+  
     return cell;
 }
 
@@ -84,9 +98,31 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"触发点击事件");
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+//    NSLog(@"触发点击事件");
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.indexPath=indexPath;
+    if (self.indexPath.row==0) {
+        [LocalizationManager setUserlanguage:@"zh-Hans"];
+    }else if (self.indexPath.row==1)
+    {
+        [LocalizationManager setUserlanguage:@"en"];
+    }
+    [self.mTabView reloadData];
 
+}
+
+
+-(void)back
+{
+    UIActivityIndicatorView *ac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    ac.center=self.view.center;
+    ac.hidesWhenStopped=YES;
+    ac.color=clBlueRGB;
+    [self.view addSubview:ac];
+    [ac startAnimating];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [ac stopAnimating];   //动画
+        [self.navigationController popViewControllerAnimated:YES];
+    });
 }
 @end

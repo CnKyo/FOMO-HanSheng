@@ -310,49 +310,29 @@
 }
 
 -(void)successfullyadd:(id)sender{
-    DebugLog("点击了提交按钮");
-//    for (int i=0; i<self.mMdate.count; i++) {
-//        if ([self.mMdate[i] isEqual:@""] ) {
-//            DebugLog(@"这个值为空,%@",self.mMdate);
-//        }
-//    }
-   
-    
-//    CLCollectionViewController *vc = [CLCollectionViewController new];
-//    [vc initWithModelData:self.mMdate];
-//    [self pushToViewController:vc];
     [self.delegate changeArray:self.mMdate];
+    DebugLog("点击了提交按钮");
     DebugLog(@"提交的时候的Mdata的值%@",self.mMdate);
     DebugLog(@"提交的时候的mdata的个数为%ld",self.mMdate.count);
-//    [self.delegate changg:self.EnterString];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-//    [ mDatajump initWithModelData:_mModeString];
 //    CLCollectionViewController *vc = [CLCollectionViewController new];
-//    UIImageView *mImg = [UIImageView new];
-//    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint.pdf"];
-////    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(200  , 200, 40, 40)];
-////    label.backgroundColor = [UIColor redColor];
-////    label.font = [UIFont systemFontOfSize:14];
-////    label.text = @”提示信息
-////    [self.view addSubview:label];
-//    [self.view addSubview:mImg];
-//    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self.view);
-//    }];
-//    //设置动画
-//    CATransition * transion = [CATransition animation];
-//    
-//    transion.type = @"push";//设置动画方式
-//    transion.subtype = @"fromRight";//设置动画从那个方向开始
-////    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
-//    [mImg.layer addAnimation:transion forKey:nil];
-//    //不占用主线程
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-////        [label removeFromSuperview];
-//        [mImg removeFromSuperview];
-//    });
-//    [vc dismissViewControllerAnimated:YES completion:NULL];
+//    [vc show];
+    
+//    [self.navigationController pushViewController:vc animated:NO];
+    for (UIViewController *vc in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:[CLCollectionViewController class]]) {
+          [(CLCollectionViewController  *)vc show];
+//            [self.navigationController popToViewController:controller animated:YES];
+        }
+    }
     
 
+    
+   
+    
+   
+    
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
+
 @end

@@ -30,10 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"退款账户";
-    [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
+    self.title = @"退款进度";
+    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
     

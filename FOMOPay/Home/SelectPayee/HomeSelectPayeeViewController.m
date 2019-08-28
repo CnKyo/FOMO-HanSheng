@@ -25,10 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"选择收款人";
-    [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
+    self.title =@"选择收款人";
+    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
     

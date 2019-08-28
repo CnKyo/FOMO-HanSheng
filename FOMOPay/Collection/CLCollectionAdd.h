@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end///////////
 @interface CLCollectionAdd : BaseViewController
 @property (nonatomic,weak)id<CLCollectionAddDelegate>delegate;////////
+
+-(void)back;
 @end
 
 NS_ASSUME_NONNULL_END
