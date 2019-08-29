@@ -73,6 +73,8 @@
 #import "LogInViewController.h"
 #import "CLMeSwitchLanguage.h"
 #import "LocalizationManager.h"
+#import "CLHistoryDetailsOfRemittances.h"
+#import "CLHistoryDetailsOfRemittancesCellTableViewCell.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"

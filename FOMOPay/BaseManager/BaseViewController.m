@@ -37,7 +37,7 @@
 
 
 
-//下面是列表上场了
+//列表上场了
 - (void)LoadCellType:(NSUInteger )Type{
     if (Type == 2){
         [self addHomeTabView];
@@ -51,12 +51,13 @@
         [self addMeLanguageTabView];
     }else if(Type == 7){
         [self addCollectionSelectTabView];
-    }else if(Type == 8)
+    }else if(Type == 8){
         [self addMeSwitchTabView];
+    }else if(Type == 9){
+        [self addCLHistoryDetailsOfRemittancesTabView];
+    }
 }
 
-
-    
 
 
 
@@ -109,6 +110,26 @@
         
     }];
 }
+
+- (void)addCLHistoryDetailsOfRemittancesTabView{
+    UINib *nib = [UINib nibWithNibName:@"CLHistoryDetailsOfRemittancesCellTableViewCell" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+        
+    }];
+}
+
 
 - (void)addCollectionTabView{
     UINib *nib = [UINib nibWithNibName:@"CLCollectionTableViewCell" bundle:nil];
@@ -210,6 +231,8 @@
         
     }];
 }
+
+
 
 
 - (UITableView *)mTabView{

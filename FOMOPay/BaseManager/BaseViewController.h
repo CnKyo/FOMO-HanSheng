@@ -19,7 +19,9 @@
 @property (nonatomic,strong)NSMutableArray *DataSource;
 
 
-- (void)LoadCellType:(NSUInteger )Type;
+
+
+- (void)LoadCellType:(NSUInteger )Type;//列表
 
 //- (void)addHomeTabView;
 //- (void)addHiStoryTabView;

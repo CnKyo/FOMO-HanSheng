@@ -43,13 +43,19 @@
 + (CLNavgationView_button *)shareDefaultNavRightButtonOther{
     CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
     view.mRightImg.image = [UIImage yh_imageNamed:@"pdf_history_remittanceplan.pdf"];
+   
+
+    
     return view;
 }
 
 
 - (IBAction)mRightBtnAction:(UIButton *)sender {
+    self.mRightBtn.adjustsImageWhenHighlighted = false;
     if (self.mRightBtnBlock) {
         self.mRightBtnBlock(sender.tag);
     }
+    
 }
+
 @end

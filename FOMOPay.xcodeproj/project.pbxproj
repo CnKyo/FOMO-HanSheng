@@ -90,6 +90,10 @@
 		CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */; };
 		CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */; };
 		CF23B3EE230F84FC00FAC43C /* pdf_history_remittanceplan.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF23B3ED230F84FC00FAC43C /* pdf_history_remittanceplan.pdf */; };
+		CF26171323176B1900448AA4 /* CLHistoryDetailsOfRemittances.m in Sources */ = {isa = PBXBuildFile; fileRef = CF26171223176B1900448AA4 /* CLHistoryDetailsOfRemittances.m */; };
+		CF26171823176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF26171623176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib */; };
+		CF26171B2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF26171A2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m */; };
+		CF26171E23179C9700448AA4 /* CLHistoryPaymentdetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CF26171D23179C9700448AA4 /* CLHistoryPaymentdetails.m */; };
 		CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */; };
 		CF277DA7230544C200A37B5C /* pdf_collection_unfold.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */; };
 		CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF277DAE23055C0100A37B5C /* CLNavgationView_button.m */; };
@@ -302,6 +306,13 @@
 		CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_language_selected.pdf; sourceTree = "<group>"; };
 		CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_message_logo.pdf; sourceTree = "<group>"; };
 		CF23B3ED230F84FC00FAC43C /* pdf_history_remittanceplan.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_remittanceplan.pdf; sourceTree = "<group>"; };
+		CF26171123176B1900448AA4 /* CLHistoryDetailsOfRemittances.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryDetailsOfRemittances.h; sourceTree = "<group>"; };
+		CF26171223176B1900448AA4 /* CLHistoryDetailsOfRemittances.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryDetailsOfRemittances.m; sourceTree = "<group>"; };
+		CF26171623176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLHistoryDetailsOfRemittancesCellTableViewCell.xib; sourceTree = "<group>"; };
+		CF2617192317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryDetailsOfRemittancesCellTableViewCell.h; sourceTree = "<group>"; };
+		CF26171A2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryDetailsOfRemittancesCellTableViewCell.m; sourceTree = "<group>"; };
+		CF26171C23179C9700448AA4 /* CLHistoryPaymentdetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryPaymentdetails.h; sourceTree = "<group>"; };
+		CF26171D23179C9700448AA4 /* CLHistoryPaymentdetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryPaymentdetails.m; sourceTree = "<group>"; };
 		CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_shrink.pdf; sourceTree = "<group>"; };
 		CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_unfold.pdf; sourceTree = "<group>"; };
 		CF277DAD23055C0100A37B5C /* CLNavgationView_button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView_button.h; sourceTree = "<group>"; };
@@ -460,9 +471,9 @@
 				1863DA5723011A08000969FE /* Info.plist */,
 				1863DA5823011A08000969FE /* main.m */,
 				CF48883023164F3500582B44 /* Localizable.strings */,
+				1863DA86230120DF000969FE /* HeaderFile */,
 				772D73B0230A3ED50068AB48 /* Login */,
 				772D73AC230A3DCF0068AB48 /* GuideView */,
-				1863DA86230120DF000969FE /* HeaderFile */,
 				1863DA9C230142BA000969FE /* Home */,
 				1863DA9D230142C1000969FE /* History */,
 				1863DA9E230142C8000969FE /* Collection */,
@@ -637,6 +648,10 @@
 				CF6264D623152486001AF5FC /* CLHistoryViewController.m */,
 				CF6264D9231524C1001AF5FC /* CLHistoryRemittancePlan.h */,
 				CF6264DA231524C1001AF5FC /* CLHistoryRemittancePlan.m */,
+				CF26171123176B1900448AA4 /* CLHistoryDetailsOfRemittances.h */,
+				CF26171223176B1900448AA4 /* CLHistoryDetailsOfRemittances.m */,
+				CF26171C23179C9700448AA4 /* CLHistoryPaymentdetails.h */,
+				CF26171D23179C9700448AA4 /* CLHistoryPaymentdetails.m */,
 				CF6264E123152546001AF5FC /* Views */,
 			);
 			path = History;
@@ -939,6 +954,9 @@
 				CF6264E423152546001AF5FC /* CLHiStoryTableViewCell.xib */,
 				CF6264E323152546001AF5FC /* CLHistoryRenittabcePlanView.h */,
 				CF6264E523152546001AF5FC /* CLHistoryRenittabcePlanVIew.m */,
+				CF2617192317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.h */,
+				CF26171A2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m */,
+				CF26171623176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -946,12 +964,12 @@
 		CF6264F623152625001AF5FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF6264FC23152625001AF5FC /* CLCollectionAddSelectTableView.h */,
+				CF6264F923152625001AF5FC /* CLCollectionAddSelectTableView.m */,
 				CF6264F723152625001AF5FC /* CLCollectionAddSelectTableView.xib */,
 				CF6264F823152625001AF5FC /* CLCollectionTableViewCell.m */,
-				CF6264F923152625001AF5FC /* CLCollectionAddSelectTableView.m */,
-				CF6264FA23152625001AF5FC /* CLCollectionTableViewCell.xib */,
 				CF6264FB23152625001AF5FC /* CLCollectionTableViewCell.h */,
-				CF6264FC23152625001AF5FC /* CLCollectionAddSelectTableView.h */,
+				CF6264FA23152625001AF5FC /* CLCollectionTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1156,6 +1174,7 @@
 				CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */,
 				CF62652B23152801001AF5FC /* CLTitleView.xib in Resources */,
 				CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */,
+				CF26171823176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib in Resources */,
 				772D73C4230A798C0068AB48 /* pdf_login_icon.pdf in Resources */,
 				77BE820F23151C4A00519F66 /* HomeChangePayeeCell.xib in Resources */,
 				77DD6BB12313D98F00BFDD11 /* HomeSureInfoEditCell.xib in Resources */,
@@ -1252,6 +1271,7 @@
 				77BE820A23151C2500519F66 /* HomeChangePayeeVC.m in Sources */,
 				77DD6BB52313E12A00BFDD11 /* HomeSureInfoListCell.m in Sources */,
 				777EAEB7230CEA6B009D7B22 /* WKBaseModel.m in Sources */,
+				CF26171E23179C9700448AA4 /* CLHistoryPaymentdetails.m in Sources */,
 				772D73B3230A3F670068AB48 /* LogInViewController.m in Sources */,
 				CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */,
 				771501892311176B0016B449 /* HomeRefundListCell.m in Sources */,
@@ -1278,6 +1298,7 @@
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				77BE820E23151C4A00519F66 /* HomeChangePayeeCell.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
+				CF26171323176B1900448AA4 /* CLHistoryDetailsOfRemittances.m in Sources */,
 				CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */,
 				CF6264F4231525E6001AF5FC /* CLCollectionViewController.m in Sources */,
 				777EAEB8230CEA6B009D7B22 /* WKNetWorkManager.m in Sources */,
@@ -1294,6 +1315,7 @@
 				7715018D231121E10016B449 /* HomeRefundSelectBankView.m in Sources */,
 				77150183231114D60016B449 /* HomeRefundViewController.m in Sources */,
 				CF62652023152734001AF5FC /* CLMeSwitchLanguage.m in Sources */,
+				CF26171B2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m in Sources */,
 				CF626510231526B3001AF5FC /* CLMeMessageSetViewController.m in Sources */,
 				CF626526231527A8001AF5FC /* CLTool.m in Sources */,
 				CF6264F2231525E6001AF5FC /* CLCollectionAdd.m in Sources */,

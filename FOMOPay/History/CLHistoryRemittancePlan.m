@@ -8,11 +8,12 @@
 
 #import "CLHistoryRemittancePlan.h"
 
-@interface CLHistoryRemittancePlan ()
-@property (nonatomic,strong)CLHistoryRenittabcePlanView *StepProgressPortrait;
-@property (nonatomic,strong)UIView *mTopView;
-@property (nonatomic,strong)UIView *mBotView;
-@property (nonatomic,strong)UIView *mSetpView;
+@interface CLHistoryRemittancePlan ()<UITableViewDataSource,UITableViewDelegate>
+//@property (nonatomic,strong)CLHistoryRenittabcePlanView *StepProgressPortrait;
+
+
+@property (nonatomic,strong)NSArray *mData;
+@property (nonatomic,strong)NSArray *mRData;
 @property (nonatomic,strong)CLHistoryRenittabcePlanView *StepProgress;
 @end
 
@@ -25,7 +26,9 @@
     model.mRightView = mMo  ;
     mMo.mRightBtnBlock = ^(NSInteger tag) {
         if (tag == 1) {
-            DebugLog(@"我终于点击了按钮");
+            DebugLog(@"点击了按钮");
+            CLHistoryDetailsOfRemittances *vc = [CLHistoryDetailsOfRemittances new];
+            [self pushToViewController: vc];
             
         }
     };
@@ -47,110 +50,139 @@
                 break;
         }
     }];
-    [self loadTopView];
-    [self loadBotView];
-    [self loadinterval];
-
+    [self LoadCellType:9];
+     self.mData=@[@"收款人",@"汇款金额",@"获得金额"];
+        self.mRData=@[@"Angela Lee",@"SGD182.00",@"CNY910.00"];
+    [self LoadButton];
     
-    
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
 }
 
--(void)loadTopView{//上半部分视图
-    self.mTopView = [[UIView alloc]init];
-    _mTopView.backgroundColor = ssRGBHex(0xFFFFFF);
-    [self.view addSubview:self.mTopView];
-//    [self loadStepProg];
-    [self loadTopViewLable];
-    [self.mTopView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight);
-        make.height.offset(154);
-    }];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(section == 0){
+    return self.mData.count;
+    }else{
+        return 2;
+    }
 }
 
--(void)loadTopViewLable{
-    UILabel *namelabel = [UILabel new];
-    UILabel *putMoney = [UILabel new];
-    UILabel *getMoney = [UILabel new];
-    namelabel.text = @"收款人";
-    namelabel.font = kCommonFont(16);
-    namelabel.textColor = ssRGBHex(0x8C9091);
-    putMoney.text = @"汇款金额";
-    putMoney.font = kCommonFont(16);
-   putMoney.textColor = ssRGBHex(0x8C9091);
-    getMoney.text = @"获得金额";
-    getMoney.font = kCommonFont(16);
-    getMoney.textColor = ssRGBHex(0x8C9091);
-    [self.mTopView addSubview:namelabel];
-    [self.mTopView addSubview:putMoney];
-    [self.mTopView addSubview:getMoney];
-    [namelabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mTopView).offset(23);
-        make.left.equalTo(self.mTopView).offset(15);
-        make.height.offset(16);
-    }];
-    [putMoney mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(namelabel.mas_bottom).offset(30);
-        make.centerX.equalTo(namelabel);
-        make.left.equalTo(self.mTopView).offset(15);
-          make.height.offset(16);
-    }];
-    [getMoney mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(putMoney.mas_bottom).offset(30);
-        make.centerX.equalTo(namelabel);
-        make.left.equalTo(self.mTopView).offset(15);
-        make.bottom.equalTo(self.mTopView).offset(-23);
-          make.height.offset(16);
-    }];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    if(cell == nil){
+        cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+    if(indexPath.section == 0){
+   
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+    if(indexPath.row == 2){
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    cell.mLeftName.text= [_mData objectAtIndex:indexPath.row];
+    cell.mLeftName.textAlignment = NSTextAlignmentLeft;
+    cell.mRightData.text = [_mRData objectAtIndex:indexPath.row];
+        cell.mRightData.textAlignment = NSTextAlignmentRight;
+       
+    }
+    if(indexPath.section == 1){
+        if(indexPath.row == 0){
+            cell.mLeftName.text= @"汇款进度";
+            cell.mRightData.text = @"";
+             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+        }else{
+            cell.selectionStyle = UITableViewCellSeparatorStyleNone;
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            cell.mLeftName.text= @"";
+            cell.mRightData.text = @"";
+            UILabel *mTime = [UILabel new];
+            mTime.text = @"6月8号";
+            mTime.font = [UIFont fontWithName:@"PingFangSC-Regular"size:14];
+            mTime.textColor = ssRGBHex(0x8C9091);
+            [cell.contentView addSubview:mTime];
+            [mTime mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(cell);
+                make.left.equalTo(cell).offset(15);
+                make.height.offset(14);
+            }];
+            _StepProgress = [[CLHistoryRenittabcePlanView alloc]initsetCount:4 Titles:[NSArray arrayWithObjects:@"第一步", @"第二步", @"第三步", @"第四步", @"第五步", nil]];
+            [cell.contentView addSubview:_StepProgress];
+            [_StepProgress mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(mTime.mas_bottom).offset(14);
+                make.left.equalTo(cell).offset(64);
+                make.height.offset(187);
+                make.width.offset(10);
+            }];
+        }
+      
+    }
+    return cell;
 }
 
-
-
--(void)loadinterval{//屏幕分割线
-    UIView *minteView = [UIView new];
-    minteView.backgroundColor = ssRGBHex(0xE6E6E6);
-    [self.view addSubview:minteView];
-    [minteView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.offset(1);
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.mTopView.mas_bottom);
-        make.bottom.equalTo(self.mBotView.mas_top).offset(1);
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 0){
+    return 62;
+    }else if(indexPath.section == 1 && indexPath.row ==0){
+        return 62;
         
+    }else{
+        return 250;
+    }
+}
+
+-(void)LoadButton{
+    UIButton *CancelButton = [[UIButton alloc]init];
+    
+    UIButton *QueryButton = [[UIButton alloc]init];
+    [CancelButton addTarget:self action:@selector(last:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [QueryButton addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
+    
+    CancelButton.backgroundColor = ssRGBHex(0xF6F5FA);
+    
+    QueryButton.backgroundColor = ssRGBHex(0x005CB6);
+    
+    CancelButton.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
+    
+    CancelButton.layer.borderWidth = 1;
+    
+    CancelButton.layer.cornerRadius = 5;
+    
+    QueryButton.layer.cornerRadius = 5;
+    
+    [CancelButton setTitle:@"取消汇款" forState:UIControlStateNormal];
+    
+    [QueryButton setTitle:@"查询付款详情" forState:UIControlStateNormal];
+    
+    [CancelButton setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+    
+    [self.view addSubview:QueryButton];
+    
+    [self.view addSubview:CancelButton];
+    //s设置2个按钮平分的约束
+    [CancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.left.equalTo(self.view).mas_offset(4);
+        make.width.offset(kScreenWidth /2);
+        make.height.offset(42);
+        make.right.equalTo(QueryButton.mas_left).mas_offset(-4);
+    }];
+    [QueryButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        //          make.left.equalTo(CancelButton.mas_right).offset(-10);
+        make.right.equalTo(self.view).mas_offset(-4);
+        make.width.equalTo(CancelButton.mas_width);
+        make.height.offset(42);
     }];
 }
 
--(void)loadBotView{//下半部分视图
-    self.mBotView =  [[UIView alloc]init];
-  _mBotView.backgroundColor = ssRGBHex(0xFFFFFF);
-    [self.view addSubview:self.mBotView];
-    [self loadStepProg];
-    [self.mBotView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.mTopView.mas_bottom);
-        make.bottom.equalTo(self.view).offset(- (135+BottomHeight));
-    }];
+-(void)last:(UIButton *)sender{
+    [self.StepProgress lastStep];
     
 }
 
-
-
--(void)loadStepProg{
-//    self.mSetpView = [CLHistoryRenittabcePlanView new];
-//    self.mSetpView.backgroundColor = [UIColor redColor];
-//    self.StepProgressPortrait = [[CLHistoryRenittabcePlanView alloc]initWithFrame:self.mBotView.frame setDirection:NO setCount:4];
-//    self.StepProgressPortrait = [[CLHistoryRenittabcePlanView alloc]init:CGRectMake((self.view.frame.size.width-50)/2, 200, 10, 190) setDirection:NO setCount:4];
-//  self
-    self.StepProgress = [[CLHistoryRenittabcePlanView alloc]initsetCount:4];
-//    self.StepProgressPortrait = [[CLHistoryRenittabcePlanView alloc]initsetCount:4];
-//    [self.StepProgressPortrait setDirection:NO setCount:4];
-    self.StepProgress.PortraitRecordIndex = 0 ;
-    [self.mBotView addSubview:self.StepProgress];
-    [self.StepProgress mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mBotView).offset(68);
-        make.top.equalTo(self.mBotView).offset(85);
-//        make.bottom.equalTo(self.mBotView).offset(-35);
-        make.height.offset(200);
-        make.width.offset(10);
-    }];
+-(void)next:(UIButton *)sender{
+    [self.StepProgress nextStep];
 }
 @end
