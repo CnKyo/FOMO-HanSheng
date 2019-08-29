@@ -75,6 +75,11 @@
 #import "WKBaseModel.h"
 #import "WKNetWorkManager.h"
 
+//提示框头文件
+#import "SVProgressHUD.h"
+#import "WKHudManager.h"
+#import <MBProgressHUD.h>
+
 #import "CLCollectionAdd.h"
 #import "CLMeClauseOfTreaty.h"
 #import "CLCollectionAddSelect.h"
