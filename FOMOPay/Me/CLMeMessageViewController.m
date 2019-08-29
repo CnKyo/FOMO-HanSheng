@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"消息通知";
+    self.title = languageStr(@"Notify");
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         switch (tag) {
             case 0:
@@ -41,13 +41,13 @@
     
     UILabel *OpenLabel = [UILabel new];
     
-    OpenLabel.text = @"打开消息通知";
+    OpenLabel.text = languageStr(@"Open Message Notification");
     
     [OpenLabel setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:18]];
     
     UILabel *OpenLabelHint = [UILabel new];
     
-    OpenLabelHint.text = @"打开汇款实时通知,可以更快了解您的汇款状态";
+    OpenLabelHint.text = languageStr(@"Open real-time remittance notification, you can faster understand your remittance status");
     
     [OpenLabelHint setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14]];
     

@@ -12,6 +12,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.layer.cornerRadius=10;
+    self.layer.masksToBounds= YES;
+    
+    self.layer.shadowColor = [[UIColor grayColor]CGColor];
+    self.layer.shadowOffset = CGSizeMake(0, 1);
+    self.layer.shadowOpacity = 0.1;
+    self.clipsToBounds = false ;
+    
+    
     // Initialization code
 }
 
@@ -21,4 +30,17 @@
     // Configure the view for the selected state
 }
 
+
+- (void)setFrame:(CGRect)frame{
+    static CGFloat margin= 10;
+    frame.origin.x = margin;
+    frame.size.width -= 2* frame.origin.x;
+    frame.origin.y +=margin;
+    frame.size.height -= margin;
+    
+    //    frame.origin.y +=50;
+    //    frame.size.height -=10;
+    
+    [super setFrame:frame];
+}
 @end

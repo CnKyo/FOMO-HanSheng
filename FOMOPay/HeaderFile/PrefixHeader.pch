@@ -24,6 +24,8 @@
 #define kCommonColor(r,g,b,a)    [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 #define kCommonFont(f)   [UIFont fontWithName:@"PingFangSC-Regular"size:f];
+#define languageStr(a) [LocalizationManager getStringByKey:a]
+
 
 #import <UIKit/UIKit.h>
 #import <AFNetworking.h>
@@ -70,6 +72,7 @@
 #import "CLCollectionAlter.h"
 #import "LogInViewController.h"
 #import "CLMeSwitchLanguage.h"
+#import "LocalizationManager.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"

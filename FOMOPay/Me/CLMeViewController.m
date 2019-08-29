@@ -36,8 +36,9 @@
         }
     }];
     [self LoadCellType:5];
-    _mMeDataSource=@[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
-   _mMeImageDataSource=@[@"pdf_me_language.pdf",@"pdf_me_callme.pdf",@"pdf_me_pact.pdf",@"pdf_me_message.pdf",@"pdf_me_logout.pdf"];
+//    _mMeDataSource=@[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+    _mMeDataSource=@[languageStr(@"language"),languageStr(@"Contact Us"),languageStr(@"Treaty Clauses"),languageStr(@"Message Notification"),languageStr(@"Logout")];
+    _mMeImageDataSource=@[@"pdf_me_language.pdf",@"pdf_me_callme.pdf",@"pdf_me_pact.pdf",@"pdf_me_message.pdf",@"pdf_me_logout.pdf"];
 
 }
 
@@ -59,7 +60,7 @@
         return 1;
     }
 }
-//每个分组上边预留的空白高度
+
 
 
 //每个分组下边预留的空白高度
@@ -89,13 +90,15 @@
 //设置每行对应的cell（展示的内容）
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifer=@"cell";
-    CLMeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    
+    CLMeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell==nil) {
-        cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    
     if (indexPath.section==0) {
         cell=[[CLMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userinfo"];
+        cell.selectionStyle = UITableViewCellSeparatorStyleNone;
         UIImageView *UserimageView=[[UIImageView alloc]init];
         UserimageView.image=[UIImage yh_imageNamed:@"pdf_me_userImage.pdf"];
         UserimageView.layer.cornerRadius = 24;
@@ -135,7 +138,7 @@
         cell.mMeLanguage.hidden = YES;
        
         }else{
-            cell.mMeLanguage.text = @"简体中文" ;   //设置显示的语言的text
+            cell.mMeLanguage.text = languageStr(@"Language") ;   //设置显示的语言的text
             cell.mMeLanguage.hidden = NO;
             cell.mMeLeftImage.image =[UIImage yh_imageNamed:[_mMeImageDataSource objectAtIndex:indexPath.row]];
             cell.mMeLeftLable.text = [_mMeDataSource objectAtIndex:indexPath.row];
@@ -166,5 +169,16 @@
     }
 }
 }
+
+-(void)changeLanguage
+{
+//    CLMeLanguageViewController *vc = [CLMeLanguageViewController new];
+//    [vc back];
+//    vc.hidesBottomBarWhenPushed=YES;
+//    [self.navigationController pushViewController:vc animated:NO];
+    
+}
+
+
 
 @end

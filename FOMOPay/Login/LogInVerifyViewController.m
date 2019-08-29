@@ -28,10 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"身份验证";
-    [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
+    self.title = @"身份验证";
+    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
     

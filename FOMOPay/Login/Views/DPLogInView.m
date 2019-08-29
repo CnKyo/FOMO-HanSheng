@@ -58,12 +58,11 @@
         
         _languageView.hidden = NO;
         if ([_languageLabel.text isEqualToString:@"简体中文"]) {
-            
             [_chinaButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
             [_englishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
         }else{
-            
+             
             [_englishButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
             [_chinaButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }

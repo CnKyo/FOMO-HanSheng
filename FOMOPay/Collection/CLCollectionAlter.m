@@ -17,6 +17,8 @@
 @property (nonatomic,strong) UIButton *mSendButton;
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
+@property (nonatomic,strong) NSMutableArray *mMdate;
+@property (nonatomic,strong) NSString *mDl;
 @end
 
 @implementation CLCollectionAlter
@@ -68,6 +70,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(indexPath.row == 5){
+        if(self.mDl.length >11){
+            DebugLog(@"self.mdl的%@",self.mDl);
+            return 60;
+        }else{
+            DebugLog(@"返回49的高度");
+            return 49;
+        }
+    }
+    
+
     return 49;
 }
 
@@ -137,32 +151,103 @@
             [self.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
             self.mIndex = indexPath;
         };}
+    //////////////////////////////////////////////////////////////////////////////////以下为textfiled
     if(indexPath.row == 4 ){
         cell.mIndexPath = indexPath;
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+            //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+            [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             
         };}
     
-    
     if(indexPath.row == 5){
         cell.mIndexPath = indexPath;
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+        UIView *mLineView = [UIView new];
+        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        [cell.contentView addSubview:mLineView];
+        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(cell);
+            make.left.equalTo(cell).offset(15);
+            make.height.offset(0.5);
+            make.bottom.equalTo(cell);
+        }];
+        UILabel *mHint = [UILabel new];
+        mHint.font = kCommonFont(12);
+        mHint.textColor = ssRGBHex(0xD50037);
+        mHint.textAlignment = NSTextAlignmentRight;
+        [cell.contentView addSubview:mHint];
+        [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(mLineView.mas_bottom).offset(7);
+            make.right.equalTo(cell).offset(-15);
+            make.height.offset(12);
+            
+        }];
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-            
-        };
-        
-    }
+            self.mDl  = mText;
+            if(mText.length >11){
+                //                self.mDl = mText;
+                self.mTabView.rowHeight = UITableViewAutomaticDimension;
+                mLineView.backgroundColor = ssRGBHex(0xD50037);
+                mHint.text = @"请输入正确的账户号码";
+                NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
+                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                mLineView.backgroundColor = ssRGBHex(0xcccccc);
+                //[WeakSelf.mHint removeFromSuperview];
+                mHint.text = @"";
+                NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
+                [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];//刷新末尾的cell来实现重定义高度
+                //                 self.mDl = mText;
+                //                [self.mTabView reloadRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
+            }
+            NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            //             [self.mTabView reloadRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationNone];
+            //            CLMeLanguage *new = [CLMeLanguage new];
+            //            [new initWithModelString:self.mDl];
+        };}
     
     
     if(indexPath.row == 7){
         cell.mIndexPath = indexPath;
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+        UIView *mLineView = [UIView new];
+        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        [cell.contentView addSubview:mLineView];
+        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(cell);
+            make.left.equalTo(cell).offset(15);
+            make.height.offset(0.5);
+            make.bottom.equalTo(cell);
+        }];
+        UILabel *mHint = [UILabel new];
+        mHint.font = kCommonFont(12);
+        mHint.textColor = ssRGBHex(0xD50037);
+        mHint.textAlignment = NSTextAlignmentRight;
+        [cell.contentView addSubview:mHint];
+        [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(mLineView.mas_bottom).offset(7);
+            make.right.equalTo(cell).offset(-15);
+            make.height.offset(12);
+            
+        }];
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
+            //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
             
+            if(mText.length >11){
+                mLineView.backgroundColor = ssRGBHex(0xD50037);
+                mHint.text = @"请输入正确的联系号码";
+            }else{
+                mLineView.backgroundColor = ssRGBHex(0xcccccc);
+                //                [WeakSelf.mHint removeFromSuperview];
+                mHint.text = @"";
+                [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
+            }
         };}
     
     

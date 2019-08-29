@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLMeLanguageViewController : BaseViewController
-
+-(void)back;
 @end
 
 NS_ASSUME_NONNULL_END

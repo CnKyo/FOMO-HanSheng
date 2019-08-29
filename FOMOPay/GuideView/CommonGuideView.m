@@ -99,7 +99,7 @@
     [self addSubview:_enterButton];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 135, 60, 99, 20)];
-    _titleLabel.text = @"简体中文";
+    _titleLabel.text = languageStr(@"Language");
     _titleLabel.textColor = [UIColor blackColor];
     _titleLabel.textAlignment = NSTextAlignmentRight;
     _titleLabel.font = kCommonFont(14);
@@ -147,9 +147,11 @@
         
         [_languageButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
 
+
     }else{
         
         [_languageButton1 setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
+        
     }
 }
 
@@ -171,10 +173,11 @@
     if (sender.tag == 102) {
         
         _titleLabel.text = @"简体中文";
-        
+       
     }else{
         
         _titleLabel.text = @"English";
+        
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:_titleLabel.text forKey:kLanguageKey];

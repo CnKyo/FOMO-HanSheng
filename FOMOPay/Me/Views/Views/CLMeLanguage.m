@@ -75,7 +75,7 @@
     }else if (type == CLMeLanguageType_button){
         self.mBtn = [UIButton new];
         [self.mBtn addTarget:self action:@selector(OpenSelect:) forControlEvents:UIControlEventTouchUpInside];
-        self.mBtn.backgroundColor = [UIColor yellowColor];
+//        self.mBtn.backgroundColor = [UIColor yellowColor];
 //        self.mBtn.titleLabel.font = kCommonFont(14);
         [self.mRightView addSubview:self.mBtn];
         self.mImageV = [UIImageView new];
