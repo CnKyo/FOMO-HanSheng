@@ -106,18 +106,18 @@
     }];
 
     
-    
     [NoOpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset( - BottomHeight - 4  );
-        make.left.equalTo(self.view).offset(4);
-        make.width.offset(181);
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.left.equalTo(self.view).mas_offset(4);
+        make.width.offset(kScreenWidth /2);
         make.height.offset(42);
-      
+        make.right.equalTo(OpenMessage.mas_left).mas_offset(-4);
     }];
     [OpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset( - BottomHeight - 4 );
-        make.right.equalTo(self.view).offset(-4);
-        make.width.offset(181);
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        //          make.left.equalTo(CancelButton.mas_right).offset(-10);
+        make.right.equalTo(self.view).mas_offset(-4);
+        make.width.equalTo(NoOpenMessage.mas_width);
         make.height.offset(42);
     }];
 }
