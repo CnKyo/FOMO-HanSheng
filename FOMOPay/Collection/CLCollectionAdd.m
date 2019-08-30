@@ -314,7 +314,7 @@
     DebugLog("点击了提交按钮");
     DebugLog(@"提交的时候的Mdata的值%@",self.mMdate);
     DebugLog(@"提交的时候的mdata的个数为%ld",self.mMdate.count);
-//    CLCollectionViewController *vc = [CLCollectionViewController new];
+//  CLCollectionViewController *vc = [CLCollectionViewController new];
 //    [vc show];
    
 //    [self.navigationController pushViewController:vc animated:NO];

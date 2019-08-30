@@ -269,6 +269,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeListCollectionCell" forIndexPath:indexPath];
     }
     
+//    cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.iconImage.image = [UIImage yh_imageNamed:_array1[indexPath.row]];
     cell.unitLabel.text = _array2[indexPath.row];
     cell.nameLabel.text = _array3[indexPath.row];
@@ -277,8 +278,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
+
+
 }
 
 

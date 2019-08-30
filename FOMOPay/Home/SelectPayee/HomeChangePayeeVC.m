@@ -86,7 +86,7 @@
         
         
     };
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.HomeChangePayeeCellButton = ^(NSInteger tag) {
         
         if (tag == 4) {  //删除
