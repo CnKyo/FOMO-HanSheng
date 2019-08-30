@@ -23,15 +23,10 @@
 
 @interface WKUserInfo : NSObject
 
-@property (strong,nonatomic) NSString *token;
-@property (strong,nonatomic) NSString *avatar;
-@property (strong,nonatomic) NSString *lastLoginTime;
-@property (strong,nonatomic) NSString *parent;
-@property (strong,nonatomic) NSString *id;
-@property (strong,nonatomic) NSString *username;
-@property (strong,nonatomic) NSString *createTime;
-@property (strong,nonatomic) NSString *nickName;
-
+@property (strong,nonatomic) NSString *idNumber;
+@property (strong,nonatomic) NSString *name;
+@property (strong,nonatomic) NSString *idType;
+@property (strong,nonatomic) NSString *mobileNumber;
 
 @end
 

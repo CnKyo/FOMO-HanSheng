@@ -109,68 +109,48 @@
 //    }];
 }
 
-- (void)verifyCode{
+- (void)verifyCode:(NSString *)code{
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
-    [appdelegate.window setRootViewController:tabbarConfig.tabBarController];
-    
-    //
-//    NSDictionary *parama = @{
-//                             @"mobile":self.mMobileString,
-//                             @"type":@"signUp",
-//                             @"otp":[NSString nonNullCheck:self.mCodeStr],
-//                             @"publicKey":[PublicConfig shareUtility].publickKey,
-//                             };
-//    __weak typeof(self) weakSelf = self;
-//
-//
-//    [self showWKHud:@"Security check in progress..."];
-//
-//    [VerifyOTP requestWithParameters:parama andResultBlock:^(id response, NSError *error) {
-//
-//        [weakSelf dissmissWKHud];
-//        VerifyOTP *entity = [[VerifyOTP alloc] initWithDictionary:response];
-//        if (entity.isSuccessed) {
-//            [[AccountManager defaultManager]resetSignUpSecurityToken:entity.securityToken];
-//
-//            DebugLog(@"----securityToken：%@",[AccountManager defaultManager].securityToken);
-//            if  ([[WKCurrenceManager shareInstance].mCountryCode isEqualToString:kAppSingaporCurrencyCode]){
-//                SPSignUpTVViewController *vc=[[SPSignUpTVViewController alloc] initWithNibName:@"SPSignUpTVViewController" bundle:nil];
-//                vc.mEmailString=self.mEmailString;
-//                vc.mIsReceiving=self.mIsReceiving;
-//                [self pushViewConteoller:vc];
-//            }
-//            else{
-//                WKNewSignUpTViewController *vc = [WKNewSignUpTViewController new];
-//                vc.mEmailString=self.mEmailString;
-//                vc.mIsReceiving=self.mIsReceiving;
-//                [self pushViewConteoller:vc];
-//                //            WKEnterPwdViewController *vc = [WKEnterPwdViewController new];
-//                //            vc.mobileString = self.mMobileString;
-//                //            vc.mSignInfo = self.mSignInfo;
-//                //            vc.navigationItem.title = self.navigationItem.title;
-//                //            vc.isForgot = 0;
-//                //            vc.isSignup = 1;
-//                //            vc.mType = WKSignUpType;
-//                //            [self.navigationController pushViewController:vc animated:YES];
-//            }
-//
-//        }else{
-//
-//            [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:@"Incorrect OTP entered,\nplease retry."];
-//        }
-//        [self.mView WKClearText];
-//    }];
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:self.mobile forKey:@"ic"];
+    [para setObject:code forKey:@"otp"];
+    [WKNetWorkManager WKGetToken:para block:^(NSString *token, BOOL success) {
+        if (success) {
+            DebugLog(@"得到的Token是:%@",token);
+            [[WKAccountManager shareInstance] WKSetToken:token];
+            
+            [self goLogin];
+            
+        }else{
+            DebugLog(@"错误信息:%@",token);
+        }
+    }];
     
 }
 
+- (void)goLogin{
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:self.mobile forKey:@"ic"];
+    [WKNetWorkManager WKLogin:para block:^(NSDictionary *result, BOOL success) {
+        if (success) {
+            
+            WKUserInfo *mUser  = [WKUserInfo yy_modelWithDictionary:result];
+            [[WKAccountManager shareInstance] WKResetUserInfo:mUser];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
+            [appdelegate.window setRootViewController:tabbarConfig.tabBarController];
+        }else{
+            
+        }
+    }];
+}
 - (void)WKNewForgetLoginOneTimeOTPviewTextFieldDidEndEditing:(NSString *)mText{
     
-    [self verifyCode];
+    [self verifyCode:mText];
 }
 
 - (void)WKNewForgetLoginOneTimeOTPviewResendOTP{
