@@ -19,21 +19,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIButton *btn= [UIButton new];
-        [btn setTitle:@"添加" forState:UIControlStateNormal];
-        [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-        UIView *mView = [UIView new];
-        [mView addSubview:btn];
-    [btn addTarget:self action:@selector(Add:) forControlEvents:UIControlEventTouchUpInside];
-
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(mView).offset(-20);
-            make.top.equalTo(mView).offset(0);
-            make.bottom.equalTo(mView).offset(0);
-        }];
+//        UIButton *btn= [UIButton new];
+//        [btn setTitle:@"添加" forState:UIControlStateNormal];
+//        [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+//        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+//        UIView *mView = [UIView new];
+//        [mView addSubview:btn];
+//        [btn addTarget:self action:@selector(Add:) forControlEvents:UIControlEventTouchUpInside];
+//
+//        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(mView).offset(-20);
+//            make.top.equalTo(mView).offset(0);
+//            make.bottom.equalTo(mView).offset(0);
+//        }];
     CLNavModel *model = [CLNavModel new];
-    model.mRightView = mView  ;
+    CLNavgationView_button *mBtView = [CLNavgationView_button shareDefaultNavRightButtonOther];
+    model.mRightView = mBtView  ;
+    mBtView.mRightBtnBlock = ^(NSInteger tag) {
+        if(tag == 100){
+            CLCollectionAdd *vc = [CLCollectionAdd new];
+            vc.delegate = self;
+            [self pushToViewController:vc];
+        }
+    };
     [self CLAddNavType:CLNavType_home andModel:model completion:^(NSInteger tag) {
         
         switch (tag) {
@@ -113,13 +121,6 @@
     }
     [cell CellStyle:2];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
- 
-//    self.mDeleteBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-//        [self.DataSource removeObject:mIndexPath];
-//        [self.mTabView beginUpdates];
-//        [self.mTabView deleteRowsAtIndexPaths:@[mIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        [self.mTabView endUpdates];
-//    };
     cell.mInd = indexPath;
     [cell.CLCollectionDelete addTarget:self action:@selector(mDelete:) forControlEvents:UIControlEventTouchUpInside];
     cell.mDeleteBlock = ^(NSIndexPath * _Nonnull mIndex) {
@@ -235,12 +236,12 @@
 //    CLCollectionAlter *vc = [CLCollectionAlter new];
 //    [self pushToViewController:vc];
 }
--(void)Add:(id)sender{
-    DebugLog(@"点击了按钮吧");
-    CLCollectionAdd *vc = [CLCollectionAdd new];
-    vc.delegate = self;
-    [self pushToViewController:vc];
-}
+//-(void)Add:(id)sender{
+//    DebugLog(@"点击了按钮吧");
+//    CLCollectionAdd *vc = [CLCollectionAdd new];
+//    vc.delegate = self;
+//    [self pushToViewController:vc];
+//}
 //- (void)initWithModelData:(NSArray *)modelLeftArray{
 //    
 //    _mPushData = modelLeftArray;

@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CLNavModel *model = [CLNavModel new];
-    CLNavgationView_button *mMo = [CLNavgationView_button shareDefaultNavRightButtonOther];
+    CLNavgationView_button *mMo = [CLNavgationView_button shareDefaultNavRightButton];
     model.mRightView = mMo  ;
     mMo.mRightBtnBlock = ^(NSInteger tag) {
         if (tag == 1) {
@@ -54,6 +54,7 @@
      self.mData=@[@"收款人",@"汇款金额",@"获得金额"];
         self.mRData=@[@"Angela Lee",@"SGD182.00",@"CNY910.00"];
     [self LoadButton];
+    [self ResetLayout];
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -106,7 +107,7 @@
                 make.left.equalTo(cell).offset(15);
                 make.height.offset(14);
             }];
-            _StepProgress = [[CLHistoryRenittabcePlanView alloc]initsetCount:4 Titles:[NSArray arrayWithObjects:@"第一步", @"第二步", @"第三步", @"第四步", @"第五步", nil]];
+            _StepProgress = [[CLHistoryRenittabcePlanView alloc]initsetCount:4];
             [cell.contentView addSubview:_StepProgress];
             [_StepProgress mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(mTime.mas_bottom).offset(14);

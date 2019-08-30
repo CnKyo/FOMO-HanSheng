@@ -40,12 +40,21 @@
 //    return view;
 //   
 //}
-+ (CLNavgationView_button *)shareDefaultNavRightButtonOther{
++ (CLNavgationView_button *)shareDefaultNavRightButton{
     CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
     view.mRightImg.image = [UIImage yh_imageNamed:@"pdf_history_remittanceplan.pdf"];
    
 
     
+    return view;
+}
+
++(CLNavgationView_button *)shareDefaultNavRightButtonOther{
+     CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
+    view.mRightImg.hidden = YES;
+    [view.mRightBtn setTitle:@"添加" forState:UIControlStateNormal];
+    view.mRightBtn.titleLabel.font = kCommonFont(16);
+    view.mRightBtn.tag=100;
     return view;
 }
 

@@ -5,7 +5,7 @@
 //  Created by clkj on 2019/8/19.
 //  Copyright © 2019 王钶. All rights reserved.
 //
-
+#import "WKHudManager.h"
 #import "CLCollectionAdd.h"
 
 @interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CLCollectionAddSelectDelegate>//代理传值第4步
@@ -316,7 +316,7 @@
     DebugLog(@"提交的时候的mdata的个数为%ld",self.mMdate.count);
 //    CLCollectionViewController *vc = [CLCollectionViewController new];
 //    [vc show];
-    
+   
 //    [self.navigationController pushViewController:vc animated:NO];
     for (UIViewController *vc in self.navigationController.viewControllers) {
         if ([vc isKindOfClass:[CLCollectionViewController class]]) {

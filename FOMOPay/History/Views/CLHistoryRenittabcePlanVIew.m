@@ -24,11 +24,12 @@ static dispatch_once_t disOncePortrait;
 @property (nonatomic, strong)UILabel *lblIndicator;
 
 @property(nonatomic,strong)NSArray * labelArr ;
+
 @end
 @implementation CLHistoryRenittabcePlanView
 
 //-(instancetype)initWithFrame:(CGRect)frame setDirection:(BOOL)Direction setCount:(NSInteger)Count{
--(instancetype)initsetCount:(NSInteger)Count Titles:(nonnull NSArray *)titles{
+-(instancetype)initsetCount:(NSInteger)Count{
     if (([super init])) {
         self.Count = Count;
         _bgLinkView = [[UIView alloc]init];
@@ -37,18 +38,9 @@ static dispatch_once_t disOncePortrait;
         _progressLinkView = [[UIView alloc]init];
         _progressLinkView.backgroundColor = ssRGBHex(0x005CB6); //滚动时候的颜色
         [self addSubview:self.progressLinkView];
-        _labelArr = titles;
+        _labelArr =[NSArray arrayWithObjects:@"提交汇款订单", @"已收到您的付款", @"汇款处理中", @"汇款成功", nil];
         
-        for (NSString *title in _labelArr)
-        {
-            UILabel *lbl = [[UILabel alloc]init];
-            lbl.text = title;
-            lbl.textColor = [UIColor lightGrayColor];
-            lbl.font = [UIFont systemFontOfSize:14];
-            lbl.textAlignment = NSTextAlignmentCenter;
-            [self addSubview:lbl];
-            [self.titleLabels addObject:lbl];
-        }
+       
         
         for (int i=0; i<Count; i++) {
             {
@@ -60,6 +52,17 @@ static dispatch_once_t disOncePortrait;
                 titleLabel.tag = i ;
                 [self addSubview:titleLabel];
                 [self.titleArr addObject:titleLabel];
+               
+                
+                UILabel *lbl = [[UILabel alloc]init];
+                lbl.text = [_labelArr objectAtIndex:i];
+                lbl.textColor = [UIColor lightGrayColor];
+                lbl.font = kCommonFont(16);
+                lbl.textAlignment = NSTextAlignmentLeft;
+                [self addSubview:lbl];
+                [self.titleLabels addObject:lbl];
+                
+            
             }
             
         }
@@ -73,24 +76,34 @@ static dispatch_once_t disOncePortrait;
 
 - (void)layoutSubviews{
     self.bgLinkView.frame = CGRectMake((self.bounds.size.width-linkWH)/2, space, linkWH, self.bounds.size.height-space*2);
+    
     for (int i=0; i<self.Count; i++) {
-        if(i ==0){
+        if(i == 0){
         UILabel * titleLab = self.titleArr[i];
+        UILabel *lbl = self.titleLabels[i];
+        if((titleLab != nil) && (lbl !=nil)){
         titleLab.center = CGPointMake(self.bgLinkView.center.x, space+(self.bounds.size.height-space*2)/(self.Count-1)*i);
         titleLab.backgroundColor = ssRGBHex(0x005CB6);
+        lbl.frame = CGRectMake(21, (space+(self.bounds.size.height-space*2)/(self.Count-1)*i)-8, 114,16);
+        lbl.textColor = ssRGBHex(0x005CB6);
+            }
+        
+        
         }else{
             UILabel * titleLab = self.titleArr[i];
-            titleLab.center = CGPointMake(self.bgLinkView.center.x, space+(self.bounds.size.height-space*2)/(self.Count-1)*i);
+            UILabel *lbl = self.titleLabels[i];
+            if((titleLab != nil) && (lbl !=nil)){
+                titleLab.center = CGPointMake(self.bgLinkView.center.x, space+(self.bounds.size.height-space*2)/(self.Count-1)*i);
+                lbl.frame = CGRectMake(21, (space+(self.bounds.size.height-space*2)/(self.Count-1)*i)-8, 114,16);
+            }
         }
-
     }
     dispatch_once(&disOncePortrait,^ {
         [self setTitleContent:self.PortraitRecordIndex];
     });
-
     self.progressLinkView.frame  = CGRectMake((self.bounds.size.width-linkWH)/2,space,linkWH,(self.bounds.size.height-space*2)/(self.Count-1)*self.PortraitRecordIndex) ;
 }
-
+//
 -(void)changPortraitLinkViewAnimations{
     [UIView animateWithDuration:0.4 animations:^{
         self.progressLinkView.frame  = CGRectMake((self.bounds.size.width-linkWH)/2,space,linkWH,(self.bounds.size.height-space*2)/(self.Count-1)*self.PortraitRecordIndex) ;
@@ -101,24 +114,24 @@ static dispatch_once_t disOncePortrait;
 
 -(void)setTitleContent:(NSInteger)index{
     for (int i=0; i<self.Count; i++) {
+        UILabel * changTitle = self.titleArr[index] ;
         if (index>=i) { //当前状态
-            UILabel * changTitle = self.titleArr[index] ;
+//          UILabel * changTitle = self.titleArr[index] ;
             changTitle.backgroundColor  = ssRGBHex(0x005CB6);
-            
-//          changTitle.layer.borderWidth = 1 ;
-            changTitle.layer.borderColor = ssRGBAlpha(102, 102, 102, 1.0).CGColor ;
-//          changTitle.backgroundColor = ssRGBHex(0x005CB6);
-            [UIView animateWithDuration:0.2 animations:^{
-               changTitle.transform = CGAffineTransformMakeScale(1.0, 1.0);
-            }];
          }else{              //恢复状态
             UILabel * titleLab = self.titleArr[i];
             titleLab.backgroundColor = ssRGBHex(0xE6E6E6);
             titleLab.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    }
         
-    }
-    }
-    
+        UILabel *lbl = [_titleLabels objectAtIndex:i];
+        if (lbl != nil  && index == i){
+            lbl.textColor = ssRGBHex(0x005CB6);
+
+        }else{
+            lbl.textColor = ssRGBHex(0x8C9091);
+            }
+}
 }
 
 //数组
@@ -129,14 +142,21 @@ static dispatch_once_t disOncePortrait;
     return _titleArr ;
 }
 
+- (NSMutableArray *)titleLabels
+{
+    if (_titleLabels == nil)
+    {
+        _titleLabels = [NSMutableArray arrayWithCapacity:self.labelArr.count];
+    }
+    return _titleLabels;
+}
+
 #pragma mark--上一步
 -(void)lastStep{
-    //纵
     if (self.PortraitRecordIndex==0) return ;
     self.PortraitRecordIndex-- ;
     [self changPortraitLinkViewAnimations];
 }
-
 
 #pragma mark--下一步
 -(void)nextStep{
