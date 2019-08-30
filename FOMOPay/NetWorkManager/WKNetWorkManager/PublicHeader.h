@@ -15,3 +15,11 @@
 
 //#define kBaseUrl                     @"http://192.168.0.35:8080"
 #define kBaseUrl                              @"https://hanshan.uat.fomopay.net"
+///获取版本信息
+#define kGetAppVersion                              @"/customer/app/v2/version"
+
+#define kGetLoginOtp                             @"/customer/app/v2/login/otp"
+///获取token
+#define kGetToken                             @"/customer/app/v2/session"
+///登录
+#define kLogin                             @"/customer/app/v2/login"

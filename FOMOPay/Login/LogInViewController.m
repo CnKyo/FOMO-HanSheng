@@ -28,10 +28,8 @@
     _loginView.backgroundColor = [UIColor whiteColor];
     _loginView.LogInViewBlock = ^(NSString * _Nonnull content) {
       
-        //发送验证码
-        LogInVerifyViewController *vc = [[LogInVerifyViewController alloc] init];
-        vc.mobile = content;
-        [weakSelf pushToViewController:vc];
+        
+        [weakSelf getOtp:content];
     };
     [self.view addSubview:_loginView];
     
@@ -40,7 +38,14 @@
         make.top.left.right.bottom.equalTo(self.view);
     }];
 }
-
+- (void)getOtp:(NSString *)text{
+    
+    //发送验证码
+    LogInVerifyViewController *vc = [[LogInVerifyViewController alloc] init];
+    vc.mobile = text;
+    [self pushToViewController:vc];
+    
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     

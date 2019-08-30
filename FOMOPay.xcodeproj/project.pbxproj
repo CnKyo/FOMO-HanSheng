@@ -25,6 +25,9 @@
 		1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9323013A87000969FE /* YHPDFImageDraw.m */; };
 		1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAA723014511000969FE /* WRNavigationBar.m */; };
 		1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAAA23014511000969FE /* WRCustomNavigationBar.m */; };
+		189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D32319044A00FDEA10 /* WKUserDefault.m */; };
+		189E06D72319044B00FDEA10 /* WKEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D42319044A00FDEA10 /* WKEncryption.m */; };
+		189E06DA2319046400FDEA10 /* WKAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D92319046400FDEA10 /* WKAccountManager.m */; };
 		18B7BEE32304EBE3007B496A /* CLNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BEE22304EBE3007B496A /* CLNavgationView.m */; };
 		18B7BEE52304EC82007B496A /* CLNavgationHomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEE42304EC82007B496A /* CLNavgationHomeView.xib */; };
 		18B7BEE72304ECFD007B496A /* CLNavgationNormalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEE62304ECFD007B496A /* CLNavgationNormalView.xib */; };
@@ -230,6 +233,12 @@
 		1863DAA823014511000969FE /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		1863DAA923014511000969FE /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
 		1863DAAA23014511000969FE /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
+		189E06D22319044A00FDEA10 /* WKEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKEncryption.h; sourceTree = "<group>"; };
+		189E06D32319044A00FDEA10 /* WKUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKUserDefault.m; sourceTree = "<group>"; };
+		189E06D42319044A00FDEA10 /* WKEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKEncryption.m; sourceTree = "<group>"; };
+		189E06D52319044A00FDEA10 /* WKUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKUserDefault.h; sourceTree = "<group>"; };
+		189E06D82319046400FDEA10 /* WKAccountManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKAccountManager.h; sourceTree = "<group>"; };
+		189E06D92319046400FDEA10 /* WKAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKAccountManager.m; sourceTree = "<group>"; };
 		18B7BEE12304EBE3007B496A /* CLNavgationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView.h; sourceTree = "<group>"; };
 		18B7BEE22304EBE3007B496A /* CLNavgationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLNavgationView.m; sourceTree = "<group>"; };
 		18B7BEE42304EC82007B496A /* CLNavgationHomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLNavgationHomeView.xib; sourceTree = "<group>"; };
@@ -637,6 +646,7 @@
 		1863DA8123012062000969FE /* NetWorkManager */ = {
 			isa = PBXGroup;
 			children = (
+				189E06D0231903E600FDEA10 /* WKAccountManager */,
 				777EAEB1230CEA6A009D7B22 /* Model */,
 				777EAEB4230CEA6B009D7B22 /* WKNetWorkManager */,
 			);
@@ -777,6 +787,27 @@
 				1863DAAA23014511000969FE /* WRCustomNavigationBar.m */,
 			);
 			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
+		189E06D0231903E600FDEA10 /* WKAccountManager */ = {
+			isa = PBXGroup;
+			children = (
+				189E06D12319044A00FDEA10 /* WKUserDefault */,
+				189E06D82319046400FDEA10 /* WKAccountManager.h */,
+				189E06D92319046400FDEA10 /* WKAccountManager.m */,
+			);
+			path = WKAccountManager;
+			sourceTree = "<group>";
+		};
+		189E06D12319044A00FDEA10 /* WKUserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				189E06D22319044A00FDEA10 /* WKEncryption.h */,
+				189E06D32319044A00FDEA10 /* WKUserDefault.m */,
+				189E06D42319044A00FDEA10 /* WKEncryption.m */,
+				189E06D52319044A00FDEA10 /* WKUserDefault.h */,
+			);
+			path = WKUserDefault;
 			sourceTree = "<group>";
 		};
 		18B7BEDF2304E976007B496A /* BaseTabbarController */ = {
@@ -1382,6 +1413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */,
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,
 				CF626512231526B3001AF5FC /* CLMeViewController.m in Sources */,
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
@@ -1411,6 +1443,7 @@
 				CF62651E23152734001AF5FC /* CLMeTableViewCell.m in Sources */,
 				77023991230B8AE000EE8C31 /* HomeDataObject.m in Sources */,
 				77047E0423166D44000453A0 /* HomePayNowListCell.m in Sources */,
+				189E06DA2319046400FDEA10 /* WKAccountManager.m in Sources */,
 				77047E0023166CFD000453A0 /* HomePayNowViewController.m in Sources */,
 				77047DF823161D0A000453A0 /* HomePayTypeViewController.m in Sources */,
 				CF6264F5231525E6001AF5FC /* CLCollectionAddSelect.m in Sources */,
@@ -1436,6 +1469,7 @@
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
 				CF26171323176B1900448AA4 /* CLHistoryDetailsOfRemittances.m in Sources */,
 				CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */,
+				189E06D72319044B00FDEA10 /* WKEncryption.m in Sources */,
 				CF6264F4231525E6001AF5FC /* CLCollectionViewController.m in Sources */,
 				777EAEB8230CEA6B009D7B22 /* WKNetWorkManager.m in Sources */,
 				1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */,
