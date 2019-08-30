@@ -28,7 +28,6 @@
     [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
         
     }];
-    
     [self loadTableView];
 }
 

@@ -66,7 +66,7 @@
                                             <constraint firstAttribute="height" constant="24" id="cPD-2W-wbG"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBW-4G-D1F">
+                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBW-4G-D1F">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                         <connections>
                                             <action selector="showButtonClicked:" destination="0m1-kn-9VF" eventType="touchUpInside" id="2k6-I5-Gov"/>
@@ -197,7 +197,7 @@
                                             <constraint firstAttribute="width" constant="24" id="pA6-8K-WGM"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-dG-Yws">
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-dG-Yws">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                         <connections>
                                             <action selector="showButtonClicked:" destination="0m1-kn-9VF" eventType="touchUpInside" id="Ewf-ry-hkq"/>
@@ -431,6 +431,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="AID-8O-i1m">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ltS-gU-CrN">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -439,6 +440,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AID-8O-i1m" secondAttribute="trailing" id="Rrx-YR-AyK"/>
                             <constraint firstAttribute="bottom" secondItem="AID-8O-i1m" secondAttribute="bottom" id="b27-zC-XZO"/>
@@ -524,7 +526,7 @@
                 <outlet property="valueView1" destination="U0W-9F-Y10" id="l9c-vI-egq"/>
                 <outlet property="valueView2" destination="TFW-PO-HmA" id="rT7-Qd-7Ml"/>
             </connections>
-            <point key="canvasLocation" x="36" y="32.383808095952027"/>
+            <point key="canvasLocation" x="153" y="28"/>
         </tableViewCell>
     </objects>
 </document>
