@@ -31,6 +31,8 @@
     mBtView.mRightBtnBlock = ^(NSInteger tag) {
         if(tag == 101){
             //跳转申请退款界面;
+            CLHistoryConfirmRefund *vc=[CLHistoryConfirmRefund new];
+            [self pushToViewController:vc];
         }
     };
     [self CLAddNavType:CLNavType_other andModel:model completion:^(NSInteger tag) {
@@ -51,7 +53,7 @@
         }
     }];
      [self LoadCellType:9];
-    self.mData=@[@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
+    self.mData=@[@"无效的账号",@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
     [self LoadContactAndConfirm];
    [self ResetLayout];  //底部按钮适配5s的约束
     
@@ -70,23 +72,33 @@
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+     cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
     if(indexPath.row == 0){
-        cell.mLeftName.text = @"无效的账号:";
-        cell.mLeftName.textColor = ssRGBHex(0xD50037);
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        cell.mRightData.text = @"请更正账户号码或者更换汇款账号";
-        cell.mRightData.textAlignment = NSTextAlignmentLeft;
-    }else if(indexPath.row == 5){
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    }else if(indexPath.row == 6){
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    }else if(indexPath.row == 8){
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        cell.mLeftName.textColor =ssRGBHex(0xD50037);
     }
-    
-//    cell.mLeftName.text= [_mData objectAtIndex:indexPath.row];
-//    cell.mLeftName.textAlignment = NSTextAlignmentLeft;
-    
+    if(indexPath.row == 1){
+        
+    }
+//    if(indexPath.row == 0){
+//        cell.mLeftName.text = @"无效的账号:";
+//        cell.mLeftName.textColor = ssRGBHex(0xD50037);
+//        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//        cell.mRightData.text = @"请更正账户号码或者更换汇款账号";
+//        cell.mRightData.textAlignment = NSTextAlignmentLeft;
+//    }else{
+//        cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
+//
+////    }else if(indexPath.row == 2){
+////        cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+////    }else if(indexPath.row == 6){
+////        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+////    }else if(indexPath.row == 8){
+////        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+////    }
+//
+////    cell.mLeftName.text= [_mData objectAtIndex:indexPath.row];
+////    cell.mLeftName.textAlignment = NSTextAlignmentLeft;
+//    }
     return cell;
 }
 

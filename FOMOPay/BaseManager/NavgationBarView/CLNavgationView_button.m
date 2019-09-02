@@ -59,10 +59,21 @@
 }
 
 +(CLNavgationView_button *)shareDefaultNavRightButtonAlter{
-    CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];    view.mRightImg.hidden = YES;
+    CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
+    view.mRightImg.hidden = YES;
     [view.mRightBtn setTitle:@"申请退款" forState:UIControlStateNormal];
     view.mRightBtn.titleLabel.font = kCommonFont(14);
     view.mRightBtn.tag=101;
+    return view;
+}
+
++ (CLNavgationView_button *)shareDefaultNavRightButtonRefundProgress{
+    CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];
+    view.mRightImg.image = [UIImage yh_imageNamed:@"pdf_history_remittanceplan.pdf"];
+    [view.mRightBtn setTitle:@"退款详情" forState:UIControlStateNormal];
+     view.mRightBtn.titleLabel.font = kCommonFont(14);
+    view.mRightBtn.tag = 102;
+    
     return view;
 }
 

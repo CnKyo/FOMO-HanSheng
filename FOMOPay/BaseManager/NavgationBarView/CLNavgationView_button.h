@@ -20,7 +20,7 @@ typedef void(^CLNavgationView_buttonBtnBlock)(NSInteger tag);
 + (CLNavgationView_button *)shareDefaultNavRightButton;
 + (CLNavgationView_button *)shareDefaultNavRightButtonOther;
 +(CLNavgationView_button *)shareDefaultNavRightButtonAlter;
-
++ (CLNavgationView_button *)shareDefaultNavRightButtonRefundProgress;
 @end
 
 

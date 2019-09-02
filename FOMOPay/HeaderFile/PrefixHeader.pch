@@ -77,6 +77,10 @@
 #import "CLHistoryDetailsOfRemittancesCellTableViewCell.h"
 #import "CLHistoryPaymentdetails.h"
 #import "CLHistoryAlterRemittance.h"
+#import "CLHistoryConfirmRefund.h"
+#import "CLHistoryRefund.h"
+#import "CLHistoryAuthentication.h"
+#import "CLHistoryDetailsOfRefund.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"
