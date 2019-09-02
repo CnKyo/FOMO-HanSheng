@@ -27,14 +27,18 @@
 }
 - (void)loadConfig{
     [self showLoading:nil];
-    [WKNetWorkManager WKGetAppConfig:^(id result, BOOL success) {
-        [self hiddenLoading];
-        if (success) {
-
-        }else{
-            TOASTMESSAGE(result);
-        }
-    }];
+    if ([WKAccountManager shareInstance].appConfig.rmtMaxAmt.length<=0) {
+        [WKNetWorkManager WKGetAppConfig:^(id result, BOOL success) {
+            [self hiddenLoading];
+            if (success) {
+                if ([result isKindOfClass:[NSString class]]) {
+                    [[WKAccountManager shareInstance] WKResetAppConfig:result];
+                }
+            }else{
+                TOASTMESSAGE(result);
+            }
+        }];
+    }
     
     NSMutableDictionary *para = [NSMutableDictionary new];
     [para setObject:@"SGD" forKey:@"sourceCurrencyCode"];

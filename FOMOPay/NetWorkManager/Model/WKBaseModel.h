@@ -139,3 +139,10 @@
 @end
 
 
+@interface WKAppConfigObj : NSObject
+@property (strong,nonatomic) NSString *rmtMaxAmt;
+@property (strong,nonatomic) NSString *rmtMinAmt;
+@property (strong,nonatomic) NSString *tncLink;
+@property (strong,nonatomic) NSArray *appAvailableVersion;
+
+@end

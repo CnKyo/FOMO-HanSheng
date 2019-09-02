@@ -27,6 +27,8 @@ typedef enum : NSUInteger {
 
 @property (assign,nonatomic) WKLoginStatus loginStatus;
 
+@property (assign,nonatomic) WKAppConfigObj *appConfig;
+
 - (NSString *)token;
 
 - (NSString *)idNumber;
@@ -36,9 +38,13 @@ typedef enum : NSUInteger {
 
 - (WKLoginStatus)loginStatus;
 
+- (WKAppConfigObj *)appConfig;
+
 - (void)WKSetToken:(NSString *)token;
 
 - (void)WKResetUserInfo:(WKUserInfo *)userInfo;
+
+- (void)WKResetAppConfig:(NSString *)appConfig;
 
 - (void)WKClearnAll;
 
