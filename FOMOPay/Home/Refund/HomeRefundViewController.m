@@ -115,14 +115,34 @@
     
     cell.HomeRefundListCellButtonBlock = ^{
         
-        //下一步
-        HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-        vc.type = ShowButtonTypeDefault;
-        [weakSelf pushToViewController:vc];
+        [weakSelf WKAddRefundAccount];
     };
     
     return cell;
 }
 
+- (void)WKAddRefundAccount{
+    WS(weakSelf);
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    
+    [para setObject:self.city forKey:@"city"];
+    [para setObject:self.name forKey:@"name"];
+    [para setObject:self.number forKey:@"number"];
+    [para setObject:self.bank forKey:@"bank"];
+    
+    [self showLoading:nil];
+    
+    [WKNetWorkManager WKAddRefundAccount:para block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            //下一步
+            HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
+            vc.type = ShowButtonTypeDefault;
+            [weakSelf pushToViewController:vc];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+}
 
 @end

@@ -215,6 +215,24 @@
         block(errorDes,NO);
     }];
 }
++ (void)putWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+   
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:para andUrl:url andRequestMethod:YTKRequestMethodPUT];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
+    }];
+}
 #pragma mark----****----获取版本信息
 /**
  获取版本信息
@@ -310,6 +328,18 @@
  */
 + (void)WKGetRemiitablePara:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
     [self newGetWithUrl:kGetRemmittableList para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
+#pragma mark----****----添加退款账号
+/**
+ 添加退款账号
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKAddRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self putWithUrl:kAddRefundAccount para:para block:^(id result, BOOL success) {
         block(result,success);
     }];
 }

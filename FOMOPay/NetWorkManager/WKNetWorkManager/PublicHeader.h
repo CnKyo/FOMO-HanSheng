@@ -25,5 +25,7 @@
 #define kLogin                             @"/customer/app/v2/login"
 ///获取配置信息
 #define KGetConfig                             @"/customer/app/v2/configuration"
-
+///汇款
 #define kGetRemmittableList                             @"/customer/app/v2/remittable"
+///添加退款账户
+#define kAddRefundAccount                             @"/customer/app/v2/refundAccount"

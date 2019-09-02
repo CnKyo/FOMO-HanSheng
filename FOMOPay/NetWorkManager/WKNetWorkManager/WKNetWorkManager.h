@@ -67,5 +67,14 @@
  @param block 返回值
  */
 + (void)WKGetRemiitablePara:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+
+#pragma mark----****----添加退款账号
+/**
+ 添加退款账号
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKAddRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
 @end
 

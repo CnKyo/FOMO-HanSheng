@@ -41,7 +41,7 @@
 
     NSString *mToken = [WKAccountManager shareInstance].token;
     if (mToken.length>0) {
-        [requestheaders setValue:mToken forKey:@"Authorization"];
+        [requestheaders setValue:[NSString stringWithFormat:@"Bearer Session=%@",mToken] forKey:@"Authorization"];
     }
     return requestheaders;
 }
