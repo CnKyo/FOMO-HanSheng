@@ -89,6 +89,10 @@ static WKAccountManager *manager = nil;
         [WKUserDefault setObjectInUserDefaults:userInfo.mobileNumber withKey:kMobileNumber];
     }
 }
+- (void)WKSetToken:(NSString *)token{
+    self.token = token;
+    [WKUserDefault setObjectInUserDefaults:token withKey:kToken];
+}
 - (void)WKClearnAll{
     [self WKSetToken:@""];    
 }
