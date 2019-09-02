@@ -76,6 +76,7 @@
 #import "CLHistoryDetailsOfRemittances.h"
 #import "CLHistoryDetailsOfRemittancesCellTableViewCell.h"
 #import "CLHistoryPaymentdetails.h"
+#import "CLHistoryAlterRemittance.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"
@@ -91,7 +92,7 @@
 #import "CLCollectionAddSelect.h"
 #import "CLCollectionAddSelectTableView.h"
 #import "CLMeMessageSetViewController.h"
-
+#import "CLHistoryCancelRemittance.h"
 #import "WKAccountManager.h"
 #define kLightgrayColor [UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1]
 

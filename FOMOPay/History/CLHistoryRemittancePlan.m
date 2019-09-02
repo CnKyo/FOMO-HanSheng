@@ -30,7 +30,7 @@
     model.mRightView = mMo  ;
     mMo.mRightBtnBlock = ^(NSInteger tag) {
         if (tag == 1) {
-            DebugLog(@"点击了按钮");
+            
             CLHistoryDetailsOfRemittances *vc = [CLHistoryDetailsOfRemittances new];
             [self pushToViewController: vc];
             
@@ -60,9 +60,9 @@
     self.mLeftDate = @[@"7月7日",@"7月8日",@"7月9日",@"7月30日"];
     self.mRightData = @[@"提交汇款订单",@"已收到您的付款",@"汇款处理中",@"汇款成功"];
     self.mRightDataHint =@[@"等待付款中，请使用本人账户进行付款。如果您已经完成支付，请耐心等待，我们需要时间核对付款讯息，谢谢！",
-                           @"款项核对中",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"汇款成功"];
+                           @"款项核对中...",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"汇款成功"];
     
-    self.i=4;
+    self.i=4;  //控制进度条1-4。 取值1-4;
 
 //    [self LoadButton];
     [self ResetLayout];
@@ -77,7 +77,7 @@
     if(section == 0){
     return self.mData.count;
     }else{
-        return 5;
+        return 6;
     }
 }
 
@@ -99,42 +99,9 @@
     cell.mRightData.textAlignment = NSTextAlignmentRight;
        
     }
-//    if(indexPath.section == 1){
-//        if(indexPath.row == 0){
-//            cell.mLeftName.text= @"汇款进度";
-//            cell.mRightData.text = @"";
-//            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//        }else{
-//            cell.selectionStyle = UITableViewCellSeparatorStyleNone;
-//            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-//            cell.mLeftName.text= @"";
-//            cell.mRightData.text = @"";
-//            UILabel *mTime = [UILabel new];
-//            mTime.text = @"6月8号";
-//            mTime.font = [UIFont fontWithName:@"PingFangSC-Regular"size:14];
-//            mTime.textColor = ssRGBHex(0x8C9091);
-//            [cell.contentView addSubview:mTime];
-//            [mTime mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.top.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(14);
-//            }];
-////            _StepProgress = [[CLHistoryRenittabcePlanView alloc]initsetCount:4];
-////            [cell.contentView addSubview:_StepProgress];
-////            [_StepProgress mas_makeConstraints:^(MASConstraintMaker *make) {
-////                make.top.equalTo(mTime.mas_bottom).offset(14);
-////                make.left.equalTo(cell).offset(64);
-////                make.height.offset(187);
-////                make.width.offset(10);
-////            }];
-//        }
-//
-//    }
-    
-    
-    
+
     if(indexPath.section == 1){
-//        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         cell.mRightData.hidden = YES;
         cell.mLeftName.font = kCommonFont(14);
         if(indexPath.row == 0){
@@ -152,7 +119,7 @@
                 mLeftData.font =kCommonFont(14);
                 [cell.contentView addSubview:mLeftData];
                 
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 111)];//背景条
+                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 112)];//背景条
                 bgview.backgroundColor =ssRGBHex(0xE6E6E6);
                 [cell.contentView addSubview:bgview];
                 UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
@@ -245,7 +212,7 @@
                 [cell.contentView addSubview:mLabel];
             }else{
                 cell.mLeftName.hidden = YES;
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 39)];//背景条
+                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 41)];//背景条
                 bgview.backgroundColor =ssRGBHex(0xE6E6E6);
                 [cell.contentView addSubview:bgview];
                 UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
@@ -293,7 +260,8 @@
                 mTitleHint.font = kCommonFont(12);
                 [cell.contentView addSubview:mTitleHint];
                 
-                [self LoadButtonCancelAndQuery];
+                [self LoadContactButton];
+               
             }else if(self.i >indexPath.row){
                 cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 47)];//背景条
@@ -312,7 +280,7 @@
                 [cell.contentView addSubview:mLabel];
             }else{
                 cell.mLeftName.hidden = YES;
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 39)];//背景条
+                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 41)];//背景条
                 bgview.backgroundColor =ssRGBHex(0xE6E6E6);
                 [cell.contentView addSubview:bgview];
                 UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
@@ -339,7 +307,7 @@
                 mLeftData.font =kCommonFont(14);
                 [cell.contentView addSubview:mLeftData];
                 
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 106)];//背景条
+                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 0)];//背景条
                 bgview.backgroundColor =ssRGBHex(0xE6E6E6);
                 [cell.contentView addSubview:bgview];
                 UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
@@ -354,6 +322,10 @@
                 mLabel.font = kCommonFont(16);
                 mLabel.textColor  =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:mLabel];
+                if([mLabel.text isEqual:@"汇款成功"]){
+                    DebugLog(@"w231232");
+                    [self LoadAlterButton];
+                };
                 
                 UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 27, 256, 57)];//提示小文字
                 mTitleHint.textColor = ssRGBHex(0x8C9091);
@@ -362,23 +334,23 @@
                 mTitleHint.font = kCommonFont(12);
                 [cell.contentView addSubview:mTitleHint];
                 
-                [self LoadButtonCancelAndQuery];
-            }else if(self.i >indexPath.row){
-                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 39)];//背景条
-                bgview.backgroundColor =ssRGBHex(0x005CB6);
-                [cell.contentView addSubview:bgview];
-                UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
-                titleLabel.backgroundColor = ssRGBHex(0x005CB6);
-                titleLabel.frame =CGRectMake(-4, 0, 10, 10);
-                titleLabel.layer.cornerRadius = 10/2 ;
-                titleLabel.clipsToBounds = YES ;
-                [bgview addSubview:titleLabel];
-                UILabel *mLabel = [[UILabel alloc]initWithFrame:CGRectMake(97, 13, 118, 16)];
-                mLabel.text= [_mRightData objectAtIndex:indexPath.row - 1];
-                mLabel.textColor =  ssRGBHex(0x8C9091);
-                mLabel.font = kCommonFont(16);
-                [cell.contentView addSubview:mLabel];
+               
+//            }else if(self.i >indexPath.row){
+//                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
+//                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 39)];//背景条
+//                bgview.backgroundColor =ssRGBHex(0x005CB6);
+//                [cell.contentView addSubview:bgview];
+//                UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
+//                titleLabel.backgroundColor = ssRGBHex(0x005CB6);
+//                titleLabel.frame =CGRectMake(-4, 0, 10, 10);
+//                titleLabel.layer.cornerRadius = 10/2 ;
+//                titleLabel.clipsToBounds = YES ;
+//                [bgview addSubview:titleLabel];
+//                UILabel *mLabel = [[UILabel alloc]initWithFrame:CGRectMake(97, 13, 118, 16)];
+//                mLabel.text= [_mRightData objectAtIndex:indexPath.row - 1];
+//                mLabel.textColor =  ssRGBHex(0x8C9091);
+//                mLabel.font = kCommonFont(16);
+//                [cell.contentView addSubview:mLabel];
             }else{
                 cell.mLeftName.hidden = YES;
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 0)];//背景条
@@ -396,6 +368,10 @@
                 mLabel.font = kCommonFont(16);
                 [cell.contentView addSubview:mLabel];
             }}
+        if(indexPath.row == 5){
+            cell.mLeftName.hidden = YES;
+            cell.mRightData.hidden = YES;
+        }
     }
 
     return cell;
@@ -475,7 +451,8 @@
     
     __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         if(YesAction){
-            
+            CLHistoryCancelRemittance *vc = [CLHistoryCancelRemittance new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }];
     [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
@@ -514,13 +491,37 @@
         make.right.equalTo(self.view).offset(-4);
         make.height.offset(42);
         make.width.offset(kScreenWidth);
-         make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
     }];
 }
 
 -(void)Call:(UIButton *)sender{
    
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-898-3001"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-898-3001"]  options:@{} completionHandler:nil];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-000-0000"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://400-000-0000"]  options:@{} completionHandler:nil];
+}
+
+//------------------------汇款失败的时候的修改按钮以及他的点击事件
+-(void)LoadAlterButton{
+    UIButton *AlterButton = [UIButton new];
+    AlterButton.backgroundColor = ssRGBHex(0x005CB6);
+    [AlterButton setTitle:@"修改" forState:UIControlStateNormal];
+    AlterButton.layer.cornerRadius = 5;
+    [AlterButton setTitleColor:ssRGBHex(0xFFFFFF) forState:UIControlStateNormal];
+    AlterButton.titleLabel.font =kCommonFont(14);
+    [AlterButton addTarget:self action:@selector(Alter:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:AlterButton];
+    [AlterButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(10);
+        make.right.equalTo(self.view).offset(-10);
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.height.offset(42);
+        make.width.offset(kScreenWidth);
+    }];
+}
+
+-(void)Alter:(UIButton *)sender{
+    CLHistoryAlterRemittance *vc = [CLHistoryAlterRemittance new];
+    [self pushToViewController:vc];
 }
 @end

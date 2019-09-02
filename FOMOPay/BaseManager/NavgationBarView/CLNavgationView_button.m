@@ -58,6 +58,14 @@
     return view;
 }
 
++(CLNavgationView_button *)shareDefaultNavRightButtonAlter{
+    CLNavgationView_button *view = [[[NSBundle mainBundle] loadNibNamed:@"CLNavgationViewButton" owner:self options:nil] objectAtIndex:0];    view.mRightImg.hidden = YES;
+    [view.mRightBtn setTitle:@"申请退款" forState:UIControlStateNormal];
+    view.mRightBtn.titleLabel.font = kCommonFont(14);
+    view.mRightBtn.tag=101;
+    return view;
+}
+
 
 - (IBAction)mRightBtnAction:(UIButton *)sender {
     self.mRightBtn.adjustsImageWhenHighlighted = false;

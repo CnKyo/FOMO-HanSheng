@@ -139,9 +139,12 @@
     }];
     
     __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        if(YesAction){
-            
-        }
+      
+            if(YesAction){
+                CLHistoryCancelRemittance *vc = [CLHistoryCancelRemittance new];
+                [self pushToViewController: vc];
+            }
+        
     }];
     [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
     [alertController addAction:NoAction];
