@@ -26,7 +26,7 @@
  @param para 参数
  @param block 返回值
  */
-+ (void)WKGetLoginOtp:(NSDictionary *)para block:(void(^)(WKBaseModel *info))block;
++ (void)WKGetLoginOtp:(NSDictionary *)para block:(void(^)(NSString *result,BOOL success))block;
 
 #pragma mark----****----获取Token
 /**
@@ -45,5 +45,27 @@
  @param block 返回值
  */
 + (void)WKLogin:(NSDictionary *)para block:(void(^)(NSDictionary *result,BOOL success))block;
+#pragma mark----****----退出登录
+/**
+ 退出登录
+
+ @param block 返回值
+ */
++ (void)WKLogOut:(void(^)(id result,BOOL success))block;
+#pragma mark----****----获取app的配置信息
+/**
+ 获取app的配置信息
+
+ @param block 返回值
+ */
++ (void)WKGetAppConfig:(void(^)(id result,BOOL success))block;
+#pragma mark----****----获取汇款列表
+/**
+ 获取汇款列表
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetRemiitablePara:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
 @end
 

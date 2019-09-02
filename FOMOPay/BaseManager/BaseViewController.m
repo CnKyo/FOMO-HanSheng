@@ -11,9 +11,18 @@
 
 @property (nonatomic,strong)WRCustomNavigationBar *mCustomNavBar;
 
+@property (nonatomic,strong)MBProgressHUD *mHud;
+
 @end
 
 @implementation BaseViewController
+
+void TOASTMESSAGE(NSString *message){
+    DebugLog(@"%@",message);
+   
+    [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:message];
+
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
@@ -351,6 +360,20 @@
     return _mCustomNavBar;
 }
 
+- (void)showLoading:(NSString *)text{
+    if (text.length<=0) {
+        text = @"loading...";
+    }
+    self.mHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.mHud.mode = MBProgressHUDModeIndeterminate;
+    self.mHud.label.text = text;
+    [self.mHud showAnimated:YES];
+}
 
+
+- (void)hiddenLoading{
+    [self.mHud hideAnimated:YES];
+
+}
 
 @end

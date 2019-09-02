@@ -19,6 +19,7 @@
 @property (nonatomic,strong)NSMutableArray *DataSource;
 
 
+void TOASTMESSAGE(NSString *message);
 
 
 - (void)LoadCellType:(NSUInteger )Type;//列表
@@ -39,6 +40,8 @@
 - (void)CLNavBackAction;
 
 
+- (void)showLoading:(NSString *)text;
 
+- (void)hiddenLoading;
 @end
 

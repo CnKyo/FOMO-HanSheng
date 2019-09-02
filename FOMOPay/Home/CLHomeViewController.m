@@ -21,6 +21,35 @@
 
 @implementation CLHomeViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadConfig];
+}
+- (void)loadConfig{
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetAppConfig:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+    
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:@"SGD" forKey:@"sourceCurrencyCode"];
+    [para setObject:@"1000" forKey:@"sourceAmount"];
+    [para setObject:@"CNY" forKey:@"targetCurrencyCode"];
+
+    [WKNetWorkManager WKGetRemiitablePara:para block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     

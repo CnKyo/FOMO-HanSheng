@@ -28,5 +28,21 @@
     }
     return 0;
 }
-
++ (NSDictionary *)stringToDic:(NSString *)text{
+    if (text == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [text dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err)
+    {
+        DebugLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 @end
