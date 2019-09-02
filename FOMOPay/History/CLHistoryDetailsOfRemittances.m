@@ -33,6 +33,7 @@
     [self LoadCellType:9];
      self.mData=@[@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
     [self LoadButton];
+    [self ResetLayout];
     
 }
 

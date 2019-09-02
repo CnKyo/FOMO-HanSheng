@@ -57,7 +57,6 @@
     [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
         
     }];
-    
     [self loadTableView];
 }
 
@@ -97,12 +96,10 @@
     
     HomeListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeListCell"];
     if (!cell) {
-        
         cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeListCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.type = HomeListCellTypeHome;
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
         
         if (tag == 4000) {  //汇出

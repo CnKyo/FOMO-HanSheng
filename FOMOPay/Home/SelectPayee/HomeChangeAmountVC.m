@@ -81,7 +81,7 @@
     }
     
     cell.type = HomeListCellTypeChangeAmount;
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
         
         if (tag == 4000) {  //汇出

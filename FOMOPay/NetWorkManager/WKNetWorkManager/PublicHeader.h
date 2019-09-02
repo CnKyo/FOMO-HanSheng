@@ -13,7 +13,7 @@
 #endif /* PublicHeader_h */
 
 
-//#define kBaseUrl                              @"http://192.168.0.35:8080"
+//#define kBaseUrl                     @"http://192.168.0.35:8080"
 #define kBaseUrl                              @"https://hanshan.uat.fomopay.net"
 ///获取版本信息
 #define kGetAppVersion                              @"/customer/app/v2/version"

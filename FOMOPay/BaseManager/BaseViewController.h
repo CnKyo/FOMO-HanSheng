@@ -21,7 +21,6 @@
 
 void TOASTMESSAGE(NSString *message);
 
-
 - (void)LoadCellType:(NSUInteger )Type;//列表
 
 //- (void)addHomeTabView;
@@ -39,6 +38,7 @@ void TOASTMESSAGE(NSString *message);
 
 - (void)CLNavBackAction;
 
+- (void)ResetLayout; // 针对5s小屏幕手机的底部按钮挡住tabview进行重设约束
 
 - (void)showLoading:(NSString *)text;
 

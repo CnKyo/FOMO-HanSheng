@@ -143,6 +143,8 @@
 		CF2C42B0230E944700A16732 /* pdf_collection_hint_delete.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */; };
 		CF2C42B1230E944700A16732 /* pdf_collection_hint_modifysuccessfully.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */; };
 		CF2C42B3230E9A1400A16732 /* pdf_collection_delete_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */; };
+		CF3129DE231CA776002ED335 /* pdf_history_home.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF3129DD231CA776002ED335 /* pdf_history_home.pdf */; };
+		CF3129E0231D047D002ED335 /* pdf_home_home_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */; };
 		CF36E26C23025DAF00F1AE2B /* pdf_home_transfer_2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */; };
 		CF36E27123025E0400F1AE2B /* CLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */; };
 		CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF36E27023025E0400F1AE2B /* CLTableViewCell.xib */; };
@@ -186,7 +188,6 @@
 		CF62652A23152801001AF5FC /* CLTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF62652823152801001AF5FC /* CLTitleView.m */; };
 		CF62652B23152801001AF5FC /* CLTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF62652923152801001AF5FC /* CLTitleView.xib */; };
 		CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */; };
-		CF6BBB552303AB4400EB5BBB /* pdf_home_home_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB542303AB4400EB5BBB /* pdf_home_home_tabbar.pdf */; };
 		CF6BBB582303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */; };
 		CF6BBB592303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB572303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf */; };
 		CF6BBB5E2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5A2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf */; };
@@ -438,6 +439,8 @@
 		CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_delete.pdf; sourceTree = "<group>"; };
 		CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_modifysuccessfully.pdf; sourceTree = "<group>"; };
 		CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_delete_icon.pdf; sourceTree = "<group>"; };
+		CF3129DD231CA776002ED335 /* pdf_history_home.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_home.pdf; sourceTree = "<group>"; };
+		CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbar.pdf; sourceTree = "<group>"; };
 		CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_transfer_2.pdf; sourceTree = "<group>"; };
 		CF36E26E23025E0400F1AE2B /* CLTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTableViewCell.h; sourceTree = "<group>"; };
 		CF36E26F23025E0400F1AE2B /* CLTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLTableViewCell.m; sourceTree = "<group>"; };
@@ -510,7 +513,6 @@
 		CF62652C2315283A001AF5FC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CF62652D23152849001AF5FC /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbarselected.pdf; sourceTree = "<group>"; };
-		CF6BBB542303AB4400EB5BBB /* pdf_home_home_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbar.pdf; sourceTree = "<group>"; };
 		CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_history_tabbar.pdf; sourceTree = "<group>"; };
 		CF6BBB572303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_history_tabbarselected.pdf; sourceTree = "<group>"; };
 		CF6BBB5A2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_me_tabbarselected.pdf; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 			isa = PBXGroup;
 			children = (
 				182DBA6F231CEDA20009E745 /* pdf_info_hud.pdf */,
+				CF3129DD231CA776002ED335 /* pdf_history_home.pdf */,
 				7707E2A32313B1E10029EB0B /* Home */,
 				CF23B3ED230F84FC00FAC43C /* pdf_history_remittanceplan.pdf */,
 				CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */,
@@ -728,7 +731,7 @@
 				CF6BBB5A2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf */,
 				CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */,
 				CF6BBB572303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf */,
-				CF6BBB542303AB4400EB5BBB /* pdf_home_home_tabbar.pdf */,
+				CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */,
 				CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */,
 				CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */,
 				CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */,
@@ -1397,7 +1400,6 @@
 				CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */,
 				77DD6BB62313E12A00BFDD11 /* HomeSureInfoListCell.xib in Resources */,
 				773880D42314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy.pdf in Resources */,
-				CF6BBB552303AB4400EB5BBB /* pdf_home_home_tabbar.pdf in Resources */,
 				7707E2A92313B1E10029EB0B /* pdf_home_selectPayee_add_icon.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
 				770239B1230BFD2A00EE8C31 /* pdf.guideView_icon_english_3.pdf in Resources */,
@@ -1428,6 +1430,7 @@
 				CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */,
 				CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */,
 				772D73C5230A798C0068AB48 /* pdf_login_language.pdf in Resources */,
+				CF3129E0231D047D002ED335 /* pdf_home_home_tabbar.pdf in Resources */,
 				CF62650023152625001AF5FC /* CLCollectionTableViewCell.xib in Resources */,
 				CF6BBB592303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf in Resources */,
 				7715018F231121ED0016B449 /* HomeRefundSelectBankView.xib in Resources */,
@@ -1437,6 +1440,7 @@
 				7702399B230BE88C00EE8C31 /* pdf_home_packUp_icon.pdf in Resources */,
 				7715018A2311176B0016B449 /* HomeRefundListCell.xib in Resources */,
 				CF62651F23152734001AF5FC /* CLMeTableViewCell.xib in Resources */,
+				CF3129DE231CA776002ED335 /* pdf_history_home.pdf in Resources */,
 				CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */,
 				CF2C42B0230E944700A16732 /* pdf_collection_hint_delete.pdf in Resources */,
 				CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */,

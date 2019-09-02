@@ -9,10 +9,17 @@
 #import "CLHistoryViewController.h"
 
 @interface CLHistoryViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@property (nonatomic,strong)NSArray *mData;
 @end
 
 @implementation CLHistoryViewController
+
+-(NSArray *)mData{
+    if(_mData == nil){
+        _mData = [NSArray new];
+    }
+    return _mData;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,11 +42,37 @@
         }
     }];
     [self LoadCellType:3];
+    _mData = @[@"a"];
+    [self LoadData];
+    
     // Do any additional setup after loading the view.
 }
 
+-(void)LoadData{
+    if(_mData == nil){
+        UIImageView *ctView = [UIImageView new];
+        ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
+        [self.view addSubview:ctView];
+        UILabel *ctLbale  = [UILabel new];
+        ctLbale.text = @"暂无历史消息";
+        [self.view addSubview:ctLbale];
+        [ctView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(self.view);
+        }];
+        [ctLbale mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ctView.mas_bottom).offset(5);
+            make.centerX.equalTo(ctView);
+        }];
+        
+    }else{
+        [self.mTabView reloadData];
+    }
+}
+
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return _mData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

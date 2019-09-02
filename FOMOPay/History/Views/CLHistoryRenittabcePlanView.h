@@ -16,7 +16,7 @@
 
 @interface CLHistoryRenittabcePlanView : UIView
 //-(instancetype)initWithFrame:(CGRect)frame setDirection:(BOOL)Direction setCount:(NSInteger)Count ;
--(instancetype _Nonnull)initsetCount:(NSInteger)Count Titles:(nonnull NSArray *)titles;
+-(instancetype _Nonnull)initsetCount:(NSInteger)Count;
 @property(nonatomic,assign)NSInteger PortraitRecordIndex ;
 
 -(void)lastStep;

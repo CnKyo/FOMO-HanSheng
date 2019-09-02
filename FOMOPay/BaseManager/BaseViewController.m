@@ -133,8 +133,9 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.dataSource = self;
     
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.equalTo(self.view);
+        make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+        
         
     }];
 }
@@ -374,6 +375,13 @@ void TOASTMESSAGE(NSString *message){
 - (void)hiddenLoading{
     [self.mHud hideAnimated:YES];
 
+}
+- (void)ResetLayout{
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-55);
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+    }];
 }
 
 @end
