@@ -94,6 +94,8 @@
 #import "CLMeMessageSetViewController.h"
 #import "CLHistoryCancelRemittance.h"
 #import "WKAccountManager.h"
+#import "WKYTKManager.h"
+#import "SVStatusHUD.h"
 #define kLightgrayColor [UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1]
 
 #define _SHOW_DEBUG_LOG_

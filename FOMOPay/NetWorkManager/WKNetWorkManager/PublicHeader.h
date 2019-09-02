@@ -18,8 +18,14 @@
 ///获取版本信息
 #define kGetAppVersion                              @"/customer/app/v2/version"
 
-#define kGetLoginOtp                             @"/customer/app/v2/login/otp"
+#define kGetLoginOtp                             @"/customer/app/v2/login"
 ///获取token
 #define kGetToken                             @"/customer/app/v2/session"
 ///登录
 #define kLogin                             @"/customer/app/v2/login"
+///获取配置信息
+#define KGetConfig                             @"/customer/app/v2/configuration"
+///汇款
+#define kGetRemmittableList                             @"/customer/app/v2/remittable"
+///添加退款账户
+#define kAddRefundAccount                             @"/customer/app/v2/refundAccount"

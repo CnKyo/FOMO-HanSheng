@@ -67,46 +67,17 @@
     
 }
 - (void)mResendAction{
-    
-//    NSDictionary *params = @{
-//                             @"mobile":_mMobileString,
-//                             @"type":@"signUp",
-//                             };
-//    [self showLoadingView];
-//    __block typeof(self) blockSelf = self;
-//    [SendOtp requestWithParameters:params andResultBlock:^(id response, NSError *error) {
-//        SendOtp *entity = [[SendOtp alloc] initWithResponse:response andError:error];
-//        DebugLog(@"entity.errorEntity.messag : %@",entity.errorEntity.message);
-//        if (entity.isSuccessed) {
-//
-//
-//            //            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"There could be a delay. Please wait in patience. " preferredStyle:UIAlertControllerStyleAlert];
-//            //            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-//            //            UIAlertAction *backAction = [UIAlertAction actionWithTitle:@"Back" style:UIAlertActionStyleCancel handler:nil];
-//            //
-//            //            [alertController addAction:okAction];
-//            //
-//            //            [alertController addAction:backAction];
-//            //            [blockSelf presentViewController:alertController animated:YES completion:nil];
-//
-//            self.mView.mResendBtn.hidden = YES;
-//            self.mView.mCountTimeLb.hidden = NO;
-//
-//            __weak typeof(self) weakSelf = self;
-//
-//            [weakSelf.mView.mCountTimeLb setupText:@"You will receive the one-time password within " andEndText:@"seconds" andTime:[NSDate dateWithTimeIntervalSinceNow:60]];
-//            weakSelf.mView.mCountTimeLb.mStopBlock = ^{
-//                weakSelf.mView.mResendBtn.hidden = NO;
-//                weakSelf.mView.mCountTimeLb.hidden = YES;
-//            };
-//        }else{
-//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:entity.errorEntity.message preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-//            [alertController addAction:okAction];
-//            [blockSelf presentViewController:alertController animated:YES completion:nil];
-//        }
-//        [blockSelf hidenLoadingView];
-//    }];
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetLoginOtp:@{@"ic":self.mobile} block:^(NSString *result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            NSDictionary *dic = [CLTool stringToDic:result];
+            [[WKAccountManager shareInstance] WKResetUserInfo:[WKUserInfo yy_modelWithDictionary:dic]];
+            TOASTMESSAGE(@"验证码发送成功!");
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
 }
 
 - (void)verifyCode:(NSString *)code{
@@ -114,39 +85,32 @@
     NSMutableDictionary *para = [NSMutableDictionary new];
     [para setObject:self.mobile forKey:@"ic"];
     [para setObject:code forKey:@"otp"];
+    [self showLoading:@""];
     [WKNetWorkManager WKGetToken:para block:^(NSString *token, BOOL success) {
+        [self hiddenLoading];
         if (success) {
             DebugLog(@"得到的Token是:%@",token);
             [[WKAccountManager shareInstance] WKSetToken:token];
-            
+
             [self goLogin];
-            
+
         }else{
             DebugLog(@"错误信息:%@",token);
+            TOASTMESSAGE(token);
         }
     }];
+    
+
     
 }
 
 - (void)goLogin{
-    NSMutableDictionary *para = [NSMutableDictionary new];
-    [para setObject:self.mobile forKey:@"ic"];
-    [WKNetWorkManager WKLogin:para block:^(NSDictionary *result, BOOL success) {
-        if (success) {
-            
-            WKUserInfo *mUser  = [WKUserInfo yy_modelWithDictionary:result];
-            [[WKAccountManager shareInstance] WKResetUserInfo:mUser];
-            
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
-            [appdelegate.window setRootViewController:tabbarConfig.tabBarController];
-        }else{
-            
-        }
-    }];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
+    [appdelegate.window setRootViewController:tabbarConfig.tabBarController];
 }
 - (void)WKNewForgetLoginOneTimeOTPviewTextFieldDidEndEditing:(NSString *)mText{
     

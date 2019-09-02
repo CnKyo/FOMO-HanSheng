@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		0633D24662194BB0546939F4 /* libPods-FOMOPay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59884581E113A0DB27EEB629 /* libPods-FOMOPay.a */; };
+		182DBA59231CDBCC0009E745 /* WKYTKUrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA38231CDBCC0009E745 /* WKYTKUrlArgumentFilter.m */; };
+		182DBA5A231CDBCC0009E745 /* WKYTKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA3A231CDBCC0009E745 /* WKYTKRequest.m */; };
+		182DBA5B231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA41231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m */; };
+		182DBA5C231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA42231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.m */; };
+		182DBA5D231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA43231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.m */; };
+		182DBA5E231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA44231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.m */; };
+		182DBA5F231CDBCC0009E745 /* YTKNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA46231CDBCC0009E745 /* YTKNetworkConfig.m */; };
+		182DBA60231CDBCC0009E745 /* YTKChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA48231CDBCC0009E745 /* YTKChainRequest.m */; };
+		182DBA61231CDBCC0009E745 /* YTKNetworkPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA4C231CDBCC0009E745 /* YTKNetworkPrivate.m */; };
+		182DBA62231CDBCC0009E745 /* YTKBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA50231CDBCC0009E745 /* YTKBaseRequest.m */; };
+		182DBA63231CDBCC0009E745 /* YTKBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA53231CDBCC0009E745 /* YTKBatchRequest.m */; };
+		182DBA64231CDBCC0009E745 /* YTKNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA54231CDBCC0009E745 /* YTKNetworkAgent.m */; };
+		182DBA65231CDBCC0009E745 /* YTKChainRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA55231CDBCC0009E745 /* YTKChainRequestAgent.m */; };
+		182DBA66231CDBCC0009E745 /* YTKBatchRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA56231CDBCC0009E745 /* YTKBatchRequestAgent.m */; };
+		182DBA67231CDBCC0009E745 /* YTKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA58231CDBCC0009E745 /* YTKRequest.m */; };
+		182DBA6A231CDBD40009E745 /* WKYTKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA69231CDBD40009E745 /* WKYTKManager.m */; };
+		182DBA6E231CED650009E745 /* SVStatusHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 182DBA6D231CED650009E745 /* SVStatusHUD.m */; };
+		182DBA70231CEDA20009E745 /* pdf_info_hud.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 182DBA6F231CEDA20009E745 /* pdf_info_hud.pdf */; };
 		1863DA4B23011A07000969FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA4A23011A07000969FE /* AppDelegate.m */; };
 		1863DA4E23011A07000969FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA4D23011A07000969FE /* ViewController.m */; };
 		1863DA5123011A07000969FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1863DA4F23011A07000969FE /* Main.storyboard */; };
@@ -202,6 +220,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182DBA38231CDBCC0009E745 /* WKYTKUrlArgumentFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKYTKUrlArgumentFilter.m; sourceTree = "<group>"; };
+		182DBA39231CDBCC0009E745 /* WKYTKRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKYTKRequest.h; sourceTree = "<group>"; };
+		182DBA3A231CDBCC0009E745 /* WKYTKRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKYTKRequest.m; sourceTree = "<group>"; };
+		182DBA3B231CDBCC0009E745 /* WKYTKUrlArgumentFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKYTKUrlArgumentFilter.h; sourceTree = "<group>"; };
+		182DBA3D231CDBCC0009E745 /* YTKAnimatingRequestAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKAnimatingRequestAccessory.h; sourceTree = "<group>"; };
+		182DBA3E231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTKBatchRequest+AnimatingAccessory.h"; sourceTree = "<group>"; };
+		182DBA3F231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTKChainRequest+AnimatingAccessory.h"; sourceTree = "<group>"; };
+		182DBA40231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTKBaseRequest+AnimatingAccessory.h"; sourceTree = "<group>"; };
+		182DBA41231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKAnimatingRequestAccessory.m; sourceTree = "<group>"; };
+		182DBA42231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKBatchRequest+AnimatingAccessory.m"; sourceTree = "<group>"; };
+		182DBA43231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKChainRequest+AnimatingAccessory.m"; sourceTree = "<group>"; };
+		182DBA44231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTKBaseRequest+AnimatingAccessory.m"; sourceTree = "<group>"; };
+		182DBA46231CDBCC0009E745 /* YTKNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKNetworkConfig.m; sourceTree = "<group>"; };
+		182DBA47231CDBCC0009E745 /* YTKBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKBaseRequest.h; sourceTree = "<group>"; };
+		182DBA48231CDBCC0009E745 /* YTKChainRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKChainRequest.m; sourceTree = "<group>"; };
+		182DBA49231CDBCC0009E745 /* YTKNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetwork.h; sourceTree = "<group>"; };
+		182DBA4A231CDBCC0009E745 /* YTKBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKBatchRequest.h; sourceTree = "<group>"; };
+		182DBA4B231CDBCC0009E745 /* YTKNetworkAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetworkAgent.h; sourceTree = "<group>"; };
+		182DBA4C231CDBCC0009E745 /* YTKNetworkPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKNetworkPrivate.m; sourceTree = "<group>"; };
+		182DBA4D231CDBCC0009E745 /* YTKRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKRequest.h; sourceTree = "<group>"; };
+		182DBA4E231CDBCC0009E745 /* YTKBatchRequestAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKBatchRequestAgent.h; sourceTree = "<group>"; };
+		182DBA4F231CDBCC0009E745 /* YTKChainRequestAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKChainRequestAgent.h; sourceTree = "<group>"; };
+		182DBA50231CDBCC0009E745 /* YTKBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKBaseRequest.m; sourceTree = "<group>"; };
+		182DBA51231CDBCC0009E745 /* YTKNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetworkConfig.h; sourceTree = "<group>"; };
+		182DBA52231CDBCC0009E745 /* YTKChainRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKChainRequest.h; sourceTree = "<group>"; };
+		182DBA53231CDBCC0009E745 /* YTKBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKBatchRequest.m; sourceTree = "<group>"; };
+		182DBA54231CDBCC0009E745 /* YTKNetworkAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKNetworkAgent.m; sourceTree = "<group>"; };
+		182DBA55231CDBCC0009E745 /* YTKChainRequestAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKChainRequestAgent.m; sourceTree = "<group>"; };
+		182DBA56231CDBCC0009E745 /* YTKBatchRequestAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKBatchRequestAgent.m; sourceTree = "<group>"; };
+		182DBA57231CDBCC0009E745 /* YTKNetworkPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTKNetworkPrivate.h; sourceTree = "<group>"; };
+		182DBA58231CDBCC0009E745 /* YTKRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTKRequest.m; sourceTree = "<group>"; };
+		182DBA68231CDBD40009E745 /* WKYTKManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKYTKManager.h; sourceTree = "<group>"; };
+		182DBA69231CDBD40009E745 /* WKYTKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKYTKManager.m; sourceTree = "<group>"; };
+		182DBA6C231CED650009E745 /* SVStatusHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVStatusHUD.h; sourceTree = "<group>"; };
+		182DBA6D231CED650009E745 /* SVStatusHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVStatusHUD.m; sourceTree = "<group>"; };
+		182DBA6F231CEDA20009E745 /* pdf_info_hud.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_info_hud.pdf; sourceTree = "<group>"; };
 		1863DA4623011A07000969FE /* FOMOPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOMOPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1863DA4923011A07000969FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1863DA4A23011A07000969FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -506,6 +560,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182DBA37231CDBCC0009E745 /* WKYTKNetWorkManager */ = {
+			isa = PBXGroup;
+			children = (
+				182DBA38231CDBCC0009E745 /* WKYTKUrlArgumentFilter.m */,
+				182DBA39231CDBCC0009E745 /* WKYTKRequest.h */,
+				182DBA3A231CDBCC0009E745 /* WKYTKRequest.m */,
+				182DBA3B231CDBCC0009E745 /* WKYTKUrlArgumentFilter.h */,
+				182DBA3C231CDBCC0009E745 /* Accessory */,
+				182DBA45231CDBCC0009E745 /* YTKNetWork */,
+			);
+			path = WKYTKNetWorkManager;
+			sourceTree = "<group>";
+		};
+		182DBA3C231CDBCC0009E745 /* Accessory */ = {
+			isa = PBXGroup;
+			children = (
+				182DBA3D231CDBCC0009E745 /* YTKAnimatingRequestAccessory.h */,
+				182DBA3E231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.h */,
+				182DBA3F231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.h */,
+				182DBA40231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.h */,
+				182DBA41231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m */,
+				182DBA42231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.m */,
+				182DBA43231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.m */,
+				182DBA44231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.m */,
+			);
+			path = Accessory;
+			sourceTree = "<group>";
+		};
+		182DBA45231CDBCC0009E745 /* YTKNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				182DBA46231CDBCC0009E745 /* YTKNetworkConfig.m */,
+				182DBA47231CDBCC0009E745 /* YTKBaseRequest.h */,
+				182DBA48231CDBCC0009E745 /* YTKChainRequest.m */,
+				182DBA49231CDBCC0009E745 /* YTKNetwork.h */,
+				182DBA4A231CDBCC0009E745 /* YTKBatchRequest.h */,
+				182DBA4B231CDBCC0009E745 /* YTKNetworkAgent.h */,
+				182DBA4C231CDBCC0009E745 /* YTKNetworkPrivate.m */,
+				182DBA4D231CDBCC0009E745 /* YTKRequest.h */,
+				182DBA4E231CDBCC0009E745 /* YTKBatchRequestAgent.h */,
+				182DBA4F231CDBCC0009E745 /* YTKChainRequestAgent.h */,
+				182DBA50231CDBCC0009E745 /* YTKBaseRequest.m */,
+				182DBA51231CDBCC0009E745 /* YTKNetworkConfig.h */,
+				182DBA52231CDBCC0009E745 /* YTKChainRequest.h */,
+				182DBA53231CDBCC0009E745 /* YTKBatchRequest.m */,
+				182DBA54231CDBCC0009E745 /* YTKNetworkAgent.m */,
+				182DBA55231CDBCC0009E745 /* YTKChainRequestAgent.m */,
+				182DBA56231CDBCC0009E745 /* YTKBatchRequestAgent.m */,
+				182DBA57231CDBCC0009E745 /* YTKNetworkPrivate.h */,
+				182DBA58231CDBCC0009E745 /* YTKRequest.m */,
+			);
+			path = YTKNetWork;
+			sourceTree = "<group>";
+		};
+		182DBA6B231CED650009E745 /* SVStatusHUD */ = {
+			isa = PBXGroup;
+			children = (
+				182DBA6C231CED650009E745 /* SVStatusHUD.h */,
+				182DBA6D231CED650009E745 /* SVStatusHUD.m */,
+			);
+			path = SVStatusHUD;
+			sourceTree = "<group>";
+		};
 		1863DA3D23011A07000969FE = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +705,7 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				182DBA6F231CEDA20009E745 /* pdf_info_hud.pdf */,
 				CF3129DD231CA776002ED335 /* pdf_history_home.pdf */,
 				7707E2A32313B1E10029EB0B /* Home */,
 				CF23B3ED230F84FC00FAC43C /* pdf_history_remittanceplan.pdf */,
@@ -674,6 +792,7 @@
 		1863DA8723013A6A000969FE /* OtherResource */ = {
 			isa = PBXGroup;
 			children = (
+				182DBA6B231CED650009E745 /* SVStatusHUD */,
 				1863DAA623014511000969FE /* WRNavigationBar */,
 				1863DA8823013A87000969FE /* YHPDFImageLoader */,
 			);
@@ -1023,7 +1142,10 @@
 			children = (
 				777EAEB6230CEA6B009D7B22 /* WKNetWorkManager.h */,
 				777EAEB5230CEA6B009D7B22 /* WKNetWorkManager.m */,
+				182DBA68231CDBD40009E745 /* WKYTKManager.h */,
+				182DBA69231CDBD40009E745 /* WKYTKManager.m */,
 				777EAEB9230CEB44009D7B22 /* PublicHeader.h */,
+				182DBA37231CDBCC0009E745 /* WKYTKNetWorkManager */,
 			);
 			path = WKNetWorkManager;
 			sourceTree = "<group>";
@@ -1269,6 +1391,7 @@
 				773880D62314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy_gray.pdf in Resources */,
 				772D73DA230A9C0F0068AB48 /* pdf_pass_code_unselect.pdf in Resources */,
 				772D73D7230A89630068AB48 /* WKCustomCodeView.xib in Resources */,
+				182DBA70231CEDA20009E745 /* pdf_info_hud.pdf in Resources */,
 				773880D72314BDF4002ACEC4 /* pdf_home_sureInfo_edit.pdf in Resources */,
 				18B7BEEE2304FB8F007B496A /* pdf_nav_back.pdf in Resources */,
 				7707E2A82313B1E10029EB0B /* pdf_home_selectPayee_bg_gray.pdf in Resources */,
@@ -1427,31 +1550,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182DBA67231CDBCC0009E745 /* YTKRequest.m in Sources */,
 				189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */,
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,
 				CF626512231526B3001AF5FC /* CLMeViewController.m in Sources */,
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
+				182DBA65231CDBCC0009E745 /* YTKChainRequestAgent.m in Sources */,
 				1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */,
 				CF6264D823152487001AF5FC /* CLHistoryViewController.m in Sources */,
 				CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */,
+				182DBA5A231CDBCC0009E745 /* WKYTKRequest.m in Sources */,
 				CF6264DB231524C1001AF5FC /* CLHistoryRemittancePlan.m in Sources */,
 				CF6264E923152546001AF5FC /* CLHiStoryTableViewCell.m in Sources */,
 				77BE821623153A2B00519F66 /* WKProgressHudManager.m in Sources */,
+				182DBA61231CDBCC0009E745 /* YTKNetworkPrivate.m in Sources */,
 				77DD6BB02313D98F00BFDD11 /* HomeSureInfoEditCell.m in Sources */,
+				182DBA62231CDBCC0009E745 /* YTKBaseRequest.m in Sources */,
 				CCA748C92303046400846BDF /* CLMainTabBarControllerConfig.m in Sources */,
 				77BE822523153B1900519F66 /* SVIndefiniteAnimatedView.m in Sources */,
 				CF6264F3231525E6001AF5FC /* CLCollectionAlter.m in Sources */,
 				1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */,
 				77BE820A23151C2500519F66 /* HomeChangePayeeVC.m in Sources */,
+				182DBA5C231CDBCC0009E745 /* YTKBatchRequest+AnimatingAccessory.m in Sources */,
 				77DD6BB52313E12A00BFDD11 /* HomeSureInfoListCell.m in Sources */,
 				777EAEB7230CEA6B009D7B22 /* WKBaseModel.m in Sources */,
 				CF26171E23179C9700448AA4 /* CLHistoryPaymentdetails.m in Sources */,
 				77BE821523153A2B00519F66 /* WKHudManager.m in Sources */,
 				772D73B3230A3F670068AB48 /* LogInViewController.m in Sources */,
+				182DBA5B231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m in Sources */,
 				CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */,
 				771501892311176B0016B449 /* HomeRefundListCell.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
 				7702398C230B83C100EE8C31 /* HomeListCell.m in Sources */,
+				182DBA64231CDBCC0009E745 /* YTKNetworkAgent.m in Sources */,
 				CF6264E823152546001AF5FC /* CLHistoryRenittabcePlanVIew.m in Sources */,
 				772D73D2230A86860068AB48 /* LogInVerifyCodeView.m in Sources */,
 				CF3129E3231D22E6002ED335 /* CLHistoryCancelRemittance.m in Sources */,
@@ -1459,7 +1590,10 @@
 				77023991230B8AE000EE8C31 /* HomeDataObject.m in Sources */,
 				77047E0423166D44000453A0 /* HomePayNowListCell.m in Sources */,
 				189E06DA2319046400FDEA10 /* WKAccountManager.m in Sources */,
+				182DBA60231CDBCC0009E745 /* YTKChainRequest.m in Sources */,
+				182DBA59231CDBCC0009E745 /* WKYTKUrlArgumentFilter.m in Sources */,
 				77047E0023166CFD000453A0 /* HomePayNowViewController.m in Sources */,
+				182DBA5D231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.m in Sources */,
 				77047DF823161D0A000453A0 /* HomePayTypeViewController.m in Sources */,
 				CF6264F5231525E6001AF5FC /* CLCollectionAddSelect.m in Sources */,
 				772D73C8230A845D0068AB48 /* LogInVerifyViewController.m in Sources */,
@@ -1471,14 +1605,17 @@
 				18B7BEE32304EBE3007B496A /* CLNavgationView.m in Sources */,
 				77BE822323153B1900519F66 /* SVProgressAnimatedView.m in Sources */,
 				77BE822223153B1900519F66 /* SVRadialGradientLayer.m in Sources */,
+				182DBA66231CDBCC0009E745 /* YTKBatchRequestAgent.m in Sources */,
 				77023998230BDD7F00EE8C31 /* HomeListCollectionCell.m in Sources */,
 				CF6264D52315227D001AF5FC /* MeModel.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
+				182DBA5E231CDBCC0009E745 /* YTKBaseRequest+AnimatingAccessory.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				773880DD2314C535002ACEC4 /* HomeSureInfoViewController.m in Sources */,
 				77F882D423136E740010A884 /* HomeSelectPayeeViewController.m in Sources */,
 				773880E2231509DC002ACEC4 /* HomeChangeAmountVC.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
+				182DBA6E231CED650009E745 /* SVStatusHUD.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				77BE820E23151C4A00519F66 /* HomeChangePayeeCell.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
@@ -1498,6 +1635,7 @@
 				CF6264FF23152625001AF5FC /* CLCollectionAddSelectTableView.m in Sources */,
 				7715017F2310E07D0016B449 /* CommonGuideViewController.m in Sources */,
 				7715018D231121E10016B449 /* HomeRefundSelectBankView.m in Sources */,
+				182DBA63231CDBCC0009E745 /* YTKBatchRequest.m in Sources */,
 				77047DFC23161E2F000453A0 /* HomePayTypeListCell.m in Sources */,
 				77150183231114D60016B449 /* HomeRefundViewController.m in Sources */,
 				CF62652023152734001AF5FC /* CLMeSwitchLanguage.m in Sources */,
@@ -1507,9 +1645,15 @@
 				CF6264F2231525E6001AF5FC /* CLCollectionAdd.m in Sources */,
 				CF626511231526B3001AF5FC /* CLMeMessageViewController.m in Sources */,
 				772D73AF230A3DCF0068AB48 /* CommonGuideView.m in Sources */,
+				182DBA5F231CDBCC0009E745 /* YTKNetworkConfig.m in Sources */,
 				772D73D6230A89630068AB48 /* WKCustomCodeView.m in Sources */,
 				CF62652A23152801001AF5FC /* CLTitleView.m in Sources */,
+
 				CF3129E6231D2D7F002ED335 /* CLHistoryAlterRemittance.m in Sources */,
+
+				182DBA6A231CDBD40009E745 /* WKYTKManager.m in Sources */,
+
+
 				18B7BEF12304FC9E007B496A /* CLHomeDetailVC.m in Sources */,
 				CF62652223152734001AF5FC /* CLMeLanguage.m in Sources */,
 				77047E1123167CE8000453A0 /* HomeBankTransferCell.m in Sources */,

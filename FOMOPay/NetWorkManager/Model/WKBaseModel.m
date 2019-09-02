@@ -72,4 +72,6 @@
 @implementation WKPatientPhoneRecordsObj
 @end
 
+@implementation WKAppConfigObj
+@end
 

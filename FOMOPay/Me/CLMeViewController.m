@@ -164,8 +164,17 @@
         CLMeMessageViewController *vc = [CLMeMessageViewController new];
         [self pushToViewController:vc];
     }else {
-        LogInViewController *vc = [LogInViewController new];
-        [self pushToViewController:vc];
+ 
+        [self showLoading:@"log outing..."];
+        [WKNetWorkManager WKLogOut:^(id result,BOOL success) {
+            [self hiddenLoading];
+            if (success) {
+                LogInViewController *vc = [LogInViewController new];
+                [self pushToViewController:vc];
+            }else{
+                TOASTMESSAGE([NSString stringWithFormat:@"%@",result]);
+            }
+        }];
     }
 }
 }

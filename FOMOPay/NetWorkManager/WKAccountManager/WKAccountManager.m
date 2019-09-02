@@ -14,6 +14,8 @@
 #define  kIdType                     @"idType"
 #define  kMobileNumber                     @"mobileNumber"
 
+#define  kAppConfig                     @"AppConfig"
+
 static WKAccountManager *manager = nil;
 
 @implementation WKAccountManager
@@ -41,7 +43,8 @@ static WKAccountManager *manager = nil;
         _name = [WKUserDefault objectInUserDefaults:kName];
         _idType = [WKUserDefault objectInUserDefaults:kIdType];
         _mobileNumber = [WKUserDefault objectInUserDefaults:kMobileNumber];
-
+        NSDictionary *dic = [CLTool stringToDic:[WKUserDefault objectInUserDefaults:kAppConfig]];
+        _appConfig = [WKAppConfigObj yy_modelWithDictionary:dic];
     }
     return self;
 }
@@ -71,6 +74,10 @@ static WKAccountManager *manager = nil;
         return WKLoginStatus_unLogin;
     }
 }
+- (WKAppConfigObj *)appConfig{
+    NSDictionary *dic = [CLTool stringToDic:[WKUserDefault objectInUserDefaults:kAppConfig]];
+    return [WKAppConfigObj yy_modelWithDictionary:dic];
+}
 - (void)WKResetUserInfo:(WKUserInfo *)userInfo{
     if (userInfo.idNumber.length>0) {
         self.idNumber = userInfo.idNumber;
@@ -89,7 +96,18 @@ static WKAccountManager *manager = nil;
         [WKUserDefault setObjectInUserDefaults:userInfo.mobileNumber withKey:kMobileNumber];
     }
 }
+- (void)WKResetAppConfig:(NSString *)appConfig{
+
+    self.appConfig = [WKAppConfigObj yy_modelWithDictionary:[CLTool stringToDic:appConfig]];
+    [WKUserDefault setObjectInUserDefaults:appConfig withKey:kAppConfig];
+
+}
+- (void)WKSetToken:(NSString *)token{
+    self.token = token;
+    [WKUserDefault setObjectInUserDefaults:token withKey:kToken];
+}
 - (void)WKClearnAll{
-    [self WKSetToken:@""];    
+    [self WKSetToken:@""];
+    [self WKResetAppConfig:@""];
 }
 @end

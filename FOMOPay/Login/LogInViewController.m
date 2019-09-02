@@ -40,10 +40,19 @@
 }
 - (void)getOtp:(NSString *)text{
     
-    //发送验证码
-    LogInVerifyViewController *vc = [[LogInVerifyViewController alloc] init];
-    vc.mobile = text;
-    [self pushToViewController:vc];
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetLoginOtp:@{@"ic":text} block:^(NSString *result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            NSDictionary *dic = [CLTool stringToDic:result];
+            [[WKAccountManager shareInstance] WKResetUserInfo:[WKUserInfo yy_modelWithDictionary:dic]];
+            LogInVerifyViewController *vc = [[LogInVerifyViewController alloc] init];
+            vc.mobile = text;
+            [self pushToViewController:vc];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
     
 }
 - (void)viewWillAppear:(BOOL)animated{
