@@ -83,12 +83,12 @@ NSArray *tabBarItemsAttributes = @[tabBarItems1Attributes,tabBarItems2Attributes
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
 //    normalAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
 //
-    normalAttrs[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
+    normalAttrs[NSFontAttributeName] = kCommonFont(10);
 //    // set the text color for selected state
 //    // 选中状态下的文字属性
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
 //    selectedAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-    selectedAttrs[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
+    selectedAttrs[NSFontAttributeName] = kCommonFont(10);
 //
 //    // set the text Attributes
 //    // 设置文字属性

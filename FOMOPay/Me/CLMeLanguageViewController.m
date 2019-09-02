@@ -44,7 +44,6 @@
         }
     }];
     [self LoadCellType:8];
-    [self languageArray];
     [self setDefaultLanguage];
 }
 
