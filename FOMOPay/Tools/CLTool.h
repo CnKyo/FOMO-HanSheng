@@ -16,6 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSDictionary *)stringToDic:(NSString *)text;
 
++ (NSString *)nullCheck:(NSString *)checkString;
+
++ (NSString *)deleteSpace:(NSString *)text;
+
++ (NSString *)getCuurenceCode:(NSString *)text;
+
 @end
 
 NS_ASSUME_NONNULL_END

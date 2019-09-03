@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WKBaseModel.h"
 
 
 typedef enum : NSUInteger {
@@ -31,10 +31,7 @@ typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);  //block 第一步
 
 
 
-- (void)updateView:(CLMeLanguageType)type and:(NSString *)EnterString;
-
-
-
+- (void)updateView:(CLMeLanguageType)type and:(WKAddAccInfoObj *)EnterString;
 
 @end
 

@@ -71,8 +71,20 @@
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeSureInfoListCell" bundle:nil] forCellReuseIdentifier:@"HomeSureInfoListCell"];
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeSureInfoEditCell" bundle:nil] forCellReuseIdentifier:@"HomeSureInfoEditCell"];
+    [self loadData];
 }
-
+- (void)loadData{
+    [self showLoading:nil];
+    
+    [WKNetWorkManager WKGetRecipientDetail:self.mItem.id block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            self.mItem = [WKResipientInfoObj yy_modelWithDictionary:[[CLTool stringToDic:result] objectForKey:@"recipient"]];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+}
 - (void)loadBottomView{
     
     NSInteger bottomSafeHeight = 0;
@@ -265,8 +277,15 @@
             
             cell.showImage.hidden = YES;
             cell.contentLabel.textColor = kCommonColor(43, 43, 43, 1);
-            cell.titleLabel.text = array[indexPath.row];
-            
+            NSString *mContent = array[indexPath.row];
+            cell.titleLabel.text = mContent;
+            if ([mContent isEqualToString:@"收款人"]) {
+                cell.contentLabel.text = self.mItem.fullName;
+            }else if ([mContent isEqualToString:@"账户号码"]){
+                cell.contentLabel.text = self.mItem.accountNumber;
+            }else if ([mContent isEqualToString:@"关系"]){
+                cell.contentLabel.text = self.mItem.relationship;
+            }
             return cell;
         }
     }

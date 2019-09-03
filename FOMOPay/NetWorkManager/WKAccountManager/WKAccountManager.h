@@ -29,12 +29,22 @@ typedef enum : NSUInteger {
 
 @property (assign,nonatomic) WKAppConfigObj *appConfig;
 
+
+@property (strong,nonatomic) NSString *mOutCurrenceCode;
+@property (strong,nonatomic) NSString *mInCurrenceCode;
+@property (strong,nonatomic) NSString *mRate;
+
 - (NSString *)token;
 
 - (NSString *)idNumber;
 - (NSString *)name;
 - (NSString *)idType;
 - (NSString *)mobileNumber;
+
+
+- (NSString *)mOutCurrenceCode;
+- (NSString *)mInCurrenceCode;
+- (NSString *)mRate;
 
 - (WKLoginStatus)loginStatus;
 
@@ -45,6 +55,11 @@ typedef enum : NSUInteger {
 - (void)WKResetUserInfo:(WKUserInfo *)userInfo;
 
 - (void)WKResetAppConfig:(NSString *)appConfig;
+
+
+- (void)WKResetOutCurrenceCode:(NSString *)mOutCurrenceCode;
+- (void)WKResetInCurrenceCode:(NSString *)mInCurrenceCode;
+- (void)WKResetRate:(NSString *)mRate;
 
 - (void)WKClearnAll;
 

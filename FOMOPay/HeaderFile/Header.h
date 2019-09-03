@@ -35,3 +35,13 @@ typedef enum : NSUInteger {
     CLNavType_other = 2,
     
 } CLNavType;
+
+
+typedef enum : NSUInteger {
+    ///汇出
+    WKRemmitableStatus_out,
+    ///获得
+    WKRemmitableStatus_in,
+    ///付款
+    WKRemmitableStatus_pay,
+} WKRemmitableStatus;

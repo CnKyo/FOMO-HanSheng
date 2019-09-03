@@ -22,10 +22,10 @@
 
 }
 
-- (void)setMItem:(WKRefundAccount *)mItem{
-    self.nameLabel.text = mItem.name;
-    self.accountLabel.text = [NSString stringWithFormat:@"账户号码:%@",mItem.number];
-    self.cityLabel.text = [NSString stringWithFormat:@"%@(%@)",mItem.bank,mItem.city];
+- (void)setMItem:(WKResipientInfoObj *)mItem{
+    self.nameLabel.text = mItem.fullName;
+    self.accountLabel.text = [NSString stringWithFormat:@"账户号码:%@",mItem.accountNumber];
+    self.cityLabel.text = [NSString stringWithFormat:@"%@(%@)",mItem.bankName,mItem.bankCity];
 }
 
 @end

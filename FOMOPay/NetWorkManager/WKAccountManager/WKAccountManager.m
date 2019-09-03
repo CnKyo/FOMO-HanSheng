@@ -16,6 +16,10 @@
 
 #define  kAppConfig                     @"AppConfig"
 
+#define  kOutCurrenceCode                     @"mOutCurrenceCode"
+#define  kInCurrenceCode                     @"mInCurrenceCode"
+#define  kRate                     @"mRate"
+
 static WKAccountManager *manager = nil;
 
 @implementation WKAccountManager
@@ -45,6 +49,12 @@ static WKAccountManager *manager = nil;
         _mobileNumber = [WKUserDefault objectInUserDefaults:kMobileNumber];
         NSDictionary *dic = [CLTool stringToDic:[WKUserDefault objectInUserDefaults:kAppConfig]];
         _appConfig = [WKAppConfigObj yy_modelWithDictionary:dic];
+        
+        
+        _mOutCurrenceCode = [WKUserDefault objectInUserDefaults:kOutCurrenceCode];
+        _mInCurrenceCode = [WKUserDefault objectInUserDefaults:kInCurrenceCode];
+        _mRate = [WKUserDefault objectInUserDefaults:kRate];
+
     }
     return self;
 }
@@ -78,6 +88,19 @@ static WKAccountManager *manager = nil;
     NSDictionary *dic = [CLTool stringToDic:[WKUserDefault objectInUserDefaults:kAppConfig]];
     return [WKAppConfigObj yy_modelWithDictionary:dic];
 }
+
+- (NSString *)mOutCurrenceCode{
+    return [WKUserDefault objectInUserDefaults:kOutCurrenceCode];
+}
+
+- (NSString *)mInCurrenceCode{
+    return [WKUserDefault objectInUserDefaults:kInCurrenceCode];
+}
+
+- (NSString *)mRate{
+    return [WKUserDefault objectInUserDefaults:kRate];
+}
+
 - (void)WKResetUserInfo:(WKUserInfo *)userInfo{
     if (userInfo.idNumber.length>0) {
         self.idNumber = userInfo.idNumber;
@@ -105,6 +128,19 @@ static WKAccountManager *manager = nil;
 - (void)WKSetToken:(NSString *)token{
     self.token = token;
     [WKUserDefault setObjectInUserDefaults:token withKey:kToken];
+}
+
+- (void)WKResetOutCurrenceCode:(NSString *)mOutCurrenceCode{
+    self.mOutCurrenceCode = mOutCurrenceCode;
+    [WKUserDefault setObjectInUserDefaults:mOutCurrenceCode withKey:kOutCurrenceCode];
+}
+- (void)WKResetInCurrenceCode:(NSString *)mInCurrenceCode{
+    self.mInCurrenceCode = mInCurrenceCode;
+    [WKUserDefault setObjectInUserDefaults:mInCurrenceCode withKey:mInCurrenceCode];
+}
+- (void)WKResetRate:(NSString *)mRate{
+    self.mRate = mRate;
+    [WKUserDefault setObjectInUserDefaults:mRate withKey:kRate];
 }
 - (void)WKClearnAll{
     [self WKSetToken:@""];

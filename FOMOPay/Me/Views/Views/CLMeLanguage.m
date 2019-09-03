@@ -40,7 +40,7 @@
 
 
 
-- (void)updateView:(CLMeLanguageType)type and:(nonnull NSString *)EnterString{
+- (void)updateView:(CLMeLanguageType)type and:(WKAddAccInfoObj *)EnterString{
     for (UIView *vvv in self.mRightView.subviews) {
         [vvv removeFromSuperview];
     }
@@ -48,8 +48,7 @@
         _mData = [NSMutableArray arrayWithObjects:@"请选择",@"请选择",@"请选择" ,@"请选择",@"请选择",@"请选择",@"请选择",@"请选择", nil];
     }
     if (type == CLMeLanguageType_textFiled) {
-//        self.mTextF = [UITextField new];
-//        [self.mTextF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+
         self.mTextF.frame = self.mRightView.bounds;
         self.mTextF.textAlignment = NSTextAlignmentRight;
         if (_mIndexPath.row == 0) {
@@ -75,8 +74,6 @@
     }else if (type == CLMeLanguageType_button){
         self.mBtn = [UIButton new];
         [self.mBtn addTarget:self action:@selector(OpenSelect:) forControlEvents:UIControlEventTouchUpInside];
-//        self.mBtn.backgroundColor = [UIColor yellowColor];
-//        self.mBtn.titleLabel.font = kCommonFont(14);
         [self.mRightView addSubview:self.mBtn];
         self.mImageV = [UIImageView new];
         self.mImageV.image = [UIImage yh_imageNamed:@"pdf_collection_select.pdf"];
@@ -85,7 +82,6 @@
         self.mLb.font = kCommonFont(14);
         self.mLb.textColor = ssRGBHex(0xCCCCCC);
         self.mLb.text = EnterString;
-//      DebugLog(@"数据为%@,下标为%ld",_mData,_mIndexPath.row);
         if([self.mLb.text isEqual:@"请选择"]){
             self.mLb.textColor = ssRGBHex(0xCCCCCC);
         }else{

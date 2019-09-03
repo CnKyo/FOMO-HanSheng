@@ -78,3 +78,30 @@
 
 @implementation WKRefundAccount
 @end
+
+@implementation WKAddAccInfoObj
+@end
+
+
+@implementation WKResipientInfoObj
+@end
+
+
+@implementation WKRemiitableEntity
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"source" : [WKRemiitableEntitySource class],
+             @"target" : [WKRemiitableEntityTarget class],
+             @"serviceCharge" : [WKRemiitableEntityServiceCharge class],
+             @"chargable" : [WKRemiitableEntityChargable class],
+             };
+}
+@end
+@implementation WKRemiitableEntitySource
+@end
+@implementation WKRemiitableEntityTarget
+@end
+@implementation WKRemiitableEntityServiceCharge
+@end
+@implementation WKRemiitableEntityChargable
+@end
+

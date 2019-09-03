@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *unitNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *chinaNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *showImage;
-@property (weak, nonatomic) IBOutlet UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UIView *valueView;
 @property (weak, nonatomic) IBOutlet UIButton *changeCountryButton;
 
@@ -23,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *unitNameLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *chinaNameLabel1;
 @property (weak, nonatomic) IBOutlet UIImageView *showImage1;
-@property (weak, nonatomic) IBOutlet UITextField *myTextField1;
 @property (weak, nonatomic) IBOutlet UIView *rightView1;
 @property (weak, nonatomic) IBOutlet UIView *valueView1;
 @property (weak, nonatomic) IBOutlet UIButton *changeCountryButton1;
@@ -34,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage2;
 @property (weak, nonatomic) IBOutlet UILabel *unitNameLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *chinaNameLabel2;
-@property (weak, nonatomic) IBOutlet UITextField *myTextField2;
 @property (weak, nonatomic) IBOutlet UIView *valueView2;
 @property (weak, nonatomic) IBOutlet UIView *amountView;
 
@@ -46,6 +43,13 @@
 @property (nonatomic, strong) NSArray *array2;
 @property (nonatomic, strong) NSArray *array3;
 
+@property (nonatomic, assign) NSInteger mTag;
+
+@property (nonatomic, assign) WKRemmitableStatus mStatus;
+
+@property (nonatomic, strong) NSString *mOut;
+@property (nonatomic, strong) NSString *mIn;
+
 @end
 
 @implementation HomeListCell
@@ -53,12 +57,22 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    _exchangeRateLabel.text = @"5.01";
+    self.mOut = @"SGD";
+    self.mIn = @"CNY";
+    
+    self.mStatus = WKRemmitableStatus_out;
+
+    NSString *mRate = [WKAccountManager shareInstance].mRate;
+    if ([mRate floatValue]<=0) {
+        mRate = @"0";
+    }
+    _exchangeRateLabel.text = mRate;
+    
     _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
     _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
     
     _logoImage.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2"];
-    _logoImage1.image = [UIImage yh_imageNamed:@"pdf_home_transfer_1"];
+    _logoImage1.image = [UIImage yh_imageNamed:@"pdf_CNY"];
     _logoImage2.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2"];
 
     _myTextField.delegate = self;
@@ -80,7 +94,7 @@
     _exchangeRateButton.enabled = NO;
     _exchangeRateButton.layer.cornerRadius = 5.0;
     
-    _array1 = @[@"",@"",@"",@"",@"",@""];
+    _array1 = @[@"pdf_CNY",@"pdf_TWD",@"pdf_MYR",@"pdf_HKD",@"pdf_IDR",@"pdf_PHP"];
     _array2 = @[@"CNY",@"TWD",@"MYR",@"HKD",@"IDR",@"PHP"];
     _array3 = @[@"(人民币)",@"(新台币)",@"(令吉)",@"(港元)",@"(印尼卢比)",@"(菲律宾比索)"];
 
@@ -125,61 +139,69 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
-
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (_HomeListCellBlock) {
+        
+        _HomeListCellBlock(textField.text,textField.tag);
+    }
+}
 - (void)textFieldDidChange:(UITextField *)textField{
     
-    if (textField.tag == 4000) {
-
-        if ([textField.text isEqualToString:@"0"]) {
-            
-            _myTextField1.text = @"0";
-            _myTextField2.text = @"0";
-            
-        }else if (textField.text.length == 0){
-            
-            _myTextField1.text = nil;
-            _myTextField2.text = nil;
-            
-        }else{
-            
-            _myTextField1.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]*[_exchangeRateLabel.text floatValue]];
-            _myTextField2.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]*1.2];
-        }
-    }else if (textField.tag == 4001){
-        
-        if ([textField.text isEqualToString:@"0"]) {
-            
-            _myTextField.text = @"0";
-            _myTextField2.text = @"0";
-            
-        }else if (textField.text.length == 0){
-            
-            _myTextField.text = nil;
-            _myTextField2.text = nil;
-            
-        }else{
-            
-            _myTextField.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]/[_exchangeRateLabel.text floatValue]];
-            _myTextField2.text = [NSString stringWithFormat:@"%.4f",(long)[_myTextField.text floatValue]*1.2];
-        }
-    }else{
-        
-        if ([textField.text isEqualToString:@"0"]) {
-            
-            _myTextField.text = @"0";
-            _myTextField1.text = @"0";
-
-        }else if (textField.text.length == 0){
-            
-            _myTextField.text = nil;
-            _myTextField1.text = nil;
-            
-        }else{
-            
-            _myTextField.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]*0.8];
-            _myTextField1.text = [NSString stringWithFormat:@"%.4f",(long)[_myTextField.text floatValue]*[_exchangeRateLabel.text floatValue]];
-        }
-    }
+//    if (textField.tag == 4000) {
+//        self.mStatus = WKRemmitableStatus_out;
+//
+//        if ([textField.text isEqualToString:@"0"]) {
+//            
+//            _myTextField1.text = @"0";
+//            _myTextField2.text = @"0";
+//            
+//        }else if (textField.text.length == 0){
+//            
+//            _myTextField1.text = nil;
+//            _myTextField2.text = nil;
+//            
+//        }else{
+//            
+//            _myTextField1.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]*[_exchangeRateLabel.text floatValue]];
+//            _myTextField2.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]*1.2];
+//        }
+//    }else if (textField.tag == 4001){
+//        self.mStatus = WKRemmitableStatus_in;
+//
+//        if ([textField.text isEqualToString:@"0"]) {
+//            
+//            _myTextField.text = @"0";
+//            _myTextField2.text = @"0";
+//            
+//        }else if (textField.text.length == 0){
+//            
+//            _myTextField.text = nil;
+//            _myTextField2.text = nil;
+//            
+//        }else{
+//            
+//            _myTextField.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]/[_exchangeRateLabel.text floatValue]];
+//            _myTextField2.text = [NSString stringWithFormat:@"%.4f",(long)[_myTextField.text floatValue]*1.2];
+//        }
+//    }else{
+//        self.mStatus = WKRemmitableStatus_pay;
+//
+//        if ([textField.text isEqualToString:@"0"]) {
+//            
+//            _myTextField.text = @"0";
+//            _myTextField1.text = @"0";
+//
+//        }else if (textField.text.length == 0){
+//            
+//            _myTextField.text = nil;
+//            _myTextField1.text = nil;
+//            
+//        }else{
+//            
+//            _myTextField.text = [NSString stringWithFormat:@"%.4f",(long)[textField.text floatValue]*0.8];
+//            _myTextField1.text = [NSString stringWithFormat:@"%.4f",(long)[_myTextField.text floatValue]*[_exchangeRateLabel.text floatValue]];
+//        }
+//    }
     
     if (textField.text.length > 0) {
         
@@ -192,10 +214,8 @@
         _exchangeRateButton.backgroundColor = kCommonColor(140, 144, 145, 1);
     }
     
-    if (_HomeListCellBlock) {
-        
-        _HomeListCellBlock(textField.text,textField.tag);
-    }
+    
+//    [self caculateAmount:textField.text];
 }
 
 - (IBAction)exchangeRateButtonClicked:(UIButton *)sender {
@@ -209,7 +229,7 @@
 - (IBAction)showButtonClicked:(UIButton *)sender {
     
     sender.selected = !sender.selected;
-    
+    self.mTag = sender.tag;
     if (sender.selected == YES) {
         
         if (sender.tag == 1000) {
@@ -278,9 +298,111 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *mUnit = _array2[indexPath.row];
+    NSString *mName = _array3[indexPath.row];
 
-
+    if (self.mTag == 1000) {
+        
+        self.mOut = mUnit;
+        
+        self.unitNameLabel2.text = mUnit;
+        self.chinaNameLabel2.text = mName;
+        
+        self.unitNameLabel.text = mUnit;
+        self.chinaNameLabel.text = mName;
+        
+    }else{
+        
+        self.mIn = mUnit;
+        
+        self.unitNameLabel1.text = mUnit;
+        self.chinaNameLabel1.text = mName;
+    }
+    
+    if (self.mSelectedBlock) {
+        self.mSelectedBlock(self.unitNameLabel.text,self.unitNameLabel1.text);
+    }
+    
+    [self updateLogo:mUnit];
 }
 
+- (void)updateLogo:(NSString *)text{
+    NSString *mImg = @"";
+    if (self.mTag == 1000) {
+        if ([text isEqualToString:@"CNY"]) {
+            mImg = @"pdf_CNY";
+        }else if ([text isEqualToString:@"TWD"]){
+            mImg = @"pdf_TWD";
+        }else if ([text isEqualToString:@"MYR"]){
+            mImg = @"pdf_MYR";
+        }else if ([text isEqualToString:@"HKD"]){
+            mImg = @"pdf_HKD";
+        }else if ([text isEqualToString:@"IDR"]){
+            mImg = @"pdf_IDR";
+        }else{
+            mImg = @"pdf_PHP";
+        }
+        self.logoImage.image = [UIImage yh_imageNamed:mImg];
+        self.logoImage2.image = [UIImage yh_imageNamed:mImg];
+    }else{
+        if ([text isEqualToString:@"CNY"]) {
+            mImg = @"pdf_CNY";
+        }else if ([text isEqualToString:@"TWD"]){
+            mImg = @"pdf_TWD";
+        }else if ([text isEqualToString:@"MYR"]){
+            mImg = @"pdf_MYR";
+        }else if ([text isEqualToString:@"HKD"]){
+            mImg = @"pdf_HKD";
+        }else if ([text isEqualToString:@"IDR"]){
+            mImg = @"pdf_IDR";
+        }else{
+            mImg = @"pdf_PHP";
+        }
+        self.logoImage1.image = [UIImage yh_imageNamed:mImg];
+    }
+   
+    
+}
 
+- (void)caculateAmount:(NSString *)text{
+    
+    if (self.mStatus == WKRemmitableStatus_out) {
+        ///转出
+        float mAmount = [[NSString stringWithFormat:@"%.2f",[text floatValue]*[[WKAccountManager shareInstance].mRate floatValue]] floatValue];
+        self.myTextField.text = text;
+        self.myTextField1.text = [NSString stringWithFormat:@"%f",mAmount];
+        self.myTextField2.text = [NSString stringWithFormat:@"%f",mAmount+18];
+
+    }else if (self.mStatus == WKRemmitableStatus_in){
+        ///转入
+        float mAmount = [[NSString stringWithFormat:@"%.2f",[text floatValue]/[[WKAccountManager shareInstance].mRate floatValue]] floatValue];
+        
+        self.myTextField.text = [NSString stringWithFormat:@"%f",mAmount];
+        self.myTextField1.text = text;
+        self.myTextField2.text = [NSString stringWithFormat:@"%f",mAmount+18];
+        
+    }else{
+        ///支付的金额
+        float mAmount = [[NSString stringWithFormat:@"%.2f",[text floatValue]/[[WKAccountManager shareInstance].mRate floatValue]] floatValue];
+        self.myTextField2.text = [NSString stringWithFormat:@"%ld",[text integerValue]+18];
+
+        self.myTextField.text = [NSString stringWithFormat:@"%ld",[text integerValue]-18];
+        self.myTextField1.text = [NSString stringWithFormat:@"%f",mAmount];
+        
+    }
+    
+    
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:self.mOut forKey:@"sourceCurrencyCode"];
+    [para setObject:text forKey:@"sourceAmount"];
+    [para setObject:self.mIn forKey:@"targetCurrencyCode"];
+    
+    [WKNetWorkManager WKGetRemiitablePara:para block:^(id result, BOOL success) {
+        if (success) {
+            
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+}
 @end

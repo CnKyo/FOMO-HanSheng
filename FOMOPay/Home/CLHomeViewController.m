@@ -17,6 +17,19 @@
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 
+@property (nonatomic, assign) WKRemmitableStatus mStatus;
+
+
+@property (nonatomic, strong) NSString *mOut;
+
+@property (nonatomic, strong) NSString *mIn;
+
+@property (nonatomic, strong) NSString *mAmount;
+
+
+@property (nonatomic, strong) NSString *mTotleAmount;
+@property (nonatomic, strong) NSString *mFetchAmount;
+
 @end
 
 @implementation CLHomeViewController
@@ -26,8 +39,9 @@
     [self loadConfig];
 }
 - (void)loadConfig{
-    [self showLoading:nil];
     if ([WKAccountManager shareInstance].appConfig.rmtMaxAmt.length<=0) {
+        [self showLoading:nil];
+
         [WKNetWorkManager WKGetAppConfig:^(id result, BOOL success) {
             [self hiddenLoading];
             if (success) {
@@ -39,16 +53,26 @@
             }
         }];
     }
+
+  
+    [self showLoading:nil];
+
+    self.mOut = @"SGD";
+    self.mIn = @"CNY";
     
     NSMutableDictionary *para = [NSMutableDictionary new];
-    [para setObject:@"SGD" forKey:@"sourceCurrencyCode"];
-    [para setObject:@"1000" forKey:@"sourceAmount"];
-    [para setObject:@"CNY" forKey:@"targetCurrencyCode"];
-
+    [para setObject:self.mOut forKey:@"sourceCurrencyCode"];
+    [para setObject:@"100" forKey:@"sourceAmount"];
+    [para setObject:self.mIn forKey:@"targetCurrencyCode"];
+    
     [WKNetWorkManager WKGetRemiitablePara:para block:^(id result, BOOL success) {
         [self hiddenLoading];
         if (success) {
-            
+            [[WKAccountManager shareInstance] WKResetOutCurrenceCode:self.mOut];
+            [[WKAccountManager shareInstance] WKResetInCurrenceCode:self.mIn];
+            NSDictionary *dic = [CLTool stringToDic:result];
+            WKRemiitableEntity *mEntity = [WKRemiitableEntity yy_modelWithDictionary:[dic objectForKey:@"remittable"]];
+            [[WKAccountManager shareInstance] WKResetRate:mEntity.rate];
         }else{
             TOASTMESSAGE(result);
         }
@@ -56,6 +80,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.mStatus = WKRemmitableStatus_out;
     
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
     [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
@@ -97,26 +123,38 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    WS(weakSelf);
     HomeListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeListCell"];
     if (!cell) {
         cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeListCell"];
     }
     cell.type = HomeListCellTypeHome;
+    if (self.mFetchAmount.length>0) {
+        cell.myTextField1.text = [NSString stringWithFormat:@"%ld",[self.mFetchAmount integerValue]*[[WKAccountManager shareInstance].mRate integerValue]];
+    }
+    if (self.mTotleAmount.length>0) {
+        cell.myTextField2.text = self.mTotleAmount;
+    }
+  
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+    cell.mSelectedBlock = ^(NSString *mOut, NSString *mIn) {
         
+        weakSelf.mOut = mOut;
+        weakSelf.mIn = mIn;
+        
+        [weakSelf caculateAmount];
+    };
+    cell.HomeListCellBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+        weakSelf.mAmount = string;
         if (tag == 4000) {  //汇出
-            
-            
-            
+            weakSelf.mStatus = WKRemmitableStatus_out;
         }else if (tag == 4001){ //获得
-            
-            
+            weakSelf.mStatus = WKRemmitableStatus_in;
         }else{  //总金额
-            
-            
+            weakSelf.mStatus = WKRemmitableStatus_pay;
         }
+        [weakSelf caculateAmount];
+
     };
     
     cell.HomeListCellButtonBlock = ^(NSString * _Nonnull unit) {
@@ -155,6 +193,35 @@
     };
 
     return cell;
+}
+- (void)caculateAmount{
+    if ([self.mAmount floatValue]<=0) {
+        TOASTMESSAGE(@"汇出金额必须大于0");
+        return;
+    }
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:self.mOut forKey:@"sourceCurrencyCode"];
+    [para setObject:self.mAmount forKey:@"sourceAmount"];
+    [para setObject:self.mIn forKey:@"targetCurrencyCode"];
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetRemiitablePara:para block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            
+            [[WKAccountManager shareInstance] WKResetOutCurrenceCode:self.mOut];
+            [[WKAccountManager shareInstance] WKResetInCurrenceCode:self.mIn];
+            NSDictionary *dic = [CLTool stringToDic:result];
+            WKRemiitableEntity *mEntity = [WKRemiitableEntity yy_modelWithDictionary:[dic objectForKey:@"remittable"]];
+            [[WKAccountManager shareInstance] WKResetRate:mEntity.rate];
+            
+            self.mTotleAmount = mEntity.chargable.amount;
+            self.mFetchAmount = mEntity.serviceCharge.amount;
+            
+        }else{
+            TOASTMESSAGE(result);
+        }
+        [self.myTableView reloadData];
+    }];
 }
 - (void)goRefund:(NSString *)text{
     WS(weakSelf);

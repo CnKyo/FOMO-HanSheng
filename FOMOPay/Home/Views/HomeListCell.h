@@ -16,11 +16,18 @@ typedef NS_ENUM(NSInteger,HomeListCellType) {
     HomeListCellTypeChangeAmount,
 };
 
+typedef void(^HomeListCellDidSelectedCurrenceCodeBlock)(NSString *mOut,NSString *mIn);
+
 @interface HomeListCell : UITableViewCell
+
+@property (nonatomic,copy) HomeListCellDidSelectedCurrenceCodeBlock mSelectedBlock;
 
 @property (nonatomic, assign) HomeListCellType type;
 @property (nonatomic, copy) void(^HomeListCellBlock)(NSString *string,NSInteger tag);
 @property (nonatomic, copy) void(^HomeListCellButtonBlock)(NSString *unit);
+@property (weak, nonatomic) IBOutlet UITextField *myTextField;
+@property (weak, nonatomic) IBOutlet UITextField *myTextField1;
+@property (weak, nonatomic) IBOutlet UITextField *myTextField2;
 
 @end
 

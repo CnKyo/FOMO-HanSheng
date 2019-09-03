@@ -200,7 +200,7 @@
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 self.mDl  = mText;
-                if(mText.length >11){
+                if(mText.length <=0 ){
 //                self.mDl = mText;
                 self.mTabView.rowHeight = UITableViewAutomaticDimension;
                 mLineView.backgroundColor = ssRGBHex(0xD50037);
@@ -252,7 +252,7 @@
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
             
-            if(mText.length >11){
+            if(mText.length <= 0){
             mLineView.backgroundColor = ssRGBHex(0xD50037);
                mHint.text = @"请输入正确的联系号码";
             }else{
@@ -311,28 +311,53 @@
 
 -(void)successfullyadd:(id)sender{
     [self.delegate changeArray:self.mMdate];
-    DebugLog("点击了提交按钮");
-    DebugLog(@"提交的时候的Mdata的值%@",self.mMdate);
-    DebugLog(@"提交的时候的mdata的个数为%ld",self.mMdate.count);
-//  CLCollectionViewController *vc = [CLCollectionViewController new];
-//    [vc show];
-   
-//    [self.navigationController pushViewController:vc animated:NO];
+
     for (UIViewController *vc in self.navigationController.viewControllers) {
         if ([vc isKindOfClass:[CLCollectionViewController class]]) {
           [(CLCollectionViewController  *)vc show];
-//            [self.navigationController popToViewController:controller animated:YES];
+        }
+    }
+    [self AddAccount:self.mMdate];
+}
+- (void)AddAccount:(NSArray *)Array{
+    for (NSString *text in Array) {
+        if (text.length<=0) {
+            TOASTMESSAGE(@"您必须完善您的资料信息!");
+            return;
         }
     }
     
-
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:Array[0] forKey:@"fullName"];
+    [para setObject:Array[1] forKey:@"nationality"];
     
-   
     
-   
+    if ([Array[2] isEqualToString:@"男"]) {
+        [para setObject:@"MALE" forKey:@"gender"];
+        
+    }else if ([Array[2] isEqualToString:@"女"]){
+        [para setObject:@"FEMALE" forKey:@"gender"];
+    }
     
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-
+    [para setObject:Array[3] forKey:@"bankName"];
+    [para setObject:Array[4] forKey:@"bankCity"];
+    [para setObject:[CLTool deleteSpace:Array[5]] forKey:@"accountNumber"];
+    [para setObject:Array[6] forKey:@"relationship"];
+    [para setObject:Array[7] forKey:@"contactNumber"];
+    [para setObject:[CLTool getCuurenceCode:Array[1]] forKey:@"currencyCode"];
+    
+    [self showLoading:@"Creating..."];
+    [WKNetWorkManager WKCreateRecipientAcc:para block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            TOASTMESSAGE(@"Recipient Create Successful!");
+            if (self.mBackBlock) {
+                self.mBackBlock(YES);
+            }
+            [self popToViewController];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
 }
-
 @end

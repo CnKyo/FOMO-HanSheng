@@ -311,15 +311,52 @@
         block(result,success);
     }];
 }
+#pragma mark----****---- 创建收款人信息
+/**
+ 创建收款人信息
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKCreateRecipientAcc:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self newPostWithUrl:kCreateRecipientAcc para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
 #pragma mark----****----获取票据信息
 /**
  获取票据信息
  
  @param block 返回值
  */
-+ (void)WKGetRecipient:(void(^)(id result,BOOL success))block{
-    [self newGetWithUrl:kGetRecipientInfo para:@{} block:^(id result, BOOL success) {
++ (void)WKGetRecipient:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self newGetWithUrl:kGetRecipientInfo para:para block:^(id result, BOOL success) {
         block(result,success);
+    }];
+}
+#pragma mark----****----获取收款人详情
+/**
+ 获取收款人详情
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetRecipientDetail:(NSString *)para block:(void(^)(id result,BOOL success))block{
+    
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:@{} andUrl:[NSString stringWithFormat:@"%@%@",kGetRecipientDetail,para] andRequestMethod:YTKRequestMethodGET];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
     }];
 }
 @end

@@ -14,8 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)changeArray:(NSArray *)Array;
 
 @end///////////
+
+typedef void(^CLCollectionAddBackBlock)(BOOL success);
+
 @interface CLCollectionAdd : BaseViewController
 @property (nonatomic,weak)id<CLCollectionAddDelegate>delegate;////////
+
+
+@property (nonatomic,copy) CLCollectionAddBackBlock mBackBlock;////////
 
 -(void)back;
 @end

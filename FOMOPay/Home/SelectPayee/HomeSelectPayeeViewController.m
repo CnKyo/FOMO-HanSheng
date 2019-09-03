@@ -11,14 +11,15 @@
 #import "HomeSureInfoViewController.h"
 #import "HomeChangePayeeVC.h"
 #import "HomeRefundViewController.h"
-@interface HomeSelectPayeeViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "CLCollectionAdd.h"
+@interface HomeSelectPayeeViewController ()<UITableViewDelegate,UITableViewDataSource,CLCollectionAddDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) UIButton *changeButton;
-
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
 @end
 
 @implementation HomeSelectPayeeViewController
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"选择收款人";
+    self.mItem = [WKResipientInfoObj new];
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
@@ -153,13 +155,19 @@
 }
 - (void)loadData{
     [self showLoading:nil];
-    [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
+    [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
+        
         [self.DataSource removeAllObjects];
         [self hiddenLoading];
         if (success) {
-            NSDictionary *dic =  [CLTool stringToDic:result];
-            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
-            [self.DataSource addObject:mRefundAcc];
+            NSDictionary *mResponse = [CLTool stringToDic:result];
+            if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
+                    WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
+                    [self.DataSource addObject:mRefundAcc];
+                }
+            }
+            
         }else{
             TOASTMESSAGE(result);
         }
@@ -168,11 +176,10 @@
 }
 - (void)addButtonClicked{
     WS(weakSelf);
-    //添加收款人
-    HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
-    vc.mPushType = HomeRefundViewControllerPushType_refundList;
-    vc.mBackBlock = ^(BOOL isRefresh) {
-        if (isRefresh) {
+    
+    CLCollectionAdd *vc = [CLCollectionAdd new];
+    vc.mBackBlock = ^(BOOL success) {
+        if (success) {
             [weakSelf loadData];
         }
     };
@@ -181,18 +188,10 @@
 
 - (void)nextButtonClicked{
     
-    [self showLoading:nil];
-    
-    [WKNetWorkManager WKGetRecipient:^(id result, BOOL success) {
-        [self hiddenLoading];
-        if (success) {
-            //下一步
-            HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
-            [self pushToViewController:vc];
-        }else{
-            TOASTMESSAGE(result);
-        }
-    }];
+    HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
+    vc.mItem = self.mItem;
+    [self pushToViewController:vc];
+
 }
 
 - (void)bottomButtonClicked:(UIButton *)sender{
@@ -269,6 +268,9 @@
     currentCell.selectImage.hidden = NO;
     
     _lastIndex = indexPath;
+    
+    self.mItem = self.DataSource[indexPath.row];
+    
 }
 
 

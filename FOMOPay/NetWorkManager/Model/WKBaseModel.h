@@ -156,3 +156,56 @@
 @property (strong,nonatomic) NSString *updatedAt;
 
 @end
+
+
+@interface WKAddAccInfoObj : NSObject
+@property (strong,nonatomic) NSString *name;
+@property (assign,nonatomic) NSInteger tag;
+@property (strong,nonatomic) NSString *content;
+@end
+
+
+@interface WKResipientInfoObj : NSObject
+@property (strong,nonatomic) NSString *id;
+@property (strong,nonatomic) NSString *fullName;
+@property (strong,nonatomic) NSString *gender;
+@property (strong,nonatomic) NSString *nationality;
+@property (strong,nonatomic) NSString *currencyCode;
+@property (strong,nonatomic) NSString *contactNumber;
+
+@property (strong,nonatomic) NSString *bankName;
+@property (strong,nonatomic) NSString *accountNumber;
+@property (strong,nonatomic) NSString *relationship;
+@property (strong,nonatomic) NSString *createdAt;
+@property (strong,nonatomic) NSString *updatedAt;
+@property (strong,nonatomic) NSString *bankCity;
+
+@end
+
+
+@class WKRemiitableEntitySource,WKRemiitableEntityTarget,WKRemiitableEntityServiceCharge,WKRemiitableEntityChargable;
+@interface WKRemiitableEntity : NSObject
+@property (strong,nonatomic) NSString *rate;
+@property (strong,nonatomic) WKRemiitableEntitySource *source;
+
+@property (strong,nonatomic) WKRemiitableEntityTarget *target;
+@property (strong,nonatomic) WKRemiitableEntityServiceCharge *serviceCharge;
+@property (strong,nonatomic) WKRemiitableEntityChargable *chargable;
+@end
+
+@interface WKRemiitableEntitySource : NSObject
+@property (strong,nonatomic) NSString *currencyCode;
+@property (strong,nonatomic) NSString *amount;
+@end
+@interface WKRemiitableEntityTarget : NSObject
+@property (strong,nonatomic) NSString *currencyCode;
+@property (strong,nonatomic) NSString *amount;
+@end
+@interface WKRemiitableEntityServiceCharge : NSObject
+@property (strong,nonatomic) NSString *currencyCode;
+@property (strong,nonatomic) NSString *amount;
+@end
+@interface WKRemiitableEntityChargable : NSObject
+@property (strong,nonatomic) NSString *currencyCode;
+@property (strong,nonatomic) NSString *amount;
+@end

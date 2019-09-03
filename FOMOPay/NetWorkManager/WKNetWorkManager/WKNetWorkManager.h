@@ -84,12 +84,30 @@
  @param block 返回值
  */
 + (void)WKGetRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****---- 创建收款人信息
+/**
+ 创建收款人信息
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKCreateRecipientAcc:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+
 #pragma mark----****----获取票据信息
 /**
  获取票据信息
 
  @param block 返回值
  */
-+ (void)WKGetRecipient:(void(^)(id result,BOOL success))block;
++ (void)WKGetRecipient:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----获取收款人详情
+/**
+ 获取收款人详情
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetRecipientDetail:(NSString *)para block:(void(^)(id result,BOOL success))block;
+
 @end
 

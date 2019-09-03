@@ -52,6 +52,12 @@
 		18B7BEEC2304F572007B496A /* CLNavModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BEEB2304F572007B496A /* CLNavModel.m */; };
 		18B7BEEE2304FB8F007B496A /* pdf_nav_back.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEED2304FB8E007B496A /* pdf_nav_back.pdf */; };
 		18B7BEF12304FC9E007B496A /* CLHomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BEF02304FC9E007B496A /* CLHomeDetailVC.m */; };
+		18FEAD60231E6BD000844806 /* pdf_TWD.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18FEAD5A231E6BCF00844806 /* pdf_TWD.pdf */; };
+		18FEAD61231E6BD000844806 /* pdf_IDR.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18FEAD5B231E6BCF00844806 /* pdf_IDR.pdf */; };
+		18FEAD62231E6BD000844806 /* pdf_PHP.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18FEAD5C231E6BD000844806 /* pdf_PHP.pdf */; };
+		18FEAD63231E6BD000844806 /* pdf_HKD.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18FEAD5D231E6BD000844806 /* pdf_HKD.pdf */; };
+		18FEAD64231E6BD000844806 /* pdf_CNY.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18FEAD5E231E6BD000844806 /* pdf_CNY.pdf */; };
+		18FEAD65231E6BD000844806 /* pdf_MYR.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18FEAD5F231E6BD000844806 /* pdf_MYR.pdf */; };
 		7702398C230B83C100EE8C31 /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7702398A230B83C100EE8C31 /* HomeListCell.m */; };
 		7702398D230B83C100EE8C31 /* HomeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7702398B230B83C100EE8C31 /* HomeListCell.xib */; };
 		77023991230B8AE000EE8C31 /* HomeDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 77023990230B8AE000EE8C31 /* HomeDataObject.m */; };
@@ -303,6 +309,12 @@
 		18B7BEED2304FB8E007B496A /* pdf_nav_back.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_nav_back.pdf; sourceTree = "<group>"; };
 		18B7BEEF2304FC9E007B496A /* CLHomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHomeDetailVC.h; sourceTree = "<group>"; };
 		18B7BEF02304FC9E007B496A /* CLHomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHomeDetailVC.m; sourceTree = "<group>"; };
+		18FEAD5A231E6BCF00844806 /* pdf_TWD.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_TWD.pdf; sourceTree = "<group>"; };
+		18FEAD5B231E6BCF00844806 /* pdf_IDR.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_IDR.pdf; sourceTree = "<group>"; };
+		18FEAD5C231E6BD000844806 /* pdf_PHP.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_PHP.pdf; sourceTree = "<group>"; };
+		18FEAD5D231E6BD000844806 /* pdf_HKD.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_HKD.pdf; sourceTree = "<group>"; };
+		18FEAD5E231E6BD000844806 /* pdf_CNY.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_CNY.pdf; sourceTree = "<group>"; };
+		18FEAD5F231E6BD000844806 /* pdf_MYR.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_MYR.pdf; sourceTree = "<group>"; };
 		365F37B62573D6AD38920DD0 /* Pods-FOMOPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.release.xcconfig"; sourceTree = "<group>"; };
 		3F1006515BE60B5DD9F894BA /* Pods-FOMOPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FOMOPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FOMOPay/Pods-FOMOPay.debug.xcconfig"; sourceTree = "<group>"; };
 		59884581E113A0DB27EEB629 /* libPods-FOMOPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FOMOPay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -699,6 +711,12 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				18FEAD5E231E6BD000844806 /* pdf_CNY.pdf */,
+				18FEAD5D231E6BD000844806 /* pdf_HKD.pdf */,
+				18FEAD5B231E6BCF00844806 /* pdf_IDR.pdf */,
+				18FEAD5F231E6BD000844806 /* pdf_MYR.pdf */,
+				18FEAD5C231E6BD000844806 /* pdf_PHP.pdf */,
+				18FEAD5A231E6BCF00844806 /* pdf_TWD.pdf */,
 				182DBA6F231CEDA20009E745 /* pdf_info_hud.pdf */,
 				CF3129DD231CA776002ED335 /* pdf_history_home.pdf */,
 				7707E2A32313B1E10029EB0B /* Home */,
@@ -1381,6 +1399,8 @@
 				773880D62314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy_gray.pdf in Resources */,
 				772D73DA230A9C0F0068AB48 /* pdf_pass_code_unselect.pdf in Resources */,
 				772D73D7230A89630068AB48 /* WKCustomCodeView.xib in Resources */,
+				18FEAD65231E6BD000844806 /* pdf_MYR.pdf in Resources */,
+				18FEAD60231E6BD000844806 /* pdf_TWD.pdf in Resources */,
 				182DBA70231CEDA20009E745 /* pdf_info_hud.pdf in Resources */,
 				773880D72314BDF4002ACEC4 /* pdf_home_sureInfo_edit.pdf in Resources */,
 				18B7BEEE2304FB8F007B496A /* pdf_nav_back.pdf in Resources */,
@@ -1400,6 +1420,7 @@
 				CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */,
 				77DD6BB62313E12A00BFDD11 /* HomeSureInfoListCell.xib in Resources */,
 				773880D42314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy.pdf in Resources */,
+				18FEAD63231E6BD000844806 /* pdf_HKD.pdf in Resources */,
 				7707E2A92313B1E10029EB0B /* pdf_home_selectPayee_add_icon.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
 				770239B1230BFD2A00EE8C31 /* pdf.guideView_icon_english_3.pdf in Resources */,
@@ -1414,6 +1435,7 @@
 				CF5A8C552306A1DE00745FE9 /* pdf_me_logout.pdf in Resources */,
 				77047E0A231676E6000453A0 /* pdf_home_payType_allow.pdf in Resources */,
 				CF2C42AF230E944700A16732 /* pdf_collection_hint_success.pdf in Resources */,
+				18FEAD64231E6BD000844806 /* pdf_CNY.pdf in Resources */,
 				770239AE230BFD2A00EE8C31 /* pdf.guideView_icon_english_4.pdf in Resources */,
 				772D73B9230A3FC50068AB48 /* DPLogInView.xib in Resources */,
 				77047DFD23161E2F000453A0 /* HomePayTypeListCell.xib in Resources */,
@@ -1455,12 +1477,14 @@
 				CF6BBB5F2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf in Resources */,
 				77BE822623153B1900519F66 /* SVProgressHUD.bundle in Resources */,
 				CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */,
+				18FEAD62231E6BD000844806 /* pdf_PHP.pdf in Resources */,
 				CF62652B23152801001AF5FC /* CLTitleView.xib in Resources */,
 				CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */,
 				CF26171823176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib in Resources */,
 				772D73C4230A798C0068AB48 /* pdf_login_icon.pdf in Resources */,
 				77BE820F23151C4A00519F66 /* HomeChangePayeeCell.xib in Resources */,
 				77DD6BB12313D98F00BFDD11 /* HomeSureInfoEditCell.xib in Resources */,
+				18FEAD61231E6BD000844806 /* pdf_IDR.pdf in Resources */,
 				CF48882E23164F3400582B44 /* Localizable.strings in Resources */,
 				CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */,
 				77047E0C231676E6000453A0 /* pdf_home_payType_payNow.pdf in Resources */,

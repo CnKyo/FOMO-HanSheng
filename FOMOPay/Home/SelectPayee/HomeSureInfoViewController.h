@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeSureInfoViewController : BaseViewController
-
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
 @end
 
 NS_ASSUME_NONNULL_END
