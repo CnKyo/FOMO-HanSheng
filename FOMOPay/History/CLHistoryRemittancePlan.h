@@ -12,6 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLHistoryRemittancePlan : BaseViewController
 //@property(nonatomic,strong) CLHistoryRemittancePlan * StepProgressPortrait ;
+
+-(void)AlterButton:(UIButton *)sender;//修改
+
+-(void)AgainPayButton:(UIButton *)sender; //在次汇款
+
+-(void)GetPdfButton:(UIButton *)sender; //获得pdf收据
+
+-(void)QueryButton:(UIButton *)sender;//查询付款详情
+
+-(void)CancelButton:(UIButton *)sender;//取消汇款
 @end
 
 NS_ASSUME_NONNULL_END

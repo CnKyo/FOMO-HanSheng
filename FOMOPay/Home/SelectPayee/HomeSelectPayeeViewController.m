@@ -133,7 +133,7 @@
     addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
     [footerView addSubview:addButton];
     
-    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
+//    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
     
     _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -145,8 +145,9 @@
     [_myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.type == ShowButtonTypeDefault ? self.nextButton.mas_top:self.changeButton.mas_top).offset(-10);
-        make.top.equalTo(self.view).offset(44 + rectStatus.size.height + 10);
+        make.bottom.equalTo(self.view).offset(- BottomHeight - 10 - 44);
+        
+        make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight);
     }];
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeSelectPayeeListCell" bundle:nil] forCellReuseIdentifier:@"HomeSelectPayeeListCell"];
@@ -224,7 +225,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 10;
+    return 0.001;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -248,9 +249,11 @@
     if (!cell) {
         
         cell = [[HomeSelectPayeeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSelectPayeeListCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
     [cell setMItem:self.DataSource[indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 

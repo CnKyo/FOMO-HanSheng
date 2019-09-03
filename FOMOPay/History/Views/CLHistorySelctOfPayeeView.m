@@ -1,16 +1,14 @@
 //
-//  CLHistoryDetailsOfRemittancesCellTableViewCell.m
+//  CLHistorySelctOfPayeeView.m
 //  FOMOPay
 //
-//  Created by clkj on 2019/8/29.
+//  Created by clkj on 2019/9/3.
 //  Copyright © 2019 王钶. All rights reserved.
 //
 
-#import "CLHistoryDetailsOfRemittancesCellTableViewCell.h"
-@interface CLHistoryDetailsOfRemittancesCellTableViewCell() 
+#import "CLHistorySelctOfPayeeView.h"
 
-@end
-@implementation CLHistoryDetailsOfRemittancesCellTableViewCell
+@implementation CLHistorySelctOfPayeeView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -22,11 +20,5 @@
 
     // Configure the view for the selected state
 }
-
-
-
-
-
-
 
 @end
