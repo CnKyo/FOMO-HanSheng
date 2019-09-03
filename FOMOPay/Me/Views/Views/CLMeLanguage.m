@@ -54,15 +54,19 @@
         self.mTextF.textAlignment = NSTextAlignmentRight;
         if (_mIndexPath.row == 0) {
             self.mTextF.placeholder = @"请输入全名";
+            self.mTextF.clearButtonMode = UITextFieldViewModeAlways;
         }else if(_mIndexPath.row == 4){
             self.mTextF.placeholder = @"请输入开户城市";
+            self.mTextF.clearButtonMode = UITextFieldViewModeNever;
         }else if(_mIndexPath.row == 5){
             self.mTextF.placeholder = @"请输入账号号码";
+            self.mTextF.clearButtonMode = UITextFieldViewModeNever;
         }else if(_mIndexPath.row == 7){
             self.mTextF.placeholder = @"请输入联系号码";
+            self.mTextF.clearButtonMode = UITextFieldViewModeNever;
         }
         self.mTextF.font = kCommonFont(14);
-        self.mTextF.clearButtonMode = UITextFieldViewModeNever;
+//        self.mTextF.clearButtonMode = UITextFieldViewModeNever;
 //        UITextFieldViewModeAlways;
         self.mTextF.delegate = self;
         self.mTextF.returnKeyType = UIReturnKeyDone;

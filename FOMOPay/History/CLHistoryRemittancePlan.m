@@ -14,7 +14,6 @@
 
 @property (nonatomic,strong)NSArray *mData;
 @property (nonatomic,strong)NSArray *mRData;
-@property (nonatomic,strong)CLHistoryRenittabcePlanView *StepProgress;
 @property NSInteger i;
 @property (nonatomic,strong)NSArray *mLeftDate;//左边的日期
 @property (nonatomic,strong)NSArray *mRightData;
@@ -58,9 +57,9 @@
      self.mData=@[@"收款人",@"汇款金额",@"获得金额"];
     self.mRData=@[@"Angela Lee",@"SGD182.00",@"CNY910.00"];
     self.mLeftDate = @[@"7月7日",@"7月8日",@"7月9日",@"7月30日"];
-    self.mRightData = @[@"提交汇款订单",@"已收到您的付款",@"汇款处理中",@"汇款成功"];
+    self.mRightData = @[@"提交汇款订单",@"已收到您的付款",@"汇款处理中",@"汇款出错"];
     self.mRightDataHint =@[@"等待付款中，请使用本人账户进行付款。如果您已经完成支付，请耐心等待，我们需要时间核对付款讯息，谢谢！",
-                           @"款项核对中...",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"汇款成功"];
+                           @"款项核对中...",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"请查询户口确定款项"];
     
     self.i=4;  //控制进度条1-4。 取值1-4;
 
@@ -322,9 +321,14 @@
                 mLabel.font = kCommonFont(16);
                 mLabel.textColor  =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:mLabel];
+//-------------------------------------------------------------------------判断成功失败时候的按钮
                 if([mLabel.text isEqual:@"汇款成功"]){
-                    DebugLog(@"w231232");
+                    
+                    [self LoadSureButton];
+//                    [self LoadAlterButton];
+                }else if([mLabel.text isEqual:@"汇款出错"]){
                     [self LoadAlterButton];
+                    mLabel.textColor  = ssRGBHex(0xD50037);
                 };
                 
                 UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 27, 256, 57)];//提示小文字
@@ -412,9 +416,9 @@
     
     CancelButton.layer.borderWidth = 1;
     
-    CancelButton.layer.cornerRadius = 5;
+    CancelButton.layer.cornerRadius = 2;
     
-    QueryButton.layer.cornerRadius = 5;
+    QueryButton.layer.cornerRadius = 2;
     
     [CancelButton setTitle:@"取消汇款" forState:UIControlStateNormal];
     
@@ -429,7 +433,7 @@
     [CancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
         make.left.equalTo(self.view).mas_offset(4);
-        make.width.offset(kScreenWidth /2);
+//        make.width.offset(kScreenWidth /2);
         make.height.offset(42);
         make.right.equalTo(QueryButton.mas_left).mas_offset(-4);
     }];
@@ -509,7 +513,7 @@
     AlterButton.layer.cornerRadius = 5;
     [AlterButton setTitleColor:ssRGBHex(0xFFFFFF) forState:UIControlStateNormal];
     AlterButton.titleLabel.font =kCommonFont(14);
-    [AlterButton addTarget:self action:@selector(Alter:) forControlEvents:UIControlEventTouchUpInside];
+    [AlterButton addTarget:self action:@selector(AlterButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:AlterButton];
     [AlterButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10);
@@ -520,8 +524,87 @@
     }];
 }
 
--(void)Alter:(UIButton *)sender{
+-(void)AlterButton:(UIButton *)sender{
+    DebugLog(@"点击了修改");
+   
     CLHistoryAlterRemittance *vc = [CLHistoryAlterRemittance new];
+  
     [self pushToViewController:vc];
+    
+}
+
+
+
+//-------------------------汇款成功时他的按钮
+-(void)LoadSureButton{
+    UILabel *mLabel = [UILabel new];
+    
+    mLabel.text = @"您想在次汇款还是获得PDF收据?";
+    mLabel.textColor = ssRGBHex(0x005CB6);
+    mLabel.font = kCommonFont(16);
+    [self.view addSubview:mLabel];
+    
+    UIButton *AgainPayButton = [[UIButton alloc]init];
+
+    UIButton *GetPdfButton = [[UIButton alloc]init];
+    [AgainPayButton addTarget:self action:@selector(AgainPayButton:) forControlEvents:UIControlEventTouchUpInside];
+
+    [GetPdfButton addTarget:self action:@selector(GetPdfButton:) forControlEvents:UIControlEventTouchUpInside];
+
+    AgainPayButton.backgroundColor = ssRGBHex(0xF6F5FA);
+
+    GetPdfButton.backgroundColor = ssRGBHex(0x005CB6);
+
+    AgainPayButton.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
+
+    AgainPayButton.layer.borderWidth = 1;
+
+    AgainPayButton.layer.cornerRadius = 2;
+
+    GetPdfButton.layer.cornerRadius = 2;
+
+    [AgainPayButton setTitle:@"再次汇款" forState:UIControlStateNormal];
+
+    [GetPdfButton setTitle:@"获得PDF收据" forState:UIControlStateNormal];
+
+    [AgainPayButton setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+    AgainPayButton.titleLabel.font =kCommonFont(14);
+    GetPdfButton.titleLabel.font = kCommonFont(14);
+    [self.view addSubview:GetPdfButton];
+
+    [self.view addSubview:AgainPayButton];
+    //s设置2个按钮平分的约束
+    [AgainPayButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.left.equalTo(self.view).mas_offset(4);
+        //        make.width.offset(kScreenWidth /2);
+        make.height.offset(42);
+        make.right.equalTo(GetPdfButton.mas_left).mas_offset(-4);
+    }];
+    [GetPdfButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        //          make.left.equalTo(CancelButton.mas_right).offset(-10);
+        make.right.equalTo(self.view).mas_offset(-4);
+        make.width.equalTo(AgainPayButton.mas_width);
+        make.height.offset(42);
+    }];
+    [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).mas_offset(9);
+        make.bottom.equalTo(AgainPayButton.mas_top).offset(-12);
+    }];
+
+}
+
+-(void)AgainPayButton:(UIButton *)sender{
+    //再次汇款
+    DebugLog(@"点击点击点击点击daeee");
+//    CLHistoryAlterRemittance *vc = [CLHistoryAlterRemittance new];
+//    [self pushToViewController:vc];
+}
+
+-(void)GetPdfButton:(UIButton *)sender{
+    //获得pdf收据
+    CLHistoryCertificateOfRemittance *vc = [CLHistoryCertificateOfRemittance new];
+    [self pushToViewController: vc];
 }
 @end

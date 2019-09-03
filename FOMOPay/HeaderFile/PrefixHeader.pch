@@ -68,7 +68,6 @@
 #import "CLNavgationView.h"
 #import "Header.h"
 #import "CLHistoryRemittancePlan.h"
-#import "CLHistoryRenittabcePlanView.h"
 #import "CLCollectionAlter.h"
 #import "LogInViewController.h"
 #import "CLMeSwitchLanguage.h"
@@ -81,6 +80,8 @@
 #import "CLHistoryRefund.h"
 #import "CLHistoryAuthentication.h"
 #import "CLHistoryDetailsOfRefund.h"
+#import "CLHistoryCertificateOfRemittance.h"
+#import "CLHistorySelctOfPayeeView.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"

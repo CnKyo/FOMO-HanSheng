@@ -149,7 +149,7 @@
     if(section == 0){
         UIView *mView = [UIView new];
         mView.backgroundColor = ssRGBHex(0xFFFFFF);
-        UIView *mTopLine = [[UIView alloc]initWithFrame:CGRectMake(15, 0, kScreenWidth, 1)];
+        UIView *mTopLine = [[UIView alloc]initWithFrame:CGRectMake(15, -2, kScreenWidth, 1)];
         mTopLine.backgroundColor = ssRGBHex(0x005CB6);
         [mView addSubview:mTopLine];
         UIView *mBtview = [[UIView alloc]initWithFrame:CGRectMake(0, 39, kScreenWidth, 1)];

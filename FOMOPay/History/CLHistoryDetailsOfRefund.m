@@ -35,7 +35,7 @@
         }
     }];
     [self LoadCellType:9];
-    self.mData=@[@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
+    self.mData=@[@"订单号",@"退款人",@"汇款金额",@"出售汇率",@"买入汇率",@"退款金额",@"状态",@"申请时间",@"处理时间",@"退款时间"];
 }
 
 
@@ -57,8 +57,8 @@
     }else if(indexPath.row == 5){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }else if(indexPath.row == 6){
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    }else if(indexPath.row == 8){
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+    }else if(indexPath.row == 9){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
     

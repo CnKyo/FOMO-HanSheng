@@ -7,7 +7,7 @@
 //
 
 #import "CLHistoryViewController.h"
-
+#import "CLHistoryRefundProgress.h"
 @interface CLHistoryViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSArray *mData;
 @end
@@ -96,6 +96,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
+//    CLHistoryRefundProgress *vc =[CLHistoryRefundProgress new];
     [self pushToViewController:vc];
 }
 

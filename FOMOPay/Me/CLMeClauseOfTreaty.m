@@ -33,6 +33,15 @@
                 break;
         }
     }];
+    UIWebView *webView = [UIWebView new];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+    [self.view addSubview:webView];
+    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(+kAppStatusBarHeight +8 +44);
+        make.left.equalTo(self.view).offset(8);
+        make.right.equalTo(self.view).offset(-8);
+        make.bottom.equalTo(self.view).offset(-BottomHeight);
+    }];
 }
      
      
