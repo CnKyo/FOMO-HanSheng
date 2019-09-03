@@ -7,7 +7,9 @@
 //
 
 #import "CLHistoryDetailsOfRemittancesCellTableViewCell.h"
+@interface CLHistoryDetailsOfRemittancesCellTableViewCell() 
 
+@end
 @implementation CLHistoryDetailsOfRemittancesCellTableViewCell
 
 - (void)awakeFromNib {
@@ -20,5 +22,11 @@
 
     // Configure the view for the selected state
 }
+
+
+
+
+
+
 
 @end

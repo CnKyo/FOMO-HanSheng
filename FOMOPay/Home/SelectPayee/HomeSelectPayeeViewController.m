@@ -217,8 +217,9 @@
     if (!cell) {
         
         cell = [[HomeSelectPayeeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSelectPayeeListCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

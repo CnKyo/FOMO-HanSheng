@@ -7,9 +7,10 @@
 //
 
 #import "CLHistoryAlterRemittance.h"
-
-@interface CLHistoryAlterRemittance ()<UITableViewDelegate,UITableViewDataSource>
+#import "CLHistorySelectionOfPayee.h"
+@interface CLHistoryAlterRemittance ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic,strong)NSArray *mData;
+@property (nonatomic,strong)NSArray *mTopData;
 @end
 
 @implementation CLHistoryAlterRemittance
@@ -53,31 +54,61 @@
         }
     }];
      [self LoadCellType:9];
-    self.mData=@[@"无效的账号",@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
+    self.mData=@[@"无效的账号:",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
+    self.mTopData = @[@"汇款金额",@"获得金额",@"汇率"];
     [self LoadContactAndConfirm];
    [self ResetLayout];  //底部按钮适配5s的约束
     
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
+    if(section == 0){
     return self.mData.count;
+    }else{
+        return 3;
+    }
+    
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if(cell == nil){
         cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
-    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-     cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
-    if(indexPath.row == 0){
-        cell.mLeftName.textColor =ssRGBHex(0xD50037);
-    }
-    if(indexPath.row == 1){
+//    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+    if(indexPath.section ==0){
+        cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
+        if(indexPath.row == 0){
+            cell.mLeftName.textColor = ssRGBHex(0xD50037);
+        }
+        if(indexPath.row == 1){
+             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+        }else if(indexPath.row ==2 ||indexPath.row ==3 ||indexPath.row==4){
+             cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+        }else if(indexPath.row ==5){
+            cell.mRightData.hidden = YES;
+            UITextField *mTextF = [UITextField new];
+            mTextF.textAlignment = NSTextAlignmentRight;
+            mTextF.font = kCommonFont(14);
+            mTextF.clearButtonMode =UITextFieldViewModeAlways;
+            mTextF.delegate = self;
+            mTextF.returnKeyType = UIReturnKeyDone;
+            mTextF.placeholder = @"请输入账户号码";
+            [cell.contentView addSubview:mTextF];
+            [mTextF mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(cell).offset(-10.5);
+                make.centerY.equalTo(cell.mLeftName);
+            }];
+        }
         
+    }
+    if(indexPath.section == 1){
+        cell.mLeftName.text =[self.mTopData objectAtIndex:indexPath.row];
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     }
 //    if(indexPath.row == 0){
 //        cell.mLeftName.text = @"无效的账号:";
@@ -103,27 +134,103 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 0){
+    if(indexPath.row == 0 &&indexPath.section == 0){
         return 41;
     }
-    return 62;
+   
+    return 49;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if(section == 0){
+        UIView *mView = [UIView new];
+        mView.backgroundColor = ssRGBHex(0xFFFFFF);
+        UIView *mTopLine = [[UIView alloc]initWithFrame:CGRectMake(15, 0, kScreenWidth, 1)];
+        mTopLine.backgroundColor = ssRGBHex(0x005CB6);
+        [mView addSubview:mTopLine];
+        UIView *mBtview = [[UIView alloc]initWithFrame:CGRectMake(0, 39, kScreenWidth, 1)];
+        mBtview.backgroundColor = ssRGBHex(0xCCCCCC);
+        [mView addSubview: mBtview];
+        UIButton *mReplace = [UIButton new];
+        [mReplace setTitle:@"更换账号" forState:UIControlStateNormal];
+        NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:@"更换账号"];
+        
+        [attri addAttribute:NSUnderlineStyleAttributeName
+                      value:@(NSUnderlineStyleSingle)
+                      range:NSMakeRange(0, 4)];
+        [attri addAttribute:NSForegroundColorAttributeName value:ssRGBHex(0x005CB6) range:NSMakeRange(0, 4)];
+        [attri addAttribute:NSUndefinedKeyException value:ssRGBHex(0x005CB6) range:NSMakeRange(0, 4)];
+        [mReplace setAttributedTitle:attri forState:UIControlStateNormal];
+        [mReplace setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
+        mReplace.titleLabel.font = kCommonFont(14);
+        [mReplace addTarget:self action:@selector(ReplaceAccount:) forControlEvents:UIControlEventTouchUpInside];
+        [mView addSubview:mReplace];
+        [mReplace mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(mView).offset(-15);
+            make.top.equalTo(mView).offset(13);
+            make.height.offset(14);
+        }];
+        return mView;
+    }else{
+        UIView *mBtView = [UIView new];
+        mBtView.backgroundColor = ssRGBHex(0xCCCCCC);
+        return mBtView;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if(section==0){
+        return 39;
+    }else{
+    return 1;
+    }}
 
 
 
 
+////---------=======================-----===========-=---------------Text的代理
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+   
+}
 
 
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+  
+    return YES;
+}
 
 
-
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+  
+        // 每间隔4个字符插入一个空格并在删除时去掉
+        NSMutableString *strmText = [NSMutableString stringWithString:textField.text];
+        if ([textField.text length] == range.location) {
+            
+            // 插入
+            if ([textField.text length]%5 == 4) {
+                
+                [strmText appendString:@" "];
+            }
+            
+        } else {
+            
+            // 删除
+            if ([textField.text length] && [textField.text length]%5 == 0) {
+                
+                strmText = [NSMutableString stringWithString:[strmText substringToIndex:strmText.length - 1]];
+            }
+        }
+        
+        textField.text = strmText;
+    
+    return YES;
+}
 
 
 
@@ -185,5 +292,12 @@
 
 -(void)ConfirmButton:(UIButton *)sender{
     
+}
+
+
+///---------------更换账号的点击事件
+-(void)ReplaceAccount:(UIButton *)sender{
+    CLHistorySelectionOfPayee *vc = [CLHistorySelectionOfPayee new];
+    [self pushToViewController:vc];
 }
 @end

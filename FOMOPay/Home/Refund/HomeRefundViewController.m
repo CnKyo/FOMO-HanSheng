@@ -87,8 +87,9 @@
     if (!cell) {
         
         cell = [[HomeRefundListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeRefundListCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     __weak __typeof(self)weakSelf = self;
     

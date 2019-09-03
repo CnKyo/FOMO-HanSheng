@@ -62,7 +62,8 @@
             self.mTextF.placeholder = @"请输入联系号码";
         }
         self.mTextF.font = kCommonFont(14);
-        self.mTextF.clearButtonMode = UITextFieldViewModeAlways;
+        self.mTextF.clearButtonMode = UITextFieldViewModeNever;
+//        UITextFieldViewModeAlways;
         self.mTextF.delegate = self;
         self.mTextF.returnKeyType = UIReturnKeyDone;
         [self.mRightView addSubview:self.mTextF];

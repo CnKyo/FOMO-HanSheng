@@ -48,7 +48,8 @@
     UILabel *OpenLabelHint = [UILabel new];
     
     OpenLabelHint.text = languageStr(@"Open real-time remittance notification, you can faster understand your remittance status");
-    
+    OpenLabelHint.numberOfLines = 0;
+    OpenLabelHint.textAlignment = NSTextAlignmentCenter;
     [OpenLabelHint setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:14]];
     
     [OpenLabelHint setTextColor:ssRGBHex(0x8C9091)];
@@ -90,31 +91,34 @@
         make.height.offset(151);
         make.width.offset(204);
         make.centerX.equalTo(OpenLabel);
-        make.bottom.equalTo(OpenLabel.mas_top).offset(-21);
+        make.top.equalTo(self.view).offset(kAppStatusBarHeight +97);
+//        make.bottom.equalTo(OpenLabel.mas_top).offset(-21);
 
     }];
     
     [OpenLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
-        make.height.offset(18);
+//        make.height.offset(18);
     }];
     
     [OpenLabelHint mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(OpenLabel);
         make.top.equalTo(OpenLabel.mas_bottom).offset(15);
-        make.height.offset(14);
+//        make.height.offset(14);
+        make.left.equalTo(self.view).offset(35);
+        make.right.equalTo(self.view).offset(-35);
     }];
 
     
     [NoOpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 4  );
         make.left.equalTo(self.view).mas_offset(4);
         make.width.offset(kScreenWidth /2);
         make.height.offset(42);
-        make.right.equalTo(OpenMessage.mas_left).mas_offset(-4);
+        make.right.equalTo(OpenMessage.mas_left).mas_offset(-5);
     }];
     [OpenMessage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset( - BottomHeight - 10  );
+        make.bottom.equalTo(self.view).offset( - BottomHeight - 4  );
         //          make.left.equalTo(CancelButton.mas_right).offset(-10);
         make.right.equalTo(self.view).mas_offset(-4);
         make.width.equalTo(NoOpenMessage.mas_width);

@@ -111,7 +111,7 @@
         }];
 
         UILabel *nameLabel=[[UILabel alloc]init];
-        nameLabel.text=@"张三";
+        nameLabel.text=[WKAccountManager shareInstance].name;
         [nameLabel setFont: [UIFont fontWithName:@"PingFangSC-Regular" size:18]];
         [cell.contentView addSubview:nameLabel];
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
