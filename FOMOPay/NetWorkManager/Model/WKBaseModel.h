@@ -146,3 +146,13 @@
 @property (strong,nonatomic) NSArray *appAvailableVersion;
 
 @end
+
+@interface WKRefundAccount : NSObject
+@property (strong,nonatomic) NSString *bank;
+@property (strong,nonatomic) NSString *city;
+@property (strong,nonatomic) NSString *name;
+@property (strong,nonatomic) NSString *number;
+@property (strong,nonatomic) NSString *createdAt;
+@property (strong,nonatomic) NSString *updatedAt;
+
+@end

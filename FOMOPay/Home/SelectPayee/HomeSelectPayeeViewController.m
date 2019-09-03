@@ -10,7 +10,7 @@
 #import "HomeSelectPayeeListCell.h"
 #import "HomeSureInfoViewController.h"
 #import "HomeChangePayeeVC.h"
-
+#import "HomeRefundViewController.h"
 @interface HomeSelectPayeeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -149,18 +149,50 @@
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeSelectPayeeListCell" bundle:nil] forCellReuseIdentifier:@"HomeSelectPayeeListCell"];
     _myTableView.tableFooterView = footerView;
+    [self loadData];
 }
-
+- (void)loadData{
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
+        [self.DataSource removeAllObjects];
+        [self hiddenLoading];
+        if (success) {
+            NSDictionary *dic =  [CLTool stringToDic:result];
+            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
+            [self.DataSource addObject:mRefundAcc];
+        }else{
+            TOASTMESSAGE(result);
+        }
+        [self.myTableView reloadData];
+    }];
+}
 - (void)addButtonClicked{
-    
+    WS(weakSelf);
     //添加收款人
+    HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+    vc.mPushType = HomeRefundViewControllerPushType_refundList;
+    vc.mBackBlock = ^(BOOL isRefresh) {
+        if (isRefresh) {
+            [weakSelf loadData];
+        }
+    };
+    [self pushToViewController:vc];
 }
 
 - (void)nextButtonClicked{
     
-    //下一步
-    HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
-    [self pushToViewController:vc];
+    [self showLoading:nil];
+    
+    [WKNetWorkManager WKGetRecipient:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            //下一步
+            HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
+            [self pushToViewController:vc];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
 }
 
 - (void)bottomButtonClicked:(UIButton *)sender{
@@ -178,7 +210,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return self.DataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -219,7 +251,7 @@
         cell = [[HomeSelectPayeeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSelectPayeeListCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+    [cell setMItem:self.DataSource[indexPath.row]];
     return cell;
 }
 

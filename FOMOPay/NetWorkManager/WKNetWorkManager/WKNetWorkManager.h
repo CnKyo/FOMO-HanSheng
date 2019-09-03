@@ -76,5 +76,20 @@
  @param block 返回值
  */
 + (void)WKAddRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----获取退款账户
+/**
+ 获取退款账户
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----获取票据信息
+/**
+ 获取票据信息
+
+ @param block 返回值
+ */
++ (void)WKGetRecipient:(void(^)(id result,BOOL success))block;
 @end
 

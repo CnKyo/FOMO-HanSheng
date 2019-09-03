@@ -29,3 +29,5 @@
 #define kGetRemmittableList                             @"/customer/app/v2/remittable"
 ///添加退款账户
 #define kAddRefundAccount                             @"/customer/app/v2/refundAccount"
+///获取票据信息
+#define kGetRecipientInfo                             @"/customer/app/v2/recipient/:id"

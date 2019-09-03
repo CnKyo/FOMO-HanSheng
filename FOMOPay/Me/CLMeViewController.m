@@ -16,6 +16,13 @@
 
 @implementation CLMeViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    DebugLog(@"条款的连接是:%@",[WKAccountManager shareInstance].appConfig.tncLink);
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
@@ -111,7 +118,7 @@
         }];
 
         UILabel *nameLabel=[[UILabel alloc]init];
-        nameLabel.text=@"张三";
+        nameLabel.text= [WKAccountManager shareInstance].name;
         [nameLabel setFont: [UIFont fontWithName:@"PingFangSC-Regular" size:18]];
         [cell.contentView addSubview:nameLabel];
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,7 +127,7 @@
             
         }];
         UILabel *phoneLabel  = [[UILabel alloc]init];
-        phoneLabel.text = @"****1234";
+        phoneLabel.text = [WKAccountManager shareInstance].mobileNumber;
         [phoneLabel setFont: [UIFont fontWithName:@"PingFangSC-Regular" size:14]];
         [cell.contentView addSubview:phoneLabel];
         [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -169,6 +176,7 @@
         [WKNetWorkManager WKLogOut:^(id result,BOOL success) {
             [self hiddenLoading];
             if (success) {
+                [[WKAccountManager shareInstance] WKClearnAll];
                 LogInViewController *vc = [LogInViewController new];
                 [self pushToViewController:vc];
             }else{

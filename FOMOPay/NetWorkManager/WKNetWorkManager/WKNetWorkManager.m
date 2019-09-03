@@ -114,30 +114,6 @@
 }
 + (void)newPostWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
     
-//    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
-//    [PPNetworkHelper setResponseSerializer:PPResponseSerializerJSON];
-//    [PPNetworkHelper openLog];
-//
-//    NSString *mToken = [WKAccountManager shareInstance].token;
-//    if (mToken.length>0) {
-//        [PPNetworkHelper setValue:mToken forHTTPHeaderField:@"sessionToken"];
-//    }
-//
-//    NSString *urlString = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
-//    NSLog(@"POST URL = %@",urlString);
-//    DebugLog(@"POST 参数是:%@",para);
-//
-//    [PPNetworkHelper POST:urlString parameters:para success:^(id responseObject) {
-//
-//        DebugLog(@"请求的结果是:%@",responseObject);
-//        block(responseObject,YES);
-//
-//    } failure:^(NSError *error) {
-//
-//        DebugLog(@"错误的说明:%@",error.localizedDescription);
-//        block(error.localizedDescription,NO);
-//
-//    }];
     WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:para andUrl:url andRequestMethod:YTKRequestMethodPOST];
     [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         DebugLog(@"请求的结果是:%@",request.responseString);
@@ -175,30 +151,7 @@
     }];
 }
 + (void)newGetWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
-    
-//    [PPNetworkHelper setRequestSerializer:PPRequestSerializerJSON];
-//    [PPNetworkHelper setResponseSerializer:PPResponseSerializerJSON];
-//    [PPNetworkHelper openLog];
-//
-//    if ([WKAccountManager shareInstance].token.length>0) {
-//        [PPNetworkHelper setValue:[WKAccountManager shareInstance].token forHTTPHeaderField:@"sessionToken"];
-//    }
-//
-//    NSString *urlString = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
-//    NSLog(@"GET URL = %@",urlString);
-//    DebugLog(@"GET 参数是:%@",para);
-//
-//    [PPNetworkHelper GET:urlString parameters:para success:^(id responseObject) {
-//
-//        DebugLog(@"请求的结果是:%@",responseObject);
-//        block(responseObject,YES);
-//
-//    } failure:^(NSError *error) {
-//
-//        DebugLog(@"错误的说明:%@",error.localizedDescription);
-//        block(error.localizedDescription,NO);
-//
-//    }];
+ 
     WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:para andUrl:url andRequestMethod:YTKRequestMethodGET];
     [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         DebugLog(@"请求的结果是:%@",request.responseString);
@@ -227,6 +180,9 @@
         if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dic = (NSDictionary *)request.responseObject;
             errorDes = [dic objectForKey:@"message"];
+            if ([errorDes isEqualToString:@""]) {
+                
+            }
         }else{
             errorDes = request.error.localizedDescription;
         }
@@ -340,6 +296,29 @@
  */
 + (void)WKAddRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
     [self putWithUrl:kAddRefundAccount para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
+#pragma mark----****----获取退款账户
+/**
+ 获取退款账户
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetRefundAccount:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self newGetWithUrl:kAddRefundAccount para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
+#pragma mark----****----获取票据信息
+/**
+ 获取票据信息
+ 
+ @param block 返回值
+ */
++ (void)WKGetRecipient:(void(^)(id result,BOOL success))block{
+    [self newGetWithUrl:kGetRecipientInfo para:@{} block:^(id result, BOOL success) {
         block(result,success);
     }];
 }

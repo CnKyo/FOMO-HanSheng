@@ -383,5 +383,7 @@ void TOASTMESSAGE(NSString *message){
         make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
     }];
 }
-
+- (void)popToViewController{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

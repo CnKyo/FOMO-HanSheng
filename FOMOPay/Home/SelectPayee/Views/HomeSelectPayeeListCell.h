@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *selectImage;
 
+@property (strong,nonatomic) WKRefundAccount *mItem;
+
 @end
 
 NS_ASSUME_NONNULL_END

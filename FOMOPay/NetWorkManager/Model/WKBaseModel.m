@@ -75,3 +75,6 @@
 @implementation WKAppConfigObj
 @end
 
+
+@implementation WKRefundAccount
+@end

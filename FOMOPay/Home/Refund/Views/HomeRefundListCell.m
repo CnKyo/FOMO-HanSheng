@@ -79,7 +79,9 @@
 }
 
 - (void)updateTitle:(NSString *)title{
-    
+    if (title.length<=0) {
+        title = @"新加坡";
+    }
     NSString *string = [NSString stringWithFormat:@"请提供%@银行资料",title];
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc] initWithString:string];
     [AttributedStr addAttribute:NSForegroundColorAttributeName value:kCommonColor(213, 0, 55, 1) range:NSMakeRange(3, title.length)];

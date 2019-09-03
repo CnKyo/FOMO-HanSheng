@@ -124,11 +124,18 @@
 - (void)WKAddRefundAccount{
     WS(weakSelf);
     NSMutableDictionary *para = [NSMutableDictionary new];
-    
-    [para setObject:self.city forKey:@"city"];
-    [para setObject:self.name forKey:@"name"];
-    [para setObject:self.number forKey:@"number"];
-    [para setObject:self.bank forKey:@"bank"];
+    if (self.city.length>0) {
+        [para setObject:self.city forKey:@"city"];
+    }
+    if (self.name.length>0) {
+        [para setObject:self.name forKey:@"name"];
+    }
+    if (self.number.length>0) {
+        [para setObject:self.number forKey:@"number"];
+    }
+    if (self.bank.length>0) {
+        [para setObject:self.bank forKey:@"bank"];
+    }
     
     [self showLoading:nil];
     
@@ -136,9 +143,17 @@
         [self hiddenLoading];
         if (success) {
             //下一步
-            HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-            vc.type = ShowButtonTypeDefault;
-            [weakSelf pushToViewController:vc];
+            if (self.mPushType == HomeRefundViewControllerPushType_refundList) {
+                if (self.mBackBlock) {
+                    self.mBackBlock(YES);
+                }
+                [self popToViewController];
+            }else{
+                HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
+                vc.type = ShowButtonTypeDefault;
+                [weakSelf pushToViewController:vc];
+            }
+         
         }else{
             TOASTMESSAGE(result);
         }
