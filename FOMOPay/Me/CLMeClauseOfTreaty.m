@@ -34,7 +34,7 @@
         }
     }];
     UIWebView *webView = [UIWebView new];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[WKAccountManager shareInstance].appConfig.tncLink]]];
     [self.view addSubview:webView];
     [webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(+kAppStatusBarHeight +8 +44);

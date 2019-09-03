@@ -95,7 +95,7 @@
     _enterButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _enterButton.frame = CGRectMake((self.frame.size.width - 250)/2, self.frame.size.height - 200, 250, 200);
     [_enterButton setBackgroundColor:[UIColor clearColor]];
-    _enterButton.hidden = YES;
+    _enterButton.hidden = NO;
     [self addSubview:_enterButton];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 135, 60, 99, 20)];
@@ -209,30 +209,33 @@
 
 #pragma mark ---- UIScrollViewDelegate ----
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{     // 当scrollview正在滚动的时候调用
-    
+    _enterButton.hidden = NO;
     //根据scrollviewW的滚动位置显示page的第几页
     CGFloat scrollW = scrollView.frame.size.width;
     int page = (scrollView.contentOffset.x + scrollW * 0.5) / scrollW;
+    
     if (page == 0) {
         
         _titleLabel.hidden = NO;
         _showImageView.hidden = NO;
         _chageButton.hidden = NO;
-        _enterButton.hidden = YES;
+        
+//        _enterButton.hidden = NO;
+       
 
     }else if (page == 3){
         
         _titleLabel.hidden = YES;
         _showImageView.hidden = YES;
         _chageButton.hidden = YES;
-        _enterButton.hidden = NO;
+//        _enterButton.hidden = NO;
         
     }else{
         
         _titleLabel.hidden = YES;
         _showImageView.hidden = YES;
         _chageButton.hidden = YES;
-        _enterButton.hidden = YES;
+//        _enterButton.hidden = YES;
     }
 }
 

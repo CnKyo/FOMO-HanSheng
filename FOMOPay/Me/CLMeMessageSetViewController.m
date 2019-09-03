@@ -84,20 +84,23 @@
 //        make.height.offset(14);
         make.top.equalTo(mFootView).offset(13);
     }];
+    self.mFootViewLable.textAlignment = NSTextAlignmentCenter;
     if(self.MessageSwitch.isOn){
         self.mFootViewLable.text = @"消息通知已打开,您将可以更快了解您的汇款状态.";
     }else{
-         self.mFootViewLable.text = @"消息通知已关闭,打开汇款实时通知,可以更快了解您\n的汇款状态.";
+         self.mFootViewLable.text = @"消息通知已关闭,打开汇款实时通知,可以更快了解您的汇款状态.";
     }
     return mFootView;
 }
 
 -(void)switchAction:(id)sender
-{
+{   self.mFootViewLable.textAlignment = NSTextAlignmentCenter;
     if (self.MessageSwitch.isOn) {
         self.mFootViewLable.text = @"消息通知已打开,您将可以更快了解您的汇款状态.";
+        
     }else {
-     self.mFootViewLable.text = @"消息通知已关闭,打开汇款实时通知,可以更快了解您\n的汇款状态.";
+     self.mFootViewLable.text = @"消息通知已关闭,打开汇款实时通知,可以更快了解您的汇款状态.";
+       
     }
 }
 @end
