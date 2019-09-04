@@ -30,6 +30,8 @@
 @property (nonatomic, strong) NSString *mTotleAmount;
 @property (nonatomic, strong) NSString *mFetchAmount;
 
+@property (nonatomic, strong) WKRemiitableEntity *mCurrentRemmitance;
+
 @end
 
 @implementation CLHomeViewController
@@ -55,32 +57,33 @@
     }
 
   
-    [self showLoading:nil];
 
     self.mOut = @"SGD";
     self.mIn = @"CNY";
     
-    NSMutableDictionary *para = [NSMutableDictionary new];
-    [para setObject:self.mOut forKey:@"sourceCurrencyCode"];
-    [para setObject:@"100" forKey:@"sourceAmount"];
-    [para setObject:self.mIn forKey:@"targetCurrencyCode"];
-    
-    [WKNetWorkManager WKGetRemiitablePara:para block:^(id result, BOOL success) {
-        [self hiddenLoading];
-        if (success) {
-            [[WKAccountManager shareInstance] WKResetOutCurrenceCode:self.mOut];
-            [[WKAccountManager shareInstance] WKResetInCurrenceCode:self.mIn];
-            NSDictionary *dic = [CLTool stringToDic:result];
-            WKRemiitableEntity *mEntity = [WKRemiitableEntity yy_modelWithDictionary:[dic objectForKey:@"remittable"]];
-            [[WKAccountManager shareInstance] WKResetRate:mEntity.rate];
-        }else{
-            TOASTMESSAGE(result);
-        }
-    }];
+//    NSMutableDictionary *para = [NSMutableDictionary new];
+//    [para setObject:self.mOut forKey:@"sourceCurrencyCode"];
+//    [para setObject:@"100" forKey:@"sourceAmount"];
+//    [para setObject:self.mIn forKey:@"targetCurrencyCode"];
+//    [self showLoading:nil];
+//
+//    [WKNetWorkManager WKGetRemiitablePara:para block:^(id result, BOOL success) {
+//        [self hiddenLoading];
+//        if (success) {
+//            [[WKAccountManager shareInstance] WKResetOutCurrenceCode:self.mOut];
+//            [[WKAccountManager shareInstance] WKResetInCurrenceCode:self.mIn];
+//            NSDictionary *dic = [CLTool stringToDic:result];
+//            WKRemiitableEntity *mEntity = [WKRemiitableEntity yy_modelWithDictionary:[dic objectForKey:@"remittable"]];
+//            [[WKAccountManager shareInstance] WKResetRate:mEntity.rate];
+//        }else{
+//            TOASTMESSAGE(result);
+//        }
+//    }];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.mCurrentRemmitance = [WKRemiitableEntity new];
     self.mStatus = WKRemmitableStatus_out;
     
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
@@ -216,7 +219,7 @@
             
             self.mTotleAmount = mEntity.chargable.amount;
             self.mFetchAmount = mEntity.serviceCharge.amount;
-            
+            self.mCurrentRemmitance = mEntity;
         }else{
             TOASTMESSAGE(result);
         }
@@ -224,29 +227,33 @@
     }];
 }
 - (void)goRefund:(NSString *)text{
-    WS(weakSelf);
-    [self showLoading:nil];
-    [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
-        [self hiddenLoading];
-        if (success) {
-            
-            NSDictionary *dic =  [CLTool stringToDic:result];
-            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
-            if (mRefundAcc.number.length>0) {
-                //下一步
-                HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-                vc.type = ShowButtonTypeDefault;
-                [weakSelf pushToViewController:vc];
-            }else{
-                //汇款
-                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
-                vc.unitString = text;
-                [self pushToViewController:vc];
-            }
-
-        }else{
-            TOASTMESSAGE(result);
-        }
-    }];
+//    WS(weakSelf);
+//    [self showLoading:nil];
+//    [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
+//        [self hiddenLoading];
+//        if (success) {
+//
+//            NSDictionary *dic =  [CLTool stringToDic:result];
+//            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
+//            if (mRefundAcc.number.length>0) {
+//                //下一步
+//                HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
+//                vc.type = ShowButtonTypeDefault;
+//                [weakSelf pushToViewController:vc];
+//            }else{
+//                //汇款
+//                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+//                vc.unitString = text;
+//                [self pushToViewController:vc];
+//            }
+//
+//        }else{
+//            TOASTMESSAGE(result);
+//        }
+//    }];
+    HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
+    vc.type = ShowButtonTypeDefault;
+    vc.mCurrentRemmitance = self.mCurrentRemmitance;
+    [self pushToViewController:vc];
 }
 @end

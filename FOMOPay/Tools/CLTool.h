@@ -22,6 +22,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)getCuurenceCode:(NSString *)text;
 
+#pragma mark----****----字典转json字符串
+/**
+ 字典转json字符串
+ 
+ @param mJsonDic 要转换的字典
+ @return 返回json字符串
+ */
++ (NSString *)WKDicToJsonString:(NSDictionary *)mJsonDic;
 @end
 
 NS_ASSUME_NONNULL_END

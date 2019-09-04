@@ -102,6 +102,15 @@
 #import "WKAccountManager.h"
 #import "WKYTKManager.h"
 #import "SVStatusHUD.h"
+
+///富文本
+#import "WPAttributedStyleAction.h"
+#import "WPHotspotLabel.h"
+#import "WPTappableLabel.h"
+
+#import "NSMutableString+TagReplace.h"
+#import "NSString+WPAttributedMarkup.h"
+
 #define kLightgrayColor [UIColor colorWithRed:238/255.0f green:238/255.0f blue:238/255.0f alpha:1]
 
 #define _SHOW_DEBUG_LOG_

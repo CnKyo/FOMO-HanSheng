@@ -359,4 +359,16 @@
         block(errorDes,NO);
     }];
 }
+#pragma mark----****----开始汇款
+/**
+ 开始汇款
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKRemiitanceNow:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self newPostWithUrl:kStartRemiitance para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
 @end

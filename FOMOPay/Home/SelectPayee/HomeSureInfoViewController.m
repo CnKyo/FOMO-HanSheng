@@ -13,7 +13,7 @@
 #import "HomeRefundSelectBankView.h"
 #import "HomeChangeAmountVC.h"
 #import "HomeSelectPayeeViewController.h"
-
+#import "CLMeClauseOfTreaty.h"
 @interface HomeSureInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -21,6 +21,12 @@
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) HomeRefundSelectBankView *purposeView;
 @property (nonatomic, strong) HomeRefundSelectBankView *sourceView;
+
+@property (nonatomic, strong) UIButton *sureButton;
+
+@property (nonatomic, strong) NSString *mPurpose;
+
+@property (nonatomic, strong) NSString *mSourceFund;
 
 @end
 
@@ -86,7 +92,7 @@
     }];
 }
 - (void)loadBottomView{
-    
+    WS(weakSelf);
     NSInteger bottomSafeHeight = 0;
     
     if (@available(iOS 11.0, *)) {
@@ -109,25 +115,27 @@
     [selectButton addTarget:self action:@selector(selectButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_bottomView addSubview:selectButton];
     
-    UITextView *contentTextView = [[UITextView alloc] init];
-    contentTextView.attributedText = [self getContentLabelAttributedText];
-    contentTextView.textAlignment = NSTextAlignmentLeft;
-    contentTextView.delegate = self;
-    contentTextView.editable = NO;        //必须禁止输入，否则点击将弹出输入键盘
-    contentTextView.font = kCommonFont(12);
-    contentTextView.scrollEnabled = NO;
-    contentTextView.textContainer.maximumNumberOfLines = 2;
-    contentTextView.backgroundColor = [UIColor clearColor];
-    [_bottomView addSubview:contentTextView];
+    WPHotspotLabel *mTerms = [[WPHotspotLabel alloc] init];
+    mTerms.textColor = kCommonColor(140, 144, 145, 1);
+    mTerms.textAlignment = NSTextAlignmentLeft;
+    mTerms.numberOfLines = 2;
+    mTerms.font = [UIFont systemFontOfSize:12];
+    NSDictionary* mStyle = @{
+                             @"termsAction":[WPAttributedStyleAction styledActionWithAction:^{
+                                 [weakSelf goTerms];
+                             }],@"color":kCommonColor(0, 92, 182, 1)};
+    mTerms.attributedText=[@"我同意汉生条款和条件，包括：\n<termsAction><color>隐私政策，使用条款和可接受的使用政策</color></termsAction>" attributedStringWithStyleBook:mStyle];
+    [_bottomView addSubview:mTerms];
     
-    UIButton *sureButton = [[UIButton alloc] init];
-    [sureButton setTitle:@"确认" forState:UIControlStateNormal];
-    [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    sureButton.backgroundColor = kCommonGrayColor;
-    sureButton.layer.cornerRadius = 4.0;
-//    sureButton.enabled = NO;
-    [sureButton addTarget:self action:@selector(sureButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [_bottomView addSubview:sureButton];
+    
+    self.sureButton = [[UIButton alloc] init];
+    [self.sureButton setTitle:@"确认" forState:UIControlStateNormal];
+    [self.sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.sureButton.backgroundColor = kCommonGrayColor;
+    self.sureButton.layer.cornerRadius = 4.0;
+    self.sureButton.enabled = NO;
+    [self.sureButton addTarget:self action:@selector(sureButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomView addSubview:self.sureButton];
     
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
        
@@ -143,42 +151,71 @@
         make.width.height.equalTo(@20);
     }];
     
-    [contentTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [mTerms mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.left.equalTo(selectButton.mas_right).offset(10);
-        make.top.equalTo(selectButton);
-        make.width.equalTo(@220);
+        make.right.equalTo(self.bottomView.mas_right).offset(-10);
+
+        make.top.equalTo(selectButton.mas_top).offset(-5);
         make.height.equalTo(@35);
     }];
     
-    [sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
        
-        make.top.equalTo(contentTextView.mas_bottom).offset(20);
+        make.top.equalTo(mTerms.mas_bottom).offset(20);
         make.left.equalTo(self.bottomView).offset(10);
         make.right.equalTo(self.bottomView).offset(-10);
         make.height.equalTo(@44);
     }];
+    
+
+
 }
 
-- (NSAttributedString *)getContentLabelAttributedText{
-    
-    NSString *string1 = @"我同意汉生条款和条件，包括：\n";
-    NSString *string2 = @"隐私政策，使用条款和可接受的使用政策";
-    NSString *string3 = [NSString stringWithFormat:@"%@%@",string1,string2];
-    
-    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:string3 attributes:@{NSForegroundColorAttributeName:kCommonGrayColor}];
-    [attrStr addAttribute:NSForegroundColorAttributeName value:kLoginTitleColor range:NSMakeRange(string3.length - string2.length, string2.length)];
-    [attrStr addAttribute:NSLinkAttributeName value:@"healthservice://" range:NSMakeRange(string3.length - string2.length, string2.length)];
-
-    return attrStr;
+- (void)goTerms{
+    CLMeClauseOfTreaty *vc = [CLMeClauseOfTreaty new];
+    [self pushToViewController:vc];
 }
 
 - (void)selectButtonClicked:(UIButton *)sender{
     
     sender.selected = !sender.selected;
+    self.sureButton.enabled = sender.selected;
+    if (sender.selected) {
+        self.sureButton.backgroundColor = kLoginTitleColor;
+    }else{
+        self.sureButton.backgroundColor = kCommonGrayColor;
+    }
 }
 
-- (void)sureButtonClicked{
+- (void)sureButtonClicked:(UIButton *)sender{
+    DebugLog(@"确认");
+    [self showLoading:nil];
+    if (self.mPurpose.length<=0) {
+        self.mPurpose = @"生活费";
+    }
+    if (self.mSourceFund.length<=0) {
+        self.mSourceFund = @"投资收入";
+    }
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    
+    [para setObject:[CLTool WKDicToJsonString:[self.mCurrentRemmitance yy_modelToJSONObject]] forKey:@"remittable"];
+    [para setObject:self.mItem.id forKey:@"recipientId"];
+    [para setObject:@"PAYNOW" forKey:@"paymentType"];
+    ///目的
+    [para setObject:self.mPurpose forKey:@"purpose"];
+    ///涞源
+    [para setObject:self.mSourceFund forKey:@"sourceOfFund"];
+
+    [WKNetWorkManager WKRemiitanceNow:para block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            TOASTMESSAGE(@"您的汇款申请已成功提交!");
+            [self popToViewController:2];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
     
 }
 
@@ -250,7 +287,14 @@
         }
         
         cell.titleLabel.text = array[indexPath.row];
-        
+        NSString *mContent = array[indexPath.row];
+        if ([mContent isEqualToString:@"汇款目的"]) {
+            cell.contentLabel.text = @"生活费";
+        }else if ([mContent isEqualToString:@"资金来源"]){
+            cell.contentLabel.text = @"投资收入";
+        }else if ([mContent isEqualToString:@"总金额"]){
+            cell.contentLabel.text = [NSString stringWithFormat:@"%@%@",self.mCurrentRemmitance.chargable.currencyCode,self.mCurrentRemmitance.chargable.amount];
+        }
         return cell;
         
     }else{
@@ -285,6 +329,14 @@
                 cell.contentLabel.text = self.mItem.accountNumber;
             }else if ([mContent isEqualToString:@"关系"]){
                 cell.contentLabel.text = self.mItem.relationship;
+            }else if ([mContent isEqualToString:@"汇款金额"]){
+                cell.contentLabel.text = self.mCurrentRemmitance.source.amount;
+            }else if ([mContent isEqualToString:@"获得金额"]){
+                cell.contentLabel.text = self.mCurrentRemmitance.target.amount;
+            }else if ([mContent isEqualToString:@"汇率"]){
+                cell.contentLabel.text = self.mCurrentRemmitance.rate;
+            }else if ([mContent isEqualToString:@"手续费"]){
+                cell.contentLabel.text = self.mCurrentRemmitance.serviceCharge.amount;
             }
             return cell;
         }
@@ -315,6 +367,7 @@
                 if (tag == 1001) {
                     
                     cell.contentLabel.text = string;
+                    weakSelf.mPurpose = string;
                 }
             };
             
@@ -335,6 +388,7 @@
                 if (tag == 1001) {
                     
                     cell.contentLabel.text = string;
+                    weakSelf.mSourceFund = string;
                 }
             };
             

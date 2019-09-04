@@ -18,5 +18,7 @@ typedef NS_ENUM(NSInteger,ShowButtonType) {
 
 @property (nonatomic, assign) ShowButtonType type;
 
+@property (nonatomic, strong) WKRemiitableEntity *mCurrentRemmitance;
+
 @end
 

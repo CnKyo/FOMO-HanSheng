@@ -86,4 +86,18 @@
         return @"SGD";
     }
 }
+
+#pragma mark----****----字典转json字符串
+/**
+ 字典转json字符串
+ 
+ @param mJsonDic 要转换的字典
+ @return 返回json字符串
+ */
++ (NSString *)WKDicToJsonString:(NSDictionary *)mJsonDic{
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:mJsonDic options:NSJSONWritingPrettyPrinted error:&parseError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
 @end

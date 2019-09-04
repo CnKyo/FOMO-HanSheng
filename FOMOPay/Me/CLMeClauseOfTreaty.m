@@ -8,7 +8,7 @@
 
 #import "CLMeClauseOfTreaty.h"
 
-@interface CLMeClauseOfTreaty ()<UIScrollViewDelegate>
+@interface CLMeClauseOfTreaty ()<UIScrollViewDelegate,UIWebViewDelegate>
 
 @end
 
@@ -35,6 +35,7 @@
     }];
     UIWebView *webView = [UIWebView new];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[WKAccountManager shareInstance].appConfig.tncLink]]];
+    webView.delegate = self;
     [self.view addSubview:webView];
     [webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(+kAppStatusBarHeight +8 +44);
@@ -44,7 +45,27 @@
     }];
 }
      
-     
-     
+#pragma mark - delegate
+//开始加载
+- (void)webViewDidStartLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0)){
+    DebugLog(@"开始加载网页");
+    [self showLoading:nil];
+}
+
+//加载完成
+- (void)webViewDidFinishLoad:(UIWebView *)webView API_DEPRECATED("No longer supported.", ios(2.0, 12.0)){
+    DebugLog(@"加载完成");
+    [self hiddenLoading];
+}
+
+//加载失败
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error API_DEPRECATED("No longer supported.", ios(2.0, 12.0)) {
+    DebugLog(@"加载失败");
+    [self hiddenLoading];
+    TOASTMESSAGE(error.description);
+    
+}
+
+
 
 @end
