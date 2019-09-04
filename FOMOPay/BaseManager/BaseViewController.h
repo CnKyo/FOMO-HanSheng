@@ -45,5 +45,8 @@ void TOASTMESSAGE(NSString *message);
 - (void)hiddenLoading;
 
 - (void)popToViewController;
+
+- (void)popToViewController:(NSInteger)count;
+
 @end
 

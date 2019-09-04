@@ -394,7 +394,7 @@
 }
 - (void)AddAccount:(NSArray *)Array{
     for (NSString *text in Array) {
-        if (text.length<=0) {
+        if ([CLTool deleteSpace:text].length<=0) {
             TOASTMESSAGE(@"您必须完善您的资料信息!");
             return;
         }

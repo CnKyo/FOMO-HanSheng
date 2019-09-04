@@ -69,7 +69,7 @@
     _exchangeRateLabel.text = mRate;
     
     _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
-    _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+    _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
     
     _logoImage.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2"];
     _logoImage1.image = [UIImage yh_imageNamed:@"pdf_CNY"];
@@ -235,12 +235,12 @@
         if (sender.tag == 1000) {
             
             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
-            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _changeCountryButton1.selected = NO;
             
         }else{
             
-            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
             _changeCountryButton.selected = NO;
         }
@@ -254,7 +254,7 @@
 
         }else{
             
-            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
         }
         _CountryView.hidden = YES;
     }

@@ -108,6 +108,13 @@
  @param block 返回值
  */
 + (void)WKGetRecipientDetail:(NSString *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----开始汇款
+/**
+ 开始汇款
 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKRemiitanceNow:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
 @end
 

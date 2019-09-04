@@ -191,6 +191,8 @@
     
     HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
     vc.mItem = self.mItem;
+    vc.mCurrentRemmitance = self.mCurrentRemmitance;
+    
     [self pushToViewController:vc];
 
 }
@@ -258,7 +260,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     _nextButton.enabled = YES;
     _nextButton.backgroundColor = kLoginTitleColor;
     

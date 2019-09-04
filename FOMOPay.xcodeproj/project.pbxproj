@@ -43,6 +43,13 @@
 		1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9323013A87000969FE /* YHPDFImageDraw.m */; };
 		1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAA723014511000969FE /* WRNavigationBar.m */; };
 		1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAAA23014511000969FE /* WRCustomNavigationBar.m */; };
+		18851845231F97450009D088 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 18851837231F97450009D088 /* LICENSE */; };
+		18851846231F97450009D088 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18851838231F97450009D088 /* README.md */; };
+		18851847231F97450009D088 /* NSString+WPAttributedMarkup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885183B231F97450009D088 /* NSString+WPAttributedMarkup.m */; };
+		18851848231F97450009D088 /* NSMutableString+TagReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885183D231F97450009D088 /* NSMutableString+TagReplace.m */; };
+		18851849231F97450009D088 /* WPHotspotLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18851842231F97450009D088 /* WPHotspotLabel.m */; };
+		1885184A231F97450009D088 /* WPTappableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18851843231F97450009D088 /* WPTappableLabel.m */; };
+		1885184B231F97450009D088 /* WPAttributedStyleAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18851844231F97450009D088 /* WPAttributedStyleAction.m */; };
 		189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D32319044A00FDEA10 /* WKUserDefault.m */; };
 		189E06D72319044B00FDEA10 /* WKEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D42319044A00FDEA10 /* WKEncryption.m */; };
 		189E06DA2319046400FDEA10 /* WKAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D92319046400FDEA10 /* WKAccountManager.m */; };
@@ -304,6 +311,18 @@
 		1863DAA823014511000969FE /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		1863DAA923014511000969FE /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
 		1863DAAA23014511000969FE /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
+		18851837231F97450009D088 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		18851838231F97450009D088 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1885183A231F97450009D088 /* NSMutableString+TagReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+TagReplace.h"; sourceTree = "<group>"; };
+		1885183B231F97450009D088 /* NSString+WPAttributedMarkup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WPAttributedMarkup.m"; sourceTree = "<group>"; };
+		1885183C231F97450009D088 /* NSString+WPAttributedMarkup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WPAttributedMarkup.h"; sourceTree = "<group>"; };
+		1885183D231F97450009D088 /* NSMutableString+TagReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+TagReplace.m"; sourceTree = "<group>"; };
+		1885183F231F97450009D088 /* WPTappableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPTappableLabel.h; sourceTree = "<group>"; };
+		18851840231F97450009D088 /* WPHotspotLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPHotspotLabel.h; sourceTree = "<group>"; };
+		18851841231F97450009D088 /* WPAttributedStyleAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAttributedStyleAction.h; sourceTree = "<group>"; };
+		18851842231F97450009D088 /* WPHotspotLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPHotspotLabel.m; sourceTree = "<group>"; };
+		18851843231F97450009D088 /* WPTappableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPTappableLabel.m; sourceTree = "<group>"; };
+		18851844231F97450009D088 /* WPAttributedStyleAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAttributedStyleAction.m; sourceTree = "<group>"; };
 		189E06D22319044A00FDEA10 /* WKEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKEncryption.h; sourceTree = "<group>"; };
 		189E06D32319044A00FDEA10 /* WKUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKUserDefault.m; sourceTree = "<group>"; };
 		189E06D42319044A00FDEA10 /* WKEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKEncryption.m; sourceTree = "<group>"; };
@@ -833,6 +852,7 @@
 		1863DA8723013A6A000969FE /* OtherResource */ = {
 			isa = PBXGroup;
 			children = (
+				18851836231F97450009D088 /* WPAttributedMarkup */,
 				182DBA6B231CED650009E745 /* SVStatusHUD */,
 				1863DAA623014511000969FE /* WRNavigationBar */,
 				1863DA8823013A87000969FE /* YHPDFImageLoader */,
@@ -975,6 +995,41 @@
 				1863DAAA23014511000969FE /* WRCustomNavigationBar.m */,
 			);
 			path = WRNavigationBar;
+			sourceTree = "<group>";
+		};
+		18851836231F97450009D088 /* WPAttributedMarkup */ = {
+			isa = PBXGroup;
+			children = (
+				18851837231F97450009D088 /* LICENSE */,
+				18851838231F97450009D088 /* README.md */,
+				18851839231F97450009D088 /* WPAttributedMarkup */,
+				1885183E231F97450009D088 /* Extras */,
+			);
+			path = WPAttributedMarkup;
+			sourceTree = "<group>";
+		};
+		18851839231F97450009D088 /* WPAttributedMarkup */ = {
+			isa = PBXGroup;
+			children = (
+				1885183A231F97450009D088 /* NSMutableString+TagReplace.h */,
+				1885183B231F97450009D088 /* NSString+WPAttributedMarkup.m */,
+				1885183C231F97450009D088 /* NSString+WPAttributedMarkup.h */,
+				1885183D231F97450009D088 /* NSMutableString+TagReplace.m */,
+			);
+			path = WPAttributedMarkup;
+			sourceTree = "<group>";
+		};
+		1885183E231F97450009D088 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				1885183F231F97450009D088 /* WPTappableLabel.h */,
+				18851840231F97450009D088 /* WPHotspotLabel.h */,
+				18851841231F97450009D088 /* WPAttributedStyleAction.h */,
+				18851842231F97450009D088 /* WPHotspotLabel.m */,
+				18851843231F97450009D088 /* WPTappableLabel.m */,
+				18851844231F97450009D088 /* WPAttributedStyleAction.m */,
+			);
+			path = Extras;
 			sourceTree = "<group>";
 		};
 		189E06D0231903E600FDEA10 /* WKAccountManager */ = {
@@ -1493,10 +1548,12 @@
 				CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */,
 				18B7BEE72304ECFD007B496A /* CLNavgationNormalView.xib in Resources */,
 				CF5A8C542306A1DE00745FE9 /* pdf_me_callme.pdf in Resources */,
+				18851845231F97450009D088 /* LICENSE in Resources */,
 				CF277DB32305750800A37B5C /* CLNavgationViewButton.xib in Resources */,
 				770239AF230BFD2A00EE8C31 /* pdf.guideView_icon_english_1.pdf in Resources */,
 				CF5A8C562306A1DE00745FE9 /* pdf_me_language.pdf in Resources */,
 				CF6264E723152546001AF5FC /* CLHiStoryTableViewCell.xib in Resources */,
+				18851846231F97450009D088 /* README.md in Resources */,
 				CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */,
 				CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */,
 				772D73C5230A798C0068AB48 /* pdf_login_language.pdf in Resources */,
@@ -1619,10 +1676,13 @@
 				CF626512231526B3001AF5FC /* CLMeViewController.m in Sources */,
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
 				182DBA65231CDBCC0009E745 /* YTKChainRequestAgent.m in Sources */,
+				1885184A231F97450009D088 /* WPTappableLabel.m in Sources */,
 				CF2A16C0231E0BD4007E110D /* CLHistorySelectionOfPayee.m in Sources */,
 				1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */,
 				CF6264D823152487001AF5FC /* CLHistoryViewController.m in Sources */,
 				CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */,
+				18851847231F97450009D088 /* NSString+WPAttributedMarkup.m in Sources */,
+				18851849231F97450009D088 /* WPHotspotLabel.m in Sources */,
 				182DBA5A231CDBCC0009E745 /* WKYTKRequest.m in Sources */,
 				CF6264DB231524C1001AF5FC /* CLHistoryRemittancePlan.m in Sources */,
 				CF6264E923152546001AF5FC /* CLHiStoryTableViewCell.m in Sources */,
@@ -1696,8 +1756,10 @@
 				CF62650E231526B3001AF5FC /* CLMeLanguageViewController.m in Sources */,
 				1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */,
 				1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */,
+				1885184B231F97450009D088 /* WPAttributedStyleAction.m in Sources */,
 				CCB32EA5231D6F470027FD84 /* CLHistoryRefundProgress.m in Sources */,
 				77F882D823136EAA0010A884 /* HomeSelectPayeeListCell.m in Sources */,
+				18851848231F97450009D088 /* NSMutableString+TagReplace.m in Sources */,
 				CF2A16C7231E8062007E110D /* CLHistorySelctOfPayeeView.m in Sources */,
 				18B7BEEC2304F572007B496A /* CLNavModel.m in Sources */,
 				1863DA4B23011A07000969FE /* AppDelegate.m in Sources */,

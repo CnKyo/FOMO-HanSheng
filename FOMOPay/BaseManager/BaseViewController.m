@@ -386,4 +386,16 @@ void TOASTMESSAGE(NSString *message){
 - (void)popToViewController{
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)popToViewController:(NSInteger)count{
+    NSMutableArray* vcs = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+    if( vcs.count > count )
+    {
+        for (NSInteger i = 0; i<count; i++) {
+            [vcs removeLastObject];
+        }
+        [self.navigationController setViewControllers:vcs   animated:YES];
+    }
+    else
+        [self.navigationController popViewControllerAnimated:YES];
+}
 @end
