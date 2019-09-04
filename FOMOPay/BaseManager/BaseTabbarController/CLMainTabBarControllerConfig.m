@@ -81,23 +81,27 @@ NSArray *tabBarItemsAttributes = @[tabBarItems1Attributes,tabBarItems2Attributes
     // set the text color for unselected state
     // 普通状态下的文字属性
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
-//    normalAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-//
+    normalAttrs[NSForegroundColorAttributeName] = ssRGBHex(0x8C9091);
     normalAttrs[NSFontAttributeName] = kCommonFont(10);
+    
+    
 //    // set the text color for selected state
 //    // 选中状态下的文字属性
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
-//    selectedAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    selectedAttrs[NSForegroundColorAttributeName] = ssRGBHex(0x005CB6);
     selectedAttrs[NSFontAttributeName] = kCommonFont(10);
 //
 //    // set the text Attributes
 //    // 设置文字属性
-//    UITabBarItem *tabBar = [UITabBarItem appearance];
-//    tabBar[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
+    UITabBarItem *tabBar = [UITabBarItem appearance];
+//  tabBar[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC" size:10];
     
-//    [tabBar setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];
-//    [tabBar setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
-    
+    [tabBar setTitleTextAttributes:normalAttrs forState:UIControlStateNormal];
+    [tabBar setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
+    //设置选中和未选中状态下颜色;
+    UITabBar *mTabBar = [UITabBar appearance];
+    mTabBar.tintColor = ssRGBHex(0x005CB6);
+    mTabBar.unselectedItemTintColor = ssRGBHex(0x2B2B2B);
     // Set the dark color to selected tab (the dimmed background)
     // TabBarItem选中后的背景颜色
 //    [[UITabBar appearance] setSelectionIndicatorImage:[self imageFromColor:[UIColor colorWithRed:26 / 255.0 green:163 / 255.0 blue:133 / 255.0 alpha:1] forSize:CGSizeMake([UIScreen mainScreen].bounds.size.width / 5.0f, 49) withCornerRadius:0]];

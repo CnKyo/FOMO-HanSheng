@@ -21,8 +21,9 @@ void TOASTMESSAGE(NSString *message){
     DebugLog(@"%@",message);
    
     [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:message];
-
+//        [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:@"修改成功"];
 }
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
@@ -46,7 +47,7 @@ void TOASTMESSAGE(NSString *message){
 
 
 
-//列表上场了
+
 - (void)LoadCellType:(NSUInteger )Type{
     if (Type == 2){
         [self addHomeTabView];
@@ -64,6 +65,8 @@ void TOASTMESSAGE(NSString *message){
         [self addMeSwitchTabView];
     }else if(Type == 9){
         [self addCLHistoryDetailsOfRemittancesTabView];
+    }else if(Type == 10){
+        [self addCLHistorySelctOfPayeeView];
     }
 }
 
@@ -95,8 +98,8 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
    
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight  );
         
     }];
 }
@@ -114,8 +117,9 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.dataSource = self;
    
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+       
         
     }];
 }
@@ -133,11 +137,31 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.dataSource = self;
     
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
+        make.left.bottom.right.equalTo(self.view);
+        
+    }];
+}
+
+-(void) addCLHistorySelctOfPayeeView{
+    UINib *nib = [UINib nibWithNibName:@"CLHistorySelctOfPayeeView" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
+        make.left.bottom.right.equalTo(self.view);
         
         
     }];
+
 }
 
 
@@ -175,8 +199,8 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.dataSource = self;
     
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
         
     }];
 }
@@ -195,8 +219,8 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.dataSource = self;
     
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
         
     }];
 }
@@ -236,8 +260,8 @@ void TOASTMESSAGE(NSString *message){
     self.mTabView.dataSource = self;
     
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
         make.left.bottom.right.equalTo(self.view);
-        make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
         
     }];
 }

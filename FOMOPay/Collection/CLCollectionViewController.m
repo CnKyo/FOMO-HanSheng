@@ -19,19 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//        UIButton *btn= [UIButton new];
-//        [btn setTitle:@"添加" forState:UIControlStateNormal];
-//        [btn setTitleColor:ssRGBHex(0x005CB6) forState:UIControlStateNormal];
-//        btn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-//        UIView *mView = [UIView new];
-//        [mView addSubview:btn];
-//        [btn addTarget:self action:@selector(Add:) forControlEvents:UIControlEventTouchUpInside];
-//
-//        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.right.equalTo(mView).offset(-20);
-//            make.top.equalTo(mView).offset(0);
-//            make.bottom.equalTo(mView).offset(0);
-//        }];
     CLNavModel *model = [CLNavModel new];
     CLNavgationView_button *mBtView = [CLNavgationView_button shareDefaultNavRightButtonOther];
     model.mRightView = mBtView  ;
@@ -60,10 +47,9 @@
         }
     }];
     [self loadData];
-//
+
     [self LoadCellType:4];
-//    [self makeConstraintsForUI];
-    // Do any additional setup after loading the view.
+
 }
 - (void)loadData {
     
@@ -95,8 +81,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return self.DataSource.count;//有几组
-//    return self.mPushData.count;
-//    return 1;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -107,8 +92,7 @@
     }else {
         
         return [self.DataSource[section] count];  ////////每组有多少个
-//        return [self.mPushData[section] count];
-//        return 1;
+
     }
 }
 
@@ -178,23 +162,32 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *mLineView = [UIView new];
-    mLineView.backgroundColor  = ssRGBHex(0xF6F5FA);
-   
-    UIView *aview = [UIView new];
-    aview.backgroundColor  = ssRGBHex(0xCCCCCC);
-    [mLineView addSubview:aview];
-    [aview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(mLineView).offset(0);
-        make.height.offset(1);
-        make.width.offset(kScreenWidth);
-    }];
-     return mLineView;
+    if(section != self.DataSource.count -1){
+        UIView *mLineView = [UIView new];
+        mLineView.backgroundColor  = ssRGBHex(0xF6F5FA);
+        UIView *aview = [UIView new];
+        aview.backgroundColor  = ssRGBHex(0xCCCCCC);
+        [mLineView addSubview:aview];
+        [aview mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(mLineView).offset(0);
+            make.height.offset(1);
+            make.width.offset(kScreenWidth);
+        }];
+        return mLineView;
+    }else{
+        return nil;
+    }
+    
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 11;
+    if(section == self.DataSource.count -1){
+        return 0.001;
+    }else{
+        return 11;
+    }
+   
 }
 #pragma mark - action
 - (void)tapGR:(UITapGestureRecognizer *)tapGR {

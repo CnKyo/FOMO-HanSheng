@@ -42,6 +42,8 @@
     
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
@@ -51,24 +53,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if(cell == nil){
-        cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+       cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
+    cell.mLeftName.font = kCommonFont(14);
     if(indexPath.row == 0){
         cell.mRightData.hidden = YES;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        cell.mLeftName.font = kCommonFont(14);
         cell.mLeftName.textColor = ssRGBHex(0xD50037);
-    }
-    if(indexPath.row == 1){
+    }else if(indexPath.row == 1){
         cell.mRightData.hidden = YES;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         cell.mLeftName.font = kCommonFont(14);
-    }
-    if(indexPath.row == 5){
-        cell.separatorInset =UIEdgeInsetsMake(0, 15, 0, 0);
+    }else  if(indexPath.row == 2){
+        [cell mTitleViewStyle:0];
+        cell.BankLabel.text = @"13"; ////显示银行名
+        
+        
+    }else{
+        cell.mRightData.text = @"3213"; //显示除了银行外的其他数据;
+        
     }
 
      return cell;
@@ -76,9 +82,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 0){
-        return 31;
-    }else if(indexPath.row == 1){
+    if(indexPath.row == 0 ||indexPath.row == 1){
         return 31;
     }else{
     return 49;
@@ -103,7 +107,8 @@
     mLine.backgroundColor = ssRGBHex(0xE6E6E6);
     [view addSubview:mLine];
     [mLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(view);
+        make.left.equalTo(view).mas_offset(15);
+        make.right.equalTo(view);
         make.height.offset(1);
         make.width.offset(kScreenWidth);
         

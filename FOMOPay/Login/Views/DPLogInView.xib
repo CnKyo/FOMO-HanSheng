@@ -93,7 +93,7 @@
                     </connections>
                 </button>
                 <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1H-nx-Xhr">
-                    <rect key="frame" x="255" y="86" width="105" height="87"/>
+                    <rect key="frame" x="255" y="94" width="105" height="87"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-vy-brp">
                             <rect key="frame" x="10" y="0.0" width="85" height="44"/>
@@ -154,7 +154,7 @@
                 <constraint firstItem="C8w-Eb-oWA" firstAttribute="top" secondItem="Naj-1J-IRq" secondAttribute="bottom" id="9ta-WS-qjg"/>
                 <constraint firstItem="agu-R9-syf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="Bbz-aE-5mG"/>
                 <constraint firstItem="6iC-Sv-nxK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="75" id="CuG-HT-nhq"/>
-                <constraint firstItem="P1H-nx-Xhr" firstAttribute="top" secondItem="Jel-Lk-2D3" secondAttribute="bottom" constant="1" id="KIj-0U-ijU"/>
+                <constraint firstItem="P1H-nx-Xhr" firstAttribute="top" secondItem="Jel-Lk-2D3" secondAttribute="bottom" constant="9" id="KIj-0U-ijU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6iC-Sv-nxK" secondAttribute="trailing" constant="75" id="L3h-AT-cXY"/>
                 <constraint firstItem="Jel-Lk-2D3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="35" id="LQH-Wl-OHK"/>
                 <constraint firstItem="Naj-1J-IRq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="QNb-ca-X22"/>

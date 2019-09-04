@@ -30,6 +30,27 @@
     // Configure the view for the selected state
 }
 
+- (void)mCLHistoryHomeCellStyle:(NSInteger)Type{
+    
+    if(Type == 0 ){
+        self.mLImg.image = [UIImage yh_imageNamed:@"pdf_history_beingprocessed_icon.pdf"];
+        self.mMoney.textColor = ssRGBHex(0xD50037);
+        self.mStatus.textColor = ssRGBHex(0x8C9091);
+    }else if(Type ==1){
+        self.mLImg.image = [UIImage yh_imageNamed:@"pdf_history_beingprocessed_icon.pdf"];
+        self.mMoney.textColor = ssRGBHex(0xD50037);
+        self.mStatus.textColor = ssRGBHex(0xD50037);
+    }else if(Type ==2){
+        self.mLImg.image = [UIImage yh_imageNamed:@"pdf_history_cancel_icon.pdf"];
+        self.mMoney.textColor = ssRGBHex(0x999999);
+        self.mStatus.textColor = ssRGBHex(0x999999);
+    }else{
+        self.mLImg.image = [UIImage yh_imageNamed:@"pdf_history_finish_icon.pdf"];
+        self.mMoney.textColor = ssRGBHex(0x2B2B2B);
+        self.mStatus.textColor = ssRGBHex(0x2EB42E);
+    }
+}
+
 
 - (void)setFrame:(CGRect)frame{
     static CGFloat margin= 10;

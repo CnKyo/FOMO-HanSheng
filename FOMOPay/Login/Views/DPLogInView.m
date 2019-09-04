@@ -36,8 +36,16 @@
     view.allowImage.image = [UIImage yh_imageNamed:@"pdf_login_language"];
     
     view.languageView.layer.cornerRadius = 4.0;
-    view.languageView.layer.borderWidth = 0.5;
-    view.languageView.layer.borderColor = [UIColor blackColor].CGColor;
+//    view.languageView.layer.borderWidth = 0.5;
+  
+//    view.languageView.layer.borderColor = [UIColor blackColor].CGColor;
+  
+//    view.languageView.layer.cornerRadius=10;
+    view.languageView.layer.masksToBounds= YES;
+    view.languageView.layer.shadowColor = [[UIColor grayColor]CGColor];
+    view.languageView.layer.shadowOffset = CGSizeMake(0, 1);
+    view.languageView.layer.shadowOpacity = 0.5;
+    view.languageView.clipsToBounds = false ;
     
     return view;
 }

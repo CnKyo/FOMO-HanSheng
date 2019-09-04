@@ -73,7 +73,9 @@
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             cell.mLeftName.font = kCommonFont(14);
         }
-        
+    if(indexPath.row == self.mData.count -1){
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
         
         return cell;
         

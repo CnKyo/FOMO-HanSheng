@@ -42,7 +42,7 @@
         }
     }];
     [self LoadCellType:3];
-    _mData = @[@"a"];
+    _mData = @[@"a",@"a",@"a",@"a",@"a"];
     [self LoadData];
     
     // Do any additional setup after loading the view.
@@ -50,20 +50,7 @@
 
 -(void)LoadData{
     if(_mData == nil){
-        UIImageView *ctView = [UIImageView new];
-        ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
-        [self.view addSubview:ctView];
-        UILabel *ctLbale  = [UILabel new];
-        ctLbale.text = @"暂无历史消息";
-        [self.view addSubview:ctLbale];
-        [ctView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self.view);
-        }];
-        [ctLbale mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(ctView.mas_bottom).offset(5);
-            make.centerX.equalTo(ctView);
-        }];
-        
+        [self LoadNoDataView];//没有数据显示暂无历史消息界面
     }else{
         [self.mTabView reloadData];
     }
@@ -86,6 +73,12 @@
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+///////-----------------------
+//    [cell mCLHistoryHomeCellStyle:0];  /////样式0为处理中状态跟汇款中状态跟申请退款状态
+//    [cell mCLHistoryHomeCellStyle:1];  /////样式1为汇款出错状态
+//    [cell mCLHistoryHomeCellStyle:2];  /////样式2取消汇款状态
+      [cell mCLHistoryHomeCellStyle:3];    /////样式3汇款完成跟退款成功状态
+    
     
     return cell;
 }
@@ -100,4 +93,23 @@
     [self pushToViewController:vc];
 }
 
+
+-(void)LoadNoDataView{
+    UIImageView *ctView = [UIImageView new];
+    ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
+    [self.view addSubview:ctView];
+    UILabel *ctLbale  = [UILabel new];
+    ctLbale.text = @"暂无历史消息";
+    ctLbale.font = kCommonFont(16);
+    [self.view addSubview:ctLbale];
+    [ctView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset(+kAppStatusBarHeight +44 + 143);
+        make.centerX.equalTo(self.view);
+    }];
+    
+    [ctLbale mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(ctView.mas_bottom).offset(5);
+        make.centerX.equalTo(ctView);
+    }];
+}
 @end

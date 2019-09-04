@@ -93,7 +93,7 @@
 - (void)loadEnterButton{
     
     _enterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _enterButton.frame = CGRectMake((self.frame.size.width - 250)/2, self.frame.size.height - 200, 250, 200);
+    _enterButton.frame = CGRectMake((self.frame.size.width - 250)/2, self.frame.size.height - 100, 250, 200);
     [_enterButton setBackgroundColor:[UIColor clearColor]];
     _enterButton.hidden = NO;
     [self addSubview:_enterButton];
