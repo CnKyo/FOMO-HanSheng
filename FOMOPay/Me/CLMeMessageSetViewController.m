@@ -82,9 +82,12 @@
     [self.mFootViewLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(mFootView);
 //        make.height.offset(14);
+        
+        make.left.equalTo(mFootView).mas_offset(15);
+        make.right.equalTo(mFootView).mas_offset(-15);
         make.top.equalTo(mFootView).offset(13);
     }];
-    self.mFootViewLable.textAlignment = NSTextAlignmentCenter;
+    self.mFootViewLable.textAlignment = NSTextAlignmentLeft;
     if(self.MessageSwitch.isOn){
         self.mFootViewLable.text = @"消息通知已打开,您将可以更快了解您的汇款状态.";
     }else{
@@ -94,7 +97,7 @@
 }
 
 -(void)switchAction:(id)sender
-{   self.mFootViewLable.textAlignment = NSTextAlignmentCenter;
+{   self.mFootViewLable.textAlignment = NSTextAlignmentLeft;
     if (self.MessageSwitch.isOn) {
         self.mFootViewLable.text = @"消息通知已打开,您将可以更快了解您的汇款状态.";
         

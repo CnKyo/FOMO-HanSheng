@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *selectImage;
 
-@property (strong,nonatomic) WKResipientInfoObj *mItem;
+//@property (strong,nonatomic) WKResipientInfoObj *mItem;
 
 @end
 

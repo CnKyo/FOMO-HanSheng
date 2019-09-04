@@ -53,6 +53,11 @@
 }
 - (void)loadData {
     
+//    [WKNetWorkManager WKGetRecipientDetail:{@"":} block:^(id result, BOOL success) {
+//        if(success)
+//    }]
+    
+    
     NSArray * secArr = @[@"CNY", @"MYR"];
 //    NSArray * rowsArr = @[@(12),@(10)];
     
@@ -151,7 +156,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
+//    return 1;
     return 35;
 }
 
@@ -226,8 +231,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DebugLog(@"点击了列表进入修改");
     DebugLog(@"现在self.push的值为%@",self.mPushData);
-//    CLCollectionAlter *vc = [CLCollectionAlter new];
-//    [self pushToViewController:vc];
+    CLCollectionAlter *vc = [CLCollectionAlter new];
+    [self pushToViewController:vc];
 }
 //-(void)Add:(id)sender{
 //    DebugLog(@"点击了按钮吧");
@@ -243,30 +248,9 @@
 //}
 ////    UIImageView *mImg = [UIImageView new];
 //    
-////        [self performSelector:@selector(showAlter) withObject:nil afterDelay:1.5];
-////       [self showAlter];
+////     [self performSelector:@selector(showAlter) withObject:nil afterDelay:1.5];
+////     [self showAlter];
 //
-//}
-
-//-(void)showAlter{
-//    DebugLog(@"调用showAlter的值为%@",self.mPushData);
-//    UIImageView *mImg = [UIImageView new];
-//    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint.pdf"];
-//    [self.view addSubview:mImg];
-//    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self.view);
-//    }];
-//    //设置动画
-//    CATransition * transion = [CATransition animation];
-//    
-//    transion.type = @"push";//设置动画方式
-//    transion.subtype = @"fromRight";//设置动画从那个方向开始
-//    //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
-//    [mImg.layer addAnimation:transion forKey:nil];
-//    //不占用主线程
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-//        [mImg removeFromSuperview];
-//    });
 //}
 
 -(void)mDelete:(id)sender{

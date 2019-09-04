@@ -14,9 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *mLogoImg;
 @property (weak, nonatomic) IBOutlet UILabel *mName;
 @property (weak, nonatomic) IBOutlet UILabel *mAccountNumber;
-@property (weak, nonatomic) IBOutlet UIView *mBank;
+@property (weak, nonatomic) IBOutlet UILabel *mBank;
+
 @property (weak, nonatomic) IBOutlet UIImageView *mSelectImg;
 - (void)mCellStyle:(NSInteger)Type;
+
+
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
 @end
 
 NS_ASSUME_NONNULL_END

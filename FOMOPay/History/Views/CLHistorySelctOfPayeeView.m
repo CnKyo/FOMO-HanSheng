@@ -57,4 +57,12 @@
     
     [super setFrame:frame];
 }
+
+
+- (void)setMItem:(WKResipientInfoObj *)mItem{
+    self.mName.text = mItem.fullName;
+    self.mAccountNumber.text = [NSString stringWithFormat:@"账户号码:%@",mItem.accountNumber];
+    self.mBank.text = [NSString stringWithFormat:@"%@(%@)",mItem.bankName,mItem.bankCity];
+    self.mLogoImg.image = [UIImage yh_imageNamed:[CLTool GetCountryLogo:mItem.currencyCode]];
+}
 @end

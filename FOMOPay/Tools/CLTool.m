@@ -100,4 +100,29 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     return jsonString;
 }
+
+
+#pragma mark----****----返回一个图片的名字
++ (NSString *)GetCountryLogo:(NSString *)text{
+    if ([text containsString:@"CNY"]) {
+        return @"pdf_CNY";
+    }else if ([text containsString:@"MYR"]){
+        return @"pdf_MYR";
+    }else if ([text containsString:@"PHP"]){
+        return @"pdf_PHP";
+    }else if ([text containsString:@"IDR"]){
+        return @"pdf_IDR";
+    }else if ([text containsString:@"TWD"]){
+        return @"pdf_TWD";
+    }else if ([text containsString:@"HKD"]){
+        return @"pdf_HKD";
+    }else if ([text containsString:@"SGD"]){
+        return @"pdf_home_transfer_2";
+    }else{
+        return @"pdf_home_transfer_2";
+    }
+}
+
+
+
 @end

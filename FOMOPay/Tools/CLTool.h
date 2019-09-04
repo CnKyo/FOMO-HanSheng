@@ -30,6 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
  @return 返回json字符串
  */
 + (NSString *)WKDicToJsonString:(NSDictionary *)mJsonDic;
+
+
+
+
+#pragma mark----****----返回一个图片的名字
++ (NSString *)GetCountryLogo:(NSString *)text;
 @end
 
 NS_ASSUME_NONNULL_END

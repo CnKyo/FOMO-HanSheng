@@ -137,9 +137,38 @@
 }
 //////---------------按钮的点击事件
 - (void)addButtonClicked{
-    DebugLog(@"点击添加收款人");
+    WS(weakSelf);
     
-    //添加收款人
+    CLCollectionAdd *vc = [CLCollectionAdd new];
+    vc.mBackBlock = ^(BOOL success) {
+        if (success) {
+            [weakSelf loadData];
+        }
+    };
+    [self pushToViewController:vc];
+}
+
+
+- (void)loadData{
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
+        
+        [self.DataSource removeAllObjects];
+        [self hiddenLoading];
+        if (success) {
+            NSDictionary *mResponse = [CLTool stringToDic:result];
+            if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
+                    WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
+                    [self.DataSource addObject:mRefundAcc];
+                }
+            }
+            
+        }else{
+            TOASTMESSAGE(result);
+        }
+        [self.myTableView reloadData];
+    }];
 }
 
 
