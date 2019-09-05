@@ -116,5 +116,13 @@
  @param block 返回值
  */
 + (void)WKRemiitanceNow:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----删除收款人
+/**
+ 删除收款人
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKDeleteRecipient:(NSString *)para block:(void(^)(id result,BOOL success))block;
 @end
 
