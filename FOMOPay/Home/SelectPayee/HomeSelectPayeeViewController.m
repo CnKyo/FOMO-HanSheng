@@ -56,7 +56,7 @@
 //    }];
     [self loadButtonView];
     [self loadData];
-//    [self initialView];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -179,8 +179,9 @@
         [_nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _nextButton.titleLabel.font = kCommonFont(14);
         _nextButton.layer.cornerRadius = 5.0;
-        _nextButton.enabled = NO;
-        _nextButton.backgroundColor = kCommonColor(140, 144, 145, 1);
+//        _nextButton.enabled = NO;
+        _nextButton.backgroundColor = ssRGBHex(0x005CB6);
+//        kCommonColor(140, 144, 145, 1);
         [_nextButton addTarget:self action:@selector(nextButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_nextButton];
 

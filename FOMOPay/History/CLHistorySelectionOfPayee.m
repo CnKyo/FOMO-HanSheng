@@ -14,14 +14,22 @@
 #import "HomeSureInfoViewController.h"
 #import "HomeChangePayeeVC.h"
 @interface CLHistorySelectionOfPayee ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) NSArray *mData;
+@property (nonatomic, strong) NSMutableArray *mData;
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 
 @property (nonatomic, strong) UIButton *changeButton;
 @end
 
 @implementation CLHistorySelectionOfPayee
+
+- (NSMutableArray *)mData{
+    if(!_mData){
+        _mData = [NSMutableArray new];
+    }
+    return _mData;
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,8 +40,28 @@
 
     [self LoadCellType:10];
     
-    self.mData=@[@"ang",@"ang",@"ang"];
+//    self.mData=@[@"ang",@"ang",@"ang"];
     //以下为按钮
+//    UIButton *mSureButton = [UIButton new];
+//    [mSureButton setTitle:@"确认" forState:UIControlStateNormal];
+//    mSureButton.layer.cornerRadius  =4;
+//    mSureButton.backgroundColor = ssRGBHex(0x005CB6);
+//    mSureButton.titleLabel.font = kCommonFont(14);
+//    [mSureButton setTitleColor:ssRGBHex(0xFFFFFF) forState:UIControlStateNormal];
+//    [mSureButton addTarget:self action:@selector(SureBUtton:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:mSureButton];
+//    [mSureButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.view).offset(-BottomHeight - 10);
+//        make.left.equalTo(self.view).offset(10);
+//        make.right.equalTo(self.view).offset(-10);
+//        make.height.offset(44);
+//
+//    }];
+    [self LoadSureButton];
+    [self loadData];
+}
+
+-(void)LoadSureButton{
     UIButton *mSureButton = [UIButton new];
     [mSureButton setTitle:@"确认" forState:UIControlStateNormal];
     mSureButton.layer.cornerRadius  =4;
@@ -42,8 +70,6 @@
     [mSureButton setTitleColor:ssRGBHex(0xFFFFFF) forState:UIControlStateNormal];
     [mSureButton addTarget:self action:@selector(SureBUtton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:mSureButton];
-    
-    
     [mSureButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset(-BottomHeight - 10);
         make.left.equalTo(self.view).offset(10);
@@ -73,7 +99,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-    [cell mCellStyle:1];
+//    [cell mCellStyle:1];
 //    if(indexPath.row == self.lastIndex.row){
 //        [cell mCellStyle:0];
 //    }else
@@ -81,8 +107,8 @@
     if(indexPath.row ==self.lastIndex.row){
         [cell mCellStyle:0];
     }
-   
-    
+    [cell setMItem:self.mData[indexPath.row]];
+    DebugLog(@"2222%@",self.mData[indexPath.row]);
     return cell;
 }
 
@@ -160,14 +186,14 @@
             if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
                     WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
-                    [self.DataSource addObject:mRefundAcc];
+                    [self.mData addObject:mRefundAcc];
                 }
             }
             
         }else{
             TOASTMESSAGE(result);
         }
-        [self.myTableView reloadData];
+        [self.mTabView reloadData];
     }];
 }
 
@@ -175,7 +201,7 @@
 -(void)SureBUtton:(UIButton *)sender{
     
     //确认按钮的点击事件
-    [self CLNavBackAction];
+//    [self CLNavBackAction];
     
 }
 

@@ -70,12 +70,21 @@
         self.mTextF.delegate = self;
         self.mTextF.returnKeyType = UIReturnKeyDone;
         [self.mRightView addSubview:self.mTextF];
+        if(_mIndexPath.row ==0){
         [self.mTextF mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.mMeLanguageLeftLabel);
             make.right.equalTo(self.mRightView).offset(-7);
-            make.width.equalTo(self.mRightView);
+            make.width.equalTo(self.mRightView.mas_width);
             make.height.offset(14);
         }];
+        }else{
+            [self.mTextF mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(self.mMeLanguageLeftLabel);
+                make.right.equalTo(self.mRightView).offset(-15);
+                make.width.equalTo(self.mRightView.mas_width);
+                make.height.offset(14);
+            }];
+        }
     }else if (type == CLMeLanguageType_button){
         self.mBtn = [UIButton new];
         [self.mBtn addTarget:self action:@selector(OpenSelect:) forControlEvents:UIControlEventTouchUpInside];
