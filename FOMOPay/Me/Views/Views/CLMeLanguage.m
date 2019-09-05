@@ -81,14 +81,14 @@
             make.centerY.equalTo(self.mMeLanguageLeftLabel);
             make.right.equalTo(self.mRightView).offset(-7);
             make.width.equalTo(self.mRightView.mas_width);
-            make.height.offset(14);
+//            make.height.offset(14);
         }];
         }else{
             [self.mTextF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(self.mMeLanguageLeftLabel);
                 make.right.equalTo(self.mRightView).offset(-15);
                 make.width.equalTo(self.mRightView.mas_width);
-                make.height.offset(14);
+//                make.height.offset(14);
             }];
         }
     }else if (type == CLMeLanguageType_button){

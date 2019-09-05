@@ -17,7 +17,6 @@
 @end
 
 @implementation CLCollectionViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -353,6 +352,7 @@
         NSArray *mArr = self.DataSource[indexPath.section];
         WKResipientInfoObj *mItem = mArr[indexPath.row];
         [WeakSelf deleteAction:mItem];
+        [WeakSelf.mTabView reloadData];
         
     }];
     [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];

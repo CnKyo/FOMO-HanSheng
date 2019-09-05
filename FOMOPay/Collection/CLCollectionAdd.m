@@ -410,9 +410,11 @@
     for (UIViewController *vc in self.navigationController.viewControllers) {
         if ([vc isKindOfClass:[CLCollectionViewController class]]) {
           [(CLCollectionViewController  *)vc show];
+        
         }
     }
     [self AddAccount:self.mMdate];
+    
 
     
 }
