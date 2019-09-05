@@ -371,4 +371,29 @@
         block(result,success);
     }];
 }
+#pragma mark----****----删除收款人
+/**
+ 删除收款人
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKDeleteRecipient:(NSString *)para block:(void(^)(id result,BOOL success))block{
+    
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:@{} andUrl:[NSString stringWithFormat:@"%@%@",kGetRecipientDetail,para] andRequestMethod:YTKRequestMethodDELETE];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
+    }];
+}
 @end

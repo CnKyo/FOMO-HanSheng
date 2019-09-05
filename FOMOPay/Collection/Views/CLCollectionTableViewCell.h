@@ -26,6 +26,9 @@ typedef void(^CLCollectionTableViewCellBlock)(NSIndexPath *mIndex);
 - (void)awakeFromNib1;  //cell样式1
 
 - (void)CellStyle:(NSInteger)Type;
+
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
+
 @end
 
 NS_ASSUME_NONNULL_END

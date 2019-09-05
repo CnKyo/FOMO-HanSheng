@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSMutableArray * sectionArr;
 @property (nonatomic, strong) NSMutableArray * boolArr;
 @property (nonatomic,strong) NSIndexPath * mIdx;
+@property (nonatomic, strong) NSMutableArray * mSecArr;
 
 @end
 
@@ -19,6 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.mSecArr = [NSMutableArray new];
+    
     CLNavModel *model = [CLNavModel new];
     CLNavgationView_button *mBtView = [CLNavgationView_button shareDefaultNavRightButtonOther];
     model.mRightView = mBtView  ;
@@ -46,32 +50,63 @@
                 break;
         }
     }];
-    [self loadData];
 
     [self LoadCellType:4];
+    [self loadData];
 
 }
 - (void)loadData {
     
-//    [WKNetWorkManager WKGetRecipientDetail:{@"":} block:^(id result, BOOL success) {
-//        if(success)
-//    }]
-    
-    
-    NSArray * secArr = @[@"CNY", @"MYR"];
-//    NSArray * rowsArr = @[@(12),@(10)];
-    
-    for (int i = 0; i < secArr.count; i++) {
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
         
-        NSMutableArray * friendArr = [[NSMutableArray alloc] init];
-        for (int j = 0; j < 2 ;j++) {
+        [self.mSecArr removeAllObjects];
+        [self hiddenLoading];
+        if (success) {
+            NSDictionary *mResponse = [CLTool stringToDic:result];
+            if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
+                    WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
+                    [self.mSecArr addObject:mRefundAcc];
+                }
+            }
             
-            [friendArr addObject:@(j)];
+        }else{
+            TOASTMESSAGE(result);
+        }
+        [self semboldData];
+    }];
+}
+- (void)semboldData{
+    [self.sectionArr removeAllObjects];
+    for (WKResipientInfoObj *obj in self.mSecArr) {
+        [self.sectionArr addObject:obj.currencyCode];
+    }
+    NSMutableArray *resultArray = [NSMutableArray array];
+    
+    for (NSString *item in self.sectionArr) {
+        if (![resultArray containsObject:item]) {
+            [resultArray addObject:item];
+        }
+    }
+    [self.sectionArr removeAllObjects];
+    [self.sectionArr addObjectsFromArray:resultArray];
+    
+    for (int i = 0; i < resultArray.count; i++) {
+        NSString *mCode = resultArray[i];
+        NSMutableArray * friendArr = [[NSMutableArray alloc] init];
+        for (int j = 0; j < self.mSecArr.count ;j++) {
+            WKResipientInfoObj *mItem = self.mSecArr[j];
+            if ([mCode isEqualToString:mItem.currencyCode]) {
+                [friendArr addObject:mItem];
+            }
         }
         [self.DataSource addObject:friendArr];
-        [self.sectionArr addObject:secArr[i]];
+        [self.sectionArr addObject:mCode];
         [self.boolArr addObject:@YES];
     }
+    [self.mTabView reloadData];
+
 }
 - (void)makeConstraintsForUI {
     
@@ -86,43 +121,38 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return self.DataSource.count;//有几组
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if ([self.boolArr[section] boolValue] == NO) {
-        
+
         return 0;
     }else {
-        
+
         return [self.DataSource[section] count];  ////////每组有多少个
 
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(weakSelf);
     CLCollectionTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (!cell) {
         cell = [[CLCollectionTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         
     }
     [cell CellStyle:2];
+    NSArray *mArr = self.DataSource[indexPath.section];
+    WKResipientInfoObj *mItem = mArr[indexPath.row];
+
+    [cell setMItem:mItem];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.mInd = indexPath;
-    [cell.CLCollectionDelete addTarget:self action:@selector(mDelete:) forControlEvents:UIControlEventTouchUpInside];
     cell.mDeleteBlock = ^(NSIndexPath * _Nonnull mIndex) {
-        self.mIdx = mIndex;
-        
+        weakSelf.mIdx = mIndex;
+        [weakSelf mDelete:mIndex];
     };
-//    cell.mName.text=[self.mPushData objectAtIndex:0];
-//    cell.mAccountNumber.text = [self.mPushData objectAtIndex:5];
-//    if([[self.mPushData objectAtIndex:1]isEqual:@"中国"]){
-//    cell.CLCollectionLeftImage.image = [UIImage yh_imageNamed:@""];
-//    }
-//    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
-    [cell.CLCollectionDelete addTarget:self action:@selector(mDelete:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -134,29 +164,28 @@
     headerView.tag = 2019 + section;
     //添加imageview
     UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-40, 22, 12 , 7)];
-    
+
     //三目运算选择展开或者闭合时候的图标
     iv.image = [_boolArr[section] boolValue] ?
     [UIImage yh_imageNamed:@"pdf_collection_shrink.pdf"] :
     [UIImage yh_imageNamed:@"pdf_collection_unfold.pdf"];
     [headerView addSubview:iv];
-    
+
     //添加标题label
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.view.frame.size.width - 100, 50)];
     label.text = self.sectionArr[section];
     DebugLog(@"self.sectionArr[section]%@",self.sectionArr[section]);
     [headerView addSubview:label];
-    
-    
+
+
     //添加轻扣手势
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR:)];
     [headerView addGestureRecognizer:tap];
-    
+
     return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 1;
     return 35;
 }
 
@@ -253,7 +282,7 @@
 //
 //}
 
--(void)mDelete:(id)sender{
+-(void)mDelete:(NSIndexPath *)indexPath{
    
     DebugLog(@"点击了删除按钮");
     DebugLog(@"当前行%@",self.mIdx);
@@ -266,10 +295,11 @@
     }];
     
     __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        if(YesAction){
-             [WeakSelf.DataSource removeObjectAtIndex:WeakSelf.mIdx.row];
-             [self.mTabView reloadData ];
-        }
+        
+        NSArray *mArr = self.DataSource[indexPath.section];
+        WKResipientInfoObj *mItem = mArr[indexPath.row];
+        [WeakSelf deleteAction:mItem];
+        
     }];
     [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
     [alertController addAction:NoAction];
@@ -277,7 +307,24 @@
     
     [WeakSelf presentViewController:alertController animated:YES completion:nil];
 }
+- (void)deleteAction:(WKResipientInfoObj *)item{
+    
+    [self showLoading:nil];
+    [WKNetWorkManager WKDeleteRecipient:item.id block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            
+            TOASTMESSAGE(@"Delete Success!");
 
+            [self.DataSource removeObjectAtIndex:self.mIdx.row];
+            [self.mTabView reloadData ];
+            
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+
+}
 - (void)changeArray:(NSArray *)Array{
     self.mPushData = Array;
     DebugLog(@"我的Pushdata的值为%@",self.mPushData);
