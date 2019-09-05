@@ -23,7 +23,7 @@ typedef void(^CLCollectionAddBackBlock)(BOOL success);
 
 @property (nonatomic,copy) CLCollectionAddBackBlock mBackBlock;////////
 
--(void)back;
+
 @end
 
 NS_ASSUME_NONNULL_END

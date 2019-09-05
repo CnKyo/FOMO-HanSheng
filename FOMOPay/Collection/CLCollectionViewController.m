@@ -53,6 +53,21 @@
 
     [self LoadCellType:4];
     [self loadData];
+    __weak typeof(self)  weakSelf = self;
+    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf.mTabView reloadData];
+        [weakSelf.mTabView.mj_header endRefreshing];
+    }];
+    
+    self.mTabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+         [weakSelf.mTabView reloadData];
+        [weakSelf.mTabView.mj_footer endRefreshing];
+    }];
+//    self.mTabView.mj_header  = [MJRefreshHeader headerWithRefreshingBlock:^{
+//        [self.mTabView reloadData];
+//    }];
+//    [self.mTabView.mj_header beginRefreshing];
+//    [self loadData];
 
 }
 - (void)loadData {
@@ -174,7 +189,7 @@
     //添加标题label
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.view.frame.size.width - 100, 50)];
     label.text = self.sectionArr[section];
-    DebugLog(@"self.sectionArr[section]%@",self.sectionArr[section]);
+//    DebugLog(@"self.sectionArr[section]%@",self.sectionArr[section]);
     [headerView addSubview:label];
 
 
@@ -331,13 +346,13 @@
     DebugLog(@"%lu-------%@",(unsigned long)self.mPushData.count,self.mPushData);
     [self.mTabView reloadData];
 }
-
+//
 -(void)show{
     CLCollectionViewController  *vc = [CLCollectionViewController new];
     [vc backa];
 //    [self pushToViewController:vc];
      [self.navigationController popToRootViewControllerAnimated:YES];
-    
+
 }
 
 

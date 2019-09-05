@@ -30,7 +30,13 @@
     [super awakeFromNib];
     // Initialization code
     self.mTextF = [UITextField new];
+    
+
 }
+
+
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -86,6 +92,7 @@
             }];
         }
     }else if (type == CLMeLanguageType_button){
+        
         self.mBtn = [UIButton new];
         [self.mBtn addTarget:self action:@selector(OpenSelect:) forControlEvents:UIControlEventTouchUpInside];
         [self.mRightView addSubview:self.mBtn];
@@ -128,6 +135,7 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
     if (self.mBlock) {
         self.mBlock(self.mIndexPath,textField.text);
     }
@@ -183,8 +191,25 @@
 
 -(void)OpenSelect:(id)sender{
     if(self.mDataBlock){
+
         self.mDataBlock(self.mIndexPath);
     }
     
 }
+
+
+
+//-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//
+//{
+//
+//    [super touchesBegan:touches withEvent:event];
+//
+//    [_mTextF resignFirstResponder];
+//
+////    self.label.text = textField.text; //do some other things.
+//
+//}
+
+
 @end

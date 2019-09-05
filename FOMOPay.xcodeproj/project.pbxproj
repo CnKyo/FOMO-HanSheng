@@ -220,6 +220,8 @@
 		CF6BBB5F2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5B2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf */; };
 		CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5C2303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf */; };
 		CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */; };
+		CF930D3223210FB5000D4618 /* HomeSureInfoLIstCellone.m in Sources */ = {isa = PBXBuildFile; fileRef = CF930D3023210FB5000D4618 /* HomeSureInfoLIstCellone.m */; };
+		CF930D3323210FB5000D4618 /* HomeSureInfoLIstCellone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF930D3123210FB5000D4618 /* HomeSureInfoLIstCellone.xib */; };
 		CFC33F90230D1B2000C04207 /* pdf_collection_select.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFC33F8F230D1B2000C04207 /* pdf_collection_select.pdf */; };
 		CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFE796582301548E004C09C4 /* pdf_home_title.pdf */; };
 		CFE7966123016589004C09C4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7966023016589004C09C4 /* BaseViewController.m */; };
@@ -585,6 +587,9 @@
 		CF6BBB5B2303ACD400EB5BBB /* pdf_home_me_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_me_tabbar.pdf; sourceTree = "<group>"; };
 		CF6BBB5C2303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_collection_tabbarselected.pdf; sourceTree = "<group>"; };
 		CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_collection_tabbar.pdf; sourceTree = "<group>"; };
+		CF930D2F23210FB5000D4618 /* HomeSureInfoLIstCellone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSureInfoLIstCellone.h; sourceTree = "<group>"; };
+		CF930D3023210FB5000D4618 /* HomeSureInfoLIstCellone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSureInfoLIstCellone.m; sourceTree = "<group>"; };
+		CF930D3123210FB5000D4618 /* HomeSureInfoLIstCellone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSureInfoLIstCellone.xib; sourceTree = "<group>"; };
 		CFC33F8F230D1B2000C04207 /* pdf_collection_select.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = pdf_collection_select.pdf; path = GuideView/pdf_collection_select.pdf; sourceTree = "<group>"; };
 		CFE796582301548E004C09C4 /* pdf_home_title.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_title.pdf; sourceTree = "<group>"; };
 		CFE7965F23016589004C09C4 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = FOMOPay/BaseManager/BaseViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1325,6 +1330,9 @@
 				77DD6BB22313E12A00BFDD11 /* HomeSureInfoListCell.h */,
 				77DD6BB32313E12A00BFDD11 /* HomeSureInfoListCell.m */,
 				77DD6BB42313E12A00BFDD11 /* HomeSureInfoListCell.xib */,
+				CF930D2F23210FB5000D4618 /* HomeSureInfoLIstCellone.h */,
+				CF930D3023210FB5000D4618 /* HomeSureInfoLIstCellone.m */,
+				CF930D3123210FB5000D4618 /* HomeSureInfoLIstCellone.xib */,
 				77BE820B23151C4A00519F66 /* HomeChangePayeeCell.h */,
 				77BE820C23151C4A00519F66 /* HomeChangePayeeCell.m */,
 				77BE820D23151C4A00519F66 /* HomeChangePayeeCell.xib */,
@@ -1582,6 +1590,7 @@
 				CF2C42B0230E944700A16732 /* pdf_collection_hint_delete.pdf in Resources */,
 				CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */,
 				CF6BBB5E2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf in Resources */,
+				CF930D3323210FB5000D4618 /* HomeSureInfoLIstCellone.xib in Resources */,
 				77BE8207231518FB00519F66 /* pdf_home_selectPayee_icon.pdf in Resources */,
 				7702398D230B83C100EE8C31 /* HomeListCell.xib in Resources */,
 				770239AB230BFD2A00EE8C31 /* pdf.guideView_icon_china_1.pdf in Resources */,
@@ -1703,6 +1712,7 @@
 				77DD6BB02313D98F00BFDD11 /* HomeSureInfoEditCell.m in Sources */,
 				182DBA62231CDBCC0009E745 /* YTKBaseRequest.m in Sources */,
 				CCA748C92303046400846BDF /* CLMainTabBarControllerConfig.m in Sources */,
+				CF930D3223210FB5000D4618 /* HomeSureInfoLIstCellone.m in Sources */,
 				77BE822523153B1900519F66 /* SVIndefiniteAnimatedView.m in Sources */,
 				CF6264F3231525E6001AF5FC /* CLCollectionAlter.m in Sources */,
 				1863DA9923013A87000969FE /* YHPDFImageLoader.m in Sources */,

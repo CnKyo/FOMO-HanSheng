@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self LoadCellType:7];
-    self.view.backgroundColor = [UIColor redColor];
+//    self.view.backgroundColor = [UIColor redColor];
     self.mHeight = (self.modelArray.count) *44;
     self.view.backgroundColor = ssRGBAlpha(120, 120, 122, 0.5);
     self.mTabView.backgroundColor = ssRGBAlpha(120, 120, 122, 0.5);

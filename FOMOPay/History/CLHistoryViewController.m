@@ -44,6 +44,17 @@
     [self LoadCellType:3];
     _mData = @[@"a",@"a",@"a",@"a",@"a"];
     [self LoadData];
+    __weak typeof(self)  weakSelf = self;
+    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf.mTabView reloadData];
+        
+        [weakSelf.mTabView.mj_header endRefreshing];
+    }];
+    
+    self.mTabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf.mTabView reloadData];
+        [weakSelf.mTabView.mj_footer endRefreshing];
+    }];
     
     // Do any additional setup after loading the view.
 }

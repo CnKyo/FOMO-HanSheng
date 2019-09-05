@@ -14,6 +14,7 @@
 #import "HomeChangeAmountVC.h"
 #import "HomeSelectPayeeViewController.h"
 #import "CLMeClauseOfTreaty.h"
+#import "HomeSureInfoLIstCellone.h"
 @interface HomeSureInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -77,6 +78,7 @@
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeSureInfoListCell" bundle:nil] forCellReuseIdentifier:@"HomeSureInfoListCell"];
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeSureInfoEditCell" bundle:nil] forCellReuseIdentifier:@"HomeSureInfoEditCell"];
+   [_myTableView registerNib:[UINib nibWithNibName:@"HomeSureInfoLIstCellone" bundle:nil] forCellReuseIdentifier:@"HomeSureInfoLIstCellone"];
     [self loadData];
 }
 - (void)loadData{
@@ -272,9 +274,9 @@
         if (!cell) {
             
             cell = [[HomeSureInfoListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSureInfoListCell"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
         }
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.row == array.count - 1) {
             
             cell.showImage.hidden = YES;
@@ -294,6 +296,9 @@
             cell.contentLabel.text = @"投资收入";
         }else if ([mContent isEqualToString:@"总金额"]){
             cell.contentLabel.text = [NSString stringWithFormat:@"%@%@",self.mCurrentRemmitance.chargable.currencyCode,self.mCurrentRemmitance.chargable.amount];
+            [cell.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(cell).mas_offset(-15);
+            }];
         }
         return cell;
         
@@ -307,19 +312,19 @@
                 cell = [[HomeSureInfoEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSureInfoEditCell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
             
         }else{
             
-            HomeSureInfoListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeSureInfoListCell"];
+            HomeSureInfoLIstCellone *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeSureInfoLIstCellone"];
             if (!cell) {
                 
-                cell = [[HomeSureInfoListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSureInfoListCell"];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell = [[HomeSureInfoLIstCellone alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSureInfoLIstCellone"];
+                
             }
-            
-            cell.showImage.hidden = YES;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            cell.showImage.hidden = YES;
             cell.contentLabel.textColor = kCommonColor(43, 43, 43, 1);
             NSString *mContent = array[indexPath.row];
             cell.titleLabel.text = mContent;

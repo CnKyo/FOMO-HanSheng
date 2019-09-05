@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) UIButton *changeButton;
+@property (nonatomic, assign)BOOL ifSelected;//是否选中
 @property (strong,nonatomic) WKResipientInfoObj *mItem;
 
 @end
@@ -32,30 +33,20 @@
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
-    
+    self.ifSelected = NO;//是否被选中 默认为NO
     [self LoadCellType:10];
-    
-//    self.mData=@[@"ang",@"ang",@"ang"];
-    //以下为按钮
-//    UIButton *mSureButton = [UIButton new];
-//    [mSureButton setTitle:@"确认" forState:UIControlStateNormal];
-//    mSureButton.layer.cornerRadius  =4;
-//    mSureButton.backgroundColor = ssRGBHex(0x005CB6);
-//    mSureButton.titleLabel.font = kCommonFont(14);
-//    [mSureButton setTitleColor:ssRGBHex(0xFFFFFF) forState:UIControlStateNormal];
-//    [mSureButton addTarget:self action:@selector(SureBUtton:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:mSureButton];
-//
-//
-//   [mSureButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.view).offset(-BottomHeight - 10);
-//        make.left.equalTo(self.view).offset(10);
-//        make.right.equalTo(self.view).offset(-10);
-//        make.height.offset(44);
-    
-//    }];
     [self loadButtonView];
     [self loadData];
+//    __weak typeof(self)  weakSelf = self;
+//    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [weakSelf.mTabView reloadData];
+//        [weakSelf.mTabView.mj_header endRefreshing];
+//    }];
+//
+//    self.mTabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        [weakSelf.mTabView reloadData];
+//        [weakSelf.mTabView.mj_footer endRefreshing];
+//    }];
 
 }
 
@@ -67,6 +58,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.mData.count;
+//    return  3;
    
 }
 -(NSMutableArray *)mData{
@@ -93,15 +85,15 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//    [cell mCellStyle:1];
-    //    if(indexPath.row == self.lastIndex.row){
-    //        [cell mCellStyle:0];
-    //    }else
-    //        [cell mCellStyle:1];
-    if(indexPath.row ==self.lastIndex.row){
+
+    if (self.ifSelected) {
         [cell mCellStyle:0];
+    }else{
+        [cell mCellStyle:1];
     }
-//    cell.mName.text  =
+    
+
+
     [cell setMItem:self.mData[indexPath.row]];
     
     
@@ -109,8 +101,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.lastIndex=indexPath;
-    [self.mTabView reloadData];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSIndexPath * temp = self.lastIndex;//暂存上一次选中的行
+    if (temp && temp != indexPath)//如果上一次的选中的行存在,并且不是当前选中的这一行,则让上一行不选中
+    {
+        self.ifSelected = NO;//修改之前选中的cell的数据为不选中
+        [tableView reloadRowsAtIndexPaths:@[temp] withRowAnimation:UITableViewRowAnimationAutomatic];//刷新该行
+    }
+    self.lastIndex = indexPath;//选中的修改为当前行
+    self.ifSelected = YES;//修改这个被选中的一行
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+     self.mItem = self.mData[indexPath.row];
+   
+    
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -286,7 +291,6 @@
 }
 
 - (void)nextButtonClicked{
-
     HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
     vc.mItem = self.mItem;
     vc.mCurrentRemmitance = self.mCurrentRemmitance;
@@ -294,170 +298,5 @@
     [self pushToViewController:vc];
 
 }
-
-
-
-//
-//- (void)loadTableView{
-//
-//    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
-//    footerView.backgroundColor = [UIColor clearColor];
-//
-//    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, footerView.frame.size.width - 20, footerView.frame.size.height)];
-//    [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
-//    [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
-//    [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
-//    addButton.titleLabel.font = kCommonFont(14);
-//    addButton.backgroundColor = [UIColor whiteColor];
-//    [addButton addTarget:self action:@selector(addButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-//    addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-//    [footerView addSubview:addButton];
-//
-////    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
-//
-//    _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-//    _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    _myTableView.dataSource = self;
-//    _myTableView.delegate = self;
-//    _myTableView.backgroundColor = [UIColor clearColor];
-//    [self.view addSubview:_myTableView];
-//
-//    [_myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.left.right.equalTo(self.view);
-//        make.bottom.equalTo(self.view).offset(- BottomHeight - 10 - 44);
-//
-//        make.top.equalTo(self.view).offset(44 + kAppStatusBarHeight);
-//    }];
-//
-//    [_myTableView registerNib:[UINib nibWithNibName:@"HomeSelectPayeeListCell" bundle:nil] forCellReuseIdentifier:@"HomeSelectPayeeListCell"];
-//    _myTableView.tableFooterView = footerView;
-//    [self loadData];
-//}
-//- (void)loadData{
-//    [self showLoading:nil];
-//    [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
-//
-//        [self.DataSource removeAllObjects];
-//        [self hiddenLoading];
-//        if (success) {
-//            NSDictionary *mResponse = [CLTool stringToDic:result];
-//            if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
-//                for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
-//                    WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
-//                    [self.DataSource addObject:mRefundAcc];
-//                }
-//            }
-//
-//        }else{
-//            TOASTMESSAGE(result);
-//        }
-//        [self.myTableView reloadData];
-//    }];
-//}
-//- (void)addButtonClicked{
-//    WS(weakSelf);
-//
-//    CLCollectionAdd *vc = [CLCollectionAdd new];
-//    vc.mBackBlock = ^(BOOL success) {
-//        if (success) {
-//            [weakSelf loadData];
-//        }
-//    };
-//    [self pushToViewController:vc];
-//}
-//
-//- (void)nextButtonClicked{
-//
-//    HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
-//    vc.mItem = self.mItem;
-//    vc.mCurrentRemmitance = self.mCurrentRemmitance;
-//
-//    [self pushToViewController:vc];
-//
-//}
-//
-//- (void)bottomButtonClicked:(UIButton *)sender{
-//
-//    if (sender.tag == 2000) {   //修改
-//
-//        HomeChangePayeeVC *vc = [[HomeChangePayeeVC alloc] init];
-//        [self pushToViewController:vc];
-//
-//    }else{  //确认
-//
-//
-//    }
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//
-//    return self.DataSource.count;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//
-//    return 1;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    return 100;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//
-//    return 0.001;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//
-//    return 0.001;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//
-//    return [UIView new];
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//
-//    return [UIView new];
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    HomeSelectPayeeListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeSelectPayeeListCell"];
-//    if (!cell) {
-//
-//        cell = [[HomeSelectPayeeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeSelectPayeeListCell"];
-//
-//    }
-//    [cell setMItem:self.DataSource[indexPath.row]];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//
-//    return cell;
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    _nextButton.enabled = YES;
-//    _nextButton.backgroundColor = kLoginTitleColor;
-//
-//    HomeSelectPayeeListCell *lastCell = (HomeSelectPayeeListCell *)[tableView cellForRowAtIndexPath:_lastIndex];
-//    lastCell.bgImageView.image = [UIImage yh_imageNamed:@"pdf_home_selectPayee_bg_gray"];
-//    lastCell.selectImage.hidden = YES;
-//
-//    HomeSelectPayeeListCell *currentCell = (HomeSelectPayeeListCell *)[tableView cellForRowAtIndexPath:indexPath];
-//    currentCell.bgImageView.image = [UIImage yh_imageNamed:@"pdf_home_selectPayee_bg_grren"];
-//    currentCell.selectImage.hidden = NO;
-//
-//    _lastIndex = indexPath;
-//
-//    self.mItem = self.DataSource[indexPath.row];
-//
-//}
-
-
 
 @end

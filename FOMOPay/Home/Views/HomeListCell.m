@@ -65,6 +65,7 @@
     NSString *mRate = [WKAccountManager shareInstance].mRate;
     if ([mRate floatValue]<=0) {
         mRate = @"0";
+
     }
     _exchangeRateLabel.text = mRate;
     
@@ -203,7 +204,7 @@
 //        }
 //    }
     
-    if (textField.text.length > 0) {
+    if (textField.text.length > 0 && ![textField.text isEqual:@"0"]) {
         
         _exchangeRateButton.enabled = YES;
         _exchangeRateButton.backgroundColor = kLoginTitleColor;
