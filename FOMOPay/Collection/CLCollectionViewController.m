@@ -52,22 +52,60 @@
     }];
 
     [self LoadCellType:4];
-    [self loadData];
+//    [self loadData];
     __weak typeof(self)  weakSelf = self;
+    
+//    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [weakSelf.mTabView reloadData];
+//
+////        [weakSelf.mTabView.mj_header endRefreshing];
+//    }];
+//    [self.mTabView.mj_header beginRefreshing];
+    
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.mTabView reloadData];
-        [weakSelf.mTabView.mj_header endRefreshing];
+        
+//        [weakSelf.mTabView reloadData];
+//        [weakSelf.DataSource removeAllObjects];
+//        [weakSelf loadData];
+//        [weakSelf.mTabView reloadData];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+//            [weakSelf.mTabView reloadData];
+            [weakSelf.DataSource removeAllObjects];
+            [weakSelf loadData];
+            [weakSelf.mTabView reloadData];
+            // 结束刷新
+            [weakSelf.mTabView.mj_header endRefreshing];
+        });
     }];
     
+    
+//    self.mTabView.mj_footer = [MJRefreshFooter footerWithRefreshingBlock:^{
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [weakSelf.mTabView reloadData];
+//            [weakSelf.mTabView.mj_footer endRefreshing];
+//    });
+//    }];
+  
+    
+    
+    
+    
+    
+    
     self.mTabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
          [weakSelf.mTabView reloadData];
         [weakSelf.mTabView.mj_footer endRefreshing];
-    }];
+        });
+        }];
 //    self.mTabView.mj_header  = [MJRefreshHeader headerWithRefreshingBlock:^{
 //        [self.mTabView reloadData];
 //    }];
 //    [self.mTabView.mj_header beginRefreshing];
-//    [self loadData];
+    [self loadData];
 
 }
 - (void)loadData {
@@ -91,6 +129,7 @@
         }
         [self semboldData];
     }];
+    [self.mTabView reloadData];
 }
 - (void)semboldData{
     [self.sectionArr removeAllObjects];

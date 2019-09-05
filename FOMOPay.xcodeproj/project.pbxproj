@@ -222,6 +222,7 @@
 		CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */; };
 		CF930D3223210FB5000D4618 /* HomeSureInfoLIstCellone.m in Sources */ = {isa = PBXBuildFile; fileRef = CF930D3023210FB5000D4618 /* HomeSureInfoLIstCellone.m */; };
 		CF930D3323210FB5000D4618 /* HomeSureInfoLIstCellone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF930D3123210FB5000D4618 /* HomeSureInfoLIstCellone.xib */; };
+		CF930D3723211ED9000D4618 /* WKLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF930D3623211ED9000D4618 /* WKLoginManager.m */; };
 		CFC33F90230D1B2000C04207 /* pdf_collection_select.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFC33F8F230D1B2000C04207 /* pdf_collection_select.pdf */; };
 		CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFE796582301548E004C09C4 /* pdf_home_title.pdf */; };
 		CFE7966123016589004C09C4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7966023016589004C09C4 /* BaseViewController.m */; };
@@ -590,6 +591,8 @@
 		CF930D2F23210FB5000D4618 /* HomeSureInfoLIstCellone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSureInfoLIstCellone.h; sourceTree = "<group>"; };
 		CF930D3023210FB5000D4618 /* HomeSureInfoLIstCellone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSureInfoLIstCellone.m; sourceTree = "<group>"; };
 		CF930D3123210FB5000D4618 /* HomeSureInfoLIstCellone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSureInfoLIstCellone.xib; sourceTree = "<group>"; };
+		CF930D3523211ED9000D4618 /* WKLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKLoginManager.h; sourceTree = "<group>"; };
+		CF930D3623211ED9000D4618 /* WKLoginManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKLoginManager.m; sourceTree = "<group>"; };
 		CFC33F8F230D1B2000C04207 /* pdf_collection_select.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = pdf_collection_select.pdf; path = GuideView/pdf_collection_select.pdf; sourceTree = "<group>"; };
 		CFE796582301548E004C09C4 /* pdf_home_title.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_title.pdf; sourceTree = "<group>"; };
 		CFE7965F23016589004C09C4 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = FOMOPay/BaseManager/BaseViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1231,6 +1234,7 @@
 				772D73B2230A3F670068AB48 /* LogInViewController.m */,
 				772D73C6230A845D0068AB48 /* LogInVerifyViewController.h */,
 				772D73C7230A845D0068AB48 /* LogInVerifyViewController.m */,
+				CF930D3423211E94000D4618 /* Manager */,
 				772D73B4230A3F8C0068AB48 /* Views */,
 			);
 			path = Login;
@@ -1408,6 +1412,15 @@
 				CF62651A23152734001AF5FC /* CLMeSwitchLanguage.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CF930D3423211E94000D4618 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CF930D3523211ED9000D4618 /* WKLoginManager.h */,
+				CF930D3623211ED9000D4618 /* WKLoginManager.m */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1784,6 +1797,7 @@
 				18851848231F97450009D088 /* NSMutableString+TagReplace.m in Sources */,
 				CF2A16C7231E8062007E110D /* CLHistorySelctOfPayeeView.m in Sources */,
 				18B7BEEC2304F572007B496A /* CLNavModel.m in Sources */,
+				CF930D3723211ED9000D4618 /* WKLoginManager.m in Sources */,
 				1863DA4B23011A07000969FE /* AppDelegate.m in Sources */,
 				CF2A16C3231E70E4007E110D /* CLHistoryCertificateOfRemittance.m in Sources */,
 				CF6264FF23152625001AF5FC /* CLCollectionAddSelectTableView.m in Sources */,

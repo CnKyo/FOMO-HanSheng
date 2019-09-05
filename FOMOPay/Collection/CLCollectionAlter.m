@@ -72,7 +72,7 @@
 }
 
 - (void)loadData{
-    _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码"];
+    _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码",@""];
     _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
     _mModeString = @"请选择";
     self.mMdate  =[@[@"", @"", @"",@"",@"",@"",@"",@""] mutableCopy];
@@ -83,15 +83,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 5){
-        if(self.mDl.length >11){
-            DebugLog(@"self.mdl的%@",self.mDl);
-            return 65;
-        }else{
-            
-            return 49;
-        }
+    if(indexPath.row == 8){
+        return 26;
     }
+//    if(indexPath.row == 5){
+//        if(self.mDl.length >11){
+//            DebugLog(@"self.mdl的%@",self.mDl);
+//            return 65;
+//        }else{
+//            
+//            return 49;
+//        }
+//    }
     
     return 49;
 }
@@ -342,30 +345,34 @@
             }
         };}
     
-    
+    if(indexPath.row == 8){
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        //        cell.mRightView.hidden = YES;
+        
+    }
  
     return cell;
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *mFooter = [UIView new];
-    mFooter.backgroundColor = ssRGBHex(0xFFFFFF);
-    UIView *mLin = [UIView new];
-    mLin.backgroundColor = ssRGBHex(0xCCCCCC);
-    [mFooter addSubview:mLin];
-    [mLin mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(mFooter);
-        make.bottom.equalTo(mFooter);
-        make.height.offset(1);
-        make.width.offset(kScreenWidth);
-    }];
-    return mFooter;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 28;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    UIView *mFooter = [UIView new];
+//    mFooter.backgroundColor = ssRGBHex(0xFFFFFF);
+//    UIView *mLin = [UIView new];
+//    mLin.backgroundColor = ssRGBHex(0xCCCCCC);
+//    [mFooter addSubview:mLin];
+//    [mLin mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.equalTo(mFooter);
+//        make.bottom.equalTo(mFooter);
+//        make.height.offset(1);
+//        make.width.offset(kScreenWidth);
+//    }];
+//    return mFooter;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 28;
+//}
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    //在当前控制器添加子控制器的view的调用方法
