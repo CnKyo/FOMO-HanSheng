@@ -14,5 +14,6 @@ FOUNDATION_EXPORT double WKWindowManagerFrameworkVersionNumber;
 //! Project version string for WKWindowManagerFramework.
 FOUNDATION_EXPORT const unsigned char WKWindowManagerFrameworkVersionString[];
 
-#import <WKWindowManagerFramework/WKTopWindow.h>
+// In this header, you should import all the public headers of your framework using statements like #import <WKWindowManagerFramework/PublicHeader.h>
+#import <WKWindowManagerFramework/WKWindowManager.h>
 

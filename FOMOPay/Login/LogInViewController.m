@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) DPLogInView *loginView;
 
+
 @end
 
 @implementation LogInViewController
@@ -34,8 +35,7 @@
     [self.view addSubview:_loginView];
     
     [_loginView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.top.left.right.bottom.equalTo(self.view);
+       make.top.left.right.bottom.equalTo(self.view);
     }];
 }
 - (void)getOtp:(NSString *)text{
