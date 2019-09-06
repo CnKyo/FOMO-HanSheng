@@ -16,8 +16,9 @@
 @interface CLHistorySelectionOfPayee ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *mData;
 @property (nonatomic, strong) NSIndexPath *lastIndex;
-
+@property (nonatomic, assign)BOOL ifSelected;//是否选中
 @property (nonatomic, strong) UIButton *changeButton;
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
 @end
 
 @implementation CLHistorySelectionOfPayee
@@ -39,7 +40,7 @@
     }];
 
     [self LoadCellType:10];
-    
+    self.ifSelected = NO;//是否被选中 默认为NO
 //    self.mData=@[@"ang",@"ang",@"ang"];
     //以下为按钮
 //    UIButton *mSureButton = [UIButton new];
@@ -104,17 +105,28 @@
 //        [cell mCellStyle:0];
 //    }else
 //        [cell mCellStyle:1];
-    if(indexPath.row ==self.lastIndex.row){
+    if (self.ifSelected) {
         [cell mCellStyle:0];
+    }else{
+        [cell mCellStyle:1];
     }
+    
     [cell setMItem:self.mData[indexPath.row]];
-    DebugLog(@"2222%@",self.mData[indexPath.row]);
+//    DebugLog(@"2222%@",self.mData[indexPath.row]);
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.lastIndex=indexPath;
-    [self.mTabView reloadData];
+    NSIndexPath * temp = self.lastIndex;//暂存上一次选中的行
+    if (temp && temp != indexPath)//如果上一次的选中的行存在,并且不是当前选中的这一行,则让上一行不选中
+    {
+        self.ifSelected = NO;//修改之前选中的cell的数据为不选中
+        [tableView reloadRowsAtIndexPaths:@[temp] withRowAnimation:UITableViewRowAnimationAutomatic];//刷新该行
+    }
+    self.lastIndex = indexPath;//选中的修改为当前行
+    self.ifSelected = YES;//修改这个被选中的一行
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.mItem = self.mData[indexPath.row];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
