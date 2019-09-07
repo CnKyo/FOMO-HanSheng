@@ -140,6 +140,8 @@
 		77F882D423136E740010A884 /* HomeSelectPayeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F882D323136E740010A884 /* HomeSelectPayeeViewController.m */; };
 		77F882D823136EAA0010A884 /* HomeSelectPayeeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F882D623136EAA0010A884 /* HomeSelectPayeeListCell.m */; };
 		77F882D923136EAA0010A884 /* HomeSelectPayeeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77F882D723136EAA0010A884 /* HomeSelectPayeeListCell.xib */; };
+		CC49F1CB2322CA230052566B /* pdf_guideView_iconopen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC49F1C92322CA230052566B /* pdf_guideView_iconopen.pdf */; };
+		CC49F1CC2322CA230052566B /* pdf_guideView_iconclose.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */; };
 		CCA748C92303046400846BDF /* CLMainTabBarControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */; };
 		CCB32E9C231D5D560027FD84 /* CLHistoryConfirmRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32E9B231D5D560027FD84 /* CLHistoryConfirmRefund.m */; };
 		CCB32E9F231D69260027FD84 /* CLHistoryRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32E9E231D69260027FD84 /* CLHistoryRefund.m */; };
@@ -471,6 +473,8 @@
 		77F882D523136EAA0010A884 /* HomeSelectPayeeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSelectPayeeListCell.h; sourceTree = "<group>"; };
 		77F882D623136EAA0010A884 /* HomeSelectPayeeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSelectPayeeListCell.m; sourceTree = "<group>"; };
 		77F882D723136EAA0010A884 /* HomeSelectPayeeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSelectPayeeListCell.xib; sourceTree = "<group>"; };
+		CC49F1C92322CA230052566B /* pdf_guideView_iconopen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guideView_iconopen.pdf; sourceTree = "<group>"; };
+		CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guideView_iconclose.pdf; sourceTree = "<group>"; };
 		CCA748C72303046400846BDF /* CLMainTabBarControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMainTabBarControllerConfig.h; sourceTree = "<group>"; };
 		CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMainTabBarControllerConfig.m; sourceTree = "<group>"; };
 		CCB32E9A231D5D560027FD84 /* CLHistoryConfirmRefund.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryConfirmRefund.h; sourceTree = "<group>"; };
@@ -787,6 +791,8 @@
 		1863DA7C23012026000969FE /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */,
+				CC49F1C92322CA230052566B /* pdf_guideView_iconopen.pdf */,
 				770239A1230BFD2A00EE8C31 /* GuideView */,
 				CF20E25F231F89A200EEB9AD /* pdf_history_beingprocessed_icon.pdf */,
 				CF20E260231F89A300EEB9AD /* pdf_history_cancel_icon.pdf */,
@@ -1619,6 +1625,7 @@
 				CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */,
 				772D73D1230A86860068AB48 /* LogInVerifyCodeView.xib in Resources */,
 				CFC33F90230D1B2000C04207 /* pdf_collection_select.pdf in Resources */,
+				CC49F1CB2322CA230052566B /* pdf_guideView_iconopen.pdf in Resources */,
 				7702399B230BE88C00EE8C31 /* pdf_home_packUp_icon.pdf in Resources */,
 				7715018A2311176B0016B449 /* HomeRefundListCell.xib in Resources */,
 				CF62651F23152734001AF5FC /* CLMeTableViewCell.xib in Resources */,
@@ -1651,6 +1658,7 @@
 				77BE820F23151C4A00519F66 /* HomeChangePayeeCell.xib in Resources */,
 				77DD6BB12313D98F00BFDD11 /* HomeSureInfoEditCell.xib in Resources */,
 				18FEAD61231E6BD000844806 /* pdf_IDR.pdf in Resources */,
+				CC49F1CC2322CA230052566B /* pdf_guideView_iconclose.pdf in Resources */,
 				CF48882E23164F3400582B44 /* Localizable.strings in Resources */,
 				CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */,
 				77047E0C231676E6000453A0 /* pdf_home_payType_payNow.pdf in Resources */,

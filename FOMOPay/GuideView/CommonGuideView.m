@@ -27,6 +27,8 @@
 @property (nonatomic, strong) UIButton *languageButton1;
 @property (nonatomic, strong) NSArray *LabelArr;
 @property (nonatomic, strong) NSArray *mCenterArr;
+@property (nonatomic,strong)    UIPageControl *pageControl;
+@property (nonatomic, strong) UIButton *mButton;
 @end
 
 @implementation CommonGuideView
@@ -50,6 +52,30 @@
     
     return self;
 }
+- (void)initialView{
+    
+    self.backgroundColor = [UIColor whiteColor];
+    
+    //    [[NSUserDefaults standardUserDefaults] setObject:@"简体中文" forKey:kLanguageKey];
+    //    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //初始化数据
+    //    _imageNameArray = [NSArray arrayWithObjects:@"pdf.guideView_icon_china_1", @"pdf.guideView_icon_china_2", @"pdf.guideView_icon_china_3",@"pdf.guideView_icon_china_4", nil];
+    _englishImageNameArray = [NSArray arrayWithObjects:@"pdf.guideView_icon_english_1", @"pdf.guideView_icon_english_2", @"pdf.guideView_icon_english_3",@"pdf.guideView_icon_english_4", nil];
+    _imageNameArray = [NSArray arrayWithObjects:@"pdf_guideView_one_icon",
+                       @"pdf_guideView_two_icon",
+                       @"pdf_guideView_three_icon",
+                       @"pdf_guideView_four_icon",
+                       nil];
+    [self loadMyScrollView];
+    
+    [self loadEnterButton];
+    
+    [self loadChangeLanguageView];
+    
+    [self LoadPageContron];
+}
+
 
 
 
@@ -90,13 +116,9 @@
     [_myScrollView addSubview:bgtwoView];
     [_myScrollView addSubview:bgthreeView];
     [_myScrollView addSubview:bgfourView];
-//    [self loadImageView];
+    
     for(int i=0;i<4;i++){
-//        UIPageControl *mPageControl = [UIPageControl new];
-//        mPageControl.numberOfPages = 4;
-//        mPageControl.currentPageIndicatorTintColor = ssRGBHex(0x006ED9);
-//        mPageControl.pageIndicatorTintColor = ssRGBHex(0xFFFFFF);
-        
+       
         UIImageView *oneImg = [UIImageView new];
         
         
@@ -113,28 +135,24 @@
         twoLabl.font = kCommonFont(18);
         twoLabl.textColor = ssRGBHex(0xffffff);
         twoLabl.textAlignment = NSTextAlignmentCenter;
-//        [oneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(oneImg.mas_bottom).offset(38.5);
-//
-//        }];
         
         
-        UIButton *mButton  = [UIButton new];
-        mButton.titleLabel.font = kCommonFont(17);
-        mButton.layer.cornerRadius = 20;
-        mButton.layer.borderWidth = 1;
-        mButton.layer.borderColor = ssRGBHex(0xffffff).CGColor;
-        mButton.backgroundColor = [UIColor clearColor];
-        [mButton setTitle:languageStr(@"Begin") forState:UIControlStateNormal];
-        [mButton setTitleColor:ssRGBHex(0xffffff) forState:UIControlStateNormal];
+        self.mButton  = [UIButton new];
+        self.mButton.titleLabel.font = kCommonFont(17);
+        self.mButton.layer.cornerRadius = 20;
+        self.mButton.layer.borderWidth = 1;
+        self.mButton.layer.borderColor = ssRGBHex(0xffffff).CGColor;
+        self.mButton.backgroundColor = [UIColor clearColor];
+        [self.mButton setTitle:languageStr(@"Begin") forState:UIControlStateNormal];
+        [self.mButton setTitleColor:ssRGBHex(0xffffff) forState:UIControlStateNormal];
             if(i==0){
-           
+            
             twoLabl.hidden = YES;
             oneImg.image=[UIImage yh_imageNamed:@"pdf_guideView_one_icon"];
             oneLabel.text = languageStr(@"Guideone");
             [bgoneView addSubview:oneImg];
             [bgoneView addSubview:oneLabel];
-            [bgoneView addSubview:mButton];
+            [bgoneView addSubview:self.mButton];
                
                 [oneImg mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.top.equalTo(bgoneView).mas_offset(240);
@@ -147,7 +165,7 @@
                     make.top.equalTo(oneImg.mas_bottom).mas_offset(37.6);
                 make.centerX.equalTo(oneImg);
                 }];
-            [mButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            [self.mButton mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.bottom.equalTo(bgoneView).mas_offset(-BottomHeight - 15);
                     make.height.offset(40);
                     make.width.offset(125);
@@ -158,12 +176,13 @@
                 
                 
         }else if(i==1){
+            
             oneImg.image=[UIImage yh_imageNamed:@"pdf_guideView_two_icon"];
             twoLabl.text=languageStr(@"Simpleststeps");
             oneLabel.text = languageStr(@"Convenient");
             [bgtwoView addSubview:oneImg];
             [bgtwoView addSubview:oneLabel];
-            [bgtwoView addSubview:mButton];
+            [bgtwoView addSubview:self.mButton];
             [bgtwoView addSubview:twoLabl];
             [oneImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(bgtwoView).mas_offset(240);
@@ -176,7 +195,7 @@
                 make.top.equalTo(oneImg.mas_bottom).mas_offset(37.6);
                 make.centerX.equalTo(oneImg);
             }];
-            [mButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            [self.mButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(bgtwoView).mas_offset(-BottomHeight - 15);
                 make.height.offset(40);
                 make.width.offset(125);
@@ -195,7 +214,7 @@
             oneLabel.text = languageStr(@"Credible");
             [bgthreeView addSubview:oneImg];
             [bgthreeView addSubview:oneLabel];
-            [bgthreeView addSubview:mButton];
+            [bgthreeView addSubview:self.mButton];
             [bgthreeView addSubview:twoLabl];
             [oneImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(bgthreeView).mas_offset(240);
@@ -208,7 +227,7 @@
                 make.top.equalTo(oneImg.mas_bottom).mas_offset(37.6);
                 make.centerX.equalTo(oneImg);
             }];
-            [mButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            [self.mButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(bgthreeView).mas_offset(-BottomHeight - 15);
                 make.height.offset(40);
                 make.width.offset(125);
@@ -226,7 +245,7 @@
             oneLabel.text = languageStr(@"Comprehensive");
             [bgfourView addSubview:oneImg];
             [bgfourView addSubview:oneLabel];
-            [bgfourView addSubview:mButton];
+            [bgfourView addSubview:self.mButton];
             [bgfourView addSubview:twoLabl];
             [oneImg mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(bgfourView).mas_offset(240);
@@ -239,7 +258,7 @@
                 make.top.equalTo(oneImg.mas_bottom).mas_offset(37.6);
                 make.centerX.equalTo(oneImg);
             }];
-            [mButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            [self.mButton mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(bgfourView).mas_offset(-BottomHeight - 15);
                 make.height.offset(40);
                 make.width.offset(125);
@@ -255,54 +274,6 @@
     }
     
     
-    //加载引导页里面的内容
-//    UIImageView *oneImg = [UIImageView new];
-//    oneImg.image=[UIImage yh_imageNamed:@"pdf_guideView_one_icon"];
-//    [bgoneView addSubview:oneImg];
-//
-//    UILabel *oneLabel = [UILabel new];
-//    oneLabel.numberOfLines = 0;
-//    oneLabel.text = languageStr(@"Guideone");
-//    oneLabel.font =  [UIFont fontWithName:@"PingFangSC-Semibold"size:22];
-//    oneLabel.textAlignment = NSTextAlignmentCenter;
-//    [bgoneView addSubview:oneLabel];
-//    
-//    
-//    [oneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(oneImg.mas_bottom).offset(38.5);
-//
-//    }];
-//    [oneImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(bgoneView).mas_offset(240);
-////        make.centerY.equalTo(bgoneView);
-//        make.centerX.equalTo(bgoneView);
-//        make.height.offset(91.35);
-//        make.width.offset(95);
-//    }];
-//    [self loadPageControl];
-    
-    
-    UIPageControl * pageControl = [[UIPageControl alloc]init];
-    pageControl.numberOfPages = 4;
-    pageControl.currentPageIndicatorTintColor = ssRGBHex(0x006ED9);
-    pageControl.pageIndicatorTintColor = ssRGBHex(0xFFFFFF);
-//    pageControl = [[UIPageControl alloc]init];
-    
-    
-//    CGSize pageControlSize = [pageControl sizeForNumberOfPages:4];
-    
-    
-    
-    pageControl.currentPage = 0;
-    
-//    pageControl.currentPageIndicatorTintColor = [UIColor greenColor];
-    
-//    pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    
-    [self addSubview:pageControl];
-    
-//    [self bringSubviewToFront: pageControl];
-    
 }
 
 
@@ -314,114 +285,151 @@
 
 
 
-- (void)loadImageView{
-    WS(weakSelf);
-    NSMutableArray *arr = [NSMutableArray new];
-    
-    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
-    if ([string isEqualToString:@"English"]) {
-        
-        [arr addObjectsFromArray:_englishImageNameArray];
-
-    }else{
-        
-        [arr addObjectsFromArray:_imageNameArray];
-    }
-    //添加图片
-    for (int i = 0; i < arr.count; i++) {
-//        NSString *centerimageName = [arr objectAtIndex:i];
+//- (void)loadImageView{
+//    WS(weakSelf);
+//    NSMutableArray *arr = [NSMutableArray new];
 //
-//        UIImageView *centerImg = [[UIImageView alloc]init];
-        NSString *imageName = [arr objectAtIndex:i];
-
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_myScrollView.frame.size.width*i, 0, _myScrollView.frame.size.width, _myScrollView.frame.size.height)];
-        
-        
-        imageView.image = [UIImage yh_imageNamed:imageName];
-        
-        imageView.userInteractionEnabled = YES;
-        
-        
-//        [_myScrollView addSubview:imageView];
-//        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(weakSelf.myScrollView).mas_offset(240);
-//            make.left.equalTo(weakSelf.myScrollView).mas_offset(140);
-//            make.right.equalTo(weakSelf.myScrollView).mas_offset(-140)
-//        }];
-        
-        
-//        centerImg.image = [UIImage yh_imageNamed:centerimageName];
-        
-//        centerImg.image = [UIImage yh_imageNamed:centerimageName];
-//        centerImg.userInteractionEnabled = YES;
+//    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
+//    if ([string isEqualToString:@"English"]) {
 //
-//        [_myScrollView addSubview:centerImg];
-//        [centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(weakSelf.myScrollView).mas_offset(240);
-//            make.left.equalTo(weakSelf.myScrollView).mas_offset(140);
-//            make.right.equalTo(weakSelf.myScrollView).mas_offset(-140);
-//        }];
-    }
-}
+//        [arr addObjectsFromArray:_englishImageNameArray];
+//
+//    }else{
+//
+//        [arr addObjectsFromArray:_imageNameArray];
+//    }
+//    //添加图片
+//    for (int i = 0; i < arr.count; i++) {
+////        NSString *centerimageName = [arr objectAtIndex:i];
+////
+////        UIImageView *centerImg = [[UIImageView alloc]init];
+//        NSString *imageName = [arr objectAtIndex:i];
+//
+//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_myScrollView.frame.size.width*i, 0, _myScrollView.frame.size.width, _myScrollView.frame.size.height)];
+//
+//
+//        imageView.image = [UIImage yh_imageNamed:imageName];
+//
+//        imageView.userInteractionEnabled = YES;
+//
+//
+////        [_myScrollView addSubview:imageView];
+////        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+////            make.top.equalTo(weakSelf.myScrollView).mas_offset(240);
+////            make.left.equalTo(weakSelf.myScrollView).mas_offset(140);
+////            make.right.equalTo(weakSelf.myScrollView).mas_offset(-140)
+////        }];
+//
+//
+////        centerImg.image = [UIImage yh_imageNamed:centerimageName];
+//
+////        centerImg.image = [UIImage yh_imageNamed:centerimageName];
+////        centerImg.userInteractionEnabled = YES;
+////
+////        [_myScrollView addSubview:centerImg];
+////        [centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
+////            make.top.equalTo(weakSelf.myScrollView).mas_offset(240);
+////            make.left.equalTo(weakSelf.myScrollView).mas_offset(140);
+////            make.right.equalTo(weakSelf.myScrollView).mas_offset(-140);
+////        }];
+//    }
+//}
 
-- (void)initialView{
+
+
+
+
+-(void)LoadPageContron{
+    self.pageControl = [[UIPageControl alloc]init];
+    self.pageControl.numberOfPages = 4;
+    self.pageControl.currentPage = 0;
+    self.pageControl.currentPageIndicatorTintColor = ssRGBHex(0x006ED9);
+    self.pageControl.pageIndicatorTintColor = ssRGBHex(0xFFFFFF);
+    [self addSubview:self.pageControl];
     
-    self.backgroundColor = [UIColor whiteColor];
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.bottom.equalTo(self.mButton.mas_top).offset(-15);
+        make.height.offset(8);
+        make.width.offset(44);
+        
+    }];
     
-    //    [[NSUserDefaults standardUserDefaults] setObject:@"简体中文" forKey:kLanguageKey];
-    //    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    //初始化数据
-//    _imageNameArray = [NSArray arrayWithObjects:@"pdf.guideView_icon_china_1", @"pdf.guideView_icon_china_2", @"pdf.guideView_icon_china_3",@"pdf.guideView_icon_china_4", nil];
-    _englishImageNameArray = [NSArray arrayWithObjects:@"pdf.guideView_icon_english_1", @"pdf.guideView_icon_english_2", @"pdf.guideView_icon_english_3",@"pdf.guideView_icon_english_4", nil];
-    _imageNameArray = [NSArray arrayWithObjects:@"pdf_guideView_one_icon",
-                                        @"pdf_guideView_two_icon",
-                                        @"pdf_guideView_three_icon",
-                                        @"pdf_guideView_four_icon",
-                                nil];
-    [self loadMyScrollView];
-    
-    [self loadEnterButton];
-    
-    [self loadChangeLanguageView];
 }
 
 
 - (void)loadEnterButton{
-    
+    WS(weakSelf);
     _enterButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _enterButton.frame = CGRectMake((self.frame.size.width - 250)/2, self.frame.size.height - 100, 250, 200);
     [_enterButton setBackgroundColor:[UIColor clearColor]];
     _enterButton.hidden = NO;
-    [self addSubview:_enterButton];
-    
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - 135, 60, 99, 20)];
-    _titleLabel.text = languageStr(@"Language");
-    _titleLabel.textColor = [UIColor blackColor];
-    _titleLabel.textAlignment = NSTextAlignmentRight;
-    _titleLabel.font = kCommonFont(14);
-    [self addSubview:_titleLabel];
-    
-    _showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 7, 67, 12, 7)];
-    _showImageView.image = [UIImage yh_imageNamed:@""];
-    [self addSubview:_showImageView];
-    
+    [weakSelf addSubview:_enterButton];  //底部按钮事件
     _chageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _chageButton.frame = CGRectMake(self.frame.size.width - 135, 55, 120, 30);
+//    _chageButton.frame = CGRectMake(self.frame.size.width - 135, 55, 120, 30);
     [_chageButton setBackgroundColor:[UIColor clearColor]];
     [_chageButton addTarget:self action:@selector(changeButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_chageButton];
+    [_chageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf).mas_offset(0);
+        make.top.equalTo(weakSelf).mas_offset(55);
+        make.height.offset(30);
+        make.width.offset(120);
+    }];
+
+          //选择语言图标
+    _showImageView = [[UIImageView alloc] init];
+//                      WithFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame) + 7, 67, 12, 7)];
+    _showImageView.backgroundColor = [UIColor clearColor];
+    _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconopen"];
+    //    _showImageView.image = [_boolArr[section] boolValue] ?
+    //    [UIImage yh_imageNamed:@"pdf_collection_shrink.pdf"] :
+    //    [UIImage yh_imageNamed:@"pdf_collection_unfold.pdf"];
+    [_chageButton addSubview:_showImageView];
+    [_showImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf).offset(67);
+        make.right.equalTo(weakSelf).mas_offset(-17);
+        make.height.offset(7);
+        make.width.offset(12);
+    }];
+    
+    _titleLabel = [[UILabel alloc] init];
+//WithFrame:CGRectMake(self.frame.size.width - 135, 60, 99, 20)];
+    _titleLabel.text = languageStr(@"Language");
+    _titleLabel.textColor = ssRGBHex(0xFFFFFF);
+    _titleLabel.textAlignment = NSTextAlignmentRight;
+    _titleLabel.font = kCommonFont(14);
+    [_chageButton addSubview:_titleLabel];
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf).offset(63);
+//        make.right.equalTo(weakSelf.showImageView.mas_left).offset(-7);
+        make.right.equalTo(weakSelf.showImageView.mas_left).mas_offset(-8);
+//        make.right.equalTo(weakSelf);
+        make.height.offset(15);
+
+    }];
+    
+    
+    
+    
 }
 
+
 - (void)loadChangeLanguageView{
-    
-    _languageView = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width - 120, 86, 105, 87)];
+    WS(weakSelf);
+    _languageView = [[UIView alloc] init];
+//                     WithFrame:CGRectMake(self.frame.size.width - 120, 86, 105, 87)];
     _languageView.backgroundColor = [UIColor whiteColor];
     _languageView.alpha = 0.8;
     _languageView.hidden = YES;
     _languageView.layer.cornerRadius = 5.0;
     [self addSubview:_languageView];
-    
+    [_languageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.titleLabel.mas_bottom).mas_offset(8);
+        make.right.equalTo(weakSelf).offset(-15);
+        make.height.offset(87);
+        make.width.offset(105);
+    }];
     _languageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _languageButton.frame = CGRectMake(10, 0, 85, 44);
     [_languageButton setTitle:@"简体中文" forState:UIControlStateNormal];
@@ -453,16 +461,56 @@
 }
 
 - (void)changeButtonClicked:(UIButton *)sender{
+   
     
-    sender.selected = !sender.selected;
-    if (sender.selected == YES) {
-        
-        _languageView.hidden = NO;
-        
-    }else{
-        
+//    if(sender.selected == !sender.selected){
+//
+//              _languageView.hidden  = YES;
+//
+//
+//    }else{
+//        _languageView.hidden = NO;
+//         _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
+//        if(sender.selected !=sender.selected){
+//            sender.selected = sender.selected;
+//        }else{
+//            DebugLog(@"sender %i",sender.selected);
+//            sender.selected = 1;
+//            DebugLog(@"%i    sender",sender.selected);
+//        }
+//
+//    }
+    if(sender.selected){
         _languageView.hidden = YES;
+        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
+//        sender.selected = NO;
+    }else{
+        _languageView.hidden = NO;
+        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
+//        sender.selected = YES;
     }
+    sender.selected = !sender.selected;
+//    sender.selected = !sender.selected;
+    
+//
+//    sender.selected = !sender.selected;
+//    if (sender.selected == YES) {
+//
+//        _languageView.hidden = NO;
+//        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
+////        sender.selected = sender.selected;
+//
+//    }else{
+//
+//        _languageView.hidden = YES;
+//        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconopen"];
+//
+//
+//
+//    }
+//    sender.selected = sender.selected;
+    
+    
 }
 
 - (void)languageButtonClicked:(UIButton *)sender{
@@ -476,6 +524,9 @@
         _titleLabel.text = @"English";
         
     }
+    _chageButton.selected = NO;
+
+//    _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
     
     [[NSUserDefaults standardUserDefaults] setObject:_titleLabel.text forKey:kLanguageKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -492,7 +543,7 @@
     }
     
     _languageView.hidden = YES;
-    
+    _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconopen"];
     for (UIView *view in self.subviews) {
         
         if ([view isKindOfClass:[UIImageView class]]) {
@@ -501,7 +552,7 @@
         }
     }
     
-    [self loadImageView];
+//    [self loadImageView];
 }
 
 #pragma mark ---- UIScrollViewDelegate ----
@@ -516,16 +567,24 @@
         _titleLabel.hidden = NO;
         _showImageView.hidden = NO;
         _chageButton.hidden = NO;
-        
+         self.pageControl.currentPage = 0;
 //        _enterButton.hidden = NO;
-       
-
-    }else if (page == 3){
+    }else if(page == 1){
+        _titleLabel.hidden = YES;
+        _showImageView.hidden = YES;
+        _chageButton.hidden = YES;
+        _languageView.hidden = YES;
+        _chageButton.selected = NO;
+        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconopen"];
+        //        _enterButton.hidden = NO;
+        self.pageControl.currentPage = 1;
+    }else if (page == 2){
         
         _titleLabel.hidden = YES;
         _showImageView.hidden = YES;
         _chageButton.hidden = YES;
 //        _enterButton.hidden = NO;
+         self.pageControl.currentPage = 2;
         
     }else{
         
@@ -533,6 +592,7 @@
         _showImageView.hidden = YES;
         _chageButton.hidden = YES;
 //        _enterButton.hidden = YES;
+         self.pageControl.currentPage = 3;
     }
 }
 
