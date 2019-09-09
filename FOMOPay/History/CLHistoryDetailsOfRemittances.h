@@ -11,6 +11,7 @@
 
 
 @interface CLHistoryDetailsOfRemittances : BaseViewController
+@property (strong, nonatomic) WKOrderInfo *mItem;
 
 @end
 

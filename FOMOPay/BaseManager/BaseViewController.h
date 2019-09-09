@@ -11,6 +11,8 @@
 
 @interface BaseViewController : ViewController
 
+@property (assign,nonatomic) NSInteger mPage;
+
 @property (strong,nonatomic) NSString *mNavTitle;
 
 @property(nonatomic,strong)UIView *mView;

@@ -9,17 +9,11 @@
 #import "CLHistoryViewController.h"
 #import "CLHistoryRefundProgress.h"
 @interface CLHistoryViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic,strong)NSArray *mData;
+
 @end
 
 @implementation CLHistoryViewController
 
--(NSArray *)mData{
-    if(_mData == nil){
-        _mData = [NSArray new];
-    }
-    return _mData;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,35 +36,78 @@
         }
     }];
     [self LoadCellType:3];
-    _mData = @[@"a",@"a",@"a",@"a",@"a"];
-    [self LoadData];
+
     __weak typeof(self)  weakSelf = self;
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.mTabView reloadData];
-        
+        [weakSelf headerLoadData];
         [weakSelf.mTabView.mj_header endRefreshing];
     }];
     
     self.mTabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf.mTabView reloadData];
+        [weakSelf footerLoadData];
         [weakSelf.mTabView.mj_footer endRefreshing];
     }];
-    
-    // Do any additional setup after loading the view.
+    [self.mTabView.mj_header beginRefreshing];
 }
-
--(void)LoadData{
-    if(_mData == nil){
-        [self LoadNoDataView];//没有数据显示暂无历史消息界面
-    }else{
-        [self.mTabView reloadData];
+- (void)headerLoadData{
+    self.mPage--;
+    if (self.mPage<=1) {
+        self.mPage = 1;
     }
+    [self showLoading:nil];
+    
+    [WKNetWorkManager WKGetOrderList:@{@"skip":[NSString stringWithFormat:@"%ld",self.mPage],@"take":@"50"} block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        [self.DataSource removeAllObjects];
+        if (success) {
+            NSMutableArray *mTempArr = [NSMutableArray new];
+            NSDictionary *mResponse = [CLTool stringToDic:result];
+            if ([[mResponse objectForKey:@"orders"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dic in [mResponse objectForKey:@"orders"]) {
+                    
+                    [mTempArr addObject:[WKOrderInfo yy_modelWithDictionary:dic]];
+                }
+            }
+            [self.DataSource addObjectsFromArray:mTempArr];
+        }else{
+            TOASTMESSAGE(result);
+        }
+        if(self.DataSource.count <= 0){
+            [self LoadNoDataView];//没有数据显示暂无历史消息界面
+        }else{
+            [self.mTabView reloadData];
+        }
+    }];
 }
-
-
+- (void)footerLoadData{
+    self.mPage ++;
+    [self showLoading:nil];
+    
+    [WKNetWorkManager WKGetOrderList:@{@"skip":[NSString stringWithFormat:@"%ld",self.mPage],@"take":@"50"} block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            NSMutableArray *mTempArr = [NSMutableArray new];
+            NSDictionary *mResponse = [CLTool stringToDic:result];
+            if ([[mResponse objectForKey:@"orders"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dic in [mResponse objectForKey:@"orders"]) {
+                    
+                    [mTempArr addObject:[WKOrderInfo yy_modelWithDictionary:dic]];
+                }
+            }
+            [self.DataSource addObjectsFromArray:mTempArr];
+        }else{
+            TOASTMESSAGE(result);
+        }
+        if(self.DataSource.count <= 0){
+            [self LoadNoDataView];//没有数据显示暂无历史消息界面
+        }else{
+            [self.mTabView reloadData];
+        }
+    }];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _mData.count;
+    return self.DataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -78,19 +115,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     CLHiStoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if(cell == nil){
         cell = [[CLHiStoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    WKOrderInfo *mItem = self.DataSource[indexPath.row];
 ///////-----------------------
-//    [cell mCLHistoryHomeCellStyle:0];  /////样式0为处理中状态跟汇款中状态跟申请退款状态
-//    [cell mCLHistoryHomeCellStyle:1];  /////样式1为汇款出错状态
-//    [cell mCLHistoryHomeCellStyle:2];  /////样式2取消汇款状态
+    if ([CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Processing || [CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Refunding) {
+        [cell mCLHistoryHomeCellStyle:0];  /////样式0为处理中状态跟汇款中状态跟申请退款状态
+    }else if ([CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Fail){
+        [cell mCLHistoryHomeCellStyle:1];  /////样式1为汇款出错状态
+    }else if ([CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Cancel){
+        [cell mCLHistoryHomeCellStyle:2];  /////样式2取消汇款状态
+    }else if ([CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Sucess){
       [cell mCLHistoryHomeCellStyle:3];    /////样式3汇款完成跟退款成功状态
-    
-    
+    }else{
+        [cell mCLHistoryHomeCellStyle:1];  /////样式1为汇款出错状态
+    }
+    [cell setMItem:mItem];
     return cell;
 }
 
@@ -99,8 +144,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
 //    CLHistoryRefundProgress *vc =[CLHistoryRefundProgress new];
+    vc.mItem = self.DataSource[indexPath.row];
     [self pushToViewController:vc];
 }
 

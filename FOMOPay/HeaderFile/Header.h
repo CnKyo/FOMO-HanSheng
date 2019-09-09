@@ -45,3 +45,14 @@ typedef enum : NSUInteger {
     ///付款
     WKRemmitableStatus_pay,
 } WKRemmitableStatus;
+
+
+typedef enum : NSUInteger {
+    WKOrderStatus_Sucess,///汇款/退款成功
+    WKOrderStatus_Processing,///汇款中/退款中
+    WKOrderStatus_Refunding,///汇款中/退款中
+    WKOrderStatus_Cancel,///取消
+    WKOrderStatus_Fail,///失败
+    WKOrderStatus_Error1,///错误1
+    WKOrderStatus_Error2,///错误2
+} WKOrderStatusType;

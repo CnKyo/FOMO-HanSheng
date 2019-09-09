@@ -15,6 +15,7 @@
 #import "HomeSelectPayeeViewController.h"
 #import "CLMeClauseOfTreaty.h"
 #import "HomeSureInfoLIstCellone.h"
+#import "HomePayTypeViewController.h"
 @interface HomeSureInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -201,7 +202,7 @@
     }
     NSMutableDictionary *para = [NSMutableDictionary new];
     
-    [para setObject:[CLTool WKDicToJsonString:[self.mCurrentRemmitance yy_modelToJSONObject]] forKey:@"remittable"];
+    [para setObject:[self.mCurrentRemmitance yy_modelToJSONObject] forKey:@"remittable"];
     [para setObject:self.mItem.id forKey:@"recipientId"];
     [para setObject:@"PAYNOW" forKey:@"paymentType"];
     ///目的
@@ -212,8 +213,12 @@
     [WKNetWorkManager WKRemiitanceNow:para block:^(id result, BOOL success) {
         [self hiddenLoading];
         if (success) {
-            TOASTMESSAGE(@"您的汇款申请已成功提交!");
-            [self popToViewController:2];
+
+            NSDictionary *dic =  [CLTool stringToDic:result];
+            WKCreateOrderInfoObj *mOrderInfo = [WKCreateOrderInfoObj yy_modelWithDictionary:dic];
+            HomePayTypeViewController *vc = [HomePayTypeViewController new];
+            vc.mOrderInfo = mOrderInfo;
+            [self pushToViewController:vc];
         }else{
             TOASTMESSAGE(result);
         }

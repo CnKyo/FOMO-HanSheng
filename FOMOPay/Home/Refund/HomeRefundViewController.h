@@ -27,5 +27,7 @@ typedef void(^HomeRefundViewControllerBackBlock)(BOOL isRefresh);
 
 @property (nonatomic, assign) HomeRefundViewControllerPushType mPushType;
 
+@property (nonatomic, strong) WKRemiitableEntity *mCurrentRemmitance;
+
 @end
 

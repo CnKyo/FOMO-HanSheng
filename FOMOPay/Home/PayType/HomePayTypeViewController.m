@@ -28,7 +28,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
-    
+    self.title =@"支付方式";
+
     CLNavModel *mNewModel = [CLNavModel new];
     mNewModel.mTitle = @"支付方式";
     [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {

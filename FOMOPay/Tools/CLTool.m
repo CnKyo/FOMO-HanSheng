@@ -98,7 +98,18 @@
     NSError *parseError = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:mJsonDic options:NSJSONWritingPrettyPrinted error:&parseError];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    return jsonString;
+    
+    
+    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除掉首尾的空白字符和换行字符
+
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"\\|\n|\r|\t"];
+    NSString *newJson = [[jsonString componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
+    
+    return newJson;
 }
 
 
@@ -123,6 +134,36 @@
     }
 }
 
-
+#pragma mark----****----获取订单状态
+/**
+ 获取订单状态
+ 
+ @param status 状态
+ @return 返回说明
+ */
++ (WKOrderStatusType)WKGetOrderStatus:(NSString *)status{
+    if ([status isEqualToString:@"pending"]) {
+        return WKOrderStatus_Processing;
+    }else if([status isEqualToString:@"processing"]){
+        return WKOrderStatus_Processing;
+    }else if([status isEqualToString:@"remitting"]){
+        return WKOrderStatus_Processing;
+    }else if([status isEqualToString:@"successful"]){
+        return WKOrderStatus_Sucess;
+    }else if([status isEqualToString:@"failed"]){
+        return WKOrderStatus_Fail;
+    }else if([status isEqualToString:@"refunding"]){
+        return WKOrderStatus_Refunding;
+    }else if([status isEqualToString:@"refunded"]){
+        return WKOrderStatus_Sucess;
+    }else if([status isEqualToString:@"cancelled"]){
+        return WKOrderStatus_Cancel;
+    }else if([status isEqualToString:@"error1"]){
+        return WKOrderStatus_Error1;
+    }else{
+        ///error2
+        return WKOrderStatus_Error2;
+    }
+}
 
 @end

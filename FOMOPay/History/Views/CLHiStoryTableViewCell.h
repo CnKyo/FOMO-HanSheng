@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *mMoney;
 @property (weak, nonatomic) IBOutlet UILabel *mStatus;
 - (void)mCLHistoryHomeCellStyle:(NSInteger)Type;
+
+@property (strong, nonatomic) WKOrderInfo *mItem;
+
 @end
 
 NS_ASSUME_NONNULL_END

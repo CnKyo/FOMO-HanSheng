@@ -367,7 +367,7 @@
  @param block 返回值
  */
 + (void)WKRemiitanceNow:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
-    [self newPostWithUrl:kStartRemiitance para:para block:^(id result, BOOL success) {
+    [self newPostWithUrl:kAboutOrder para:para block:^(id result, BOOL success) {
         block(result,success);
     }];
 }
@@ -381,6 +381,43 @@
 + (void)WKDeleteRecipient:(NSString *)para block:(void(^)(id result,BOOL success))block{
     
     WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:@{} andUrl:[NSString stringWithFormat:@"%@%@",kGetRecipientDetail,para] andRequestMethod:YTKRequestMethodDELETE];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
+    }];
+}
+
+#pragma  mark----****----查询订单列表
+/**
+ 查询订单列表
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetOrderList:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self newGetWithUrl:kOrderList para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
+#pragma  mark----****----获取订单详情
+/**
+ 获取订单详情
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetOrderDetail:(NSString *)para block:(void(^)(id result,BOOL success))block{
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:@{} andUrl:[NSString stringWithFormat:@"%@/%@",kAboutOrder,para] andRequestMethod:YTKRequestMethodGET];
     [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         DebugLog(@"请求的结果是:%@",request.responseString);
         block(request.responseString,YES);

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Header.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLTool : NSObject
@@ -36,6 +36,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark----****----返回一个图片的名字
 + (NSString *)GetCountryLogo:(NSString *)text;
+#pragma mark----****----获取订单状态
+/**
+ 获取订单状态
+
+ @param status 状态
+ @return 返回说明
+ */
++ (WKOrderStatusType)WKGetOrderStatus:(NSString *)status;
+
 @end
 
 NS_ASSUME_NONNULL_END
