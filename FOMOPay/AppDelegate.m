@@ -10,7 +10,7 @@
 
 #import "CommonGuideViewController.h"
 #import "LogInViewController.h"
-
+#import "WKLoginManager.h"
 @interface AppDelegate ()
 
 @property (nonatomic, assign) BOOL isLoadGuide;
@@ -34,15 +34,12 @@
         
     }else{
         
-        _isLogIn = [[NSUserDefaults standardUserDefaults] objectForKey:kLogInKey];
+//        _isLogIn = [[NSUserDefaults standardUserDefaults] objectForKey:kLogInKey];
         
-        if (_isLogIn) {
-
+        if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_loginSuccess) {
             CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
             [self.window setRootViewController:tabbarConfig.tabBarController];
-
         }else{
-        
             UINavigationController *mNavHomeController = [[UINavigationController alloc] initWithRootViewController:[LogInViewController new]];
             self.window.rootViewController = mNavHomeController;
         }

@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LogInVerifyViewController : BaseViewController
 
 @property (nonatomic, copy) NSString *mobile;
-
 @end
 
 NS_ASSUME_NONNULL_END

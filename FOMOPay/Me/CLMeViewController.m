@@ -7,7 +7,7 @@
 //
 
 #import "CLMeViewController.h"
-
+#import "WKLoginManager.h"
 @interface CLMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *personalTableView;
 @property (nonatomic,strong) NSArray *mMeDataSource;
@@ -171,12 +171,12 @@
         CLMeMessageViewController *vc = [CLMeMessageViewController new];
         [self pushToViewController:vc];
     }else {
- 
+        
         [self showLoading:@"log outing..."];
         [WKNetWorkManager WKLogOut:^(id result,BOOL success) {
             [self hiddenLoading];
             if (success) {
-         
+
             }else{
                 TOASTMESSAGE([NSString stringWithFormat:@"%@",result]);
             }
@@ -184,6 +184,7 @@
             LogInViewController *vc = [LogInViewController new];
             [self pushToViewController:vc];
         }];
+
     }
 }
 }

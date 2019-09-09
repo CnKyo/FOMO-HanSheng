@@ -7,11 +7,11 @@
 //
 
 #import "CLHomeViewController.h"
-
 #import "HomeListCell.h"
 #import "HomeDataObject.h"
 #import "HomeRefundViewController.h"
 #import "HomeSelectPayeeViewController.h"
+#import "WKLoginManager.h"
 @interface CLHomeViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -38,6 +38,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    [self checkLoginStatus];
     [self loadConfig];
 }
 - (void)loadConfig{
@@ -79,6 +80,16 @@
 //            TOASTMESSAGE(result);
 //        }
 //    }];
+}
+
+
+- (void)checkLoginStatus{
+    if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_unLogin) {
+        [[WKLoginManager shareInstance] presentLoginViewController:^{
+            //            [[WKTabbarManager shareInstance] showHomePage];
+        }];
+        
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

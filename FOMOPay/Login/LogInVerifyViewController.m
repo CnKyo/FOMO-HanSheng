@@ -7,7 +7,7 @@
 //
 
 #import "LogInVerifyViewController.h"
-
+#import "WKLoginViewManager.h"
 #import "LogInVerifyCodeView.h"
 #import "AppDelegate.h"
 
@@ -81,7 +81,7 @@
 }
 
 - (void)verifyCode:(NSString *)code{
-    
+    WS(weakSelf);
     NSMutableDictionary *para = [NSMutableDictionary new];
     [para setObject:self.mobile forKey:@"ic"];
     [para setObject:code forKey:@"otp"];
@@ -91,7 +91,11 @@
         if (success) {
             DebugLog(@"得到的Token是:%@",token);
             [[WKAccountManager shareInstance] WKSetToken:token];
-
+//            [[WKLoginViewManager shareInstance]WKGotoLoginWithCurrentVC:self          didFinishLogin:^{
+////
+//                } didForgetPwd:^{
+////
+//            }];
             [self goLogin];
 
         }else{
@@ -105,9 +109,10 @@
 }
 
 - (void)goLogin{
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kLogInKey];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.verifyCodeView removeFromSuperview];
+//    self.view.hidden = YES;
     AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     CLMainTabBarControllerConfig *tabbarConfig = [CLMainTabBarControllerConfig new];
     [appdelegate.window setRootViewController:tabbarConfig.tabBarController];
