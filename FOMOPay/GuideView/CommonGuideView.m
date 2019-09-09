@@ -518,10 +518,12 @@
     if (sender.tag == 102) {
         
         _titleLabel.text = @"简体中文";
+//         [LocalizationManager setUserlanguage:@"zh-Hans"];
        
     }else{
         
         _titleLabel.text = @"English";
+//         [LocalizationManager setUserlanguage:@"en"];
         
     }
     _chageButton.selected = NO;
@@ -561,6 +563,7 @@
     //根据scrollviewW的滚动位置显示page的第几页
     CGFloat scrollW = scrollView.frame.size.width;
     int page = (scrollView.contentOffset.x + scrollW * 0.5) / scrollW;
+    scrollView.bounces= (scrollView.contentOffset.y<=0) ?NO:YES;
     
     if (page == 0) {
         
@@ -568,7 +571,13 @@
         _showImageView.hidden = NO;
         _chageButton.hidden = NO;
          self.pageControl.currentPage = 0;
-//        _enterButton.hidden = NO;
+        
+        
+        
+//         [self.contentView setContentSize:CGSizeMake(0, 0)];
+//        [self.myScrollView setContentSize:CGSizeMake(0, _myScrollView.frame.size.height)];
+//        [scrollView setContentOffset:CGPointMake(0, scrollView.contentOffset.y) animated:NO];
+//        _enterBut®ton.hidden = NO;
     }else if(page == 1){
         _titleLabel.hidden = YES;
         _showImageView.hidden = YES;
@@ -593,6 +602,13 @@
         _chageButton.hidden = YES;
 //        _enterButton.hidden = YES;
          self.pageControl.currentPage = 3;
+        
+//        if(scrollView.contentOffset.x >0){
+//            [self.myScrollView setContentSize:CGSizeMake(0, 0)];
+//            [self.myScrollView setContentOffset:CGPointMake(kScreenWidth * 3, 0)];
+////            [scrollView setContentOffset:CGPointMake(0, scrollView.contentOffset.y) animated:NO];
+////            [scrollView setContentOffset:CGPointMake(self.myScrollView.frame.size.width * 3, 0)];
+//        }
     }
 }
 

@@ -34,12 +34,16 @@
 
         
     }else if(Type == 1){
-        self.layer.borderWidth = 1;
+//        self.layer.borderWidth = 1;
         self.layer.borderColor =(ssRGBHex(0xffffff).CGColor);
         self.layer.cornerRadius= 8;
         self.layer.masksToBounds = YES;
         self.mSelectImg.hidden = YES;
         self.mLogoImg.layer.cornerRadius = 20;
+        self.layer.shadowColor = ssRGBHex(0x000000).CGColor;
+        self.layer.shadowOffset = CGSizeMake(0, 1);
+        self.layer.shadowOpacity = 0.2;
+        self.clipsToBounds = false;
         
     }
 }

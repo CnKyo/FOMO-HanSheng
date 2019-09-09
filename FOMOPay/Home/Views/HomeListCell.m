@@ -50,13 +50,14 @@
 @property (nonatomic, strong) NSString *mOut;
 @property (nonatomic, strong) NSString *mIn;
 
+
+
 @end
 
 @implementation HomeListCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     self.mOut = @"SGD";
     self.mIn = @"CNY";
     
@@ -69,7 +70,7 @@
     }
     _exchangeRateLabel.text = mRate;
     
-    _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+    _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
     _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
     
     _logoImage.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2"];
@@ -83,14 +84,14 @@
     [_myTextField1 addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [_myTextField2 addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 
-    _valueView.layer.borderWidth = 1;
-    _valueView.layer.borderColor = kLoginTitleColor.CGColor;
+    _valueView.layer.borderWidth = 2;
+    _valueView.layer.borderColor = ssRGBHex(0x005CB6).CGColor;
 
-    _valueView1.layer.borderWidth = 1;
-    _valueView1.layer.borderColor = kCommonColor(213, 0, 55, 1).CGColor;
+    _valueView1.layer.borderWidth = 2;
+    _valueView1.layer.borderColor = ssRGBHex(0xD50037).CGColor;
     
-    _valueView2.layer.borderWidth = 1;
-    _valueView2.layer.borderColor = kCommonColor(127, 127, 127, 1).CGColor;
+    _valueView2.layer.borderWidth = 2;
+    _valueView2.layer.borderColor = ssRGBHex(0x7F7F7F).CGColor;
     
     _exchangeRateButton.enabled = NO;
     _exchangeRateButton.layer.cornerRadius = 5.0;
@@ -109,6 +110,8 @@
     _myCollectionView.dataSource = self;
     
     [_myCollectionView registerNib:[UINib nibWithNibName:@"HomeListCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"HomeListCollectionCell"];
+    
+    
 }
 
 - (void)setType:(HomeListCellType)type{
@@ -242,7 +245,7 @@
         }else{
             
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
-            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+//            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
             _changeCountryButton.selected = NO;
         }
         _CountryView.hidden = NO;
@@ -289,14 +292,17 @@
         
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeListCollectionCell" forIndexPath:indexPath];
     }
+    if(indexPath.section == 0){
+      
+    }
     
-   
     cell.iconImage.image = [UIImage yh_imageNamed:_array1[indexPath.row]];
     cell.unitLabel.text = _array2[indexPath.row];
     cell.nameLabel.text = _array3[indexPath.row];
 
     return cell;
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *mUnit = _array2[indexPath.row];

@@ -187,6 +187,8 @@
 		CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */; };
 		CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48882523164B5B00582B44 /* LocalizationManager.m */; };
 		CF48882E23164F3400582B44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF48883023164F3500582B44 /* Localizable.strings */; };
+		CF5A794D2325F45E0006AF82 /* CLMeLanguage_other.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A794B2325F45E0006AF82 /* CLMeLanguage_other.m */; };
+		CF5A794E2325F45E0006AF82 /* CLMeLanguage_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5A794C2325F45E0006AF82 /* CLMeLanguage_other.xib */; };
 		CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */; };
 		CF5A8C542306A1DE00745FE9 /* pdf_me_callme.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */; };
 		CF5A8C552306A1DE00745FE9 /* pdf_me_logout.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */; };
@@ -542,6 +544,9 @@
 		CF48882D23164F2E00582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		CF48882F23164F3500582B44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF48883123164F3800582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CF5A794A2325F45E0006AF82 /* CLMeLanguage_other.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMeLanguage_other.h; sourceTree = "<group>"; };
+		CF5A794B2325F45E0006AF82 /* CLMeLanguage_other.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMeLanguage_other.m; sourceTree = "<group>"; };
+		CF5A794C2325F45E0006AF82 /* CLMeLanguage_other.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLMeLanguage_other.xib; sourceTree = "<group>"; };
 		CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_userImage.pdf; sourceTree = "<group>"; };
 		CF5A8C4F2306A1DD00745FE9 /* pdf_me_callme.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_callme.pdf; sourceTree = "<group>"; };
 		CF5A8C502306A1DD00745FE9 /* pdf_me_logout.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_logout.pdf; sourceTree = "<group>"; };
@@ -811,7 +816,6 @@
 				CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */,
 				CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */,
 				CF2C42AC230E944500A16732 /* pdf_collection_hint_success.pdf */,
-				7702399A230BE88C00EE8C31 /* pdf_home_packUp_icon.pdf */,
 				CFC33F8F230D1B2000C04207 /* pdf_collection_select.pdf */,
 				772D73D9230A9C0F0068AB48 /* pdf_pass_code_select.pdf */,
 				772D73D8230A9C0F0068AB48 /* pdf_pass_code_unselect.pdf */,
@@ -839,6 +843,7 @@
 				CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */,
 				CF36E26A23025DAF00F1AE2B /* pdf_home_transfer_2.pdf */,
 				CFE796582301548E004C09C4 /* pdf_home_title.pdf */,
+				7702399A230BE88C00EE8C31 /* pdf_home_packUp_icon.pdf */,
 				CF36E273230299B600F1AE2B /* pdf_home_cell_out.pdf */,
 			);
 			path = ImageResource;
@@ -1433,6 +1438,9 @@
 				CF62651823152734001AF5FC /* CLMeLanguage.h */,
 				CF62651B23152734001AF5FC /* CLMeLanguage.m */,
 				CF62651C23152734001AF5FC /* CLMeLanguage.xib */,
+				CF5A794A2325F45E0006AF82 /* CLMeLanguage_other.h */,
+				CF5A794B2325F45E0006AF82 /* CLMeLanguage_other.m */,
+				CF5A794C2325F45E0006AF82 /* CLMeLanguage_other.xib */,
 				CF62651D23152734001AF5FC /* CLMeSwitchLanguage.h */,
 				CF62651923152734001AF5FC /* CLMeSwitchLanguage.m */,
 				CF62651A23152734001AF5FC /* CLMeSwitchLanguage.xib */,
@@ -1634,6 +1642,7 @@
 				CF2C42B0230E944700A16732 /* pdf_collection_hint_delete.pdf in Resources */,
 				CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */,
 				CF6BBB5E2303ACD400EB5BBB /* pdf_home_me_tabbarselected.pdf in Resources */,
+				CF5A794E2325F45E0006AF82 /* CLMeLanguage_other.xib in Resources */,
 				CF930D3323210FB5000D4618 /* HomeSureInfoLIstCellone.xib in Resources */,
 				77BE8207231518FB00519F66 /* pdf_home_selectPayee_icon.pdf in Resources */,
 				7702398D230B83C100EE8C31 /* HomeListCell.xib in Resources */,
@@ -1835,6 +1844,7 @@
 				CF930D3723211ED9000D4618 /* WKLoginManager.m in Sources */,
 				1863DA4B23011A07000969FE /* AppDelegate.m in Sources */,
 				CF2A16C3231E70E4007E110D /* CLHistoryCertificateOfRemittance.m in Sources */,
+				CF5A794D2325F45E0006AF82 /* CLMeLanguage_other.m in Sources */,
 				CF6264FF23152625001AF5FC /* CLCollectionAddSelectTableView.m in Sources */,
 				CF25C3472321F072000311DC /* WKLoginViewManager.m in Sources */,
 				7715017F2310E07D0016B449 /* CommonGuideViewController.m in Sources */,

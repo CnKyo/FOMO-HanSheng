@@ -28,6 +28,5 @@ typedef void(^HomeListCellDidSelectedCurrenceCodeBlock)(NSString *mOut,NSString 
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UITextField *myTextField1;
 @property (weak, nonatomic) IBOutlet UITextField *myTextField2;
-
 @end
 

@@ -28,16 +28,21 @@
                 break;
         }
     }];
-    [self LoadCellType:6];
+    [self LoadCellType:11];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-     CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    CLMeLanguage_other *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[CLMeLanguage_other alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.mMeLanguageLeftLabel.text = @"消息权限";
+    cell.mMeLanguageLeftLabel.textColor = ssRGBHex(0x2B2B2B);
     self.MessageSwitch = [UISwitch new];
     self.MessageSwitch.onTintColor =ssRGBHexAlpha(0x005CB6, 0.2);
     self.MessageSwitch.thumbTintColor =ssRGBHex(0x005CB6);
@@ -46,6 +51,8 @@
     [self.MessageSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     [self.MessageSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(cell).offset(-31);
+//        make.height.offset(12.46);
+//        make.width.offset(30.26);
 //        make.top.equalTo(cell).offset(15);
 //        make.bottom.equalTo(cell).offset(-15);
         make.centerY.equalTo(cell.mMeLanguageLeftLabel);

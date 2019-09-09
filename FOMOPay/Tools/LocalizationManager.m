@@ -8,6 +8,7 @@
 
 #import "LocalizationManager.h"
 #import "AppDelegate.h"
+#import "CommonGuideViewController.h"
 @implementation LocalizationManager
 static NSBundle *bundle = nil;
 static NSString *UserLanguage = @"UserLanguage";
@@ -113,6 +114,7 @@ static NSString *UserLanguage = @"UserLanguage";
 
                 [(CLMeViewController *)vc changeLanguage];
             }
+            
         }
     }
 }

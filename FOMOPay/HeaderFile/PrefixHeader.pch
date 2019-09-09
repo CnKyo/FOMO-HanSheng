@@ -48,6 +48,7 @@
 //用户自定义头文件
 #import "CLTool.h"
 #import "CLMeLanguage.h"
+#import "CLMeLanguage_other.h"
 #import "CLMeMessageViewController.h"
 #import "CLMeCallMeViewController.h"
 #import "CLMeLanguageViewController.h"

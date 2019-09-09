@@ -49,6 +49,7 @@
     _dataSourceArray = @[array1,array2,array3];
     
     [self initialView];
+    
 }
 
 - (void)initialView{
@@ -148,7 +149,8 @@
     
     [selectButton mas_makeConstraints:^(MASConstraintMaker *make) {
        
-        make.top.equalTo(self.bottomView).offset(20);
+//        make.top.equalTo(self.bottomView).offset(20);
+        make.bottom.equalTo(self.sureButton.mas_top).offset(-35);
         make.left.equalTo(self.bottomView).offset(15);
         make.width.height.equalTo(@20);
     }];
@@ -158,16 +160,18 @@
         make.left.equalTo(selectButton.mas_right).offset(10);
         make.right.equalTo(self.bottomView.mas_right).offset(-10);
 
-        make.top.equalTo(selectButton.mas_top).offset(-5);
+//        make.top.equalTo(selectButton.mas_top).offset(-5);
         make.height.equalTo(@35);
+        make.bottom.equalTo(self.sureButton.mas_top).offset(-18);
     }];
     
     [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
        
-        make.top.equalTo(mTerms.mas_bottom).offset(20);
+//        make.top.equalTo(mTerms.mas_bottom).offset(20);
         make.left.equalTo(self.bottomView).offset(10);
         make.right.equalTo(self.bottomView).offset(-10);
         make.height.equalTo(@44);
+        make.bottom.equalTo(self.bottomView).mas_offset(-1);
     }];
     
 
@@ -245,7 +249,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    
     return 0.001;
 }
 
@@ -287,7 +290,7 @@
             cell.showImage.hidden = NO;
             cell.contentLabel.textColor = kLoginTitleColor;
         }
-        
+        cell.titleLabel.textColor =  ssRGBHex(0x8c9091);
         cell.titleLabel.text = array[indexPath.row];
         NSString *mContent = array[indexPath.row];
         if ([mContent isEqualToString:@"汇款目的"]) {
@@ -313,6 +316,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
             return cell;
             
         }else{
@@ -327,14 +331,16 @@
 //            cell.showImage.hidden = YES;
             cell.contentLabel.textColor = kCommonColor(43, 43, 43, 1);
             NSString *mContent = array[indexPath.row];
+            cell.titleLabel.textColor =  ssRGBHex(0x8c9091);
             cell.titleLabel.text = mContent;
             if ([mContent isEqualToString:@"收款人"]) {
                 cell.contentLabel.text = self.mItem.fullName;
             }else if ([mContent isEqualToString:@"账户号码"]){
-                cell.contentLabel.text = self.mItem.accountNumber;
+                cell.contentLabel.text =[NSString stringWithFormat:@"****%@",[self.mItem.accountNumber substringWithRange:NSMakeRange(4, self.mItem.accountNumber.length - 4)]];
             }else if ([mContent isEqualToString:@"关系"]){
                 cell.contentLabel.text = self.mItem.relationship;
             }else if ([mContent isEqualToString:@"汇款金额"]){
+               
                 cell.contentLabel.text = self.mCurrentRemmitance.source.amount;
             }else if ([mContent isEqualToString:@"获得金额"]){
                 cell.contentLabel.text = self.mCurrentRemmitance.target.amount;
@@ -435,6 +441,4 @@
     
     return YES;
 }
-
-
 @end

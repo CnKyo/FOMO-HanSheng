@@ -84,7 +84,8 @@
         
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+//    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+    [self.mTabView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
     if (self.ifSelected) {
         [cell mCellStyle:0];
@@ -121,7 +122,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *mbgView = [UIView new];
     mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
-    mbgView.frame = CGRectMake(0, 0,kScreenWidth , 45);
+    mbgView.frame = CGRectMake(0, 10,kScreenWidth , 45);
     UIView *mButtonView = [UIView new];
     mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
     mButtonView.layer.cornerRadius = 4;

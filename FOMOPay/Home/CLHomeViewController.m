@@ -149,7 +149,7 @@
     if (self.mTotleAmount.length>0) {
         cell.myTextField2.text = self.mTotleAmount;
     }
-  
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.mSelectedBlock = ^(NSString *mOut, NSString *mIn) {
         
@@ -205,7 +205,7 @@
        
         [self goRefund:string];
     };
-
+   
     return cell;
 }
 - (void)caculateAmount{

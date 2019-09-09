@@ -127,7 +127,9 @@
             make.width.equalTo(self.mRightView);
 
         }];
-    }else{
+    }else {
+        self.mBtn.hidden =YES;
+        self.mTextF.hidden = YES;
         
     }
     
