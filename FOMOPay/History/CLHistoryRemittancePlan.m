@@ -117,7 +117,7 @@
         cell.mRightData.textAlignment = NSTextAlignmentRight;
         
     }
-    
+    //提示小文字离大文字的间距全部为8
     if(indexPath.section == 1){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         cell.mRightData.hidden = YES;
@@ -125,6 +125,7 @@
         if(indexPath.row == 0){
             cell.mLeftName.text = @"汇款进度";
             cell.mLeftName.font = kCommonFont(16);
+            cell.mLeftName.textColor = ssRGBHex(0x8C9091);
             
         }
         
@@ -153,7 +154,7 @@
                 mLabel.textColor  =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:mLabel];
                 
-                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 38, 256, 57)];//提示小文字
+                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, mLabel.frame.size.height +14 +8, 256, 57)];//提示小文字
                 mTitleHint.textColor = ssRGBHex(0x8C9091);
                 mTitleHint.text=[_mRightDataHint objectAtIndex:indexPath.row - 1];
                 mTitleHint.numberOfLines = 0;
@@ -204,7 +205,7 @@
                 mLabel.textColor  =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:mLabel];
                 
-                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 25, 256, 57)];//提示小文字
+                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97,15, 256, 57)];//提示小文字
                 mTitleHint.textColor = ssRGBHex(0x8C9091);
                 mTitleHint.text=[_mRightDataHint objectAtIndex:indexPath.row - 1];
                 mTitleHint.numberOfLines = 0;
@@ -271,7 +272,7 @@
                 mLabel.textColor  =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:mLabel];
                 
-                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 24, 256, 57)];//提示小文字
+                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 16+8, 256, 57)];//提示小文字
                 mTitleHint.textColor = ssRGBHex(0x8C9091);
                 mTitleHint.text=[_mRightDataHint objectAtIndex:indexPath.row - 1];
                 mTitleHint.numberOfLines = 0;
@@ -350,7 +351,7 @@
                     mLabel.textColor  = ssRGBHex(0xD50037);
                 };
                 
-                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 27, 256, 57)];//提示小文字
+                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, 18, 256, 57)];//提示小文字//
                 mTitleHint.textColor = ssRGBHex(0x8C9091);
                 mTitleHint.text=[_mRightDataHint objectAtIndex:indexPath.row - 1];
                 mTitleHint.numberOfLines = 0;
@@ -402,7 +403,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        return 62;
+        return 53.33;
     }else if(indexPath.section == 1 && indexPath.row ==0){
         return 62;
     }

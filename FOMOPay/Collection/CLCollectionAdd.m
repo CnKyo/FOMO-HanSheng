@@ -114,11 +114,12 @@
 //    cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     cell.mMeLanguageLeftLabel.text = _mAddLeftDateSource[indexPath.row];
     cell.mMeLanguageLeftLabel.font = kCommonFont(14);
+    
     if(indexPath.row == 0 ){
     cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -139,7 +140,7 @@
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -163,7 +164,7 @@
             cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -186,7 +187,7 @@
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -210,7 +211,7 @@
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -236,7 +237,7 @@
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -256,7 +257,7 @@
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -292,7 +293,7 @@
                 mHint.hidden = NO;
                 mHint.text = @"请输入正确的账户号码";
                 }else{
-                mLineView.backgroundColor = ssRGBHex(0xcccccc);
+                mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
                 mHint.text = @"";
                     mHint.hidden = YES;
                 [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
@@ -307,7 +308,7 @@
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
         [cell.contentView addSubview:mLineView];
         [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(cell);
@@ -334,7 +335,7 @@
             mLineView.backgroundColor = ssRGBHex(0xD50037);
                mHint.text = @"请输入正确的联系号码";
             }else{
-               mLineView.backgroundColor = ssRGBHex(0xcccccc);
+               mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
 //                [WeakSelf.mHint removeFromSuperview];
                 mHint.text = @"";
                  [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];

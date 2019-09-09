@@ -71,12 +71,27 @@
     _exchangeRateLabel.text = mRate;
     
     _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+    
     _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
     
     _logoImage.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2"];
     _logoImage1.image = [UIImage yh_imageNamed:@"pdf_CNY"];
     _logoImage2.image = [UIImage yh_imageNamed:@"pdf_home_transfer_2"];
-
+    _logoImage.layer.borderWidth = 1;
+    _logoImage.layer.cornerRadius = 20;
+    _logoImage.layer.masksToBounds= YES;
+    _logoImage.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
+    
+    _logoImage1.layer.borderWidth = 1;
+    _logoImage1.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
+    _logoImage1.layer.cornerRadius = 20;
+    _logoImage1.layer.masksToBounds= YES;
+    
+    _logoImage2.layer.borderWidth = 1;
+    _logoImage2.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
+    _logoImage2.layer.cornerRadius = 20;
+    _logoImage2.layer.masksToBounds= YES;
+    
     _myTextField.delegate = self;
     _myTextField1.delegate = self;
     _myTextField2.delegate = self;

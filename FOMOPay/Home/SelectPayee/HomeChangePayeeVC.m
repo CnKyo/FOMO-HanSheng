@@ -79,9 +79,9 @@
     if (!cell) {
         
         cell = [[HomeChangePayeeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeChangePayeeCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.HomeChangePayeeCellText = ^(NSString *text, NSInteger tag) {
         
         

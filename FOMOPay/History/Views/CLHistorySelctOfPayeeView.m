@@ -40,10 +40,10 @@
         self.layer.masksToBounds = YES;
         self.mSelectImg.hidden = YES;
         self.mLogoImg.layer.cornerRadius = 20;
-        self.layer.shadowColor = ssRGBHex(0x000000).CGColor;
-        self.layer.shadowOffset = CGSizeMake(0, 1);
-        self.layer.shadowOpacity = 0.2;
-        self.clipsToBounds = false;
+//        self.layer.shadowColor = ssRGBHex(0x000000).CGColor;
+//        self.layer.shadowOffset = CGSizeMake(0, 1);
+//        self.layer.shadowOpacity = 0.2;
+//        self.clipsToBounds = false;
         
     }
 }
@@ -54,7 +54,7 @@
     frame.origin.x = margin;
     frame.size.width -= 2* frame.origin.x;
     frame.origin.y +=margin;
-    frame.size.height -= margin;
+    frame.size.height -= margin +2;
     
     //    frame.origin.y +=50;
     //    frame.size.height -=10;
