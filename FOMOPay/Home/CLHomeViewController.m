@@ -238,33 +238,37 @@
     }];
 }
 - (void)goRefund:(NSString *)text{
-//    WS(weakSelf);
-//    [self showLoading:nil];
-//    [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
-//        [self hiddenLoading];
-//        if (success) {
-//
-//            NSDictionary *dic =  [CLTool stringToDic:result];
-//            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
-//            if (mRefundAcc.number.length>0) {
-//                //下一步
-//                HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-//                vc.type = ShowButtonTypeDefault;
-//                [weakSelf pushToViewController:vc];
-//            }else{
-//                //汇款
-//                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
-//                vc.unitString = text;
-//                [self pushToViewController:vc];
-//            }
-//
-//        }else{
-//            TOASTMESSAGE(result);
-//        }
-//    }];
-    HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-    vc.type = ShowButtonTypeDefault;
-    vc.mCurrentRemmitance = self.mCurrentRemmitance;
-    [self pushToViewController:vc];
+    WS(weakSelf);
+    [self showLoading:nil];
+    [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+
+            NSDictionary *dic =  [CLTool stringToDic:result];
+            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
+            if (mRefundAcc.number.length>0) {
+                HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
+                vc.type = ShowButtonTypeDefault;
+                vc.mCurrentRemmitance = self.mCurrentRemmitance;
+                [self pushToViewController:vc];
+            }else{
+                //添加退款账户
+                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+                vc.unitString = text;
+                [self pushToViewController:vc];
+            }
+
+        }else{
+            if ([result isEqualToString:@"Refund account not found."]) {
+                //下一步
+                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+                vc.unitString = text;
+                [self pushToViewController:vc];
+            }else{
+                TOASTMESSAGE(result);
+            }
+        }
+    }];
+
 }
 @end

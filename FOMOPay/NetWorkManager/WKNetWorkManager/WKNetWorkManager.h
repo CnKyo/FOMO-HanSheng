@@ -124,5 +124,24 @@
  @param block 返回值
  */
 + (void)WKDeleteRecipient:(NSString *)para block:(void(^)(id result,BOOL success))block;
+
+
+
+#pragma  mark----****----查询订单列表
+/**
+ 查询订单列表
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetOrderList:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma  mark----****----获取订单详情
+/**
+ 获取订单详情
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKGetOrderDetail:(NSString *)para block:(void(^)(id result,BOOL success))block;
 @end
 

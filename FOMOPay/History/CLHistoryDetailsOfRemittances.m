@@ -34,7 +34,7 @@
     }];
     [self LoadCellType:9];
      self.mData=@[@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
-    self.mRData=@[@"R201906061234",@"Anguela Lee",@"SGD182.00",@"5.0000",@"CNY910.00",@"SGD18.0",@"SGD200.00",@"汇款完成",@"2019-06-11 16.30"];
+    self.mRData=@[self.mItem.serialNumber,self.mItem.recipient.fullName,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],self.mItem.status,self.mItem.createdAt];
     
     
    

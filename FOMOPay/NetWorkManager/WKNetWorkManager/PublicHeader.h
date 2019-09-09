@@ -35,5 +35,8 @@
 #define kCreateRecipientAcc                             @"/customer/app/v2/recipient"
 ///获取收款人详情
 #define kGetRecipientDetail                             @"/customer/app/v2/recipient/"
-///开始汇款
-#define kStartRemiitance                             @"/customer/app/v2/order"
+///订单相关(订单列表,订单详情,发起支付订单,)
+#define kAboutOrder                             @"/customer/app/v2/order"
+
+///订单列表
+#define kOrderList                             @"/customer/app/v2/orders"

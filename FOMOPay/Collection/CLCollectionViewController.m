@@ -19,7 +19,7 @@
 @implementation CLCollectionViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    WS(weakSelf);
     self.mSecArr = [NSMutableArray new];
     
     CLNavModel *model = [CLNavModel new];
@@ -28,7 +28,11 @@
     mBtView.mRightBtnBlock = ^(NSInteger tag) {
         if(tag == 100){
             CLCollectionAdd *vc = [CLCollectionAdd new];
-            vc.delegate = self;
+            vc.mBackBlock = ^(BOOL success) {
+                if (success) {
+                    [weakSelf mHeaderLoadData];
+                }
+            };
             [self pushToViewController:vc];
         }
     };
@@ -49,87 +53,51 @@
                 break;
         }
     }];
-
-    [self LoadCellType:4];
-//    [self loadData];
-    __weak typeof(self)  weakSelf = self;
     
-//    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        [weakSelf.mTabView reloadData];
-//
-////        [weakSelf.mTabView.mj_header endRefreshing];
-//    }];
-//    [self.mTabView.mj_header beginRefreshing];
+    [self LoadCellType:4];
     
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-//        [weakSelf.mTabView reloadData];
-//        [weakSelf.DataSource removeAllObjects];
-//        [weakSelf loadData];
-//        [weakSelf.mTabView reloadData];
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-//            [weakSelf.mTabView reloadData];
-            [weakSelf.DataSource removeAllObjects];
-            [weakSelf loadData];
-            [weakSelf.mTabView reloadData];
+            [weakSelf mHeaderLoadData];
             // 结束刷新
             [weakSelf.mTabView.mj_header endRefreshing];
         });
     }];
     
+    [self mHeaderLoadData];
     
-//    self.mTabView.mj_footer = [MJRefreshFooter footerWithRefreshingBlock:^{
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [weakSelf.mTabView reloadData];
-//            [weakSelf.mTabView.mj_footer endRefreshing];
-//    });
-//    }];
-  
-    
-    
-    
-    
-    
-    
-    self.mTabView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-         [weakSelf.mTabView reloadData];
-        [weakSelf.mTabView.mj_footer endRefreshing];
-        });
-        }];
-//    self.mTabView.mj_header  = [MJRefreshHeader headerWithRefreshingBlock:^{
-//        [self.mTabView reloadData];
-//    }];
-//    [self.mTabView.mj_header beginRefreshing];
-    [self loadData];
-
 }
-- (void)loadData {
-    
+- (void)mHeaderLoadData {
+    self.mPage--;
+    if (self.mPage<=1) {
+        self.mPage = 1;
+    }
     [self showLoading:nil];
-    [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
+    [WKNetWorkManager WKGetRecipient:@{@"skip":[NSString stringWithFormat:@"%ld",self.mPage],@"take":@"150"} block:^(id result, BOOL success) {
         
         [self.mSecArr removeAllObjects];
         [self hiddenLoading];
         if (success) {
+            NSMutableArray *mTempArr = [NSMutableArray new];
+
             NSDictionary *mResponse = [CLTool stringToDic:result];
             if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
                     WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
-                    [self.mSecArr addObject:mRefundAcc];
+                    [mTempArr addObject:mRefundAcc];
                 }
             }
-            
+            [self.mSecArr addObjectsFromArray:mTempArr];
+
         }else{
             TOASTMESSAGE(result);
         }
         [self semboldData];
     }];
-    [self.mTabView reloadData];
 }
+
 - (void)semboldData{
     [self.sectionArr removeAllObjects];
     for (WKResipientInfoObj *obj in self.mSecArr) {
@@ -144,7 +112,7 @@
     }
     [self.sectionArr removeAllObjects];
     [self.sectionArr addObjectsFromArray:resultArray];
-    
+    [self.boolArr removeAllObjects];
     for (int i = 0; i < resultArray.count; i++) {
         NSString *mCode = resultArray[i];
         NSMutableArray * friendArr = [[NSMutableArray alloc] init];
@@ -158,8 +126,9 @@
         [self.sectionArr addObject:mCode];
         [self.boolArr addObject:@YES];
     }
+    
     [self.mTabView reloadData];
-
+    
 }
 - (void)makeConstraintsForUI {
     
@@ -179,12 +148,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if ([self.boolArr[section] boolValue] == NO) {
-
+        
         return 0;
     }else {
-
+        
         return [self.DataSource[section] count];  ////////每组有多少个
-
+        
     }
 }
 
@@ -198,7 +167,7 @@
     [cell CellStyle:2];
     NSArray *mArr = self.DataSource[indexPath.section];
     WKResipientInfoObj *mItem = mArr[indexPath.row];
-
+    
     [cell setMItem:mItem];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.mInd = indexPath;
@@ -217,24 +186,24 @@
     headerView.tag = 2019 + section;
     //添加imageview
     UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth-40, 22, 12 , 7)];
-
+    
     //三目运算选择展开或者闭合时候的图标
     iv.image = [_boolArr[section] boolValue] ?
     [UIImage yh_imageNamed:@"pdf_collection_shrink.pdf"] :
     [UIImage yh_imageNamed:@"pdf_collection_unfold.pdf"];
     [headerView addSubview:iv];
-
+    
     //添加标题label
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, self.view.frame.size.width - 100, 50)];
     label.text = self.sectionArr[section];
-//    DebugLog(@"self.sectionArr[section]%@",self.sectionArr[section]);
+    //    DebugLog(@"self.sectionArr[section]%@",self.sectionArr[section]);
     [headerView addSubview:label];
-
-
+    
+    
     //添加轻扣手势
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGR:)];
     [headerView addGestureRecognizer:tap];
-
+    
     return headerView;
 }
 
@@ -274,7 +243,7 @@
     }else{
         return 11;
     }
-   
+    
 }
 #pragma mark - action
 - (void)tapGR:(UITapGestureRecognizer *)tapGR {
@@ -336,15 +305,15 @@
 //}
 
 -(void)mDelete:(NSIndexPath *)indexPath{
-   
+    
     DebugLog(@"点击了删除按钮");
     DebugLog(@"当前行%@",self.mIdx);
     DebugLog(@"当前组%ld",(long)self.mIdx.section);
     DebugLog(@"当前行%ld",(long)self.mIdx.row);
-     __block typeof(self) WeakSelf = self;
+    __block typeof(self) WeakSelf = self;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除收款人" message:@"是否要删除此收款人" preferredStyle:UIAlertControllerStyleAlert];
-   __block  UIAlertAction *NoAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-       
+    __block  UIAlertAction *NoAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        
     }];
     
     __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
@@ -369,7 +338,7 @@
         if (success) {
             
             TOASTMESSAGE(@"Delete Success!");
-
+            
             [self.DataSource removeObjectAtIndex:self.mIdx.row];
             [self.mTabView reloadData ];
             
@@ -377,7 +346,7 @@
             TOASTMESSAGE(result);
         }
     }];
-
+    
 }
 - (void)changeArray:(NSArray *)Array{
     self.mPushData = Array;
@@ -389,32 +358,32 @@
 -(void)show{
     CLCollectionViewController  *vc = [CLCollectionViewController new];
     [vc backa];
-//    [self pushToViewController:vc];
-     [self.navigationController popToRootViewControllerAnimated:YES];
-
+    //    [self pushToViewController:vc];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 
 -(void)backa{
-       DebugLog(@"调用showAlter的值为%@",self.mPushData);
-        UIImageView *mImg = [UIImageView new];
-        mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint_modifysuccessfully.pdf"];
-        [self.view addSubview:mImg];
-        [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self.view);
-        }];
-        //设置动画
-        CATransition * transion = [CATransition animation];
+    DebugLog(@"调用showAlter的值为%@",self.mPushData);
+    UIImageView *mImg = [UIImageView new];
+    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint_modifysuccessfully.pdf"];
+    [self.view addSubview:mImg];
+    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
+    //设置动画
+    CATransition * transion = [CATransition animation];
     
-        transion.type = @"push";//设置动画方式
-        transion.subtype = @"kCATransitionFromRight";//设置动画从那个方向开始
-        //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
-        [mImg.layer addAnimation:transion forKey:nil];
-        //不占用主线程
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-            [mImg removeFromSuperview];
-                [self.navigationController popToRootViewControllerAnimated:NO];
-            
-        });
-    }
+    transion.type = @"push";//设置动画方式
+    transion.subtype = @"kCATransitionFromRight";//设置动画从那个方向开始
+    //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
+    [mImg.layer addAnimation:transion forKey:nil];
+    //不占用主线程
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+        [mImg removeFromSuperview];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
+    });
+}
 @end

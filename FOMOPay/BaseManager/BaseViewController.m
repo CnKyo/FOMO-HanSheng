@@ -79,7 +79,7 @@ void TOASTMESSAGE(NSString *message){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = ssRGBHex(0xF6F5FA);
-  
+    self.mPage = 1;
 
     // Do any additional setup after loading the view.
 }

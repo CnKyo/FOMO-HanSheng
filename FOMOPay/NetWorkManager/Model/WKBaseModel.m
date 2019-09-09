@@ -105,3 +105,23 @@
 @implementation WKRemiitableEntityChargable
 @end
 
+
+@implementation WKCreateOrderInfoObj
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"operations" : [WKOrderOperation class],
+             };
+}
+@end
+@implementation WKOrderInfo
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"operations" : [WKOrderOperation class],
+             };
+}
+@end
+
+@implementation WKOrderOperation
+//返回一个 Dict，将 Model 属性名对映射到 JSON 的 Key。
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"mOperator" : @"operator"};
+}
+@end

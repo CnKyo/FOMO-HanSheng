@@ -176,19 +176,14 @@
         [WKNetWorkManager WKLogOut:^(id result,BOOL success) {
             [self hiddenLoading];
             if (success) {
-                [[WKAccountManager shareInstance] WKClearnAll];
-                [[WKLoginManager shareInstance]presentLoginViewController:^{
 
-                }];
-//                LogInViewController *vc = [LogInViewController new];
-//                [self pushToViewController:vc];
             }else{
                 TOASTMESSAGE([NSString stringWithFormat:@"%@",result]);
             }
+            [[WKAccountManager shareInstance] WKClearnAll];
+            LogInViewController *vc = [LogInViewController new];
+            [self pushToViewController:vc];
         }];
-//        [[WKLoginManager shareInstance]presentLoginViewController:^{
-//        //
-//        }];
 
     }
 }

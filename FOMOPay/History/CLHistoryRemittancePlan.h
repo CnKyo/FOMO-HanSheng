@@ -22,6 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)QueryButton:(UIButton *)sender;//查询付款详情
 
 -(void)CancelButton:(UIButton *)sender;//取消汇款
+
+@property (strong, nonatomic) WKOrderInfo *mItem;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

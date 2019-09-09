@@ -209,3 +209,39 @@
 @property (strong,nonatomic) NSString *currencyCode;
 @property (strong,nonatomic) NSString *amount;
 @end
+
+@class WKOrderInfo;
+@interface WKCreateOrderInfoObj : NSObject
+
+@property (strong,nonatomic) WKOrderInfo *order;
+
+@property (strong,nonatomic) NSString *qrCode;
+
+@end
+
+@interface WKOrderInfo : NSObject
+
+@property (strong,nonatomic) NSString *serialNumber;
+@property (strong,nonatomic) NSString *status;
+@property (strong,nonatomic) WKRemiitableEntity *remittable;
+@property (strong,nonatomic) NSString *amount;
+@property (strong,nonatomic) WKResipientInfoObj *recipient;
+@property (strong,nonatomic) NSString *purpose;
+@property (strong,nonatomic) NSString *sourceOfFund;
+@property (strong,nonatomic) NSArray *operations;
+@property (strong,nonatomic) NSString *createdAt;
+@property (strong,nonatomic) NSString *updatedAt;
+
+@end
+
+@interface WKOrderOperation : NSObject
+
+@property (strong,nonatomic) NSString *mOperator;
+@property (strong,nonatomic) NSString *roleName;
+@property (strong,nonatomic) NSString *operation;
+@property (strong,nonatomic) NSString *fromStatus;
+@property (strong,nonatomic) NSString *toStatus;
+@property (strong,nonatomic) NSString *comment;
+@property (strong,nonatomic) NSString *operatedAt;
+
+@end

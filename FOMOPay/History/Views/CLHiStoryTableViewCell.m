@@ -64,4 +64,12 @@
     
     [super setFrame:frame];
 }
+
+- (void)setMItem:(WKOrderInfo *)mItem{
+    self.mDate.text = mItem.createdAt;
+    self.mName.text = mItem.recipient.fullName;
+    self.mMoney.text = [NSString stringWithFormat:@"%@%@",mItem.remittable.chargable.currencyCode,mItem.remittable.chargable.amount];
+    self.mStatus.text = mItem.status;
+}
+
 @end
