@@ -556,6 +556,7 @@
 -(void)QueryButton:(UIButton *)sender{
     DebugLog(@"点击了查询");
     CLHistoryPaymentdetails *vc = [CLHistoryPaymentdetails new];
+    vc.mItem = self.mItem;
     [self pushToViewController:vc];
 }
 

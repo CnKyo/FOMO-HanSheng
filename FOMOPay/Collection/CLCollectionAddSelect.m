@@ -12,7 +12,7 @@
 /// 列表数据
 @property (nonatomic) NSInteger mHeight;
 @property (nonatomic) NSInteger i;
-@property (nonatomic,strong) NSMutableArray *EnterString;
+@property (nonatomic,strong) NSString *EnterString;
 
 @end
 //初始化数据
@@ -20,6 +20,13 @@
 - (void)initWithModelArray:(NSArray *)modelLeftArray and:(NSInteger)i{
     self.mAddLeftDateSource = modelLeftArray;
     self.i = i;
+}
+
+- (NSString *)EnterString{
+    if(!_EnterString){
+        _EnterString =[NSString new];
+    }
+    return _EnterString;
 }
 
 - (void)viewDidLoad {
@@ -104,7 +111,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    self.EnterString = [_modelArray objectAtIndex:indexPath.row];
+    _EnterString = [_modelArray objectAtIndex:indexPath.row];
     DebugLog(@"选中的数据为%@",self.EnterString);
 }
 
@@ -114,14 +121,13 @@
 //    CLCollectionAdd *new = [CLCollectionAdd new];
 //    [new initWithModelString:_EnterString];
 //
-    if(self.EnterString != nil){
-    [self.delegate changeValue:self.EnterString];//代理传值第三步
+    if(_EnterString != nil){
+    [self.delegate changeValue:_EnterString];//代理传值第三步
     DebugLog(@"准备传递的值为%@",self.EnterString);
     [self.view removeFromSuperview];
     }else{
     [self.view removeFromSuperview];
     }
-//    self.EnterString
 
 }
 
