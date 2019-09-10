@@ -433,4 +433,54 @@
         block(errorDes,NO);
     }];
 }
+
+#pragma mark----****----修改收款人信息
+/**
+ 修改收款人信息
+ 
+ @param recipientId 收款人ID
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKModifyRecipientInfo:(NSString *)recipientId andPara:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:para andUrl:[NSString stringWithFormat:@"%@%@",kGetRecipientDetail,recipientId] andRequestMethod:YTKRequestMethodPUT];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
+    }];
+}
+#pragma mark----****----删除收款人信息
+/**
+ 删除收款人信息
+ 
+ @param recipientId 收款人ID
+ @param block 返回值
+ */
++ (void)WKDeleteRecipientInfo:(NSString *)recipientId block:(void(^)(id result,BOOL success))block{
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:@{} andUrl:[NSString stringWithFormat:@"%@%@",kGetRecipientDetail,recipientId] andRequestMethod:YTKRequestMethodDELETE];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
+    }];
+}
 @end

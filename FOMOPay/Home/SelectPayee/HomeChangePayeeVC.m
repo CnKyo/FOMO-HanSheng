@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 
+@property (nonatomic, strong) NSString *mBankNumber;
+
 @end
 
 @implementation HomeChangePayeeVC
@@ -74,7 +76,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    WS(weakSelf);
     HomeChangePayeeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeChangePayeeCell"];
     if (!cell) {
         
@@ -84,9 +86,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.HomeChangePayeeCellText = ^(NSString *text, NSInteger tag) {
         
-        
+        if (tag == 102) {
+            weakSelf.mBankNumber = text;
+        }
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setMItem:self.mItem];
     cell.HomeChangePayeeCellButton = ^(NSInteger tag) {
         
         if (tag == 4) {  //删除
@@ -95,13 +100,13 @@
             
             UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
                 
-                NSLog(@"点击了取消按钮");
+                DebugLog(@"点击了取消按钮");
             }];
             
             UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 
-                NSLog(@"点击了确定按钮");
-                [self.navigationController popViewControllerAnimated:YES];
+                DebugLog(@"点击了确定按钮");
+                [weakSelf deleteAction];
             }];
             
             [alertVc addAction:cancle];
@@ -110,11 +115,56 @@
             [self presentViewController:alertVc animated:YES completion:^{}];
             
         }else if (tag == 5){ //提交
-            
+            [weakSelf confirmAction];
         }
     };
     
     return cell;
 }
+- (void)confirmAction{
+    if (self.mBankNumber.length<=0) {
+        TOASTMESSAGE(@"Please enter your bank account number!");
+        return;
+    }
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:self.mItem.fullName forKey:@"fullName"];
+    [para setObject:self.mItem.gender forKey:@"gender"];
+    [para setObject:self.mItem.nationality forKey:@"nationality"];
+    [para setObject:self.mItem.currencyCode forKey:@"currencyCode"];
+    [para setObject:self.mItem.contactNumber forKey:@"contactNumber"];
+    [para setObject:self.mItem.bankName forKey:@"bankName"];
+    [para setObject:self.mItem.bankCity forKey:@"bankCity"];
+    [para setObject:self.mBankNumber forKey:@"accountNumber"];
+    [para setObject:self.mItem.relationship forKey:@"relationship"];
+    
+    [self showLoading:nil];
+    [WKNetWorkManager WKModifyRecipientInfo:self.mItem.id andPara:para block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            NSDictionary *mResponse = [CLTool stringToDic:result];
+            if ([[mResponse objectForKey:@"recipient"] isKindOfClass:[NSDictionary class]]) {
+                self.mItem = [WKResipientInfoObj yy_modelWithDictionary:[mResponse objectForKey:@"recipient"]];
+            }
+            if (self.mBackBlock) {
+                self.mBackBlock(self.mItem,1);
+            }
+            [self popToViewController];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+}
+- (void)deleteAction{
+    [self showLoading:nil];
+    [WKNetWorkManager WKDeleteRecipientInfo:self.mItem.id block:^(id result, BOOL success) {
+        [self hiddenLoading];
+        if (success) {
+            TOASTMESSAGE(@"Delete successful!");
 
+            [self popToViewController:3];
+        }else{
+            TOASTMESSAGE(result);
+        }
+    }];
+}
 @end

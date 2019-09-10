@@ -10,7 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 返回的回调方法
+
+ @param mItem 当前的对象
+ @param backCount 返回几级视图
+ */
+typedef void(^HomeChangePayeeVCBackBlock)(WKResipientInfoObj *mItem,NSInteger backCount);
+
 @interface HomeChangePayeeVC : BaseViewController
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
+
+@property (copy,nonatomic) HomeChangePayeeVCBackBlock mBackBlock;
 
 @end
 

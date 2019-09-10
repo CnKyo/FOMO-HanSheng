@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) void(^HomeChangePayeeCellText)(NSString *text,NSInteger tag);
 @property (nonatomic, copy) void(^HomeChangePayeeCellButton)(NSInteger tag);
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
 
 @end
 
