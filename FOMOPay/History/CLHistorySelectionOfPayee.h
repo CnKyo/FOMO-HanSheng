@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^CLHistorySelectionOfPayeeBlock)(WKResipientInfoObj *mItem);
+
 @interface CLHistorySelectionOfPayee : BaseViewController
+
+@property (copy,nonatomic) CLHistorySelectionOfPayeeBlock mBlock;
 
 @end
 

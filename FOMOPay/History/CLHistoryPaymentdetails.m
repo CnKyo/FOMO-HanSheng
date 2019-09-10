@@ -10,6 +10,9 @@
 
 @interface CLHistoryPaymentdetails ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic,strong)NSArray *mRightData;
+
+
 @end
 
 @implementation CLHistoryPaymentdetails
@@ -34,8 +37,12 @@
         }
     }];
     [self LoadCellType:9];
+    
+
     self.mData=@[@"收款人",@"账户号码",@"关系",@"汇款金额",@"获得金额",@"汇率",@"手续费",@"汇款目的",@"资金来源",@"总金额"];
-    // Do any additional setup after loading the view.
+    
+    self.mRightData = @[self.mItem.recipient.fullName,self.mItem.recipient.accountNumber,self.mItem.recipient.relationship,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],self.mItem.purpose,self.mItem.sourceOfFund,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount]];
+
 }
 
 
@@ -60,6 +67,8 @@
     
     cell.mLeftName.text= [_mData objectAtIndex:indexPath.row];
     cell.mLeftName.textAlignment = NSTextAlignmentLeft;
+    
+    cell.mRightData.text = [self.mRightData objectAtIndex:indexPath.row];
     
     return cell;
 }

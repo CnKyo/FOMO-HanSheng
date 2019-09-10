@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLHistoryAlterRemittance : BaseViewController
+@property (strong, nonatomic) WKOrderInfo *mItem;
 
 @end
 

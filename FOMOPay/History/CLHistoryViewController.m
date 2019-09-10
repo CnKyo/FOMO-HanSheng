@@ -15,7 +15,10 @@
 
 @implementation CLHistoryViewController
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self headerLoadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
@@ -48,7 +51,6 @@
         [weakSelf footerLoadData];
         [weakSelf.mTabView.mj_footer endRefreshing];
     }];
-    [self.mTabView.mj_header beginRefreshing];
 }
 - (void)headerLoadData{
     self.mPage--;

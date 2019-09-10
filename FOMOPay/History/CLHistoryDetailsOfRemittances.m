@@ -7,6 +7,7 @@
 //
 #import "CLHistoryDetailsOfRemittances.h"
 #import "CLHistoryPaymentdetails.h"
+
 @interface CLHistoryDetailsOfRemittances ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) CLHistoryRemittancePlan *vc;
 @property (nonatomic,strong)NSArray *mData;
@@ -153,29 +154,40 @@
 
 -(void)CancelButton:(UIButton *)sender{
     DebugLog(@"点击了取消");
-    __block typeof(self) WeakSelf = self;
+    
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消汇款" message:@"是否要取消本次汇款" preferredStyle:UIAlertControllerStyleAlert];
-    __block  UIAlertAction *NoAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    UIAlertAction *mCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [mCancel setValue:[UIColor colorWithRed:140/255.0f green:144/255.0f blue:145/255.0f alpha:1] forKey:@"titleTextColor"];
+    
+    UIAlertAction *mOk = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
+        [self showLoading:nil];
+        [WKNetWorkManager WKDeleteOrder:self.mItem.serialNumber block:^(id result, BOOL success) {
+            [self hiddenLoading];
+            if (success) {
+                TOASTMESSAGE(@"Cancel successful!");
+                [self popToViewController:2];
+            }else{
+                TOASTMESSAGE(result);
+            }
+        }];
     }];
     
-    __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        if(YesAction){
-            CLHistoryCancelRemittance *vc = [CLHistoryCancelRemittance new];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    }];
-    [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
-    [alertController addAction:NoAction];
-    [alertController addAction:YesAction];
+    [alertController addAction:mCancel];
     
-    [WeakSelf presentViewController:alertController animated:YES completion:nil];
+    [alertController addAction:mOk];
     
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)QueryButton:(UIButton *)sender{
+   
     CLHistoryPaymentdetails *vc = [CLHistoryPaymentdetails new];
+    vc.mItem = self.mItem;
     [self pushToViewController:vc];
+    
+
 }
 
 

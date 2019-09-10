@@ -214,6 +214,10 @@
     
     //确认按钮的点击事件
 //    [self CLNavBackAction];
+    if (self.mBlock) {
+        self.mBlock(self.mItem);
+    }
+    [self popToViewController];
     
 }
 

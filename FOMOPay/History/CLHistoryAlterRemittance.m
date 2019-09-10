@@ -11,6 +11,11 @@
 @interface CLHistoryAlterRemittance ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic,strong)NSArray *mData;
 @property (nonatomic,strong)NSArray *mTopData;
+
+@property (nonatomic,strong)NSArray *mRightData;
+@property (nonatomic,strong)NSArray *mRightTopData;
+
+
 @end
 
 @implementation CLHistoryAlterRemittance
@@ -26,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"修改汇款信息";
+    WS(weakSelf);
     CLNavModel *model = [CLNavModel new];
     CLNavgationView_button *mBtView = [CLNavgationView_button shareDefaultNavRightButtonAlter];
     model.mRightView = mBtView ;
@@ -33,6 +39,7 @@
         if(tag == 101){
             //跳转申请退款界面;
             CLHistoryConfirmRefund *vc=[CLHistoryConfirmRefund new];
+            vc.mItem = weakSelf.mItem;
             [self pushToViewController:vc];
         }
     };
@@ -56,6 +63,11 @@
      [self LoadCellType:9];
     self.mData=@[@"无效的账号",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
     self.mTopData = @[@"汇款金额",@"获得金额",@"汇率"];
+    
+    self.mRightData=@[@"请更正账户号码或者更换汇款账号",self.mItem.serialNumber,self.mItem.recipient.fullName,self.mItem.recipient.bankName,self.mItem.recipient.bankCity,self.mItem.recipient.accountNumber];
+    self.mRightTopData = @[[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],self.mItem.remittable.rate];
+
+    
     [self LoadContactAndConfirm];
    [self ResetLayout];  //底部按钮适配5s的约束
     
@@ -82,6 +94,7 @@
 //    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     if(indexPath.section ==0){
         cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
+        cell.mRightData.text = [self.mRightData objectAtIndex:indexPath.row];
         if(indexPath.row == 0){
             cell.mLeftName.text = [NSString stringWithFormat:@"%@:",[self.mData objectAtIndex:indexPath.row]];
             cell.mLeftName.textColor = ssRGBHex(0xD50037);
@@ -112,6 +125,7 @@
             mTextF.delegate = self;
             mTextF.returnKeyType = UIReturnKeyDone;
             mTextF.placeholder = @"请输入账户号码";
+            mTextF.text = self.mItem.recipient.accountNumber;
             [cell.contentView addSubview:mTextF];
             [mTextF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell).offset(-10.5);
@@ -122,6 +136,8 @@
     }
     if(indexPath.section == 1){
         cell.mLeftName.text =[self.mTopData objectAtIndex:indexPath.row];
+        cell.mRightData.text = [self.mRightTopData objectAtIndex:indexPath.row];
+
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     }
 //    if(indexPath.row == 0){
@@ -311,7 +327,12 @@
 
 ///---------------更换账号的点击事件
 -(void)ReplaceAccount:(UIButton *)sender{
+    WS(weakSelf);
     CLHistorySelectionOfPayee *vc = [CLHistorySelectionOfPayee new];
+    vc.mBlock = ^(WKResipientInfoObj * _Nonnull mItem) {
+        weakSelf.mItem.recipient = mItem;
+        [weakSelf.mTabView reloadData];
+    };
     [self pushToViewController:vc];
 }
 @end

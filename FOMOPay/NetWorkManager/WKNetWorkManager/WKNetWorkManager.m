@@ -483,4 +483,28 @@
         block(errorDes,NO);
     }];
 }
+#pragma mark----****----删除订单
+/**
+ 删除订单
+ 
+ @param orderId 订单ID
+ @param block 返回值
+ */
++ (void)WKDeleteOrder:(NSString *)orderId block:(void(^)(id result,BOOL success))block{
+    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:@{} andUrl:[NSString stringWithFormat:@"%@/%@",kAboutOrder,orderId] andRequestMethod:YTKRequestMethodDELETE];
+    [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        DebugLog(@"请求的结果是:%@",request.responseString);
+        block(request.responseString,YES);
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSString *errorDes = @"";
+        if ([request.responseJSONObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)request.responseObject;
+            errorDes = [dic objectForKey:@"message"];
+        }else{
+            errorDes = request.error.localizedDescription;
+        }
+        block(errorDes,NO);
+    }];
+}
 @end
