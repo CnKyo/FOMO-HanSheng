@@ -154,6 +154,29 @@
 -(void)CancelButton:(UIButton *)sender{
     [_vc CancelButton:sender];
     
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消汇款" message:@"是否要取消本次汇款" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *mCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [mCancel setValue:[UIColor colorWithRed:140/255.0f green:144/255.0f blue:145/255.0f alpha:1] forKey:@"titleTextColor"];
+    
+    UIAlertAction *mOk = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self showLoading:nil];
+        [WKNetWorkManager WKDeleteOrder:self.mItem.serialNumber block:^(id result, BOOL success) {
+            [self hiddenLoading];
+            if (success) {
+                TOASTMESSAGE(@"Cancel successful!");
+                [self popToViewController:2];
+            }else{
+                TOASTMESSAGE(result);
+            }
+        }];
+    }];
+    
+    [alertController addAction:mCancel];
+    
+    [alertController addAction:mOk];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)QueryButton:(UIButton *)sender{

@@ -161,6 +161,14 @@
  @param block 返回值
  */
 + (void)WKDeleteRecipientInfo:(NSString *)recipientId block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----删除订单
+/**
+ 删除订单
+
+ @param orderId 订单ID
+ @param block 返回值
+ */
++ (void)WKDeleteOrder:(NSString *)orderId block:(void(^)(id result,BOOL success))block;
 
 @end
 
