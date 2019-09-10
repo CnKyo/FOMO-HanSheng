@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CLHistoryConfirmRefund : BaseViewController
+@property (strong, nonatomic) WKOrderInfo *mItem;
 
 @end
 

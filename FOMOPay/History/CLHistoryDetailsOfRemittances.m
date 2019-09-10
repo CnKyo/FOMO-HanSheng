@@ -7,6 +7,7 @@
 //
 #import "CLHistoryDetailsOfRemittances.h"
 #import "CLHistoryPaymentdetails.h"
+
 @interface CLHistoryDetailsOfRemittances ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) CLHistoryRemittancePlan *vc;
 @property (nonatomic,strong)NSArray *mData;
@@ -181,6 +182,12 @@
 
 -(void)QueryButton:(UIButton *)sender{
     [_vc QueryButton:sender];
+    
+    CLHistoryPaymentdetails *vc = [CLHistoryPaymentdetails new];
+    vc.mItem = self.mItem;
+    [self pushToViewController:vc];
+    
+    
 }
 
 

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLHistoryPaymentdetails : BaseViewController
 @property (nonatomic,strong)NSArray *mData;
+@property (strong, nonatomic) WKOrderInfo *mItem;
 
 
 @end

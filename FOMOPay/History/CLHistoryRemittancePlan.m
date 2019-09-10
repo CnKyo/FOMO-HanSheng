@@ -615,7 +615,7 @@
     DebugLog(@"点击了修改");
     
     CLHistoryAlterRemittance *vc = [CLHistoryAlterRemittance new];
-    
+    vc.mItem = self.mItem;
     [self pushToViewController:vc];
     
 }

@@ -10,6 +10,8 @@
 
 @interface CLHistoryConfirmRefund ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)NSArray *mData;
+@property (nonatomic,strong)NSArray *mRightData;
+
 @end
 
 @implementation CLHistoryConfirmRefund
@@ -35,6 +37,8 @@
         }
     }];
     self.mData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请确认您的退款账户，以便安全退款",@"银行名",@"开户城市",@"帐号名称",@"账户号码"];
+    self.mRightData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请确认您的退款账户，以便安全退款",self.mItem.recipient.bankName,self.mItem.recipient.bankCity,self.mItem.recipient.fullName,self.mItem.recipient.accountNumber];
+
     [self LoadCellType:9];
     [self LoadButtonConfirmPayAndBackAlter];
     [self ResetLayout];
@@ -69,13 +73,14 @@
         cell.mLeftName.font = kCommonFont(14);
     }else  if(indexPath.row == 2){
         [cell mTitleViewStyle:0];
-        cell.BankLabel.text = @"13"; ////显示银行名
+        cell.BankLabel.text = self.mItem.recipient.bankName; ////显示银行名
         
         
     }else{
         cell.mRightData.text = @"3213"; //显示除了银行外的其他数据;
         
     }
+    cell.mRightData.text = [self.mRightData objectAtIndex:indexPath.row];
 
      return cell;
 
@@ -171,6 +176,6 @@
 }
 
 -(void)BackAlterButton:(UIButton *)sender{
-    
+    [self popToViewController];
 }
 @end
