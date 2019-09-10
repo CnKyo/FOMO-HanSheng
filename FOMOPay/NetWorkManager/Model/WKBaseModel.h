@@ -236,12 +236,12 @@
 
 @interface WKOrderOperation : NSObject
 
-@property (strong,nonatomic) NSString *mOperator;
+@property (strong,nonatomic) NSString *mOperator; // 操作者
 @property (strong,nonatomic) NSString *roleName;
 @property (strong,nonatomic) NSString *operation;
 @property (strong,nonatomic) NSString *fromStatus;
 @property (strong,nonatomic) NSString *toStatus;
 @property (strong,nonatomic) NSString *comment;
-@property (strong,nonatomic) NSString *operatedAt;
+@property (strong,nonatomic) NSString *operatedAt;//时间
 
 @end

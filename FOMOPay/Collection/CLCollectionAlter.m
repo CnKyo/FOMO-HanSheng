@@ -109,6 +109,7 @@
             cell = [[CLMeLanguage alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
             
         }
+//        self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
         __weak typeof(cell)  weakCell = cell;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //    self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
@@ -119,7 +120,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -140,7 +141,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -164,7 +165,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -187,7 +188,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -211,7 +212,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -237,7 +238,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -257,7 +258,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -282,18 +283,11 @@
             cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 self.mText  = mText;
                 if(mText.length <=0 ){
-                    //                self.mDl = mText;
-                    //                self.mTabView.rowHeight = UITableViewAutomaticDimension;
-                    //                    [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    //                        make.right.equalTo(weakCell);
-                    //                        make.left.equalTo(weakCell).offset(15);
-                    //                        make.height.offset(1);
-                    //                        make.top.equalTo(weakCell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);                    }];
                     mLineView.backgroundColor = ssRGBHex(0xD50037);
                     mHint.hidden = NO;
                     mHint.text = @"请输入正确的账户号码";
                 }else{
-                    mLineView.backgroundColor = ssRGBHex(0xcccccc);
+                    mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
                     mHint.text = @"";
                     mHint.hidden = YES;
                     [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
@@ -308,7 +302,7 @@
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
             UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xCCCCCC);
+            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
             [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell);
@@ -335,7 +329,7 @@
                     mLineView.backgroundColor = ssRGBHex(0xD50037);
                     mHint.text = @"请输入正确的联系号码";
                 }else{
-                    mLineView.backgroundColor = ssRGBHex(0xcccccc);
+                    mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
                     //                [WeakSelf.mHint removeFromSuperview];
                     mHint.text = @"";
                     [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];

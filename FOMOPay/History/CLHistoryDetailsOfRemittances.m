@@ -34,7 +34,9 @@
     }];
     [self LoadCellType:9];
      self.mData=@[@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
-    self.mRData=@[self.mItem.serialNumber,self.mItem.recipient.fullName,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],self.mItem.status,self.mItem.createdAt];
+    self.mRData=@[self.mItem.serialNumber,self.mItem.recipient.fullName,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],[self mStats:self.mItem.status],
+//                  self.mItem.status
+                  self.mItem.createdAt];
     
     
    
@@ -260,7 +262,15 @@
 
         [self pushToViewController:vc];
     
+    
 
+}
+
+- (NSString *)mStats:(NSString *)status{ //中英文转换
+    if ([status isEqualToString:@"pending"]) {
+        return @"处理中";
+}
+    return status;
 }
 
 @end

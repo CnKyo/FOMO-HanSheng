@@ -12,6 +12,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.iconImage.layer.borderWidth = 1;
+    self.iconImage.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
+    self.iconImage.layer.cornerRadius = 20;
+    self.iconImage.layer.masksToBounds= YES;
     // Initialization code
 }
 

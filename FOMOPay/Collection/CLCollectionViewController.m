@@ -59,7 +59,7 @@
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
+            [weakSelf.DataSource removeAllObjects];
             [weakSelf mHeaderLoadData];
             // 结束刷新
             [weakSelf.mTabView.mj_header endRefreshing];

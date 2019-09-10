@@ -347,6 +347,7 @@
             }else if ([mContent isEqualToString:@"汇款金额"]){
                
                 cell.contentLabel.text = self.mCurrentRemmitance.source.amount;
+//                cell.contentLabel.text = [NSString stringWithFormat:@"%@%@",self.mItemC.remittable.source.currencyCode,self.mCurrentRemmitance.source.amount];
             }else if ([mContent isEqualToString:@"获得金额"]){
                 cell.contentLabel.text = self.mCurrentRemmitance.target.amount;
             }else if ([mContent isEqualToString:@"汇率"]){

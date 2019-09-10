@@ -54,7 +54,7 @@
         }
     }];
      [self LoadCellType:9];
-    self.mData=@[@"无效的账号:",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
+    self.mData=@[@"无效的账号",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
     self.mTopData = @[@"汇款金额",@"获得金额",@"汇率"];
     [self LoadContactAndConfirm];
    [self ResetLayout];  //底部按钮适配5s的约束
@@ -83,12 +83,26 @@
     if(indexPath.section ==0){
         cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
         if(indexPath.row == 0){
+            cell.mLeftName.text = [NSString stringWithFormat:@"%@:",[self.mData objectAtIndex:indexPath.row]];
             cell.mLeftName.textColor = ssRGBHex(0xD50037);
+            cell.mRightData.hidden = YES;
+            UILabel *mTitleLabel = [UILabel new];
+            mTitleLabel.font =  kCommonFont(16);
+            mTitleLabel.textColor = ssRGBHex(0x8C9091);
+            mTitleLabel.text = @"请更正账户号码或者更换汇款账号";
+            mTitleLabel.textAlignment = NSTextAlignmentLeft;
+            [cell.contentView addSubview:mTitleLabel];
+            [mTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(cell.mLeftName.mas_right).offset(12);
+                make.centerY.equalTo(cell.mLeftName);
+            }];
         }
         if(indexPath.row == 1){
              cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+           
         }else if(indexPath.row ==2 ||indexPath.row ==3 ||indexPath.row==4){
              cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+            cell.mRightData.textColor = ssRGBHex(0x8C9091);
         }else if(indexPath.row ==5){
             cell.mRightData.hidden = YES;
             UITextField *mTextF = [UITextField new];
