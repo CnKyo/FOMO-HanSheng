@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "HomeDataObject.h"
-
+#import "CLHomeViewController.h"
 typedef NS_ENUM(NSInteger,HomeListCellType) {
     
     HomeListCellTypeHome = 0,
@@ -28,5 +28,7 @@ typedef void(^HomeListCellDidSelectedCurrenceCodeBlock)(NSString *mOut,NSString 
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UITextField *myTextField1;
 @property (weak, nonatomic) IBOutlet UITextField *myTextField2;
+@property (assign,nonatomic) CLHomeViewControllerPushType mType;
+
 @end
 

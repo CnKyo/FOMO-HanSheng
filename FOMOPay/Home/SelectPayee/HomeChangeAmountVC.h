@@ -9,8 +9,11 @@
 #import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef void(^HomeChangeAmountVCBlock)(WKRemiitableEntity *mCurrentRemmitance);
 @interface HomeChangeAmountVC : BaseViewController
+@property (nonatomic, strong) WKRemiitableEntity *mCurrentRemmitance;
+
+@property (copy,nonatomic) HomeChangeAmountVCBlock mBlock;
 
 @end
 
