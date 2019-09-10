@@ -30,7 +30,6 @@
 @property (nonatomic, strong) NSString *mTotleAmount;
 @property (nonatomic, strong) NSString *mFetchAmount;
 
-@property (nonatomic, strong) WKRemiitableEntity *mCurrentRemmitance;
 
 @end
 
@@ -94,13 +93,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.mCurrentRemmitance = [WKRemiitableEntity new];
+    if (self.mCurrentRemmitance.rate.length<=0) {
+        self.mCurrentRemmitance = [WKRemiitableEntity new];
+    }
+    
     self.mStatus = WKRemmitableStatus_out;
     
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
-    [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
-        
-    }];
+    if (self.mType == CLHomeViewControllerPushType_Create) {
+        [self CLAddNavType:CLNavType_home andModel:nil completion:^(NSInteger tag) {
+            
+        }];
+    }else{
+        [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
+            
+        }];
+    }
+    
     [self loadTableView];
 }
 
@@ -205,7 +214,8 @@
        
         [self goRefund:string];
     };
-   
+    [cell setMType:self.mType];
+
     return cell;
 }
 - (void)caculateAmount{
@@ -243,30 +253,42 @@
     [WKNetWorkManager WKGetRefundAccount:@{} block:^(id result, BOOL success) {
         [self hiddenLoading];
         if (success) {
-
-            NSDictionary *dic =  [CLTool stringToDic:result];
-            WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
-            if (mRefundAcc.number.length>0) {
-                HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
-                vc.type = ShowButtonTypeDefault;
-                vc.mCurrentRemmitance = self.mCurrentRemmitance;
-                [self pushToViewController:vc];
+            if (self.mType == CLHomeViewControllerPushType_Modify) {
+                if (self.mBlock) {
+                    self.mBlock(self.mCurrentRemmitance);
+                }
+                [self popToViewController];
             }else{
-                //添加退款账户
-                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
-                vc.unitString = text;
-                [self pushToViewController:vc];
+                NSDictionary *dic =  [CLTool stringToDic:result];
+                WKRefundAccount *mRefundAcc = [WKRefundAccount yy_modelWithDictionary:[dic objectForKey:@"refundAccount"]];
+                if (mRefundAcc.number.length>0) {
+                    HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
+                    vc.type = ShowButtonTypeDefault;
+                    vc.mCurrentRemmitance = self.mCurrentRemmitance;
+                    [self pushToViewController:vc];
+                }else{
+                    //添加退款账户
+                    HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+                    vc.unitString = text;
+                    [self pushToViewController:vc];
+                }
             }
+           
 
         }else{
-            if ([result isEqualToString:@"Refund account not found."]) {
-                //下一步
-                HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
-                vc.unitString = text;
-                [self pushToViewController:vc];
+            if (self.mType == CLHomeViewControllerPushType_Create) {
+                if ([result isEqualToString:@"Refund account not found."]) {
+                    //下一步
+                    HomeRefundViewController *vc = [[HomeRefundViewController alloc] init];
+                    vc.unitString = text;
+                    [self pushToViewController:vc];
+                }else{
+                    TOASTMESSAGE(result);
+                }
             }else{
                 TOASTMESSAGE(result);
             }
+            
         }
     }];
 

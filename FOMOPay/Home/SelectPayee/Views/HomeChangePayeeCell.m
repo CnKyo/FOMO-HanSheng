@@ -95,5 +95,13 @@
         _HomeChangePayeeCellButton(sender.tag);
     }
 }
-
+- (void)setMItem:(WKResipientInfoObj *)mItem{
+    self.nameTextField.text = mItem.fullName;
+    self.cityLabel.text = mItem.nationality;
+    self.sexLabel.text = mItem.gender;
+    self.bankLabel.text = mItem.bankName;
+    self.accountTextField.text = mItem.bankCity;
+    self.friendLabel.text = mItem.relationship;
+    self.mobileTextField.text = mItem.contactNumber;
+}
 @end

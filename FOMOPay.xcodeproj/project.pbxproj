@@ -43,6 +43,7 @@
 		1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DA9323013A87000969FE /* YHPDFImageDraw.m */; };
 		1863DAAB23014511000969FE /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAA723014511000969FE /* WRNavigationBar.m */; };
 		1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863DAAA23014511000969FE /* WRCustomNavigationBar.m */; };
+		186BB7DD23265B9D00230454 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186BB7DC23265B9C00230454 /* GoogleService-Info.plist */; };
 		18851845231F97450009D088 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 18851837231F97450009D088 /* LICENSE */; };
 		18851846231F97450009D088 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18851838231F97450009D088 /* README.md */; };
 		18851847231F97450009D088 /* NSString+WPAttributedMarkup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885183B231F97450009D088 /* NSString+WPAttributedMarkup.m */; };
@@ -327,6 +328,7 @@
 		1863DAA823014511000969FE /* WRCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRCustomNavigationBar.h; sourceTree = "<group>"; };
 		1863DAA923014511000969FE /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
 		1863DAAA23014511000969FE /* WRCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRCustomNavigationBar.m; sourceTree = "<group>"; };
+		186BB7DC23265B9C00230454 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18851837231F97450009D088 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		18851838231F97450009D088 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1885183A231F97450009D088 /* NSMutableString+TagReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+TagReplace.h"; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 				1863DA5223011A08000969FE /* Assets.xcassets */,
 				1863DA5423011A08000969FE /* LaunchScreen.storyboard */,
 				1863DA5723011A08000969FE /* Info.plist */,
+				186BB7DC23265B9C00230454 /* GoogleService-Info.plist */,
 				1863DA5823011A08000969FE /* main.m */,
 				CF48883023164F3500582B44 /* Localizable.strings */,
 				1863DA86230120DF000969FE /* HeaderFile */,
@@ -1630,6 +1633,7 @@
 				CF62650023152625001AF5FC /* CLCollectionTableViewCell.xib in Resources */,
 				CF6BBB592303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf in Resources */,
 				7715018F231121ED0016B449 /* HomeRefundSelectBankView.xib in Resources */,
+				186BB7DD23265B9D00230454 /* GoogleService-Info.plist in Resources */,
 				CF36E27223025E0400F1AE2B /* CLTableViewCell.xib in Resources */,
 				772D73D1230A86860068AB48 /* LogInVerifyCodeView.xib in Resources */,
 				CFC33F90230D1B2000C04207 /* pdf_collection_select.pdf in Resources */,

@@ -20,23 +20,28 @@
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) UIButton *changeButton;
 @property (nonatomic, assign)BOOL ifSelected;//是否选中
-@property (strong,nonatomic) WKResipientInfoObj *mItem;
 
 @end
 
 @implementation HomeSelectPayeeViewController
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadData];
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"选择收款人";
-    self.mItem = [WKResipientInfoObj new];
+    if (self.mItem.id.length<=0) {
+        self.mItem = [WKResipientInfoObj new];
+    }
+    
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
     self.ifSelected = NO;//是否被选中 默认为NO
     [self LoadCellType:10];
     [self loadButtonView];
-    [self loadData];
 //    __weak typeof(self)  weakSelf = self;
 //    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 //        [weakSelf.mTabView reloadData];
@@ -49,7 +54,13 @@
 //    }];
 
 }
-
+- (void)CLNavBackAction{
+    if (self.backVCS == 2) {
+        [self popToViewController:self.backVCS];
+    }else{
+        [self popToViewController];
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -243,15 +254,26 @@
 
 
 - (void)bottomButtonClicked:(UIButton *)sender{
-    
+    WS(weakSelf);
         if (sender.tag == 2000) {   //修改
-    
+            if (self.mItem.id.length<=0) {
+                TOASTMESSAGE(@"Please select recipient infomation!");
+                return;
+            }
             HomeChangePayeeVC *vc = [[HomeChangePayeeVC alloc] init];
+            vc.mItem = self.mItem;
+            vc.mBackBlock = ^(WKResipientInfoObj * _Nonnull mItem, NSInteger backCount) {
+                weakSelf.mItem = mItem;
+           
+            };
             [self pushToViewController:vc];
     
         }else{  //确认
     
-    
+            if (self.mBlock) {
+                self.mBlock(self.mItem);
+            }
+            [self popToViewController];
         }
     }
     //
@@ -260,7 +282,7 @@
     [self showLoading:nil];
     [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
 
-        [self.DataSource removeAllObjects];
+        [self.mData removeAllObjects];
         [self hiddenLoading];
         if (success) {
             NSDictionary *mResponse = [CLTool stringToDic:result];
@@ -292,6 +314,10 @@
 }
 
 - (void)nextButtonClicked{
+    if (self.mItem.id.length<=0) {
+        TOASTMESSAGE(@"Please select recipient infomation!");
+        return;
+    }
     HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
     vc.mItem = self.mItem;
     vc.mCurrentRemmitance = self.mCurrentRemmitance;

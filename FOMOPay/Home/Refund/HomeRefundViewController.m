@@ -152,6 +152,7 @@
             }else{
                 HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
                 vc.type = ShowButtonTypeDefault;
+                vc.backVCS = 2;
                 vc.mCurrentRemmitance = self.mCurrentRemmitance;
                 [weakSelf pushToViewController:vc];
             }

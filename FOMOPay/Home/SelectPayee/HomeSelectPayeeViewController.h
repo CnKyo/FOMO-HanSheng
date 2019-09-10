@@ -14,11 +14,19 @@ typedef NS_ENUM(NSInteger,ShowButtonType) {
     ShowButtonTypeChange,
 };
 
+typedef void(^HomeSelectPayeeViewControllerBackBlock)(WKResipientInfoObj *mItem);
+
 @interface HomeSelectPayeeViewController : BaseViewController
 
 @property (nonatomic, assign) ShowButtonType type;
 
 @property (nonatomic, strong) WKRemiitableEntity *mCurrentRemmitance;
+///返回几级视图
+@property (nonatomic, assign) NSInteger backVCS;
+
+@property (copy,nonatomic) HomeSelectPayeeViewControllerBackBlock mBlock;
+
+@property (strong,nonatomic) WKResipientInfoObj *mItem;
 
 @end
 

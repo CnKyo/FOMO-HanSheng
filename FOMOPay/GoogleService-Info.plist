@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>841423613781-05ahokkplp3ep4ssgugl1db5r7jk59u2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.841423613781-05ahokkplp3ep4ssgugl1db5r7jk59u2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCZJjNgx5vuTdfd4rma3iqCYCtQGmgkU5c</string>
+	<key>GCM_SENDER_ID</key>
+	<string>841423613781</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>--.FOMOPay</string>
+	<key>PROJECT_ID</key>
+	<string>fomopay-43fb4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fomopay-43fb4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:841423613781:ios:ca2775de56053ca8b689dc</string>
+	<key>DATABASE_URL</key>
+	<string>https://fomopay-43fb4.firebaseio.com</string>
+</dict>
+</plist>

@@ -143,5 +143,24 @@
  @param block 返回值
  */
 + (void)WKGetOrderDetail:(NSString *)para block:(void(^)(id result,BOOL success))block;
+
+#pragma mark----****----修改收款人信息
+/**
+ 修改收款人信息
+
+ @param recipientId 收款人ID
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKModifyRecipientInfo:(NSString *)recipientId andPara:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+#pragma mark----****----删除收款人信息
+/**
+ 删除收款人信息
+
+ @param recipientId 收款人ID
+ @param block 返回值
+ */
++ (void)WKDeleteRecipientInfo:(NSString *)recipientId block:(void(^)(id result,BOOL success))block;
+
 @end
 

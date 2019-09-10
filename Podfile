@@ -16,4 +16,7 @@ pod 'Masonry'
 pod 'CYLTabBarController', '~> 1.24.0'
 pod 'PPNetworkHelper',:git => 'https://github.com/jkpang/PPNetworkHelper.git'
 
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+
 end

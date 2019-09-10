@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "86527177679B851DB263034DBE8961FB"
+               BlueprintIdentifier = "445B3C6C67F6F57B0AD8D884B66746B3"
                BlueprintName = "Pods-FOMOPay"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-FOMOPay.a">

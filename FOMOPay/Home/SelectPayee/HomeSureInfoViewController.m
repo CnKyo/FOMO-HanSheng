@@ -16,6 +16,7 @@
 #import "CLMeClauseOfTreaty.h"
 #import "HomeSureInfoLIstCellone.h"
 #import "HomePayTypeViewController.h"
+#import "CLHomeViewController.h"
 @interface HomeSureInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -421,6 +422,11 @@
                 
                 HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
                 vc.type = ShowButtonTypeChange;
+                vc.mItem = weakSelf.mItem;
+                vc.mBlock = ^(WKResipientInfoObj *mItem) {
+                    weakSelf.mItem = mItem;
+                    [weakSelf.myTableView reloadData];
+                };
                 [weakSelf pushToViewController:vc];
             }
             
@@ -428,7 +434,13 @@
             
             if (indexPath.row == array.count) {
                 
-                HomeChangeAmountVC *vc = [[HomeChangeAmountVC alloc] init];
+                CLHomeViewController *vc = [[CLHomeViewController alloc] init];
+                vc.mCurrentRemmitance = weakSelf.mCurrentRemmitance;
+                vc.mBlock = ^(WKRemiitableEntity * _Nonnull mCurrentRemmitance) {
+                    weakSelf.mCurrentRemmitance = mCurrentRemmitance;
+                    [weakSelf.myTableView reloadData];
+                };
+                vc.mType = CLHomeViewControllerPushType_Modify;
                 [self pushToViewController:vc];
             }
         }
