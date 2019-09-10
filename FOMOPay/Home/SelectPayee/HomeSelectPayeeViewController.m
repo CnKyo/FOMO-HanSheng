@@ -49,7 +49,13 @@
 //    }];
 
 }
-
+- (void)CLNavBackAction{
+    if (self.backVCS == 2) {
+        [self popToViewController:self.backVCS];
+    }else{
+        [self popToViewController];
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
