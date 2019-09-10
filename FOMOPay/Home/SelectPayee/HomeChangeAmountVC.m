@@ -22,10 +22,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
-    self.title =@"修改汇款金额";
+    self.title = @"修改汇款金额";
+//    self.title =@"修改汇款金额";
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
+    
     [self loadTableView];
 }
 

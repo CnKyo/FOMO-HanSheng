@@ -15,13 +15,13 @@
 @property (weak, nonatomic) IBOutlet UIView *payNowView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *payNowViewHeight;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *allowImage;
 
 @property (weak, nonatomic) IBOutlet UIView *bankView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bankViewHeight;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage1;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel1;
+//@property (weak, nonatomic) IBOutlet UILabel *contentLabel1;
 @property (weak, nonatomic) IBOutlet UIImageView *allowImage1;
 
 @end

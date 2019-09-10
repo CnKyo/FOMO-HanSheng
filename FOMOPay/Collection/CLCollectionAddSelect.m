@@ -12,7 +12,7 @@
 /// 列表数据
 @property (nonatomic) NSInteger mHeight;
 @property (nonatomic) NSInteger i;
-@property (nonatomic,strong) NSString *EnterString;
+@property (nonatomic,strong) NSMutableArray *EnterString;
 
 @end
 //初始化数据
@@ -103,6 +103,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     self.EnterString = [_modelArray objectAtIndex:indexPath.row];
     DebugLog(@"选中的数据为%@",self.EnterString);
 }
@@ -120,6 +121,7 @@
     }else{
     [self.view removeFromSuperview];
     }
+//    self.EnterString
 
 }
 

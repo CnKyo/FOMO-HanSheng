@@ -397,7 +397,7 @@
 //    DebugLog(@"接受到传递过来的值为%@",self.mModeString);
 //}
 
-- (void)changeValue:(NSString *)value{ // 第6步接受
+- (void)changeValue:(NSMutableString *)value{ // 第6步接受
     //    self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
     _mModeString = value;
     //    [self.mMdate insertString:@"123" atIndex:0];

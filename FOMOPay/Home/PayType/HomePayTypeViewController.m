@@ -31,7 +31,7 @@
     self.title =@"支付方式";
 
     CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"支付方式";
+//    mNewModel.mTitle = @"支付方式";
     [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
         
     }];
@@ -90,6 +90,8 @@
         cell = [[HomePayTypeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomePayTypeListCell"];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    cell.contentLabel.text = [NSString stringWithFormat:@"一共支付%@ %@,总金额包括%@ %@和手续费",self.mOrderInfo.order.remittable.chargable.amount,self.mOrderInfo.order.remittable.chargable.currencyCode,self.mOrderInfo.order.remittable.source.amount,self.mOrderInfo.order.remittable.source.currencyCode];
+    cell.contentLabel1.text =[NSString stringWithFormat:@"一共支付%@ %@,总金额包括%@ %@和手续费",self.mOrderInfo.order.remittable.chargable.amount,self.mOrderInfo.order.remittable.chargable.currencyCode,self.mOrderInfo.order.remittable.source.amount,self.mOrderInfo.order.remittable.source.currencyCode];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     __weak __typeof(self)weakSelf = self;
     
@@ -98,10 +100,12 @@
         if (tag == 0) {
             
             HomePayNowViewController *vc = [[HomePayNowViewController alloc] init];
+            vc.mOrderInfo = weakSelf.mOrderInfo;
             [weakSelf pushToViewController:vc];
             
         }else{
             HomeBankTransferVC *vc = [HomeBankTransferVC new];
+             vc.mOrderInfo = weakSelf.mOrderInfo;
             [weakSelf pushToViewController:vc];
             
         }

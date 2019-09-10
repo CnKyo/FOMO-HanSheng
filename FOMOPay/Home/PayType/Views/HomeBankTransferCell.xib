@@ -156,9 +156,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="010-901912-0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF6-sG-AvE">
-                                <rect key="frame" x="205" y="137" width="100" height="15"/>
+                                <rect key="frame" x="212" y="137" width="93" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="UpZ-FO-K4V"/>
                                     <constraint firstAttribute="height" constant="15" id="wqt-CF-f5H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
@@ -175,7 +174,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="复制" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-Bj-nl9">
-                                <rect key="frame" x="165" y="137" width="30" height="15"/>
+                                <rect key="frame" x="172" y="137" width="30" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="PAI-Yu-wi7"/>
                                     <constraint firstAttribute="height" constant="15" id="uH4-dt-sGq"/>
@@ -185,7 +184,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0h-rj-Pp6">
-                                <rect key="frame" x="160" y="132" width="40" height="25"/>
+                                <rect key="frame" x="167" y="132" width="40" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="IMs-HB-KY2"/>
                                     <constraint firstAttribute="height" constant="25" id="wbc-1c-Ccq"/>

@@ -82,14 +82,14 @@
 }
 
 
-- (void)checkLoginStatus{
-    if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_unLogin) {
-        [[WKLoginManager shareInstance] presentLoginViewController:^{
-            //            [[WKTabbarManager shareInstance] showHomePage];
-        }];
-        
-    }
-}
+//- (void)checkLoginStatus{
+//    if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_unLogin) {
+//        [[WKLoginManager shareInstance] presentLoginViewController:^{
+//            //            [[WKTabbarManager shareInstance] showHomePage];
+//        }];
+//        
+//    }
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -105,6 +105,7 @@
             
         }];
     }else{
+        self.title = @"修改汇款金额";
         [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
             
         }];
@@ -124,13 +125,20 @@
     _myTableView.delegate = self;
     _myTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_myTableView];
-    
+    if(self.mType == CLHomeViewControllerPushType_Create){
     [_myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.left.right.equalTo(self.view);
         make.bottom.equalTo(self.view).offset(-10-tabbarHeight);
         make.top.equalTo(self.view).offset(44 + rectStatus.size.height);
     }];
+    }else{
+        [_myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.bottom.equalTo(self.view).mas_offset(-10 - BottomHeight);
+            make.top.equalTo(self.view).mas_offset(44 + kAppStatusBarHeight );
+        }];
+    }
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeListCell" bundle:nil] forCellReuseIdentifier:@"HomeListCell"];
 }

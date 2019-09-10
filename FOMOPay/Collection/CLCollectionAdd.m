@@ -109,12 +109,14 @@
         
     }
      __weak typeof(cell)  weakCell = cell;
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
 //    cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     cell.mMeLanguageLeftLabel.text = _mAddLeftDateSource[indexPath.row];
     cell.mMeLanguageLeftLabel.font = kCommonFont(14);
     
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     if(indexPath.row == 0 ){
     cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
@@ -161,7 +163,7 @@
     
         };}
     if(indexPath.row == 2){
-            cell.mIndexPath = indexPath;
+        cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
         mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
@@ -384,7 +386,7 @@
 //    return 28;
 //}
 
-- (void)changeValue:(NSString *)value{ // 第6步接受
+- (void)changeValue:(NSMutableString *)value{ // 第6步接受
 //    self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
     _mModeString = value;
 //    [self.mMdate insertString:@"123" atIndex:0];

@@ -152,12 +152,30 @@
 }
 
 -(void)CancelButton:(UIButton *)sender{
-    [_vc CancelButton:sender];
+    DebugLog(@"点击了取消");
+    __block typeof(self) WeakSelf = self;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消汇款" message:@"是否要取消本次汇款" preferredStyle:UIAlertControllerStyleAlert];
+    __block  UIAlertAction *NoAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        
+    }];
+    
+    __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        if(YesAction){
+            CLHistoryCancelRemittance *vc = [CLHistoryCancelRemittance new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+    [NoAction setValue:ssRGBHex(0x8C9091) forKey:@"titleTextColor"];
+    [alertController addAction:NoAction];
+    [alertController addAction:YesAction];
+    
+    [WeakSelf presentViewController:alertController animated:YES completion:nil];
     
 }
 
 -(void)QueryButton:(UIButton *)sender{
-    [_vc QueryButton:sender];
+    CLHistoryPaymentdetails *vc = [CLHistoryPaymentdetails new];
+    [self pushToViewController:vc];
 }
 
 

@@ -346,15 +346,16 @@
             }else if ([mContent isEqualToString:@"关系"]){
                 cell.contentLabel.text = self.mItem.relationship;
             }else if ([mContent isEqualToString:@"汇款金额"]){
-               
-                cell.contentLabel.text = self.mCurrentRemmitance.source.amount;
-//                cell.contentLabel.text = [NSString stringWithFormat:@"%@%@",self.mItemC.remittable.source.currencyCode,self.mCurrentRemmitance.source.amount];
+                cell.contentLabel.text = [NSString stringWithFormat:@"%@%@", self.mCurrentRemmitance.source.currencyCode,self.mCurrentRemmitance.source.amount];
             }else if ([mContent isEqualToString:@"获得金额"]){
-                cell.contentLabel.text = self.mCurrentRemmitance.target.amount;
+                cell.contentLabel.text = [NSString stringWithFormat:@"%@%@",self.mCurrentRemmitance.target.currencyCode,self.mCurrentRemmitance.target.amount];
+//                cell.contentLabel.text = self.mCurrentRemmitance.target.amount;
             }else if ([mContent isEqualToString:@"汇率"]){
                 cell.contentLabel.text = self.mCurrentRemmitance.rate;
             }else if ([mContent isEqualToString:@"手续费"]){
-                cell.contentLabel.text = self.mCurrentRemmitance.serviceCharge.amount;
+                cell.contentLabel.text = [NSString stringWithFormat:@"%@%@",self.mCurrentRemmitance.serviceCharge.currencyCode,self
+                                          .mCurrentRemmitance.serviceCharge.amount];
+//                cell.contentLabel.text = self.mCurrentRemmitance.serviceCharge.amount;
             }
             return cell;
         }

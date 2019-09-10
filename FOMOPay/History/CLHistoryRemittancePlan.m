@@ -58,7 +58,7 @@
     [self LoadCellType:9];
    
     
-    self.i=4;  //控制进度条1-4。 取值1-4;
+    self.i=1;  //控制进度条1-4。 取值1-4;
     
     //    [self LoadButton];
     [self ResetLayout];
@@ -94,8 +94,8 @@
     self.mRightDataHint =@[@"等待付款中，请使用本人账户进行付款。如果您已经完成支付，请耐心等待，我们需要时间核对付款讯息，谢谢！",
                            @"款项核对中...",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"请查询户口确定款项"];
     
-//    self.mLeftDate  = @[[NSString stringWithFormat:@"%@月%@日",[self.mItem.createdAt substringWithRange:NSMakeRange(5,2) ]
-//                         ,[self.mItem.createdAt substringWithRange:NSMakeRange(8,2)]]];
+    self.mLeftDate  = @[[NSString stringWithFormat:@"%@月%@日",[self.mItem.createdAt substringWithRange:NSMakeRange(5,2) ]
+                         ,[self.mItem.createdAt substringWithRange:NSMakeRange(8,2)]]];
 //    self.mLeftDate = @[@""];
 }
 
@@ -696,7 +696,7 @@
 }
 
 -(NSInteger )mOperation:(NSString *)opertion{
-    self.mItemData = [self.mItem.operations objectAtIndex:0];
+//    self.mItemData = [self.mItem.operations objectAtIndex:0];
     if([opertion isEqualToString:@"submit"]){
         return 1;
     }

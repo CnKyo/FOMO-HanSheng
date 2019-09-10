@@ -28,7 +28,6 @@
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
     self.title = @"银行转账";
     CLNavModel *mNewModel = [CLNavModel new];
-//    mNewModel.mTitle = @"银行转账";
     [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
         
     }];
@@ -88,16 +87,38 @@
 //
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    NSString *string = [NSString stringWithFormat:@"%d %@",[self.mOrderInfo.order.remittable.chargable.amount intValue],self.mOrderInfo.order.remittable.chargable.currencyCode];
+    
+    NSString *sstring = [NSString stringWithFormat:@"2.转账%@到如下所示的账户",string];
+    
+    NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc] initWithString:sstring];
+    
+    [AttributedStr addAttribute:NSForegroundColorAttributeName value:ssRGBHex(0x36A9E1) range:NSMakeRange(4, string.length)];
+    
+    cell.secondStepLabel.attributedText = AttributedStr;//设置显示的金额的富文本;
+//
+    cell.orderLabel.text = [NSString stringWithFormat:@"%@",self.mOrderInfo.order.serialNumber]; // 订单号
+    
+    cell.accountLabel.text = [NSString stringWithFormat:@"%@",self.mOrderInfo.order.recipient.accountNumber]; //账户号码
+    
+    cell.bankNameLabel.text = [NSString stringWithFormat:@"%@",self.mOrderInfo.order.recipient.bankName]; //银行名
+    
+    cell.accountNameLabel.text = [NSString stringWithFormat:@"%@",self.mOrderInfo.order.recipient.fullName]; //账户名
+    
     __weak __typeof(self)weakSelf = self;
+    __weak __typeof(cell)weakCell =cell;
     cell.HomeBankTransferCellBlock = ^(NSInteger tag) {
         
         if (tag == 0) { //复制
-            
-            
+            UIPasteboard *pab = [UIPasteboard generalPasteboard];
+            pab.string = weakCell.accountLabel.text;
+            DebugLog(@"复制完成了");
         }else{  //完成
             
-            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     };
     

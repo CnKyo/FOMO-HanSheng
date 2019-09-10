@@ -92,14 +92,14 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     __weak __typeof(self)weakSelf = self;
-    
-    cell.codeImage.image =[self createNonInterpolatedUIImageFormCIImage:[self creatQRcodeWithUrlstring:@"www.baidu.com"] withSize:150];
+    __weak __typeof(cell)weakCell = cell;
+    cell.codeImage.image =[self createNonInterpolatedUIImageFormCIImage:[self creatQRcodeWithUrlstring:self.mOrderInfo.qrCode] withSize:176];
     cell.HomePayNowListCellBlock = ^(NSInteger tag) {
         
         if (tag == 0) {     //下载二维码
             
-            UIImage *image = nil;
-            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+//            UIImage *image = cell.codeImage.image;
+            UIImageWriteToSavedPhotosAlbum(weakCell.codeImage.image, weakSelf, @selector(image:didFinishSavingWithError:contextInfo:), nil);
             
         }else{  //完成
             

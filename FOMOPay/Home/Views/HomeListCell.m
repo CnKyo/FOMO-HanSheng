@@ -431,7 +431,7 @@
     if (mType == CLHomeViewControllerPushType_Create) {
         [self.exchangeRateButton setTitle:@"汇款" forState:0];
     }else{
-        [self.exchangeRateButton setTitle:@"提交" forState:0];
+        [self.exchangeRateButton setTitle:@"修改" forState:0];
     }
 }
 @end

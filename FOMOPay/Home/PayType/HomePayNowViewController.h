@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePayNowViewController : BaseViewController
-
+@property (strong,nonatomic) WKCreateOrderInfoObj *mOrderInfo;
 @end
 
 NS_ASSUME_NONNULL_END

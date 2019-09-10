@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePayTypeListCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel1;
 @property (nonatomic, copy) void (^HomePayTypeListCellBlock)(NSInteger tag);
 
 @end

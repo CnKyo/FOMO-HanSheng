@@ -11,11 +11,11 @@
 @interface HomeBankTransferCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *alertLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secondStepLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *accountNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *orderLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *secondStepLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *accountNameLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *orderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *finishButton;
 
