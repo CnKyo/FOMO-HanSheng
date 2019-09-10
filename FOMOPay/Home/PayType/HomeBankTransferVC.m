@@ -26,9 +26,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = kCommonColor(246, 245, 250, 1);
-    
+    self.title = @"银行转账";
     CLNavModel *mNewModel = [CLNavModel new];
-    mNewModel.mTitle = @"银行转账";
+//    mNewModel.mTitle = @"银行转账";
     [self CLAddNavType:CLNavType_default andModel:mNewModel completion:^(NSInteger tag) {
         
     }];
@@ -85,9 +85,10 @@
     if (!cell) {
         
         cell = [[HomeBankTransferCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeBankTransferCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak __typeof(self)weakSelf = self;
     cell.HomeBankTransferCellBlock = ^(NSInteger tag) {
         

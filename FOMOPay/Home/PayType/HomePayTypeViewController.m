@@ -8,7 +8,7 @@
 
 #import "HomePayTypeViewController.h"
 #import "HomePayTypeListCell.h"
-
+#import "HomeBankTransferVC.h"//银行转账
 #import "HomePayNowViewController.h"    //paynow
 
 @interface HomePayTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -88,9 +88,9 @@
     if (!cell) {
         
         cell = [[HomePayTypeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomePayTypeListCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     __weak __typeof(self)weakSelf = self;
     
     cell.HomePayTypeListCellBlock = ^(NSInteger tag) {
@@ -101,7 +101,8 @@
             [weakSelf pushToViewController:vc];
             
         }else{
-            
+            HomeBankTransferVC *vc = [HomeBankTransferVC new];
+            [weakSelf pushToViewController:vc];
             
         }
     };

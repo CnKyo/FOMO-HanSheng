@@ -9,7 +9,8 @@
 #import "CLHistoryViewController.h"
 #import "CLHistoryRefundProgress.h"
 @interface CLHistoryViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@property(nonatomic,strong)UIImageView *ctView;
+@property(nonatomic,strong)UILabel *ctLbale;
 @end
 
 @implementation CLHistoryViewController
@@ -75,6 +76,8 @@
         if(self.DataSource.count <= 0){
             [self LoadNoDataView];//没有数据显示暂无历史消息界面
         }else{
+            self.ctLbale.hidden = YES;
+            self.ctView.hidden = YES;
             [self.mTabView reloadData];
         }
     }];
@@ -101,6 +104,8 @@
         if(self.DataSource.count <= 0){
             [self LoadNoDataView];//没有数据显示暂无历史消息界面
         }else{
+            self.ctView.hidden = YES;
+            self.ctLbale.hidden = YES;
             [self.mTabView reloadData];
         }
     }];
@@ -153,21 +158,21 @@
 
 
 -(void)LoadNoDataView{
-    UIImageView *ctView = [UIImageView new];
-    ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
-    [self.view addSubview:ctView];
-    UILabel *ctLbale  = [UILabel new];
-    ctLbale.text = @"暂无历史消息";
-    ctLbale.font = kCommonFont(16);
-    [self.view addSubview:ctLbale];
-    [ctView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _ctView = [UIImageView new];
+    _ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
+    [self.view addSubview:_ctView];
+    _ctLbale  = [UILabel new];
+    _ctLbale.text = @"暂无历史消息";
+    _ctLbale.font = kCommonFont(16);
+    [self.view addSubview:_ctLbale];
+    [_ctView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).mas_offset(+kAppStatusBarHeight +44 + 143);
         make.centerX.equalTo(self.view);
     }];
     
-    [ctLbale mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ctView.mas_bottom).offset(5);
-        make.centerX.equalTo(ctView);
+    [_ctLbale mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.ctView.mas_bottom).offset(5);
+        make.centerX.equalTo(self.ctView);
     }];
 }
 @end

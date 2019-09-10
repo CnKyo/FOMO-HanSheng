@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) WKOrderInfo *mItem;
 
-
+@property (strong,nonatomic)  WKOrderOperation *mItemData;
 @end
 
 NS_ASSUME_NONNULL_END

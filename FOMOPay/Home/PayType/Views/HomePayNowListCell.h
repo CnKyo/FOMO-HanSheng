@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePayNowListCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *codeImage;
 @property (nonatomic, copy) void (^HomePayNowListCellBlock)(NSInteger tag);
 
 @end

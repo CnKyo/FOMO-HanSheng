@@ -56,11 +56,7 @@
         }
     }];
     [self LoadCellType:9];
-    self.mData=@[@"收款人",@"汇款金额",@"获得金额"];
-    self.mLeftDate = @[@"7月7日",@"7月8日",@"7月9日",@"7月30日"];
-    self.mRightData = @[@"提交汇款订单",@"已收到您的付款",@"汇款处理中",@"汇款出错"];
-    self.mRightDataHint =@[@"等待付款中，请使用本人账户进行付款。如果您已经完成支付，请耐心等待，我们需要时间核对付款讯息，谢谢！",
-                           @"款项核对中...",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"请查询户口确定款项"];
+   
     
     self.i=4;  //控制进度条1-4。 取值1-4;
     
@@ -68,6 +64,8 @@
     [self ResetLayout];
     
     [self getOrderDetail];
+    
+    [self loadData];
     
 }
 - (void)getOrderDetail{
@@ -87,6 +85,22 @@
         [self.mTabView reloadData];
     }];
 }
+- (void)loadData{
+    self.mItemData = [self.mItem.operations objectAtIndex:0];
+//    self.i =[self mOperation:self.mItemData.operation];
+    self.mData=@[@"收款人",@"汇款金额",@"获得金额"];
+    self.mLeftDate = @[@"1月3日",@"12月30日",@"12月30日",@"12月30日"];
+    self.mRightData = @[@"提交汇款订单",@"已收到您的付款",@"汇款处理中",@"汇款出错"];
+    self.mRightDataHint =@[@"等待付款中，请使用本人账户进行付款。如果您已经完成支付，请耐心等待，我们需要时间核对付款讯息，谢谢！",
+                           @"款项核对中...",@"您的汇款将在今日内处理完毕,稍后将会有短信提示",@"请查询户口确定款项"];
+    
+//    self.mLeftDate  = @[[NSString stringWithFormat:@"%@月%@日",[self.mItem.createdAt substringWithRange:NSMakeRange(5,2) ]
+//                         ,[self.mItem.createdAt substringWithRange:NSMakeRange(8,2)]]];
+//    self.mLeftDate = @[@""];
+}
+
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
@@ -100,6 +114,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+   
     CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if(cell == nil){
         cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
@@ -118,7 +133,10 @@
         
     }
     //提示小文字离大文字的间距全部为8
+    
+    //左侧时间为创建时间
     if(indexPath.section == 1){
+       
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         cell.mRightData.hidden = YES;
         cell.mLeftName.font = kCommonFont(14);
@@ -128,65 +146,86 @@
             cell.mLeftName.textColor = ssRGBHex(0x8C9091);
             
         }
+       
         
         if(indexPath.row == 1){
+            for(id subview in cell.contentView.subviews){
+                [subview removeFromSuperview];
+            }
+            
             if (self.i == indexPath.row) {
                 cell.mLeftName.hidden = YES;
-                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(15, 0, 46, 14)];//左边日期
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(8, 0, 60, 14)];//左边日期
                 mLeftData.textColor = ssRGBHex(0x8C9091);
                 mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
                 mLeftData.font =kCommonFont(14);
+                mLeftData.textAlignment = NSTextAlignmentRight;
                 [cell.contentView addSubview:mLeftData];
                 
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 112)];//背景条
-                bgview.backgroundColor =ssRGBHex(0xE6E6E6);
-                [cell.contentView addSubview:bgview];
-                UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
-                titleLabel.backgroundColor =ssRGBHex(0x005CB6);
-                titleLabel.frame =CGRectMake(-4, 0, 10, 10);
-                titleLabel.layer.cornerRadius = 10/2 ;
-                titleLabel.clipsToBounds = YES ;
+                UIView *bgview1 = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 112)];//背景条
+                bgview1.backgroundColor =ssRGBHex(0xE6E6E6);
+                [cell.contentView addSubview:bgview1];
+                UILabel *titleLabel1 = [[UILabel alloc]init]; //背景条上的点
+                titleLabel1.backgroundColor =ssRGBHex(0x005CB6);
+                titleLabel1.frame =CGRectMake(-4, 0, 10, 10);
+                titleLabel1.layer.cornerRadius = 10/2 ;
+                titleLabel1.clipsToBounds = YES ;
                 
-                [bgview addSubview:titleLabel];
-                UILabel  *mLabel = [[UILabel alloc]initWithFrame:CGRectMake(97, 20, 118, 16)];
-                mLabel.text= [_mRightData objectAtIndex:indexPath.row - 1];
-                mLabel.font = kCommonFont(16);
-                mLabel.textColor  =ssRGBHex(0x005CB6);
-                [cell.contentView addSubview:mLabel];
+                [bgview1 addSubview:titleLabel1];
+                UILabel  *mLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(97, 20, 118, 16)];
+                mLabel1.text= [_mRightData objectAtIndex:indexPath.row - 1];
+                mLabel1.font = kCommonFont(16);
+                mLabel1.textColor  =ssRGBHex(0x005CB6);
+                [cell.contentView addSubview:mLabel1];
                 
-                UILabel *mTitleHint = [[UILabel alloc]initWithFrame:CGRectMake(97, mLabel.frame.size.height +14 +8, 256, 57)];//提示小文字
-                mTitleHint.textColor = ssRGBHex(0x8C9091);
-                mTitleHint.text=[_mRightDataHint objectAtIndex:indexPath.row - 1];
-                mTitleHint.numberOfLines = 0;
-                mTitleHint.font = kCommonFont(12);
-                [cell.contentView addSubview:mTitleHint];
+                UILabel *mTitleHint1= [[UILabel alloc]initWithFrame:CGRectMake(97, mLabel1.frame.size.height +14 +8, 256, 57)];//提示小文字
+                mTitleHint1.textColor = ssRGBHex(0x8C9091);
+                mTitleHint1.text=[_mRightDataHint objectAtIndex:indexPath.row - 1];
+                mTitleHint1.numberOfLines = 0;
+                mTitleHint1.font = kCommonFont(12);
+                [cell.contentView addSubview:mTitleHint1];
                 
                 [self LoadButtonCancelAndQuery];
             }else if(self.i >indexPath.row){
-                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
-                UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 48)];//背景条
-                bgview.backgroundColor =ssRGBHex(0x005CB6);
-                [cell.contentView addSubview:bgview];
-                UILabel *titleLabel = [[UILabel alloc]init]; //背景条上的点
-                titleLabel.backgroundColor = ssRGBHex(0x005CB6);
-                titleLabel.frame =CGRectMake(-4, 0, 10, 10);
-                titleLabel.layer.cornerRadius = 10/2 ;
-                titleLabel.clipsToBounds = YES ;
-                [bgview addSubview:titleLabel];
-                UILabel *mLabel = [[UILabel alloc]initWithFrame:CGRectMake(97, 13, 118, 16)];
-                mLabel.text= [_mRightData objectAtIndex:indexPath.row - 1];
-                mLabel.textColor =  ssRGBHex(0x8C9091);
-                mLabel.font = kCommonFont(16);
-                [cell.contentView addSubview:mLabel];
-            }}
-        //第二个
-        if(indexPath.row == 2){
-            if (self.i == indexPath.row) {
                 cell.mLeftName.hidden = YES;
-                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(15, 16, 46, 14)];//左边日期
+//                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
+                
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(5, 13, 60, 14)];//左边日期
                 mLeftData.textColor = ssRGBHex(0x8C9091);
                 mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
                 mLeftData.font =kCommonFont(14);
+                mLeftData.textAlignment = NSTextAlignmentRight;
+                [cell.contentView addSubview:mLeftData];
+                
+                
+                UIView *bgview1 = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 48)];//背景条
+                bgview1.backgroundColor =ssRGBHex(0x005CB6);
+                [cell.contentView addSubview:bgview1];
+                UILabel *titleLabel1= [[UILabel alloc]init]; //背景条上的点
+                titleLabel1.backgroundColor = ssRGBHex(0x005CB6);
+                titleLabel1.frame =CGRectMake(-4, 0, 10, 10);
+                titleLabel1.layer.cornerRadius = 10/2 ;
+                titleLabel1.clipsToBounds = YES ;
+                [bgview1 addSubview:titleLabel1];
+                UILabel *mLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(97, 13, 118, 16)];
+                mLabel1.text= [_mRightData objectAtIndex:indexPath.row - 1];
+                mLabel1.textColor =  ssRGBHex(0x8C9091);
+                mLabel1.font = kCommonFont(16);
+                [cell.contentView addSubview:mLabel1];
+            }}
+        //第二个
+        if(indexPath.row == 2){
+            
+            for(id subview in cell.contentView.subviews){
+                [subview removeFromSuperview];
+            }
+            if (self.i == indexPath.row) {
+                cell.mLeftName.hidden = YES;
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(5, 16, 60, 14)];//左边日期
+                mLeftData.textColor = ssRGBHex(0x8C9091);
+                mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
+                mLeftData.font =kCommonFont(14);
+                 mLeftData.textAlignment = NSTextAlignmentRight;
                 [cell.contentView addSubview:mLeftData];
                 
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 106)];//背景条
@@ -214,7 +253,16 @@
                 
                 
             }else if(self.i >indexPath.row){
-                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
+               
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(5, 14, 60, 14)];//左边日期
+                mLeftData.textColor = ssRGBHex(0x8C9091);
+                mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
+                mLeftData.font =kCommonFont(14);
+                 mLeftData.textAlignment = NSTextAlignmentRight;
+                [cell.contentView addSubview:mLeftData];
+                
+                
+                cell.mLeftName.hidden = YES;
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 48)];//背景条
                 bgview.backgroundColor =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:bgview];
@@ -248,12 +296,16 @@
             }}
         //第三个
         if(indexPath.row == 3){
+            for(id subview in cell.contentView.subviews){
+                [subview removeFromSuperview];
+            }
             if (self.i == indexPath.row) {
                 cell.mLeftName.hidden = YES;
-                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(15, 16, 46, 14)];//左边日期
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(5, 16, 60, 14)];//左边日期
                 mLeftData.textColor = ssRGBHex(0x8C9091);
                 mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
                 mLeftData.font =kCommonFont(14);
+                 mLeftData.textAlignment = NSTextAlignmentRight;
                 [cell.contentView addSubview:mLeftData];
                 
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 82)];//背景条
@@ -282,7 +334,15 @@
                 [self LoadContactButton];
                 
             }else if(self.i >indexPath.row){
-                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(5, 13, 60, 14)];//左边日期
+                mLeftData.textColor = ssRGBHex(0x8C9091);
+                mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
+                 mLeftData.textAlignment = NSTextAlignmentRight;
+                mLeftData.font =kCommonFont(14);
+                [cell.contentView addSubview:mLeftData];
+                
+//                cell.mLeftName.text =[_mLeftDate objectAtIndex:indexPath.row - 1];
+                cell.mLeftName.hidden = YES;
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 16, 1.5, 47)];//背景条
                 bgview.backgroundColor =ssRGBHex(0x005CB6);
                 [cell.contentView addSubview:bgview];
@@ -318,12 +378,16 @@
         
         //第四个
         if(indexPath.row == 4){
+            for(id subview in cell.contentView.subviews){
+                [subview removeFromSuperview];
+            }
             if (self.i == indexPath.row) {
                 cell.mLeftName.hidden = YES;
-                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(13, 20, 60, 14)];//左边日期
+                UILabel *mLeftData= [[UILabel alloc]initWithFrame:CGRectMake(5, 20, 60, 14)];//左边日期
                 mLeftData.textColor = ssRGBHex(0x8C9091);
                 mLeftData.text = [_mLeftDate objectAtIndex:indexPath.row - 1];
                 mLeftData.font =kCommonFont(14);
+                mLeftData.textAlignment = NSTextAlignmentRight;
                 [cell.contentView addSubview:mLeftData];
                 
                 UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(68, 22, 1.5, 0)];//背景条
@@ -393,6 +457,9 @@
                 [cell.contentView addSubview:mLabel];
             }}
         if(indexPath.row == 5){
+            for(id subview in cell.contentView.subviews){
+                [subview removeFromSuperview];
+            }
             cell.mLeftName.hidden = YES;
             cell.mRightData.hidden = YES;
         }
@@ -626,5 +693,13 @@
     //获得pdf收据
     CLHistoryCertificateOfRemittance *vc = [CLHistoryCertificateOfRemittance new];
     [self pushToViewController: vc];
+}
+
+-(NSInteger )mOperation:(NSString *)opertion{
+    self.mItemData = [self.mItem.operations objectAtIndex:0];
+    if([opertion isEqualToString:@"submit"]){
+        return 1;
+    }
+    return 1;
 }
 @end
