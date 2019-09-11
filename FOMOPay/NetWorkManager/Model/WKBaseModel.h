@@ -186,10 +186,13 @@
 @class WKRemiitableEntitySource,WKRemiitableEntityTarget,WKRemiitableEntityServiceCharge,WKRemiitableEntityChargable;
 @interface WKRemiitableEntity : NSObject
 @property (strong,nonatomic) NSString *rate;
+///汇款金额
 @property (strong,nonatomic) WKRemiitableEntitySource *source;
-
+///获得金额
 @property (strong,nonatomic) WKRemiitableEntityTarget *target;
+///服务费
 @property (strong,nonatomic) WKRemiitableEntityServiceCharge *serviceCharge;
+///总的付款金额
 @property (strong,nonatomic) WKRemiitableEntityChargable *chargable;
 @end
 
@@ -243,5 +246,8 @@
 @property (strong,nonatomic) NSString *toStatus;
 @property (strong,nonatomic) NSString *comment;
 @property (strong,nonatomic) NSString *operatedAt;//时间
+
+@property (assign,nonatomic) BOOL mStatus;///状态  yes:需要显示蓝色的点. no:不需要显示蓝色的点
+@property (assign,nonatomic) BOOL mShowTop;///状态  yes:需要显示蓝色的点. no:不需要显示蓝色的点
 
 @end

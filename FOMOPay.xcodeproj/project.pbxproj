@@ -54,6 +54,10 @@
 		189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D32319044A00FDEA10 /* WKUserDefault.m */; };
 		189E06D72319044B00FDEA10 /* WKEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D42319044A00FDEA10 /* WKEncryption.m */; };
 		189E06DA2319046400FDEA10 /* WKAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E06D92319046400FDEA10 /* WKAccountManager.m */; };
+		18B5D85123288F2400427CC6 /* WKOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B5D85023288F2400427CC6 /* WKOrderDetailView.m */; };
+		18B5D85323288F2C00427CC6 /* WKOrderDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B5D85223288F2C00427CC6 /* WKOrderDetailView.xib */; };
+		18B5D8572328986800427CC6 /* WKOrderTimeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B5D8552328986800427CC6 /* WKOrderTimeLineCell.m */; };
+		18B5D8582328986800427CC6 /* WKOrderTimeLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B5D8562328986800427CC6 /* WKOrderTimeLineCell.xib */; };
 		18B7BEE32304EBE3007B496A /* CLNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BEE22304EBE3007B496A /* CLNavgationView.m */; };
 		18B7BEE52304EC82007B496A /* CLNavgationHomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEE42304EC82007B496A /* CLNavgationHomeView.xib */; };
 		18B7BEE72304ECFD007B496A /* CLNavgationNormalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEE62304ECFD007B496A /* CLNavgationNormalView.xib */; };
@@ -347,6 +351,12 @@
 		189E06D52319044A00FDEA10 /* WKUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKUserDefault.h; sourceTree = "<group>"; };
 		189E06D82319046400FDEA10 /* WKAccountManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKAccountManager.h; sourceTree = "<group>"; };
 		189E06D92319046400FDEA10 /* WKAccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKAccountManager.m; sourceTree = "<group>"; };
+		18B5D84F23288F2400427CC6 /* WKOrderDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKOrderDetailView.h; sourceTree = "<group>"; };
+		18B5D85023288F2400427CC6 /* WKOrderDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKOrderDetailView.m; sourceTree = "<group>"; };
+		18B5D85223288F2C00427CC6 /* WKOrderDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKOrderDetailView.xib; sourceTree = "<group>"; };
+		18B5D8542328986800427CC6 /* WKOrderTimeLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKOrderTimeLineCell.h; sourceTree = "<group>"; };
+		18B5D8552328986800427CC6 /* WKOrderTimeLineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKOrderTimeLineCell.m; sourceTree = "<group>"; };
+		18B5D8562328986800427CC6 /* WKOrderTimeLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKOrderTimeLineCell.xib; sourceTree = "<group>"; };
 		18B7BEE12304EBE3007B496A /* CLNavgationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView.h; sourceTree = "<group>"; };
 		18B7BEE22304EBE3007B496A /* CLNavgationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLNavgationView.m; sourceTree = "<group>"; };
 		18B7BEE42304EC82007B496A /* CLNavgationHomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLNavgationHomeView.xib; sourceTree = "<group>"; };
@@ -946,8 +956,7 @@
 			children = (
 				CF6264D723152487001AF5FC /* CLHistoryViewController.h */,
 				CF6264D623152486001AF5FC /* CLHistoryViewController.m */,
-				CF6264D9231524C1001AF5FC /* CLHistoryRemittancePlan.h */,
-				CF6264DA231524C1001AF5FC /* CLHistoryRemittancePlan.m */,
+				18B5D84D23288F0700427CC6 /* OrderDetail */,
 				CF26171123176B1900448AA4 /* CLHistoryDetailsOfRemittances.h */,
 				CF26171223176B1900448AA4 /* CLHistoryDetailsOfRemittances.m */,
 				CF3129E1231D22E6002ED335 /* CLHistoryCancelRemittance.h */,
@@ -1096,6 +1105,29 @@
 				189E06D52319044A00FDEA10 /* WKUserDefault.h */,
 			);
 			path = WKUserDefault;
+			sourceTree = "<group>";
+		};
+		18B5D84D23288F0700427CC6 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CF6264D9231524C1001AF5FC /* CLHistoryRemittancePlan.h */,
+				CF6264DA231524C1001AF5FC /* CLHistoryRemittancePlan.m */,
+				18B5D84E23288F1400427CC6 /* Views */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		18B5D84E23288F1400427CC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18B5D84F23288F2400427CC6 /* WKOrderDetailView.h */,
+				18B5D85023288F2400427CC6 /* WKOrderDetailView.m */,
+				18B5D85223288F2C00427CC6 /* WKOrderDetailView.xib */,
+				18B5D8542328986800427CC6 /* WKOrderTimeLineCell.h */,
+				18B5D8552328986800427CC6 /* WKOrderTimeLineCell.m */,
+				18B5D8562328986800427CC6 /* WKOrderTimeLineCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		18B7BEDF2304E976007B496A /* BaseTabbarController */ = {
@@ -1571,6 +1603,7 @@
 				773880D62314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy_gray.pdf in Resources */,
 				772D73DA230A9C0F0068AB48 /* pdf_pass_code_unselect.pdf in Resources */,
 				772D73D7230A89630068AB48 /* WKCustomCodeView.xib in Resources */,
+				18B5D85323288F2C00427CC6 /* WKOrderDetailView.xib in Resources */,
 				18FEAD65231E6BD000844806 /* pdf_MYR.pdf in Resources */,
 				18FEAD60231E6BD000844806 /* pdf_TWD.pdf in Resources */,
 				182DBA70231CEDA20009E745 /* pdf_info_hud.pdf in Resources */,
@@ -1598,6 +1631,7 @@
 				CF20E263231F89A300EEB9AD /* pdf_history_cancel_icon.pdf in Resources */,
 				770239B1230BFD2A00EE8C31 /* pdf.guideView_icon_english_3.pdf in Resources */,
 				CF2C42B1230E944700A16732 /* pdf_collection_hint_modifysuccessfully.pdf in Resources */,
+				18B5D8582328986800427CC6 /* WKOrderTimeLineCell.xib in Resources */,
 				77047E0523166D44000453A0 /* HomePayNowListCell.xib in Resources */,
 				CF5A8C582306A1DE00745FE9 /* pdf_me_message.pdf in Resources */,
 				CF62652123152734001AF5FC /* CLMeSwitchLanguage.xib in Resources */,
@@ -1751,11 +1785,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B5D85123288F2400427CC6 /* WKOrderDetailView.m in Sources */,
 				182DBA67231CDBCC0009E745 /* YTKRequest.m in Sources */,
 				189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */,
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,
 				CF626512231526B3001AF5FC /* CLMeViewController.m in Sources */,
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
+				18B5D8572328986800427CC6 /* WKOrderTimeLineCell.m in Sources */,
 				182DBA65231CDBCC0009E745 /* YTKChainRequestAgent.m in Sources */,
 				1885184A231F97450009D088 /* WPTappableLabel.m in Sources */,
 				CF2A16C0231E0BD4007E110D /* CLHistorySelectionOfPayee.m in Sources */,

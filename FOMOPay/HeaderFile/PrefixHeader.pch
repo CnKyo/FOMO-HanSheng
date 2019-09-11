@@ -125,6 +125,10 @@
 #define DebugLog(...)
 #endif
 
+#define KMethodColor [UIColor colorWithRed:0/255.0f green:92/255.0f blue:128/255.0f alpha:1]
+
+#define kGrayColor [UIColor colorWithRed:230/255.0f green:230/255.0f blue:230/255.0f alpha:1]
+
 #define kAppStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height
 #define kBottomToolBarHeight   (CGFloat)(iPhoneX?(34):(0))
 #define kScreenWidth    [[UIScreen mainScreen] bounds].size.width
@@ -136,6 +140,9 @@
 #define BottomHeight             [CLTool bottmHeight]
 // 判断是否是iPhone X
 #define IS_iPhoneX               [CLTool isIphoneX]
+
+#define iPhoneX (UIScreen.mainScreen.bounds.size.width == 375.f && UIScreen.mainScreen.bounds.size.height == 812.f)
+
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
