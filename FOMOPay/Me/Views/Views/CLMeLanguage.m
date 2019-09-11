@@ -16,7 +16,7 @@
 
 @property (strong,nonatomic) UIImageView *mImageV;
 
-@property (strong,nonatomic) UILabel *mLb;
+//@property (strong,nonatomic) UILabel *mLb;
 
 @property (strong,nonatomic) NSMutableArray *mData;
 
@@ -193,7 +193,6 @@
 
 -(void)OpenSelect:(id)sender{
     if(self.mDataBlock){
-
         self.mDataBlock(self.mIndexPath);
     }
     

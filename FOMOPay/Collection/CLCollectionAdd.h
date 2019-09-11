@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^CLCollectionAddBackBlock)(BOOL success);
 
 @interface CLCollectionAdd : BaseViewController
-@property (nonatomic,weak)id<CLCollectionAddDelegate>delegate;////////
+//@property (nonatomic,weak)id<CLCollectionAddDelegate>delegate;////////
 
 
 @property (nonatomic,copy) CLCollectionAddBackBlock mBackBlock;////////

@@ -8,10 +8,15 @@
 #import "WKHudManager.h"
 #import "CLCollectionAdd.h"
 
-@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CLCollectionAddSelectDelegate>//代理传值第4步
+@interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+//CLCollectionAddSelectDelegate>//代理传值第4步
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
+
 @property (nonatomic,strong) NSString *mModeString;
+@property (nonatomic,strong) NSString *mModeString2;
+@property (nonatomic,strong) NSString *mModeString3;
+@property (nonatomic,strong) NSString *mModeString4;
 @property (nonatomic,strong) UILabel *mLabel;
 @property (nonatomic,strong) UIImageView *mImageView ;
 @property (nonatomic,strong) NSArray *modelArray;
@@ -75,7 +80,11 @@
 - (void)loadData{
     _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码",@"c"];
     _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
-     _mModeString = @"请选择";
+    _mModeString =@"请选择";
+    _mModeString2=@"请选择";
+    _mModeString3=@"请选择";
+    _mModeString4=@"请选择";
+    
     self.mMdate  =[@[@"", @"", @"",@"",@"",@"",@"",@""] mutableCopy];
 //    [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
 }
@@ -109,6 +118,7 @@
         
     }
     WS(weakSelf);
+     __weak typeof(cell)  weakCell = cell;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
@@ -118,9 +128,9 @@
     
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     
-    cell.mIndexPath = indexPath;
-    if(indexPath.row == 0 ){
 //    cell.mIndexPath = indexPath;
+    if(indexPath.row == 0 ){
+    cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
         UIView *mLineView = [UIView new];
         mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
@@ -156,10 +166,16 @@
         [cell updateView:CLMeLanguageType_button and:_mModeString];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
                     weakSelf.mSelectView = [CLCollectionAddSelect new];
-                    weakSelf.mSelectView.delegate = self;//实现他的代理方法//代理传值第五步
+//                    weakSelf.mSelectView.delegate = self;//实现他的代理方法//代理传值第五步
                     weakSelf.mSelectView.modelArray  = [self.modelArray objectAtIndex:0];//把当前数据传入另一个j控制器的moderarrl里面;
                     [weakSelf.view addSubview:weakSelf.mSelectView.view];
-                     [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
+                    [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
+                    weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+                        weakCell.mLb.text = string;
+                        weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
+                    weakSelf.mModeString = string;
+                    [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
+            };
                     weakSelf.mIndex = indexPath;
     
         };}
@@ -176,14 +192,20 @@
             make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
             
         }];
-            [cell updateView:CLMeLanguageType_button and:_mModeString];
+            [cell updateView:CLMeLanguageType_button and:_mModeString2];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
 
                 weakSelf.mSelectView = [CLCollectionAddSelect new];
-                weakSelf.mSelectView.delegate = self;//实现他的代理方法
+//                weakSelf.mSelectView.delegate = self;//实现他的代理方法
                 weakSelf.mSelectView.modelArray  = [self.modelArray objectAtIndex:1];//把当前数据传入另一个j控制器的moderarrl里面;
                 [weakSelf.view addSubview:self.mSelectView.view];
                 [weakSelf.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
+                weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+                    weakCell.mLb.text = string;
+                    weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
+                    weakSelf.mModeString2= string;
+                    [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
+                };
                  weakSelf.mIndex = indexPath;
             };}
     if(indexPath.row == 3){
@@ -199,14 +221,20 @@
             make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
             
         }];
-        [cell updateView:CLMeLanguageType_button and:_mModeString];
+        [cell updateView:CLMeLanguageType_button and:_mModeString3];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
             
             weakSelf.mSelectView = [CLCollectionAddSelect new];
-            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
+//            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
             weakSelf.mSelectView.modelArray  = [weakSelf.modelArray objectAtIndex:2];//把当前数据传入另一个j控制器的moderarrl里面;
             [weakSelf.view addSubview:weakSelf.mSelectView.view];
             [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
+            weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+                weakCell.mLb.text = string;
+                weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
+                weakSelf.mModeString3 = string;
+                 [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
+            };
             weakSelf.mIndex = indexPath;
         };}
   
@@ -223,13 +251,19 @@
             make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
             
         }];
-        [cell updateView:CLMeLanguageType_button and:_mModeString];
+        [cell updateView:CLMeLanguageType_button and:_mModeString4];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
             weakSelf.mSelectView = [CLCollectionAddSelect new];
-            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
+//            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
             weakSelf.mSelectView.modelArray  = [weakSelf.modelArray objectAtIndex:3];//把当前数据传入另一个j控制器的moderarrl里面;
             [weakSelf.view addSubview:weakSelf.mSelectView.view];
             [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
+            weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+                weakCell.mLb.text = string;
+                weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
+                weakSelf.mModeString4 = string;
+                 [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
+            };
             weakSelf.mIndex = indexPath;
         };}
     
@@ -361,7 +395,7 @@
     
     
     for(int i = 0 ;i<self.mMdate.count;i++){
-        if([weakSelf.mMdate[i] isEqual:@""]){
+        if([weakSelf.mMdate[i] isEqual:@""] || [weakSelf.mMdate[i] isEqual:@"请选择"]){
             weakSelf.mSendButton.enabled = NO;
             weakSelf.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
         }else{
@@ -374,24 +408,25 @@
 }
 
 
-- (void)changeValue:(NSMutableString *)value{ // 第6步接受
-//    self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
-    _mModeString = value;
-//    [self.mMdate insertString:@"123" atIndex:0];
-    [_mMdate replaceObjectAtIndex:_mIndex.row withObject:value];
-    DebugLog(@"接受到了%@",_mModeString);
-    DebugLog(@"我现在的字符串的值为%@-----位置为%ld",self.mMdate,(long)_mIndex.row);
-    [self.mTabView reloadRowsAtIndexPaths:@[_mIndex] withRowAnimation:UITableViewRowAnimationNone];
-}
+//- (void)changeValue:(NSMutableString *)value{ // 第6步接受
+////    self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
+//    _mModeString = value;
+////    [self.mMdate insertString:@"123" atIndex:0];
+//    [_mMdate replaceObjectAtIndex:_mIndex.row withObject:value];
+//    DebugLog(@"接受到了%@",_mModeString);
+//    DebugLog(@"我现在的字符串的值为%@-----位置为%ld",self.mMdate,(long)_mIndex.row);
+//    [self.mTabView reloadRowsAtIndexPaths:@[_mIndex] withRowAnimation:UITableViewRowAnimationNone];
+//}
 
 -(void)successfullyadd:(id)sender{
-    [self.delegate changeArray:self.mMdate];
-    for (UIViewController *vc in self.navigationController.viewControllers) {
-        if ([vc isKindOfClass:[CLCollectionViewController class]]) {
-          [(CLCollectionViewController  *)vc show];
-        
-        }
-    }
+//    [self.delegate changeArray:self.mMdate];
+//    for (UIViewController *vc in self.navigationController.viewControllers) {
+//        if ([vc isKindOfClass:[CLCollectionViewController class]]) {
+//          [(CLCollectionViewController  *)vc show];
+//        
+//        }
+//    }
+    DebugLog(@"%@",self.mMdate);
     [self AddAccount:self.mMdate];
     
 

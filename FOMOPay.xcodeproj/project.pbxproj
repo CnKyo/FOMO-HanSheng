@@ -165,6 +165,8 @@
 		CF26171823176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF26171623176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib */; };
 		CF26171B2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF26171A2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m */; };
 		CF26171E23179C9700448AA4 /* CLHistoryPaymentdetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CF26171D23179C9700448AA4 /* CLHistoryPaymentdetails.m */; };
+		CF274AC023287E3C00998BC6 /* CLCollectionAlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */; };
+		CF274AC123287E3C00998BC6 /* CLCollectionAlterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */; };
 		CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */; };
 		CF277DA7230544C200A37B5C /* pdf_collection_unfold.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */; };
 		CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF277DAE23055C0100A37B5C /* CLNavgationView_button.m */; };
@@ -512,6 +514,9 @@
 		CF26171A2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryDetailsOfRemittancesCellTableViewCell.m; sourceTree = "<group>"; };
 		CF26171C23179C9700448AA4 /* CLHistoryPaymentdetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryPaymentdetails.h; sourceTree = "<group>"; };
 		CF26171D23179C9700448AA4 /* CLHistoryPaymentdetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryPaymentdetails.m; sourceTree = "<group>"; };
+		CF274ABD23287E3C00998BC6 /* CLCollectionAlterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCollectionAlterView.h; sourceTree = "<group>"; };
+		CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCollectionAlterView.m; sourceTree = "<group>"; };
+		CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLCollectionAlterView.xib; sourceTree = "<group>"; };
 		CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_shrink.pdf; sourceTree = "<group>"; };
 		CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_unfold.pdf; sourceTree = "<group>"; };
 		CF277DAD23055C0100A37B5C /* CLNavgationView_button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView_button.h; sourceTree = "<group>"; };
@@ -1420,6 +1425,9 @@
 				CF6264F823152625001AF5FC /* CLCollectionTableViewCell.m */,
 				CF6264FB23152625001AF5FC /* CLCollectionTableViewCell.h */,
 				CF6264FA23152625001AF5FC /* CLCollectionTableViewCell.xib */,
+				CF274ABD23287E3C00998BC6 /* CLCollectionAlterView.h */,
+				CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */,
+				CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1615,6 +1623,7 @@
 				77047DFD23161E2F000453A0 /* HomePayTypeListCell.xib in Resources */,
 				773880D52314BDF4002ACEC4 /* pdf_home_sureInfo_show.pdf in Resources */,
 				CF23B3EE230F84FC00FAC43C /* pdf_history_remittanceplan.pdf in Resources */,
+				CF274AC123287E3C00998BC6 /* CLCollectionAlterView.xib in Resources */,
 				770239B0230BFD2A00EE8C31 /* pdf.guideView_icon_english_2.pdf in Resources */,
 				CF25C34E23224C47000311DC /* pdf_guideView_four_icon.pdf in Resources */,
 				CF36E274230299B600F1AE2B /* pdf_home_cell_out.pdf in Resources */,
@@ -1784,6 +1793,7 @@
 				77BE821523153A2B00519F66 /* WKHudManager.m in Sources */,
 				772D73B3230A3F670068AB48 /* LogInViewController.m in Sources */,
 				182DBA5B231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m in Sources */,
+				CF274AC023287E3C00998BC6 /* CLCollectionAlterView.m in Sources */,
 				CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */,
 				771501892311176B0016B449 /* HomeRefundListCell.m in Sources */,
 				CCB32EA2231D6D500027FD84 /* CLHistoryAuthentication.m in Sources */,

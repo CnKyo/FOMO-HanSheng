@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end///////////代理传值第一步
 @interface CLCollectionAddSelect : BaseViewController
 @property (nonatomic,weak)id<CLCollectionAddSelectDelegate>delegate;////////代理传值第二步
-
+@property (nonatomic, copy) void (^CLCollectionAddSelectBlock)(NSString *string,NSInteger tag);
 
 /// 初始化数据
 

@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSMutableArray * boolArr;
 @property (nonatomic,strong) NSIndexPath * mIdx;
 @property (nonatomic, strong) NSMutableArray * mSecArr;
+@property (nonatomic,strong)NSMutableArray *mTestData;
 
 @end
 
@@ -123,6 +124,7 @@
             }
         }
         [self.DataSource addObject:friendArr];
+        self.mTestData = self.DataSource;
         [self.sectionArr addObject:mCode];
         [self.boolArr addObject:@YES];
     }
@@ -238,7 +240,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if(section == self.DataSource.count -1){
+    if(section == self.DataSource.count -1 ){
         return 0.001;
     }else{
         return 11;
@@ -281,28 +283,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DebugLog(@"点击了列表进入修改");
-    DebugLog(@"现在self.push的值为%@",self.mPushData);
+   
     CLCollectionAlter *vc = [CLCollectionAlter new];
+    NSArray *mSection = self.DataSource[indexPath.section];
+    vc.mData = mSection[indexPath.row];
     [self pushToViewController:vc];
 }
-//-(void)Add:(id)sender{
-//    DebugLog(@"点击了按钮吧");
-//    CLCollectionAdd *vc = [CLCollectionAdd new];
-//    vc.delegate = self;
-//    [self pushToViewController:vc];
-//}
-//- (void)initWithModelData:(NSArray *)modelLeftArray{
-//    
-//    _mPushData = modelLeftArray;
-//    NSLog(@"传输过来的值为%@",self.mPushData);
-//    [self.mTabView reloadData];
-//}
-////    UIImageView *mImg = [UIImageView new];
-//    
-////     [self performSelector:@selector(showAlter) withObject:nil afterDelay:1.5];
-////     [self showAlter];
-//
-//}
 
 -(void)mDelete:(NSIndexPath *)indexPath{
     
@@ -318,8 +304,8 @@
     
     __block UIAlertAction *YesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         
-        NSArray *mArr = self.DataSource[indexPath.section];
-        WKResipientInfoObj *mItem = mArr[indexPath.row];
+        NSArray *mSection = self.DataSource[indexPath.section];
+        WKResipientInfoObj *mItem = mSection[indexPath.row];
         [WeakSelf deleteAction:mItem];
         [WeakSelf.mTabView reloadData];
         
@@ -338,9 +324,13 @@
         if (success) {
             
             TOASTMESSAGE(@"Delete Success!");
+            NSArray *mSection = self.DataSource[self.mIdx.section];
             
-            [self.DataSource removeObjectAtIndex:self.mIdx.row];
-            [self.mTabView reloadData ];
+//            [self.DataSource removeObjectAtIndex:self.mIdx.row];
+            [self.DataSource removeObject:mSection[self.mIdx.row]];
+            [self.mTabView reloadData ]; //
+//            [self.DataSource removeAllObjects];
+            [self mHeaderLoadData];
             
         }else{
             TOASTMESSAGE(result);
@@ -348,42 +338,42 @@
     }];
     
 }
-- (void)changeArray:(NSArray *)Array{
-    self.mPushData = Array;
-    DebugLog(@"我的Pushdata的值为%@",self.mPushData);
-    DebugLog(@"%lu-------%@",(unsigned long)self.mPushData.count,self.mPushData);
-    [self.mTabView reloadData];
-}
+//- (void)changeArray:(NSArray *)Array{
+//    self.mPushData = Array;
+//    DebugLog(@"我的Pushdata的值为%@",self.mPushData);
+//    DebugLog(@"%lu-------%@",(unsigned long)self.mPushData.count,self.mPushData);
+//    [self.mTabView reloadData];
+//}
 //
--(void)show{
-    CLCollectionViewController  *vc = [CLCollectionViewController new];
-    [vc backa];
-    //    [self pushToViewController:vc];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-}
+//-(void)show{
+//    CLCollectionViewController  *vc = [CLCollectionViewController new];
+//    [vc backa];
+//    //    [self pushToViewController:vc];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//
+//}
 
 
--(void)backa{
-    DebugLog(@"调用showAlter的值为%@",self.mPushData);
-    UIImageView *mImg = [UIImageView new];
-    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint_modifysuccessfully.pdf"];
-    [self.view addSubview:mImg];
-    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-    }];
-    //设置动画
-    CATransition * transion = [CATransition animation];
-    
-    transion.type = @"push";//设置动画方式
-    transion.subtype = @"kCATransitionFromRight";//设置动画从那个方向开始
-    //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
-    [mImg.layer addAnimation:transion forKey:nil];
-    //不占用主线程
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-        [mImg removeFromSuperview];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        
-    });
-}
+//-(void)backa{
+//    DebugLog(@"调用showAlter的值为%@",self.mPushData);
+//    UIImageView *mImg = [UIImageView new];
+//    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint_modifysuccessfully.pdf"];
+//    [self.view addSubview:mImg];
+//    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(self.view);
+//    }];
+//    //设置动画
+//    CATransition * transion = [CATransition animation];
+//
+//    transion.type = @"push";//设置动画方式
+//    transion.subtype = @"kCATransitionFromRight";//设置动画从那个方向开始
+//    //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
+//    [mImg.layer addAnimation:transion forKey:nil];
+//    //不占用主线程
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+//        [mImg removeFromSuperview];
+//        [self.navigationController popToRootViewControllerAnimated:NO];
+//
+//    });
+//}
 @end

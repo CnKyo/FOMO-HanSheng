@@ -22,6 +22,7 @@ typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);  //block 第一步
 
 @property (copy,nonatomic) CLMeLanguageBlock mBlock;
 @property (copy,nonatomic) CLCollectionBlock mDataBlock; //block第二步
+@property (strong,nonatomic) UILabel *mLb;
 
 @property (weak, nonatomic) IBOutlet UILabel *mMeLanguageLeftLabel;
 

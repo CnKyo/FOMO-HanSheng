@@ -9,8 +9,12 @@
 #import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef void(^CLCollectionAlterBackBlock)(BOOL success);
 @interface CLCollectionAlter : BaseViewController
+@property (nonatomic,strong)WKResipientInfoObj *mData;
+@property (nonatomic,copy) CLCollectionAlterBackBlock mBackBlock;////////
+
+
 
 @end
 

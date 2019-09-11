@@ -117,21 +117,26 @@
 
 
 
--(void)EnterButton:(id)sender{
-//    CLCollectionAdd *new = [CLCollectionAdd new];
-//    [new initWithModelString:_EnterString];
-//
-    if(_EnterString != nil){
-    [self.delegate changeValue:_EnterString];//代理传值第三步
-    DebugLog(@"准备传递的值为%@",self.EnterString);
-    [self.view removeFromSuperview];
+-(void)EnterButton:(UIButton *)sender{
+//    if(_EnterString != nil){
+//    [self.delegate changeValue:_EnterString];//代理传值第三步
+//    DebugLog(@"准备传递的值为%@",self.EnterString);
+//    [self.view removeFromSuperview];
+//    }else{
+//    [self.view removeFromSuperview];
+//    }
+    if(_EnterString !=nil){
+        if(_CLCollectionAddSelectBlock){
+            _CLCollectionAddSelectBlock(_EnterString,sender.tag);
+        }
+        [self.view removeFromSuperview];
     }else{
-    [self.view removeFromSuperview];
+        [self.view removeFromSuperview];
     }
 
 }
 
--(void)CloseButton:(id)sender{
+-(void)CloseButton:(UIButton *)sender{
     DebugLog(@"点击了取消按钮即将实现取消操作");
     [self.view removeFromSuperview];
     self.view.userInteractionEnabled=TRUE;
