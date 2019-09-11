@@ -170,5 +170,15 @@
  */
 + (void)WKDeleteOrder:(NSString *)orderId block:(void(^)(id result,BOOL success))block;
 
+
+#pragma mark----****----设置推送token
+/**
+ 设置推送token
+
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKSetPushToken:(NSDictionary *)para block:(void(^)(id result,BOOL success))block;
+
 @end
 

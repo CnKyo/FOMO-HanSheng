@@ -33,6 +33,7 @@ typedef enum : NSUInteger {
 @property (strong,nonatomic) NSString *mOutCurrenceCode;
 @property (strong,nonatomic) NSString *mInCurrenceCode;
 @property (strong,nonatomic) NSString *mRate;
+@property (strong,nonatomic) NSString *mPushToken;
 
 - (NSString *)token;
 
@@ -50,6 +51,9 @@ typedef enum : NSUInteger {
 
 - (WKAppConfigObj *)appConfig;
 
+
+- (NSString *)mPushToken;
+
 - (void)WKSetToken:(NSString *)token;
 
 - (void)WKResetUserInfo:(WKUserInfo *)userInfo;
@@ -60,6 +64,8 @@ typedef enum : NSUInteger {
 - (void)WKResetOutCurrenceCode:(NSString *)mOutCurrenceCode;
 - (void)WKResetInCurrenceCode:(NSString *)mInCurrenceCode;
 - (void)WKResetRate:(NSString *)mRate;
+
+- (void)WKResetPushToken:(NSString *)mPushToken;
 
 - (void)WKClearnAll;
 

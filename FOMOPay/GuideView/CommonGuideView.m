@@ -94,24 +94,28 @@
     //背景一
     UIImageView *bgoneView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     bgoneView.backgroundColor = [UIColor redColor];
-    
+    bgoneView.image = [UIImage yh_imageNamed:@"pdf_guide_first"];
     
     
    //背景二
     UIImageView *bgtwoView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight)];
     bgtwoView.backgroundColor = [UIColor yellowColor];
-    
+    bgtwoView.image = [UIImage yh_imageNamed:@"pdf_guide_second"];
+
     
     
    //背景三
     UIImageView *bgthreeView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth*2, 0, kScreenWidth, kScreenHeight)];
     bgthreeView.backgroundColor = [UIColor blueColor];
-    
+    bgthreeView.image = [UIImage yh_imageNamed:@"pdf_guide_third"];
+
     
     
    //背景四
     UIImageView *bgfourView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth*3, 0, kScreenWidth, kScreenHeight)];
     bgfourView.backgroundColor = [UIColor grayColor];
+    bgfourView.image = [UIImage yh_imageNamed:@"pdf_guide_fourth"];
+
     [_myScrollView addSubview:bgoneView];
     [_myScrollView addSubview:bgtwoView];
     [_myScrollView addSubview:bgthreeView];

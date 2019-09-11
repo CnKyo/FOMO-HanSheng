@@ -117,14 +117,12 @@
     Token = [Token stringByReplacingOccurrencesOfString:@">" withString:@""];
     DebugLog(@"%@", [NSString stringWithFormat:@"DeviceToken: %@", Token]);
     
-//    NSString *result = [NSString stringWithFormat:@"%lu",strtoul([[deviceToken convertDataToHexStr] UTF8String],0,16)];
-//
-//    NSString *topic = [NSString stringWithFormat:@"user_%@",[AccountManager defaultManager].userId];
-//    [[FIRMessaging messaging] subscribeToTopic:topic];
-//
-//    [[FIRInstanceID instanceID] instanceIDWithHandler:^(FIRInstanceIDResult * _Nullable result, NSError * _Nullable error) {
-//        DebugLog(@"result : %@",result);
-//    }];
+    NSString *topic = [NSString stringWithFormat:@"user_%@",[WKAccountManager shareInstance].idNumber];
+    [[FIRMessaging messaging] subscribeToTopic:topic];
+
+    [[FIRInstanceID instanceID] instanceIDWithHandler:^(FIRInstanceIDResult * _Nullable result, NSError * _Nullable error) {
+        DebugLog(@"result : %@",result);
+    }];
     
     
 }
@@ -172,38 +170,39 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     [[NSNotificationCenter defaultCenter] postNotificationName:
      @"FCMToken" object:nil userInfo:dataDict];
     
-//    NSString *topic = [NSString stringWithFormat:@"user_%@",[AccountManager defaultManager].userId];
-//    [[FIRMessaging messaging] subscribeToTopic:topic];
-//
-//    if (![[AccountManager defaultManager].mAPNSToken isEqualToString:fcmToken]) {
-//
-//        [[AccountManager defaultManager] resetAPNSToken:fcmToken];
-//
-//        NSMutableDictionary *mPara = [NSMutableDictionary new];
-//        [mPara setObject:[AccountManager defaultManager].mAPNSToken forKey:@"pushToken"];
-//
-//        [WKHttpRequest WKSetFireBaseToken:mPara block:^(WKBaseObj *info) {
-//            if (info.success) {
-//
-//            }else{
-//                DebugLog(@"error : %@", info.message);
-//            }
-//        }];
-//    }else{
-//        [[AccountManager defaultManager] resetAPNSToken:fcmToken];
-//
-//        NSMutableDictionary *mPara = [NSMutableDictionary new];
-//        [mPara setObject:[AccountManager defaultManager].mAPNSToken forKey:@"pushToken"];
-//
-//        [WKHttpRequest WKSetFireBaseToken:mPara block:^(WKBaseObj *info) {
-//            if (info.success) {
-//
-//            }else{
-//                DebugLog(@"error : %@", info.message);
-//
-//            }
-//        }];
-//    }
+    NSString *topic = [NSString stringWithFormat:@"user_%@",[WKAccountManager shareInstance].idNumber];
+    [[FIRMessaging messaging] subscribeToTopic:topic];
+
+    if (![[WKAccountManager shareInstance].mPushToken isEqualToString:fcmToken]) {
+
+        [[WKAccountManager shareInstance] WKResetPushToken:fcmToken];
+        NSMutableDictionary *mPara = [NSMutableDictionary new];
+        [mPara setObject:[WKAccountManager shareInstance].mPushToken forKey:@"token"];
+        [mPara setObject:@"firebase" forKey:@"platform"];
+
+        [WKNetWorkManager WKSetPushToken:mPara block:^(id result, BOOL success) {
+            if (success) {
+                
+            }else{
+                DebugLog(@"error : %@", result);
+            }
+        }];
+        
+    }else{
+        [[WKAccountManager shareInstance] WKResetPushToken:fcmToken];
+
+        NSMutableDictionary *mPara = [NSMutableDictionary new];
+        [mPara setObject:[WKAccountManager shareInstance].mPushToken forKey:@"token"];
+        [mPara setObject:@"firebase" forKey:@"platform"];
+
+        [WKNetWorkManager WKSetPushToken:mPara block:^(id result, BOOL success) {
+            if (success) {
+                
+            }else{
+                DebugLog(@"error : %@", result);
+            }
+        }];
+    }
     
 }
 
@@ -220,10 +219,10 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 }
 - (void)addFireBase
 {
-//    if ([AccountManager defaultManager].loginStatus && [FIRMessaging messaging].APNSToken) {
-//        NSString *topic = [NSString stringWithFormat:@"user_%@",[AccountManager defaultManager].userId];
-//        [[FIRMessaging messaging] subscribeToTopic:topic];
-//    }
+    if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_loginSuccess && [FIRMessaging messaging].APNSToken) {
+        NSString *topic = [NSString stringWithFormat:@"user_%@",[WKAccountManager shareInstance].idNumber];
+        [[FIRMessaging messaging] subscribeToTopic:topic];
+    }
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

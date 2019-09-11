@@ -8,6 +8,7 @@
 
 #import "CLMeViewController.h"
 #import "WKLoginManager.h"
+#import "CLMeMessageSetViewController.h"
 @interface CLMeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *personalTableView;
 @property (nonatomic,strong) NSArray *mMeDataSource;
@@ -168,8 +169,15 @@
         CLMeClauseOfTreaty *vc = [CLMeClauseOfTreaty new];
         [self pushToViewController:vc];
     }else if(indexPath.row == 3){
-        CLMeMessageViewController *vc = [CLMeMessageViewController new];
-        [self pushToViewController:vc];
+        if (![CLTool WKIsUserOpenNotificationEnable]) {
+            CLMeMessageViewController *vc = [CLMeMessageViewController new];
+            [self pushToViewController:vc];
+            
+        }else{
+            CLMeMessageSetViewController *vc = [CLMeMessageSetViewController new];
+            [self pushToViewController:vc];
+        }
+
     }else {
         
         [self showLoading:@"log outing..."];
