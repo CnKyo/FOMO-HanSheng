@@ -59,8 +59,9 @@
     [self.view addSubview:OpenLabelHint];
     
     UIButton *NoOpenMessage = [[UIButton alloc]init];
-    
+    NoOpenMessage.tag = 0;
     UIButton *OpenMessage = [[UIButton alloc]init];
+    OpenMessage.tag = 1;
     [NoOpenMessage addTarget:self action:@selector(PushSetMessage:) forControlEvents:UIControlEventTouchUpInside];
     
     [OpenMessage addTarget:self action:@selector(PushSetMessage:) forControlEvents:UIControlEventTouchUpInside];
@@ -128,7 +129,13 @@
 }
 
 -(void)PushSetMessage:(id)sender{
-    CLMeMessageSetViewController *vc = [CLMeMessageSetViewController new];
-    [self pushToViewController:vc];
+    UIButton *mBtn = (UIButton *)sender;
+    if (mBtn.tag == 0) {
+        [self popToViewController];
+    }else{
+        CLMeMessageSetViewController *vc = [CLMeMessageSetViewController new];
+        [self pushToViewController:vc];
+    }
+    
 }
 @end

@@ -62,6 +62,8 @@
 		18B5D85E2328DBE000427CC6 /* pdf_guide_fourth.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18B5D85A2328DBDF00427CC6 /* pdf_guide_fourth.pdf */; };
 		18B5D85F2328DBE000427CC6 /* pdf_guide_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5D85B2328DBDF00427CC6 /* pdf_guide_first.png */; };
 		18B5D8602328DBE000427CC6 /* pdf_guide_third.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 18B5D85C2328DBE000427CC6 /* pdf_guide_third.pdf */; };
+		18B5D8632328EDB300427CC6 /* WKMessageNotifycationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B5D8622328EDB300427CC6 /* WKMessageNotifycationView.m */; };
+		18B5D8652328EDC000427CC6 /* WKMessageNotifycationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B5D8642328EDC000427CC6 /* WKMessageNotifycationView.xib */; };
 		18B7BEE32304EBE3007B496A /* CLNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B7BEE22304EBE3007B496A /* CLNavgationView.m */; };
 		18B7BEE52304EC82007B496A /* CLNavgationHomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEE42304EC82007B496A /* CLNavgationHomeView.xib */; };
 		18B7BEE72304ECFD007B496A /* CLNavgationNormalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B7BEE62304ECFD007B496A /* CLNavgationNormalView.xib */; };
@@ -367,6 +369,9 @@
 		18B5D85A2328DBDF00427CC6 /* pdf_guide_fourth.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guide_fourth.pdf; sourceTree = "<group>"; };
 		18B5D85B2328DBDF00427CC6 /* pdf_guide_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdf_guide_first.png; sourceTree = "<group>"; };
 		18B5D85C2328DBE000427CC6 /* pdf_guide_third.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guide_third.pdf; sourceTree = "<group>"; };
+		18B5D8612328EDB300427CC6 /* WKMessageNotifycationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKMessageNotifycationView.h; sourceTree = "<group>"; };
+		18B5D8622328EDB300427CC6 /* WKMessageNotifycationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WKMessageNotifycationView.m; sourceTree = "<group>"; };
+		18B5D8642328EDC000427CC6 /* WKMessageNotifycationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WKMessageNotifycationView.xib; sourceTree = "<group>"; };
 		18B7BEE12304EBE3007B496A /* CLNavgationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView.h; sourceTree = "<group>"; };
 		18B7BEE22304EBE3007B496A /* CLNavgationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLNavgationView.m; sourceTree = "<group>"; };
 		18B7BEE42304EC82007B496A /* CLNavgationHomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLNavgationHomeView.xib; sourceTree = "<group>"; };
@@ -1482,6 +1487,9 @@
 				CF62651423152734001AF5FC /* CLMeTableViewCell.m */,
 				CF62651523152734001AF5FC /* CLMeTableViewCell.h */,
 				CF62651623152734001AF5FC /* CLMeTableViewCell.xib */,
+				18B5D8612328EDB300427CC6 /* WKMessageNotifycationView.h */,
+				18B5D8622328EDB300427CC6 /* WKMessageNotifycationView.m */,
+				18B5D8642328EDC000427CC6 /* WKMessageNotifycationView.xib */,
 				CF62651723152734001AF5FC /* Views */,
 			);
 			path = Views;
@@ -1727,6 +1735,7 @@
 				CF25C349232249AA000311DC /* pdf_guideView_one_icon.pdf in Resources */,
 				CF26171823176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib in Resources */,
 				772D73C4230A798C0068AB48 /* pdf_login_icon.pdf in Resources */,
+				18B5D8652328EDC000427CC6 /* WKMessageNotifycationView.xib in Resources */,
 				77BE820F23151C4A00519F66 /* HomeChangePayeeCell.xib in Resources */,
 				77DD6BB12313D98F00BFDD11 /* HomeSureInfoEditCell.xib in Resources */,
 				18FEAD61231E6BD000844806 /* pdf_IDR.pdf in Resources */,
@@ -1915,6 +1924,7 @@
 				CF25C3472321F072000311DC /* WKLoginViewManager.m in Sources */,
 				7715017F2310E07D0016B449 /* CommonGuideViewController.m in Sources */,
 				7715018D231121E10016B449 /* HomeRefundSelectBankView.m in Sources */,
+				18B5D8632328EDB300427CC6 /* WKMessageNotifycationView.m in Sources */,
 				182DBA63231CDBCC0009E745 /* YTKBatchRequest.m in Sources */,
 				77047DFC23161E2F000453A0 /* HomePayTypeListCell.m in Sources */,
 				77150183231114D60016B449 /* HomeRefundViewController.m in Sources */,

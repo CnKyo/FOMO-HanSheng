@@ -176,4 +176,50 @@
     return [mText componentsSeparatedByString:mTag];
     
 }
+
+#pragma mark----****---- 用户是否允许接收通知
+/**
+ 用户是否允许接收通知
+ 
+ @return 返回YES or NO
+ */
++ (BOOL)WKIsUserOpenNotificationEnable{
+    if ([[UIDevice currentDevice].systemVersion floatValue]>=8.0){// system is iOS8
+        
+        UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+        
+        if (UIUserNotificationTypeNone != setting.types) {
+            
+            return YES;
+        }
+        
+    } else {
+        //iOS7
+        UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+        
+        if(UIRemoteNotificationTypeNone != type) {
+            return YES;
+        }
+    }
+    
+    return NO;
+    
+}
+
+#pragma mark----****----如果用户关闭推送通知就跳转到设置界面设置
+/**
+ 如果用户关闭推送通知就跳转到设置界面设置
+ */
++ (void)WKGoToOpenAppSystemSetting{
+    UIApplication *application = [UIApplication sharedApplication];
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    if ([application canOpenURL:url]) {
+        if ([application respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+            [application openURL:url options:@{} completionHandler:nil];
+        } else {
+            [application openURL:url options:@{} completionHandler:nil];
+        }
+    }
+    
+}
 @end

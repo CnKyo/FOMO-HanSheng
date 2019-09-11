@@ -53,6 +53,18 @@ NS_ASSUME_NONNULL_BEGIN
  @return 返回截取后的内容(数组)
  */
 + (NSArray *)WKStringSeparatedStringWithTag:(NSString *)mTag andText:(NSString *)mText;
+#pragma mark----****---- 用户是否允许接收通知
+/**
+ 用户是否允许接收通知
+ 
+ @return 返回YES or NO
+ */
++ (BOOL)WKIsUserOpenNotificationEnable;
+#pragma mark----****----如果用户关闭推送通知就跳转到设置界面设置
+/**
+ 如果用户关闭推送通知就跳转到设置界面设置
+ */
++ (void)WKGoToOpenAppSystemSetting;
 @end
 
 NS_ASSUME_NONNULL_END
