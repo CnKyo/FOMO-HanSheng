@@ -165,5 +165,15 @@
         return WKOrderStatus_Error2;
     }
 }
-
+/**
+ 字符串截取
+ 
+ @param mTag 截取的标记
+ @param mText 要截取的内容
+ @return 返回截取后的内容(数组)
+ */
++ (NSArray *)WKStringSeparatedStringWithTag:(NSString *)mTag andText:(NSString *)mText{
+    return [mText componentsSeparatedByString:mTag];
+    
+}
 @end
