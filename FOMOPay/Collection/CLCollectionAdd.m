@@ -463,7 +463,8 @@
     [WKNetWorkManager WKCreateRecipientAcc:para block:^(id result, BOOL success) {
         [self hiddenLoading];
         if (success) {
-            TOASTMESSAGE(@"Recipient Create Successful!");
+            [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_success"] status:languageStr(@"Create")];
+//            TOASTMESSAGE(@"Recipient Create Successful!");
             if (self.mBackBlock) {
                 self.mBackBlock(YES);
             }

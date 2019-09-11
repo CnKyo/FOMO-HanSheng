@@ -117,7 +117,7 @@
             pab.string = weakCell.accountLabel.text;
             DebugLog(@"复制完成了");
         }else{  //完成
-            
+            DebugLog(@"点击按钮点击按钮点击按钮");
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     };

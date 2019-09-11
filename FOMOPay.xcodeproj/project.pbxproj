@@ -171,6 +171,8 @@
 		CF26171E23179C9700448AA4 /* CLHistoryPaymentdetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CF26171D23179C9700448AA4 /* CLHistoryPaymentdetails.m */; };
 		CF274AC023287E3C00998BC6 /* CLCollectionAlterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */; };
 		CF274AC123287E3C00998BC6 /* CLCollectionAlterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */; };
+		CF274AC32328FC6A00998BC6 /* pdf_info_success.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF274AC22328FC6900998BC6 /* pdf_info_success.pdf */; };
+		CF274AC623290C6B00998BC6 /* JTMaterialSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = CF274AC523290C6A00998BC6 /* JTMaterialSwitch.m */; };
 		CF277DA6230544C200A37B5C /* pdf_collection_shrink.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */; };
 		CF277DA7230544C200A37B5C /* pdf_collection_unfold.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */; };
 		CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF277DAE23055C0100A37B5C /* CLNavgationView_button.m */; };
@@ -527,6 +529,9 @@
 		CF274ABD23287E3C00998BC6 /* CLCollectionAlterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCollectionAlterView.h; sourceTree = "<group>"; };
 		CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCollectionAlterView.m; sourceTree = "<group>"; };
 		CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLCollectionAlterView.xib; sourceTree = "<group>"; };
+		CF274AC22328FC6900998BC6 /* pdf_info_success.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_info_success.pdf; sourceTree = "<group>"; };
+		CF274AC423290C6A00998BC6 /* JTMaterialSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTMaterialSwitch.h; sourceTree = "<group>"; };
+		CF274AC523290C6A00998BC6 /* JTMaterialSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTMaterialSwitch.m; sourceTree = "<group>"; };
 		CF277DA4230544C200A37B5C /* pdf_collection_shrink.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_shrink.pdf; sourceTree = "<group>"; };
 		CF277DA5230544C200A37B5C /* pdf_collection_unfold.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_unfold.pdf; sourceTree = "<group>"; };
 		CF277DAD23055C0100A37B5C /* CLNavgationView_button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLNavgationView_button.h; sourceTree = "<group>"; };
@@ -827,6 +832,7 @@
 				18FEAD5C231E6BD000844806 /* pdf_PHP.pdf */,
 				18FEAD5A231E6BCF00844806 /* pdf_TWD.pdf */,
 				182DBA6F231CEDA20009E745 /* pdf_info_hud.pdf */,
+				CF274AC22328FC6900998BC6 /* pdf_info_success.pdf */,
 				CF3129DD231CA776002ED335 /* pdf_history_home.pdf */,
 				7707E2A32313B1E10029EB0B /* Home */,
 				CF23B3ED230F84FC00FAC43C /* pdf_history_remittanceplan.pdf */,
@@ -1487,6 +1493,8 @@
 				CF62651D23152734001AF5FC /* CLMeSwitchLanguage.h */,
 				CF62651923152734001AF5FC /* CLMeSwitchLanguage.m */,
 				CF62651A23152734001AF5FC /* CLMeSwitchLanguage.xib */,
+				CF274AC423290C6A00998BC6 /* JTMaterialSwitch.h */,
+				CF274AC523290C6A00998BC6 /* JTMaterialSwitch.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1649,6 +1657,7 @@
 				CF36E26C23025DAF00F1AE2B /* pdf_home_transfer_2.pdf in Resources */,
 				CF5A8C552306A1DE00745FE9 /* pdf_me_logout.pdf in Resources */,
 				77047E0A231676E6000453A0 /* pdf_home_payType_allow.pdf in Resources */,
+				CF274AC32328FC6A00998BC6 /* pdf_info_success.pdf in Resources */,
 				CF2C42AF230E944700A16732 /* pdf_collection_hint_success.pdf in Resources */,
 				18FEAD64231E6BD000844806 /* pdf_CNY.pdf in Resources */,
 				CF25C34D23224C47000311DC /* pdf_guideView_two_icon.pdf in Resources */,
@@ -1795,6 +1804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B5D85123288F2400427CC6 /* WKOrderDetailView.m in Sources */,
+				CF274AC623290C6B00998BC6 /* JTMaterialSwitch.m in Sources */,
 				182DBA67231CDBCC0009E745 /* YTKRequest.m in Sources */,
 				189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */,
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,

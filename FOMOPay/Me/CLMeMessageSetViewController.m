@@ -29,6 +29,7 @@
         }
     }];
     [self LoadCellType:11];
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -43,19 +44,26 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.mMeLanguageLeftLabel.text = @"消息权限";
     cell.mMeLanguageLeftLabel.textColor = ssRGBHex(0x2B2B2B);
-    self.MessageSwitch = [UISwitch new];
-    self.MessageSwitch.onTintColor =ssRGBHexAlpha(0x005CB6, 0.2);
-    self.MessageSwitch.thumbTintColor =ssRGBHex(0x005CB6);
-    self.MessageSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
+    self.MessageSwitch = [[JTMaterialSwitch alloc] initWithSize:JTMaterialSwitchSizeNormal
+    style:JTMaterialSwitchStyleDefault state:JTMaterialSwitchStateOn];
+    self.MessageSwitch.thumbOnTintColor = ssRGBHex(0x005CB6);
+    self.MessageSwitch.tintColor = ssRGBHexAlpha(0x005CB6, 0.2);
+    self.MessageSwitch.isRippleEnabled = NO;
+//    self.MessageSwitch = [UISwitch new];
+//    self.MessageSwitch.onTintColor =ssRGBHexAlpha(0x005CB6, 0.2);
+//    self.MessageSwitch.thumbTintColor =ssRGBHex(0x005CB6);
+//    self.MessageSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
     [cell.contentView addSubview:self.MessageSwitch];
     [self.MessageSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     [self.MessageSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(cell).offset(-31);
-//        make.height.offset(12.46);
-//        make.width.offset(30.26);
-//        make.top.equalTo(cell).offset(15);
-//        make.bottom.equalTo(cell).offset(-15);
-        make.centerY.equalTo(cell.mMeLanguageLeftLabel);
+        make.height.offset(17.8);
+        make.width.offset(32.93);
+//        make.top.equalTo(cell).mas_offset()
+        make.top.equalTo(cell).mas_offset(0);
+//        make.bottom.equalTo(cell).mas_offset(-15);
+//        make.centerY.equalTo(cell.mMeLanguageLeftLabel);
+//        make.centerY.equalTo(cell);
             }];
     return cell;
 }

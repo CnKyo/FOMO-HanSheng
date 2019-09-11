@@ -462,7 +462,8 @@
             }
             [self popToViewController];
         }else{
-            TOASTMESSAGE(result);
+//            TOASTMESSAGE(result);
+            TOASTMESSAGE(languageStr(@"AlterErr"));
         }
     }];
 }

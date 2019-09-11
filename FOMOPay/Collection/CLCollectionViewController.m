@@ -8,16 +8,24 @@
 
 #import "CLCollectionViewController.h"
 
-@interface CLCollectionViewController ()<UITableViewDelegate,UITableViewDataSource,CLCollectionAddDelegate>
+@interface CLCollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+//,CLCollectionAddDelegate>//代理传值用的代理
 @property (nonatomic, strong) NSMutableArray * sectionArr;
 @property (nonatomic, strong) NSMutableArray * boolArr;
-@property (nonatomic,strong) NSIndexPath * mIdx;
+@property (nonatomic, strong) NSIndexPath * mIdx;
 @property (nonatomic, strong) NSMutableArray * mSecArr;
-@property (nonatomic,strong)NSMutableArray *mTestData;
+
 
 @end
 
 @implementation CLCollectionViewController
+//-(void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    [self mHeaderLoadData];
+//}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     WS(weakSelf);
@@ -100,6 +108,7 @@
 }
 
 - (void)semboldData{
+    [self.DataSource removeAllObjects];
     [self.sectionArr removeAllObjects];
     for (WKResipientInfoObj *obj in self.mSecArr) {
         [self.sectionArr addObject:obj.currencyCode];
@@ -114,17 +123,18 @@
     [self.sectionArr removeAllObjects];
     [self.sectionArr addObjectsFromArray:resultArray];
     [self.boolArr removeAllObjects];
-    for (int i = 0; i < resultArray.count; i++) {
+     for (int i = 0; i < resultArray.count ; i++) {   // 0<2;//判断有几个分组
+        
         NSString *mCode = resultArray[i];
         NSMutableArray * friendArr = [[NSMutableArray alloc] init];
         for (int j = 0; j < self.mSecArr.count ;j++) {
+          
             WKResipientInfoObj *mItem = self.mSecArr[j];
             if ([mCode isEqualToString:mItem.currencyCode]) {
                 [friendArr addObject:mItem];
             }
         }
         [self.DataSource addObject:friendArr];
-        self.mTestData = self.DataSource;
         [self.sectionArr addObject:mCode];
         [self.boolArr addObject:@YES];
     }
@@ -322,15 +332,16 @@
     [WKNetWorkManager WKDeleteRecipient:item.id block:^(id result, BOOL success) {
         [self hiddenLoading];
         if (success) {
-            
-            TOASTMESSAGE(@"Delete Success!");
+            [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_success"] status:languageStr(@"Delete")];
+//            TOASTMESSAGE(@"Delete Success!");
             NSArray *mSection = self.DataSource[self.mIdx.section];
             
 //            [self.DataSource removeObjectAtIndex:self.mIdx.row];
             [self.DataSource removeObject:mSection[self.mIdx.row]];
+            [self mHeaderLoadData];
             [self.mTabView reloadData ]; //
 //            [self.DataSource removeAllObjects];
-            [self mHeaderLoadData];
+            
             
         }else{
             TOASTMESSAGE(result);

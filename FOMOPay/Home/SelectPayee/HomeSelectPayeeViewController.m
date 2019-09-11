@@ -125,7 +125,7 @@
     self.ifSelected = YES;//修改这个被选中的一行
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
      self.mItem = self.mData[indexPath.row];
-   
+    self.ifSelected = NO;
     
     
 }
