@@ -507,4 +507,17 @@
         block(errorDes,NO);
     }];
 }
+#pragma mark----****----设置推送token
+/**
+ 设置推送token
+ 
+ @param para 参数
+ @param block 返回值
+ */
++ (void)WKSetPushToken:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
+    [self newPostWithUrl:kSetPushToken para:para block:^(id result, BOOL success) {
+        block(result,success);
+    }];
+}
+
 @end

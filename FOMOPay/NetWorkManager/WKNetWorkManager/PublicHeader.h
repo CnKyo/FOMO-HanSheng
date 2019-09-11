@@ -40,3 +40,5 @@
 
 ///订单列表
 #define kOrderList                             @"/customer/app/v2/orders"
+
+#define kSetPushToken                             @"/customer/app/v2/notificationtoken"

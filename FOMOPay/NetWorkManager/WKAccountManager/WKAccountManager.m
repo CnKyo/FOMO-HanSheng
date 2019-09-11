@@ -19,6 +19,7 @@
 #define  kOutCurrenceCode                     @"mOutCurrenceCode"
 #define  kInCurrenceCode                     @"mInCurrenceCode"
 #define  kRate                     @"mRate"
+#define  kPushToken                     @"pushToken"
 
 static WKAccountManager *manager = nil;
 
@@ -54,7 +55,7 @@ static WKAccountManager *manager = nil;
         _mOutCurrenceCode = [WKUserDefault objectInUserDefaults:kOutCurrenceCode];
         _mInCurrenceCode = [WKUserDefault objectInUserDefaults:kInCurrenceCode];
         _mRate = [WKUserDefault objectInUserDefaults:kRate];
-
+        _mPushToken = [WKUserDefault objectInUserDefaults:kPushToken];
     }
     return self;
 }
@@ -100,6 +101,9 @@ static WKAccountManager *manager = nil;
 - (NSString *)mRate{
     return [WKUserDefault objectInUserDefaults:kRate];
 }
+- (NSString *)mPushToken{
+    return [WKUserDefault objectInUserDefaults:kPushToken];
+}
 
 - (void)WKResetUserInfo:(WKUserInfo *)userInfo{
     if (userInfo.idNumber.length>0) {
@@ -142,8 +146,15 @@ static WKAccountManager *manager = nil;
     self.mRate = mRate;
     [WKUserDefault setObjectInUserDefaults:mRate withKey:kRate];
 }
+- (void)WKResetPushToken:(NSString *)mPushToken{
+    self.mPushToken = mPushToken;
+    [WKUserDefault setObjectInUserDefaults:mPushToken withKey:kPushToken];
+
+}
+
 - (void)WKClearnAll{
     [self WKSetToken:@""];
     [self WKResetAppConfig:@""];
+    [self WKResetPushToken:@""];
 }
 @end
