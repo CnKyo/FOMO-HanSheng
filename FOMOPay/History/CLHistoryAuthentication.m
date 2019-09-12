@@ -74,6 +74,7 @@
         }else{
             DebugLog(@"错误信息:%@",token);
             TOASTMESSAGE(token);
+//            [self showMessage];
         }
     }];
     
@@ -92,6 +93,16 @@
     //重新发送验证码
     [self mResendAction];
 }
+-(void)showMessage{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"验证码输入错误，请重新输入" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *mCancel = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+    [mCancel setValue:ssRGBHex(0x007AFF) forKey:@"titleTextColor"];
+    
+    [alertController addAction:mCancel];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {
