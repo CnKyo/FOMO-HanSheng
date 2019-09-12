@@ -36,7 +36,8 @@
         self.mDate.hidden = YES;
     }
     
-    self.mTitle.text = mItem.operation;
+//    self.mTitle.text = mItem.operation;
+    self.mTitle.text  = [self mOperation:mItem.operation];
     self.mContent.text = mItem.comment;
     if (mItem.comment.length<=0) {
         self.mContent.hidden = YES;
@@ -60,6 +61,15 @@
         self.mTopLine.backgroundColor = kGrayColor;
 
     }
+}
+
+- (NSString *)mOperation:(NSString *)status{ //中英文转换
+    if ([status isEqualToString:@"submit"]) {
+        return @"提交汇款订单";
+    }else{
+         return status;
+    }
+//    return status;
 }
 
 @end

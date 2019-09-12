@@ -298,6 +298,7 @@
     NSArray *mSection = self.DataSource[indexPath.section];
     vc.mData = mSection[indexPath.row];
     [self pushToViewController:vc];
+
 }
 
 -(void)mDelete:(NSIndexPath *)indexPath{
@@ -387,4 +388,6 @@
 //
 //    });
 //}
+
+
 @end

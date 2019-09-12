@@ -40,7 +40,6 @@
         }
     }];
     [self LoadCellType:3];
-
     __weak typeof(self)  weakSelf = self;
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf headerLoadData];
@@ -76,10 +75,13 @@
             TOASTMESSAGE(result);
         }
         if(self.DataSource.count <= 0){
+            [self.mTabView reloadData];
             [self LoadNoDataView];//没有数据显示暂无历史消息界面
         }else{
-            self.ctLbale.hidden = YES;
-            self.ctView.hidden = YES;
+            [self.ctView removeFromSuperview];
+            [self.ctLbale removeFromSuperview];
+//            self.ctLbale.hidden = YES;
+//            self.ctView.hidden = YES;
             [self.mTabView reloadData];
         }
     }];
@@ -104,10 +106,14 @@
             TOASTMESSAGE(result);
         }
         if(self.DataSource.count <= 0){
+            [self.mTabView reloadData];
             [self LoadNoDataView];//没有数据显示暂无历史消息界面
+            
         }else{
-            self.ctView.hidden = YES;
-            self.ctLbale.hidden = YES;
+            [self.ctView removeFromSuperview];
+            [self.ctLbale removeFromSuperview];
+//            self.ctView.hidden = YES;
+//            self.ctLbale.hidden = YES;
             [self.mTabView reloadData];
         }
     }];
@@ -160,10 +166,10 @@
 
 
 -(void)LoadNoDataView{
-    _ctView = [UIImageView new];
+    self.ctView = [UIImageView new];
     _ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
     [self.view addSubview:_ctView];
-    _ctLbale  = [UILabel new];
+    self.ctLbale  = [UILabel new];
     _ctLbale.text = @"暂无历史消息";
     _ctLbale.font = kCommonFont(16);
     [self.view addSubview:_ctLbale];

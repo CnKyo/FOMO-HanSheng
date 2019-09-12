@@ -101,6 +101,10 @@ static NSString *UserLanguage = @"UserLanguage";
     return language;
 }
 
+
+
+
+
 //重新设置
 + (void)resetRootViewController
 {
@@ -114,6 +118,7 @@ static NSString *UserLanguage = @"UserLanguage";
 
                 [(CLMeViewController *)vc changeLanguage];
             }
+            
             
         }
     }

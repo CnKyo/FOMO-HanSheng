@@ -140,6 +140,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 0 ) {
         cell.mTopLine.hidden = YES;
+        cell.mTitle.textColor  = ssRGBHex(0x005CB6);
     }else if (indexPath.row == self.mItem.operations.count-1){
         cell.mBottomLine.hidden = YES;
     }else{

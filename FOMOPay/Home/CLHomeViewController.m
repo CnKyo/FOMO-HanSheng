@@ -40,6 +40,9 @@
 //    [self checkLoginStatus];
     [self loadConfig];
 }
+
+
+
 - (void)loadConfig{
     if ([WKAccountManager shareInstance].appConfig.rmtMaxAmt.length<=0) {
         [self showLoading:nil];
@@ -83,13 +86,17 @@
 
 
 //- (void)checkLoginStatus{
-//    if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_unLogin) {
+//    if ([WKAccountManager shareInstance].loginStatus == WKLoginStatus_loginSuccess) {
+//        [self loadConfig];
+//    }else{
 //        [[WKLoginManager shareInstance] presentLoginViewController:^{
-//            //            [[WKTabbarManager shareInstance] showHomePage];
+//            //  [[WKTabbarManager shareInstance] showHomePage];
 //        }];
-//        
+//
 //    }
 //}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

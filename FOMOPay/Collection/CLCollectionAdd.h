@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol CLCollectionAddDelegate <NSObject>
 
-- (void)changeArray:(NSArray *)Array;
+//- (void)changeArray:(NSArray *)Array;
 
 @end///////////
 

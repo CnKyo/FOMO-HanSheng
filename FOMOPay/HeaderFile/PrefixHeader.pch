@@ -125,7 +125,7 @@
 #define DebugLog(...)
 #endif
 
-#define KMethodColor [UIColor colorWithRed:0/255.0f green:92/255.0f blue:128/255.0f alpha:1]
+#define KMethodColor [UIColor colorWithRed:0/255.0f green:92/255.0f blue:182/255.0f alpha:1]
 
 #define kGrayColor [UIColor colorWithRed:230/255.0f green:230/255.0f blue:230/255.0f alpha:1]
 
