@@ -28,14 +28,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"身份验证";
+//    self.title = @"身份验证";
+    self.title = languageStr(@"authentication");
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
     
     _verifyCodeView = [LogInVerifyCodeView shareView];
     _verifyCodeView.delegate = self;
-    _verifyCodeView.verifyCodeAlertLabel.text = [NSString stringWithFormat:@"请输入发送到****%@的6位验证码",[_mobile substringFromIndex:_mobile.length - 4]];
+    _verifyCodeView.verifyCodeAlertLabel.text = [NSString stringWithFormat:@"%@****%@%@6%@",languageStr(@"Please send"),[_mobile substringFromIndex:_mobile.length - 4],languageStr(@"Of"),languageStr(@"Verification Code")];
+//    _verifyCodeView.verifyCodeAlertLabel.text = [NSString stringWithFormat:@"请输入发送到****%@的6位验证码",languageStr(@""),[_mobile substringFromIndex:_mobile.length - 4]];
     [self.view addSubview:_verifyCodeView];
     
     [_verifyCodeView mas_makeConstraints:^(MASConstraintMaker *make) {

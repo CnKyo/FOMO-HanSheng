@@ -30,3 +30,12 @@
 "Delete"="Delete Success!";
 "Create"="Recipient Create Successful!";
 "AlterErr" = "Alter Err";
+"NameOrNumber" = "Card/Mobile Number";
+"input" = "Please input";
+"Next" = "Next Step";
+"authentication" ="Authentication";
+"Repeat" ="seconds Repeat";
+"Resend" = "Resend";
+"Please send" = "Please input and send to";
+"Of" = " Of";
+"Verification Code" = "Bit Verification Code";

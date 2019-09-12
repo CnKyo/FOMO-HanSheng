@@ -218,7 +218,7 @@
         [_changeButton setTitle:@"修改此收款人" forState:UIControlStateNormal];
         [_changeButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
         _changeButton.titleLabel.font = kCommonFont(14);
-        _changeButton.backgroundColor = [UIColor whiteColor];
+        _changeButton.backgroundColor = ssRGBHex(0xF6F5FA);
         _changeButton.layer.borderWidth = 1.0;
         _changeButton.layer.borderColor = kLoginTitleColor.CGColor;
         _changeButton.tag = 2000;

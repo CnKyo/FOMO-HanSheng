@@ -67,17 +67,20 @@
             if ([[mResponse objectForKey:@"orders"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary *dic in [mResponse objectForKey:@"orders"]) {
                     
-                    [mTempArr addObject:[WKOrderInfo yy_modelWithDictionary:dic]];
+                    [self.DataSource addObject:[WKOrderInfo yy_modelWithDictionary:dic]];
                 }
             }
-            [self.DataSource addObjectsFromArray:mTempArr];
+//            [self.DataSource addObjectsFromArray:mTempArr];
+            
         }else{
             TOASTMESSAGE(result);
         }
         if(self.DataSource.count <= 0){
-            [self.mTabView reloadData];
+//            [self.mTabView reloadData];
+            
             [self LoadNoDataView];//没有数据显示暂无历史消息界面
         }else{
+            
             [self.ctView removeFromSuperview];
             [self.ctLbale removeFromSuperview];
 //            self.ctLbale.hidden = YES;
@@ -106,7 +109,7 @@
             TOASTMESSAGE(result);
         }
         if(self.DataSource.count <= 0){
-            [self.mTabView reloadData];
+//            [self.mTabView reloadData];
             [self LoadNoDataView];//没有数据显示暂无历史消息界面
             
         }else{

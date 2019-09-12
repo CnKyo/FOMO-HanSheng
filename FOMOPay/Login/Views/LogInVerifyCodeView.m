@@ -39,7 +39,7 @@
         
         make.left.right.top.bottom.equalTo(view.mPwdView).offset(0);
     }];
-    
+    view.mReSendBtn.layer.cornerRadius = 4;
     [view.mReSendBtn addTarget:view action:@selector(mResendAction) forControlEvents:UIControlEventTouchUpInside];
     [view startTimer];
     
@@ -66,13 +66,15 @@
 - (void)stopTimer{
     
     [_timer invalidate];
-    _timer = nil;
+//    _timer = nil;
+    _time = 0;
 }
 
 - (void)changeTime{
     
     _time ++;
-    NSString *timeString = [NSString stringWithFormat:@"%ld秒后重发",(long)60 - _time];
+    NSString *timeString = [NSString stringWithFormat:@"%ld%@",(long)60 - _time,languageStr(@"Repeat")];
+//    NSString *timeString = [NSString stringWithFormat:@"%ld秒后重发",(long)60 - _time];
     [_mReSendBtn setTitle:timeString forState:UIControlStateNormal];
     [_mReSendBtn setTitleColor:[UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1] forState:UIControlStateNormal];
     _mReSendBtn.backgroundColor = [UIColor clearColor];
@@ -80,7 +82,8 @@
     if (_time == 60) {
         
         [self stopTimer];
-        [_mReSendBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+        [_mReSendBtn setTitle:languageStr(@"Resend") forState:UIControlStateNormal];
+        _mReSendBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         [_mReSendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _mReSendBtn.backgroundColor = [UIColor colorWithRed:0 green:90/255.0 blue:182/255.0 alpha:1];
         _mReSendBtn.enabled = YES;

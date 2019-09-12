@@ -30,3 +30,12 @@
 "Delete"="删除成功!";
 "Create"="添加成功!";
 "AlterErr" = "修改失败,请核对\n账号或者联系客服";
+"NameOrNumber" ="身份证号码/手机号码";
+"input" = "请输入";
+"Next" = "下一步";
+"authentication" ="身份验证";
+"Repeat" ="S后重发";
+"Resend" = "重新发送";
+"Please send" = "请输入发送到";
+"Of" = "的";
+"Verification Code" = "位验证码";

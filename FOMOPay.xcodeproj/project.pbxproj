@@ -251,6 +251,8 @@
 		CFE796592301548F004C09C4 /* pdf_home_title.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CFE796582301548E004C09C4 /* pdf_home_title.pdf */; };
 		CFE7966123016589004C09C4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7966023016589004C09C4 /* BaseViewController.m */; };
 		CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE7966323016614004C09C4 /* CLHomeViewController.m */; };
+		CFEE0A31232A528900C4C5E6 /* CLCollectionAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE0A2F232A528900C4C5E6 /* CLCollectionAddView.m */; };
+		CFEE0A32232A528900C4C5E6 /* CLCollectionAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEE0A30232A528900C4C5E6 /* CLCollectionAddView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -654,6 +656,9 @@
 		CFE7966023016589004C09C4 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = FOMOPay/BaseManager/BaseViewController.m; sourceTree = SOURCE_ROOT; };
 		CFE7966223016614004C09C4 /* CLHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHomeViewController.h; sourceTree = "<group>"; };
 		CFE7966323016614004C09C4 /* CLHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHomeViewController.m; sourceTree = "<group>"; };
+		CFEE0A2E232A528900C4C5E6 /* CLCollectionAddView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCollectionAddView.h; sourceTree = "<group>"; };
+		CFEE0A2F232A528900C4C5E6 /* CLCollectionAddView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCollectionAddView.m; sourceTree = "<group>"; };
+		CFEE0A30232A528900C4C5E6 /* CLCollectionAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLCollectionAddView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1480,6 +1485,9 @@
 				CF274ABD23287E3C00998BC6 /* CLCollectionAlterView.h */,
 				CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */,
 				CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */,
+				CFEE0A2E232A528900C4C5E6 /* CLCollectionAddView.h */,
+				CFEE0A2F232A528900C4C5E6 /* CLCollectionAddView.m */,
+				CFEE0A30232A528900C4C5E6 /* CLCollectionAddView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1660,6 +1668,7 @@
 				77DD6BB62313E12A00BFDD11 /* HomeSureInfoListCell.xib in Resources */,
 				773880D42314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy.pdf in Resources */,
 				18FEAD63231E6BD000844806 /* pdf_HKD.pdf in Resources */,
+				CFEE0A32232A528900C4C5E6 /* CLCollectionAddView.xib in Resources */,
 				7707E2A92313B1E10029EB0B /* pdf_home_selectPayee_add_icon.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
 				CF20E263231F89A300EEB9AD /* pdf_history_cancel_icon.pdf in Resources */,
@@ -1902,6 +1911,7 @@
 				CCB32E9F231D69260027FD84 /* CLHistoryRefund.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				77BE820E23151C4A00519F66 /* HomeChangePayeeCell.m in Sources */,
+				CFEE0A31232A528900C4C5E6 /* CLCollectionAddView.m in Sources */,
 				1863DA9823013A87000969FE /* YHPDFImagePath.m in Sources */,
 				CF26171323176B1900448AA4 /* CLHistoryDetailsOfRemittances.m in Sources */,
 				CCB32EA8231D70A70027FD84 /* CLHistoryDetailsOfRefund.m in Sources */,

@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
 NS_ASSUME_NONNULL_BEGIN
+typedef enum: NSUInteger{
+    LocalizationManager_guide = 0,
+    LocalizationManager_login = 1,
+}LocalizationManagerType;
+
+
+
 
 @interface LocalizationManager : NSObject
 /// 获取当前资源文件
@@ -23,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getStringByKey:(NSString *)key;
 
 + (NSString *)getSystemLanguage;
+
+
++ (void)setGuidelanguage:(NSString *)language andType:(NSUInteger)mType;//设置引导页的语言
 @end
 
 NS_ASSUME_NONNULL_END

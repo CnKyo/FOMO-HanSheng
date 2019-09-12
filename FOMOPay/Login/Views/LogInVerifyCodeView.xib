@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,16 +35,15 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-Nw-uXN">
-                    <rect key="frame" x="112.5" y="197" width="150" height="30"/>
+                    <rect key="frame" x="125" y="197" width="125" height="44"/>
                     <color key="backgroundColor" red="0.0" green="0.36078431372549019" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="SMr-jj-0RS"/>
-                        <constraint firstAttribute="width" constant="150" id="tFM-L1-adO"/>
+                        <constraint firstAttribute="height" constant="44" id="SMr-jj-0RS"/>
+                        <constraint firstAttribute="width" constant="125" id="tFM-L1-adO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="RazerF5" family="RazerF5" pointSize="15"/>
-                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
                     <state key="normal" title="重新发送">
-                        <color key="titleColor" red="0.1374197304" green="0.67629116769999997" blue="0.8635287881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
             </subviews>
@@ -65,7 +64,7 @@
                 <outlet property="mReSendBtn" destination="Nxk-Nw-uXN" id="o4w-ti-4aV"/>
                 <outlet property="verifyCodeAlertLabel" destination="1Cc-gk-C3Q" id="wqB-t4-N6E"/>
             </connections>
-            <point key="canvasLocation" x="23" y="-26"/>
+            <point key="canvasLocation" x="21.600000000000001" y="-26.53673163418291"/>
         </view>
     </objects>
 </document>

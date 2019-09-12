@@ -522,12 +522,12 @@
     if (sender.tag == 102) {
         
         _titleLabel.text = @"简体中文";
-//         [LocalizationManager setUserlanguage:@"zh-Hans"];
+         [LocalizationManager setGuidelanguage:@"zh-Hans" andType:0];
        
     }else{
         
         _titleLabel.text = @"English";
-//         [LocalizationManager setUserlanguage:@"en"];
+         [LocalizationManager setGuidelanguage:@"en" andType:0];
         
     }
     _chageButton.selected = NO;

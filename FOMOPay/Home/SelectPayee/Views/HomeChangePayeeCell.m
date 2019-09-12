@@ -52,6 +52,7 @@
     _nameTextField.delegate = self;
     _numberTextField.delegate = self;
     _mobileTextField.delegate = self;
+    _numberTextField.textColor =ssRGBHex(0x2b2b2b);
     
     [_accountTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [_nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -88,6 +89,40 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if(textField.tag == 102){
+        // 每间隔4个字符插入一个空格并在删除时去掉
+        NSMutableString *strmText = [NSMutableString stringWithString:textField.text];
+        if ([textField.text length] == range.location) {
+            
+            // 插入
+            if ([textField.text length]%5 == 4) {
+                
+                [strmText appendString:@" "];
+            }
+            
+        } else {
+            
+            // 删除
+            if ([textField.text length] && [textField.text length]%5 == 0) {
+                
+                strmText = [NSMutableString stringWithString:[strmText substringToIndex:strmText.length - 1]];
+            }
+        }
+        
+        textField.text = strmText;
+    }
+    
+    //    if(_mIndexPath.row == 7 ){
+    //        if ([textField.text length] >11) {
+    //            DebugLog(@"请输入正确的联系号码");
+    //        }
+    //    }
+    return YES;
+}
+
+
 - (IBAction)changeButtonClicked:(UIButton *)sender {
  
     if (_HomeChangePayeeCellButton) {
@@ -103,5 +138,27 @@
     self.accountTextField.text = mItem.bankCity;
     self.friendLabel.text = mItem.relationship;
     self.mobileTextField.text = mItem.contactNumber;
+    self.numberTextField.text =[self formmatterBankCardNum:mItem.accountNumber];
+//    mItem.accountNumber;
+    
+}
+
+#pragma mark----****----转化卡号为每4位加一个空格
+-(NSString *)formmatterBankCardNum:(NSString *)string{
+    NSString *tempStr = string;
+    
+    NSInteger size = (tempStr.length/4);
+    
+    NSMutableArray *tempStrArr = [[NSMutableArray alloc]init];
+    
+    for(int i=0;i<size;i++){
+        [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(i*4, 4)]];
+    }
+    
+    [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(size*4,(tempStr.length%4))]];
+    
+    tempStr = [tempStrArr componentsJoinedByString:@" "];
+
+    return tempStr;
 }
 @end

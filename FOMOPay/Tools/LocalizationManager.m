@@ -9,6 +9,7 @@
 #import "LocalizationManager.h"
 #import "AppDelegate.h"
 #import "CommonGuideViewController.h"
+#import "LogInViewController.h"
 @implementation LocalizationManager
 static NSBundle *bundle = nil;
 static NSString *UserLanguage = @"UserLanguage";
@@ -122,6 +123,43 @@ static NSString *UserLanguage = @"UserLanguage";
             
         }
     }
+}
+
++ (void)setGuidelanguage:(NSString *)language andType:(NSUInteger)mType{
+    
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    
+    //1.第一步改变bundle的值
+    NSString *path = [[NSBundle mainBundle] pathForResource:[self languageFormat:language] ofType:@"lproj" ];
+    
+    bundle = [NSBundle bundleWithPath:path];
+    
+    //2.持久化
+    [def setValue:language forKey:UserLanguage];
+    
+    [def synchronize];
+    if(mType == 0){
+         [self resetGuideViewController];
+    }else{
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UINavigationController *mNav = [[UINavigationController alloc]initWithRootViewController:[LogInViewController new]];
+        delegate.window.rootViewController = mNav;
+    }
+    
+}
+
+
+
+
++(void)resetGuideViewController{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UINavigationController *mnav = [[UINavigationController  alloc]initWithRootViewController:[CommonGuideViewController new]];
+    delegate.window.rootViewController = mnav;
+   
+    
+    
+    
+    
 }
 
 +(NSString *)getSystemLanguage
