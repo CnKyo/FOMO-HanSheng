@@ -42,6 +42,8 @@ void TOASTMESSAGE(NSString *message);
 
 - (void)ResetLayout; // 针对5s小屏幕手机的底部按钮挡住tabview进行重设约束
 
+- (void)ResetLayoutSelect;
+
 - (void)showLoading:(NSString *)text;
 
 - (void)hiddenLoading;

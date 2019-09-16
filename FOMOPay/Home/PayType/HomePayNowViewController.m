@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *dataSourceArray;
+@property (nonatomic,strong)UIImageView *mImgView;
 
 @end
 
@@ -35,7 +36,7 @@
     }];
     
     [self loadTableView];
-    
+ 
 //    [self loadData];
 }
 
@@ -100,7 +101,7 @@
             
 //            UIImage *image = cell.codeImage.image;
             UIImageWriteToSavedPhotosAlbum(weakCell.codeImage.image, weakSelf, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-            
+        
         }else{  //完成
             
             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -121,6 +122,7 @@
     }else{
         
        [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_success"] status:@"保存成功"];
+
         
 //        [WKHudManager WKShowSuccessHud:@"保存成功" view:self.view];
     }

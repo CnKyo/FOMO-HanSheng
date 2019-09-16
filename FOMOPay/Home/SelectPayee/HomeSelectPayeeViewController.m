@@ -29,6 +29,7 @@
     [self loadData];
 
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"选择收款人";
@@ -42,7 +43,53 @@
     self.ifSelected = NO;//是否被选中 默认为NO
     [self LoadCellType:10];
     [self loadButtonView];
-    [self ResetLayout];
+    
+//    self.mTabView.tableFooterView =
+    
+    
+    
+    UIView *mbgView = [UIView new];
+    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
+//    mbgView.backgroundColor= [UIColor redColor];
+    mbgView.frame = CGRectMake(0, 12,kScreenWidth , 55);
+    UIView *mButtonView = [UIView new];
+    mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
+//    mButtonView.backgroundColor = [UIColor redColor];
+    mButtonView.layer.cornerRadius = 4;
+    mButtonView.layer.borderWidth = 1;
+    mButtonView.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
+    [mbgView addSubview:mButtonView];
+    
+    
+    UIButton *addButton = [[UIButton alloc] init];  //添加新收款人
+    //                           WithFrame:CGRectMake(50, 0, mButtonView.frame.size.width, mButtonView.frame.size.height)];
+    [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
+    [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
+    [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
+    addButton.titleLabel.font = kCommonFont(14);
+    addButton.backgroundColor = [UIColor whiteColor];
+    [addButton addTarget:self action:@selector(addButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+    
+    [mButtonView addSubview:addButton];
+    
+    //
+    [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(mbgView).mas_offset(15);
+        make.right.equalTo(mbgView).mas_offset(-15);
+        make.height.offset(44);
+        make.top.equalTo(mbgView).offset(10);
+    }];
+    [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(mButtonView);
+        make.height.equalTo(mButtonView.mas_height);
+        make.width.equalTo(mButtonView.mas_width);
+        
+    }];
+    
+    self.mTabView.tableFooterView = mbgView;
+    
+    [self ResetLayoutSelect];
 //    __weak typeof(self)  weakSelf = self;
 //    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 //        [weakSelf.mTabView reloadData];
@@ -131,50 +178,50 @@
     
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *mbgView = [UIView new];
-    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
-    mbgView.frame = CGRectMake(0, 10,kScreenWidth , 45);
-    UIView *mButtonView = [UIView new];
-    mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
-    mButtonView.layer.cornerRadius = 4;
-    mButtonView.layer.borderWidth = 1;
-    mButtonView.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
-    [mbgView addSubview:mButtonView];
-    
-    
-    UIButton *addButton = [[UIButton alloc] init];  //添加新收款人
-    //                           WithFrame:CGRectMake(50, 0, mButtonView.frame.size.width, mButtonView.frame.size.height)];
-    [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
-    [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
-    [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
-    addButton.titleLabel.font = kCommonFont(14);
-    addButton.backgroundColor = [UIColor whiteColor];
-    [addButton addTarget:self action:@selector(addButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-    
-    [mButtonView addSubview:addButton];
-    
-    //
-    [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(mbgView).mas_offset(15);
-        make.right.equalTo(mbgView).mas_offset(-15);
-        make.height.offset(44);
-        make.top.equalTo(mbgView).offset(10);
-    }];
-    [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(mButtonView);
-        make.height.equalTo(mButtonView.mas_height);
-        make.width.equalTo(mButtonView.mas_width);
-        
-    }];
-    return mbgView;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+//    UIView *mbgView = [UIView new];
+//    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
+//    mbgView.frame = CGRectMake(0, 10,kScreenWidth , 45);
+//    UIView *mButtonView = [UIView new];
+//    mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
+//    mButtonView.layer.cornerRadius = 4;
+//    mButtonView.layer.borderWidth = 1;
+//    mButtonView.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
+//    [mbgView addSubview:mButtonView];
 //
 //
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 54;
-}
+//    UIButton *addButton = [[UIButton alloc] init];  //添加新收款人
+//    //                           WithFrame:CGRectMake(50, 0, mButtonView.frame.size.width, mButtonView.frame.size.height)];
+//    [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
+//    [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
+//    [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
+//    addButton.titleLabel.font = kCommonFont(14);
+//    addButton.backgroundColor = [UIColor whiteColor];
+//    [addButton addTarget:self action:@selector(addButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+//    addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+//
+//    [mButtonView addSubview:addButton];
+//
+//    //
+//    [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(mbgView).mas_offset(15);
+//        make.right.equalTo(mbgView).mas_offset(-15);
+//        make.height.offset(44);
+//        make.top.equalTo(mbgView).offset(10);
+//    }];
+//    [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(mButtonView);
+//        make.height.equalTo(mButtonView.mas_height);
+//        make.width.equalTo(mButtonView.mas_width);
+//
+//    }];
+//    return mbgView;
+//}
+//
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    return 54;
+//}
 
 - (void)loadButtonView{
 
@@ -293,6 +340,7 @@
                 for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
                     WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
                     [self.mData addObject:mRefundAcc];
+                    
 //
                 }
             }
@@ -300,6 +348,7 @@
         }else{
             TOASTMESSAGE(result);
         }
+       
         [self.mTabView reloadData];
     }];
 }
@@ -328,5 +377,8 @@
     [self pushToViewController:vc];
 
 }
+
+
+
 
 @end
