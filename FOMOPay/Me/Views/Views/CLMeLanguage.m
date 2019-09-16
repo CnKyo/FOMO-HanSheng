@@ -18,9 +18,9 @@
 
 //@property (strong,nonatomic) UILabel *mLb;
 
-@property (strong,nonatomic) NSMutableArray *mData;
+//@property (strong,nonatomic) NSMutableArray *mData;
 
-@property (strong,nonatomic) NSString *m;
+//@property (strong,nonatomic) NSString *m;
 
 @end
 
@@ -50,11 +50,9 @@
     for (UIView *vvv in self.mRightView.subviews) {
         [vvv removeFromSuperview];
     }
-    if (!_mData) {
-        _mData = [NSMutableArray arrayWithObjects:@"请选择",@"请选择",@"请选择" ,@"请选择",@"请选择",@"请选择",@"请选择",@"请选择", nil];
-    }
+  
     if (type == CLMeLanguageType_textFiled) {
-
+        self.mImageV.hidden = YES;
         self.mTextF.frame = self.mRightView.bounds;
         self.mTextF.textAlignment = NSTextAlignmentRight;
         if (_mIndexPath.row == 0) {
@@ -103,6 +101,8 @@
         self.mLb.font = kCommonFont(14);
         self.mLb.textColor = ssRGBHex(0xCCCCCC);
         self.mLb.text = EnterString;
+//        self.mBtn.backgroundColor = [UIColor redColor];
+//        self.mLb.backgroundColor  = [UIColor redColor];//
         if([self.mLb.text isEqual:@"请选择"]){
             self.mLb.textColor = ssRGBHex(0xCCCCCC);
         }else{
@@ -113,7 +113,8 @@
         [self.mBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.mRightView).offset(-10);
             make.height.equalTo(self.mRightView);
-            make.width.equalTo(self.mRightView);
+            make.width.offset(100);
+            make.top.bottom.equalTo(self.mRightView);
         }];
         [self.mImageV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.mBtn.mas_right).offset(0);
@@ -124,22 +125,35 @@
         [self.mLb mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.mMeLanguageLeftLabel);
             make.right.equalTo(self.mImageV.mas_left).offset(-8);
-            make.width.equalTo(self.mRightView);
+//            make.width.equalTo(self.mRightView);
+            make.width.offset(150);
 
         }];
     }else {
         self.mBtn.hidden =YES;
         self.mTextF.hidden = YES;
-        
+        self.mRightView.hidden = YES;
+        self.mImageV.hidden = YES;
     }
     
     
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if(_mIndexPath.row  == 0){
+        self.mLineView.backgroundColor = ssRGBHex(0x005CB6);
+    }
+    
+    return YES;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [textField resignFirstResponder];
     if (self.mBlock) {
         self.mBlock(self.mIndexPath,textField.text);
+    }
+    if(_mIndexPath.row==0){
+        self.mLineView.backgroundColor =ssRGBHex(0xe6e6e6);
     }
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

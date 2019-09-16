@@ -125,48 +125,23 @@
 //    cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     cell.mMeLanguageLeftLabel.text = _mAddLeftDateSource[indexPath.row];
     cell.mMeLanguageLeftLabel.font = kCommonFont(14);
-    
     cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     
-//    cell.mIndexPath = indexPath;
     if(indexPath.row == 0 ){
     cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     [cell updateView:CLMeLanguageType_textFiled and:nil];
     cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-//        DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-         [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-//        DebugLog(@"当前的text的值是%@",self.mMdate);
-        
+    [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
     };}
+    
     
     if(indexPath.row == 1){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
         [cell updateView:CLMeLanguageType_button and:_mModeString];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
                     weakSelf.mSelectView = [CLCollectionAddSelect new];
-//                    weakSelf.mSelectView.delegate = self;//实现他的代理方法//代理传值第五步
                     weakSelf.mSelectView.modelArray  = [self.modelArray objectAtIndex:0];//把当前数据传入另一个j控制器的moderarrl里面;
                     [weakSelf.view addSubview:weakSelf.mSelectView.view];
                     [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
@@ -176,26 +151,15 @@
                     weakSelf.mModeString = string;
                     [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
             };
-                    weakSelf.mIndex = indexPath;
+            
+    };}
     
-        };}
     if(indexPath.row == 2){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
-            [cell updateView:CLMeLanguageType_button and:_mModeString2];
-            cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-
-                weakSelf.mSelectView = [CLCollectionAddSelect new];
+        [cell updateView:CLMeLanguageType_button and:_mModeString2];
+        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
+            weakSelf.mSelectView = [CLCollectionAddSelect new];
 //                weakSelf.mSelectView.delegate = self;//实现他的代理方法
                 weakSelf.mSelectView.modelArray  = [self.modelArray objectAtIndex:1];//把当前数据传入另一个j控制器的moderarrl里面;
                 [weakSelf.view addSubview:self.mSelectView.view];
@@ -206,24 +170,15 @@
                     weakSelf.mModeString2= string;
                     [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
                 };
-                 weakSelf.mIndex = indexPath;
+            
             };}
+    
+    
     if(indexPath.row == 3){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
         [cell updateView:CLMeLanguageType_button and:_mModeString3];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-            
             weakSelf.mSelectView = [CLCollectionAddSelect new];
 //            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
             weakSelf.mSelectView.modelArray  = [weakSelf.modelArray objectAtIndex:2];//把当前数据传入另一个j控制器的moderarrl里面;
@@ -235,22 +190,12 @@
                 weakSelf.mModeString3 = string;
                  [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
             };
-            weakSelf.mIndex = indexPath;
         };}
   
+    
     if(indexPath.row == 6){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
         [cell updateView:CLMeLanguageType_button and:_mModeString4];
         cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
             weakSelf.mSelectView = [CLCollectionAddSelect new];
@@ -264,7 +209,7 @@
                 weakSelf.mModeString4 = string;
                  [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
             };
-            weakSelf.mIndex = indexPath;
+           
         };}
     
     
@@ -273,16 +218,6 @@
     if(indexPath.row == 4 ){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
         [cell updateView:CLMeLanguageType_textFiled and:nil];
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
@@ -293,23 +228,13 @@
     if(indexPath.row == 5){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-            
-        }];
         UILabel *mHint = [UILabel new];
         mHint.font = kCommonFont(12);
         mHint.textColor = ssRGBHex(0xD50037);
         mHint.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:mHint];
         [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(mLineView.mas_bottom).offset(7);
+            make.top.equalTo(cell.mLineView.mas_bottom).offset(7);
             make.right.equalTo(cell).offset(-15);
             make.height.offset(12);
             
@@ -319,22 +244,16 @@
         cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 self.mText  = mText;
                 if(mText.length <=0 ){
-//                self.mDl = mText;
-//                self.mTabView.rowHeight = UITableViewAutomaticDimension;
-//                    [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                        make.right.equalTo(weakCell);
-//                        make.left.equalTo(weakCell).offset(15);
-//                        make.height.offset(1);
-//                        make.top.equalTo(weakCell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);                    }];
-                mLineView.backgroundColor = ssRGBHex(0xD50037);
+                weakCell.mLineView.backgroundColor = ssRGBHex(0xD50037);
                 mHint.hidden = NO;
                 mHint.text = @"请输入正确的账户号码";
                 }else{
-                mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+                weakCell.mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
                 mHint.text = @"";
-                    mHint.hidden = YES;
+                mHint.hidden = YES;
                 [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             }
+            
                 NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 //
@@ -344,22 +263,13 @@
     if(indexPath.row == 7){
         cell.mIndexPath = indexPath;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UIView *mLineView = [UIView new];
-        mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-        [cell.contentView addSubview:mLineView];
-        [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(cell);
-            make.left.equalTo(cell).offset(15);
-            make.height.offset(1);
-            make.top.equalTo(cell.mMeLanguageLeftLabel.mas_bottom).mas_offset(11);
-        }];
         UILabel *mHint = [UILabel new];
         mHint.font = kCommonFont(12);
         mHint.textColor = ssRGBHex(0xD50037);
         mHint.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:mHint];
         [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(mLineView.mas_bottom).offset(7);
+            make.top.equalTo(cell.mLineView.mas_bottom).offset(7);
             make.right.equalTo(cell).offset(-15);
             make.height.offset(12);
 
@@ -369,28 +279,25 @@
 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
             weakSelf.mText2 = mText;
             if(mText.length <= 0){
-            mLineView.backgroundColor = ssRGBHex(0xD50037);
+            weakCell.mLineView.backgroundColor = ssRGBHex(0xD50037);
                mHint.text = @"请输入正确的联系号码";
             }else{
-               mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+               weakCell.mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
 //                [WeakSelf.mHint removeFromSuperview];
                 mHint.text = @"";
                  [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
             }
             NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-            //
         };}
+    
     
     if(indexPath.row == 8){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        cell.mMeLanguageLeftLabel.hidden = YES;
         cell.mMeLanguageLeftLabel.text = @"";
+        cell.mLineView.hidden = YES;
         [cell updateView:CLMeLanguageType_other and:nil];
-        UIView *mLineView = [UIView new];
-        mLineView.hidden = YES;
-      
-
-        
     }
     
     
@@ -407,25 +314,7 @@
     return cell;
 }
 
-
-//- (void)changeValue:(NSMutableString *)value{ // 第6步接受
-////    self.mMdate  =  [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
-//    _mModeString = value;
-////    [self.mMdate insertString:@"123" atIndex:0];
-//    [_mMdate replaceObjectAtIndex:_mIndex.row withObject:value];
-//    DebugLog(@"接受到了%@",_mModeString);
-//    DebugLog(@"我现在的字符串的值为%@-----位置为%ld",self.mMdate,(long)_mIndex.row);
-//    [self.mTabView reloadRowsAtIndexPaths:@[_mIndex] withRowAnimation:UITableViewRowAnimationNone];
-//}
-
 -(void)successfullyadd:(id)sender{
-//    [self.delegate changeArray:self.mMdate];
-//    for (UIViewController *vc in self.navigationController.viewControllers) {
-//        if ([vc isKindOfClass:[CLCollectionViewController class]]) {
-//          [(CLCollectionViewController  *)vc show];
-//        
-//        }
-//    }
     DebugLog(@"%@",self.mMdate);
     [self AddAccount:self.mMdate];
     

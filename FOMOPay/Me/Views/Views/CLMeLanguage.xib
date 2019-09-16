@@ -29,23 +29,32 @@
                         <color key="textColor" red="0.5490196078431373" green="0.56470588235294117" blue="0.56862745098039214" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gah-wO-mZu">
+                        <rect key="frame" x="15" y="46.5" width="360" height="1"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="VWt-3O-W9e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="CBE-dz-eH7"/>
                     <constraint firstAttribute="bottom" secondItem="VWt-3O-W9e" secondAttribute="bottom" constant="11" id="JgH-US-cAj"/>
                     <constraint firstAttribute="bottom" secondItem="CA4-QF-bk3" secondAttribute="bottom" id="Pa9-65-OJ4"/>
                     <constraint firstItem="CA4-QF-bk3" firstAttribute="width" secondItem="VWt-3O-W9e" secondAttribute="width" multiplier="2:1" id="Uji-Jn-4Jq"/>
+                    <constraint firstItem="gah-wO-mZu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="W8S-Hx-klK"/>
+                    <constraint firstItem="gah-wO-mZu" firstAttribute="top" secondItem="VWt-3O-W9e" secondAttribute="bottom" constant="10" id="b38-dX-kdG"/>
+                    <constraint firstAttribute="bottom" secondItem="gah-wO-mZu" secondAttribute="bottom" id="eMJ-ZB-ojD"/>
                     <constraint firstItem="CA4-QF-bk3" firstAttribute="leading" secondItem="VWt-3O-W9e" secondAttribute="trailing" id="gFe-dG-7eh"/>
                     <constraint firstAttribute="trailing" secondItem="CA4-QF-bk3" secondAttribute="trailing" id="hz5-k1-fo6"/>
                     <constraint firstItem="CA4-QF-bk3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nrK-nO-Gts"/>
+                    <constraint firstAttribute="trailing" secondItem="gah-wO-mZu" secondAttribute="trailing" id="swf-Wl-IpP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="mLineView" destination="gah-wO-mZu" id="eQg-DU-qXh"/>
                 <outlet property="mMeLanguageLeftLabel" destination="VWt-3O-W9e" id="reD-fh-kxd"/>
                 <outlet property="mRightView" destination="CA4-QF-bk3" id="Twd-R0-aBf"/>
             </connections>
-            <point key="canvasLocation" x="31" y="34"/>
+            <point key="canvasLocation" x="29.710144927536234" y="33.482142857142854"/>
         </tableViewCell>
     </objects>
 </document>

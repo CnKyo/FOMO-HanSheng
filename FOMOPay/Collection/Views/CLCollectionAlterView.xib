@@ -29,13 +29,21 @@
                         <rect key="frame" x="135" y="0.0" width="240" height="48"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RI4-L0-g3i">
+                        <rect key="frame" x="15" y="47" width="360" height="1"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tS6-up-hu2" firstAttribute="width" secondItem="JNq-o6-e8u" secondAttribute="width" constant="120" id="3Gl-ds-aXa"/>
                     <constraint firstItem="tS6-up-hu2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5A5-EC-VS9"/>
+                    <constraint firstItem="RI4-L0-g3i" firstAttribute="top" secondItem="JNq-o6-e8u" secondAttribute="bottom" constant="10.5" id="5u8-hp-qcm"/>
                     <constraint firstItem="tS6-up-hu2" firstAttribute="leading" secondItem="JNq-o6-e8u" secondAttribute="trailing" id="68B-U8-VII"/>
                     <constraint firstAttribute="bottom" secondItem="JNq-o6-e8u" secondAttribute="bottom" constant="11" id="IRE-gC-1na"/>
                     <constraint firstAttribute="trailing" secondItem="tS6-up-hu2" secondAttribute="trailing" id="KmP-W1-VS8"/>
+                    <constraint firstAttribute="trailing" secondItem="RI4-L0-g3i" secondAttribute="trailing" id="UsF-3H-uy5"/>
+                    <constraint firstItem="RI4-L0-g3i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cW1-nX-9Fa"/>
+                    <constraint firstAttribute="bottom" secondItem="RI4-L0-g3i" secondAttribute="bottom" constant="-0.5" id="kIW-n0-ADg"/>
                     <constraint firstItem="JNq-o6-e8u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="rL9-6w-QMc"/>
                     <constraint firstAttribute="bottom" secondItem="tS6-up-hu2" secondAttribute="bottom" constant="-0.5" id="y4m-oW-EF3"/>
                 </constraints>
@@ -43,6 +51,7 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="mLeftName" destination="JNq-o6-e8u" id="Vn8-MU-7CX"/>
+                <outlet property="mLineView" destination="RI4-L0-g3i" id="xJe-Gd-KOz"/>
                 <outlet property="mRightView" destination="tS6-up-hu2" id="YW3-Ej-eW5"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="125.89285714285714"/>

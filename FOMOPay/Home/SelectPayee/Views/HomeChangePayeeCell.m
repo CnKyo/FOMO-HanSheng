@@ -41,7 +41,11 @@
     [super awakeFromNib];
     
     _deleteButton.layer.borderColor = kLoginTitleColor.CGColor;
-    _deleteButton.layer.borderWidth = 1.0;
+    _deleteButton.layer.borderWidth = 1;
+    
+    _commitButton.layer.cornerRadius =2;
+    _deleteButton.backgroundColor = ssRGBHex(0xF6F5FA);
+    _deleteButton.layer.cornerRadius =2;
     
     _cityShowImage.image = [UIImage yh_imageNamed:@"pdf_collection_select"];
     _sexShowImage.image = [UIImage yh_imageNamed:@"pdf_collection_select"];

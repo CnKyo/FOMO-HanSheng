@@ -143,16 +143,16 @@
     if(indexPath.row == 0 ){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
             [cell updateView:CLCollectionAlter_textFiled and:_mTextName];
             cell.mAlterBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 weakSelf.mTextName = mText;
@@ -163,17 +163,17 @@
         if(indexPath.row == 1){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
-           
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
+//
             [cell updateView:CLCollectionAlter_button and:_mModeString];
 //            cell.mLb.text = self.mData.nationality;
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
@@ -199,13 +199,13 @@
             UIView *mLineView = [UIView new];
             mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
             [cell updateView:CLCollectionAlter_button and:_mModeString2];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
 
@@ -225,16 +225,16 @@
         if(indexPath.row == 3){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
             [cell updateView:CLCollectionAlter_button and:_mModeString3];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
 
@@ -255,16 +255,16 @@
         if(indexPath.row == 6){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
             [cell updateView:CLCollectionAlter_button and:_mModeString4];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
                 self.mSelectView = [CLCollectionAddSelect new];
@@ -287,16 +287,16 @@
         if(indexPath.row == 4 ){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
             [cell updateView:CLCollectionAlter_textFiled and:_mTextcity];
             cell.mAlterBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
@@ -308,23 +308,23 @@
         if(indexPath.row == 5){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-
-            }];
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//
+//            }];
             UILabel *mHint = [UILabel new];
             mHint.font = kCommonFont(12);
             mHint.textColor = ssRGBHex(0xD50037);
             mHint.textAlignment = NSTextAlignmentRight;
             [cell.contentView addSubview:mHint];
             [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(mLineView.mas_bottom).offset(7);
+                make.top.equalTo(cell.mLineView.mas_bottom).offset(7);
                 make.right.equalTo(cell).offset(-15);
                 make.height.offset(12);
 
@@ -334,11 +334,11 @@
             cell.mAlterBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 self.mText  = mText;
                 if(mText.length <=0 ){
-                    mLineView.backgroundColor = ssRGBHex(0xD50037);
+                    weakCell.mLineView.backgroundColor = ssRGBHex(0xD50037);
                     mHint.hidden = NO;
                     mHint.text = @"请输入正确的账户号码";
                 }else{
-                    mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+                    weakCell.mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
                     mHint.text = @"";
                     mHint.hidden = YES;
                      weakSelf.mTextAccNumber = mText;
@@ -354,22 +354,22 @@
         if(indexPath.row == 7){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-            UIView *mLineView = [UIView new];
-            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-            [cell.contentView addSubview:mLineView];
-            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(cell);
-                make.left.equalTo(cell).offset(15);
-                make.height.offset(1);
-                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-            }];
+//            UIView *mLineView = [UIView new];
+//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+//            [cell.contentView addSubview:mLineView];
+//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(cell);
+//                make.left.equalTo(cell).offset(15);
+//                make.height.offset(1);
+//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
+//            }];
             UILabel *mHint = [UILabel new];
             mHint.font = kCommonFont(12);
             mHint.textColor = ssRGBHex(0xD50037);
             mHint.textAlignment = NSTextAlignmentRight;
             [cell.contentView addSubview:mHint];
             [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(mLineView.mas_bottom).offset(7);
+                make.top.equalTo(cell.mLineView.mas_bottom).offset(7);
                 make.right.equalTo(cell).offset(-15);
                 make.height.offset(12);
 
@@ -379,10 +379,10 @@
                 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
                 self.mText2 = mText;
                 if(mText.length <= 0){
-                    mLineView.backgroundColor = ssRGBHex(0xD50037);
+                    weakCell.mLineView.backgroundColor = ssRGBHex(0xD50037);
                     mHint.text = @"请输入正确的联系号码";
                 }else{
-                    mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+                    weakCell.mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
                     //                [WeakSelf.mHint removeFromSuperview];
                     mHint.text = @"";
                     weakSelf.mTextConNumber = mText;
@@ -397,9 +397,9 @@
         if(indexPath.row == 8){
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
             cell.mLeftName.text = @"";
+            cell.mLeftName.hidden = YES;
             [cell updateView:CLCollectionAlter_other and:nil];
-            UIView *mLineView = [UIView new];
-            mLineView.hidden = YES;
+            cell.mLineView.hidden = YES;
         }
  
     return cell;

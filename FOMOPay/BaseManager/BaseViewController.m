@@ -71,6 +71,8 @@ void TOASTMESSAGE(NSString *message){
         [self addMeLanguageOtherTabView];
     }else if(Type == 12){
         [self addCollectionAlterTabView];
+    }else if(Type == 13){
+        [self addCollectionAdd];
     }
 }
 
@@ -255,6 +257,26 @@ void TOASTMESSAGE(NSString *message){
     [self.view addSubview:self.mTabView];
     self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
+        make.left.bottom.right.equalTo(self.view);
+        
+    }];
+}
+
+-(void)addCollectionAdd{
+    UINib *nib = [UINib nibWithNibName:@"CLCollectionAddView" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+//    self.mTabView.separatorInset = UIEdgeInsetsZero;
     _mTabView.layoutMargins = UIEdgeInsetsZero;
     self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];

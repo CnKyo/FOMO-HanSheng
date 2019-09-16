@@ -115,11 +115,14 @@
     
     if (error != NULL){
         
-        [WKHudManager WKShowErrorHud:@"保存失败" view:self.view];
+//        [WKHudManager WKShowErrorHud:@"保存失败" view:self.view];
+        [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:@"保存失败"];
         
     }else{
         
-        [WKHudManager WKShowSuccessHud:@"保存成功" view:self.view];
+       [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_success"] status:@"保存成功"];
+        
+//        [WKHudManager WKShowSuccessHud:@"保存成功" view:self.view];
     }
 }
 

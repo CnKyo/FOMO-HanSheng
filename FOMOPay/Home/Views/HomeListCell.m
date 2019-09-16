@@ -262,8 +262,10 @@
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
 //            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
             _changeCountryButton.selected = NO;
+            
         }
         _CountryView.hidden = NO;
+        
         
     }else{
         
@@ -346,6 +348,10 @@
     }
     
     [self updateLogo:mUnit];
+    _CountryView.hidden = YES;
+    self.changeCountryButton1.selected = NO;
+    self.showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+//    self.showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
 }
 
 - (void)updateLogo:(NSString *)text{

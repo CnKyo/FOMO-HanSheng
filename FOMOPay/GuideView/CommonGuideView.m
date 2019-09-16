@@ -289,56 +289,6 @@
 
 
 
-//- (void)loadImageView{
-//    WS(weakSelf);
-//    NSMutableArray *arr = [NSMutableArray new];
-//
-//    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
-//    if ([string isEqualToString:@"English"]) {
-//
-//        [arr addObjectsFromArray:_englishImageNameArray];
-//
-//    }else{
-//
-//        [arr addObjectsFromArray:_imageNameArray];
-//    }
-//    //添加图片
-//    for (int i = 0; i < arr.count; i++) {
-////        NSString *centerimageName = [arr objectAtIndex:i];
-////
-////        UIImageView *centerImg = [[UIImageView alloc]init];
-//        NSString *imageName = [arr objectAtIndex:i];
-//
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(_myScrollView.frame.size.width*i, 0, _myScrollView.frame.size.width, _myScrollView.frame.size.height)];
-//
-//
-//        imageView.image = [UIImage yh_imageNamed:imageName];
-//
-//        imageView.userInteractionEnabled = YES;
-//
-//
-////        [_myScrollView addSubview:imageView];
-////        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-////            make.top.equalTo(weakSelf.myScrollView).mas_offset(240);
-////            make.left.equalTo(weakSelf.myScrollView).mas_offset(140);
-////            make.right.equalTo(weakSelf.myScrollView).mas_offset(-140)
-////        }];
-//
-//
-////        centerImg.image = [UIImage yh_imageNamed:centerimageName];
-//
-////        centerImg.image = [UIImage yh_imageNamed:centerimageName];
-////        centerImg.userInteractionEnabled = YES;
-////
-////        [_myScrollView addSubview:centerImg];
-////        [centerImg mas_makeConstraints:^(MASConstraintMaker *make) {
-////            make.top.equalTo(weakSelf.myScrollView).mas_offset(240);
-////            make.left.equalTo(weakSelf.myScrollView).mas_offset(140);
-////            make.right.equalTo(weakSelf.myScrollView).mas_offset(-140);
-////        }];
-//    }
-//}
-
 
 
 
@@ -465,25 +415,6 @@
 }
 
 - (void)changeButtonClicked:(UIButton *)sender{
-   
-    
-//    if(sender.selected == !sender.selected){
-//
-//              _languageView.hidden  = YES;
-//
-//
-//    }else{
-//        _languageView.hidden = NO;
-//         _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
-//        if(sender.selected !=sender.selected){
-//            sender.selected = sender.selected;
-//        }else{
-//            DebugLog(@"sender %i",sender.selected);
-//            sender.selected = 1;
-//            DebugLog(@"%i    sender",sender.selected);
-//        }
-//
-//    }
     if(sender.selected){
         _languageView.hidden = YES;
         _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
@@ -494,25 +425,6 @@
 //        sender.selected = YES;
     }
     sender.selected = !sender.selected;
-//    sender.selected = !sender.selected;
-    
-//
-//    sender.selected = !sender.selected;
-//    if (sender.selected == YES) {
-//
-//        _languageView.hidden = NO;
-//        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
-////        sender.selected = sender.selected;
-//
-//    }else{
-//
-//        _languageView.hidden = YES;
-//        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconopen"];
-//
-//
-//
-//    }
-//    sender.selected = sender.selected;
     
     
 }
@@ -606,15 +518,14 @@
         _chageButton.hidden = YES;
 //        _enterButton.hidden = YES;
          self.pageControl.currentPage = 3;
-        
-//        if(scrollView.contentOffset.x >0){
-//            [self.myScrollView setContentSize:CGSizeMake(0, 0)];
-//            [self.myScrollView setContentOffset:CGPointMake(kScreenWidth * 3, 0)];
-////            [scrollView setContentOffset:CGPointMake(0, scrollView.contentOffset.y) animated:NO];
-////            [scrollView setContentOffset:CGPointMake(self.myScrollView.frame.size.width * 3, 0)];
-//        }
     }
 }
 
 
+//- (void)getCurrentLanguage  // 获取当前语言
+//{
+//    NSArray *languages = [NSLocale preferredLanguages];
+//    NSString *currentLanguage = [languages objectAtIndex:0];
+//    NSLog( @"%@" , currentLanguage);
+//}
 @end

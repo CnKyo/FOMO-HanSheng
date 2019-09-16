@@ -42,6 +42,7 @@
     self.ifSelected = NO;//是否被选中 默认为NO
     [self LoadCellType:10];
     [self loadButtonView];
+    [self ResetLayout];
 //    __weak typeof(self)  weakSelf = self;
 //    self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 //        [weakSelf.mTabView reloadData];
@@ -218,6 +219,7 @@
         [_changeButton setTitle:@"修改此收款人" forState:UIControlStateNormal];
         [_changeButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
         _changeButton.titleLabel.font = kCommonFont(14);
+        _changeButton.layer.cornerRadius = 2;
         _changeButton.backgroundColor = ssRGBHex(0xF6F5FA);
         _changeButton.layer.borderWidth = 1.0;
         _changeButton.layer.borderColor = kLoginTitleColor.CGColor;
@@ -237,6 +239,7 @@
         [sureButton setTitle:@"确认" forState:UIControlStateNormal];
         [sureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         sureButton.titleLabel.font = kCommonFont(14);
+        sureButton.layer.cornerRadius = 2;
         sureButton.backgroundColor = kLoginTitleColor;
         sureButton.tag = 2001;
         [sureButton addTarget:self action:@selector(bottomButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

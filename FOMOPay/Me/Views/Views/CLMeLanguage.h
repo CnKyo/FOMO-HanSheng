@@ -30,6 +30,7 @@ typedef void(^CLCollectionBlock)(NSIndexPath *mIndexPath);  //block 第一步
 
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
 
+@property (weak, nonatomic) IBOutlet UIView *mLineView;
 
 
 - (void)updateView:(CLMeLanguageType)type and:(WKAddAccInfoObj *)EnterString;

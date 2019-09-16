@@ -37,6 +37,7 @@
     mBtView.mRightBtnBlock = ^(NSInteger tag) {
         if(tag == 100){
             CLCollectionAdd *vc = [CLCollectionAdd new];
+//          
             vc.mBackBlock = ^(BOOL success) {
                 if (success) {
                     [weakSelf mHeaderLoadData];
@@ -68,7 +69,7 @@
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MJRefreshFastAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf.DataSource removeAllObjects];
+//            
             [weakSelf mHeaderLoadData];
             // 结束刷新
             [weakSelf.mTabView.mj_header endRefreshing];
@@ -350,44 +351,7 @@
     }];
     
 }
-//- (void)changeArray:(NSArray *)Array{
-//    self.mPushData = Array;
-//    DebugLog(@"我的Pushdata的值为%@",self.mPushData);
-//    DebugLog(@"%lu-------%@",(unsigned long)self.mPushData.count,self.mPushData);
-//    [self.mTabView reloadData];
-//}
-//
-//-(void)show{
-//    CLCollectionViewController  *vc = [CLCollectionViewController new];
-//    [vc backa];
-//    //    [self pushToViewController:vc];
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-//
-//}
 
-
-//-(void)backa{
-//    DebugLog(@"调用showAlter的值为%@",self.mPushData);
-//    UIImageView *mImg = [UIImageView new];
-//    mImg.image = [UIImage yh_imageNamed:@"pdf_collection_hint_modifysuccessfully.pdf"];
-//    [self.view addSubview:mImg];
-//    [mImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self.view);
-//    }];
-//    //设置动画
-//    CATransition * transion = [CATransition animation];
-//
-//    transion.type = @"push";//设置动画方式
-//    transion.subtype = @"kCATransitionFromRight";//设置动画从那个方向开始
-//    //    [label.layer addAnimation:transion forKey:nil];//给Label.layer 添加动画 //设置延时效果
-//    [mImg.layer addAnimation:transion forKey:nil];
-//    //不占用主线程
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(),^{
-//        [mImg removeFromSuperview];
-//        [self.navigationController popToRootViewControllerAnimated:NO];
-//
-//    });
-//}
 
 
 @end

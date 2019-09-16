@@ -28,6 +28,7 @@ typedef void(^CLCollectionAlterButtonBlock)(NSIndexPath *mIndexPath);  //block ç
 @property (strong,nonatomic) UITextField *mTextF;
 @property (strong,nonatomic) UILabel *mLb;
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
+@property (weak, nonatomic) IBOutlet UIView *mLineView;
 
 //@property (nonatomic,strong)WKResipientInfoObj *mItem;
 -(void)updateView:(CLCollectionAlterType)type and:(WKResipientInfoObj *)EnterString;
