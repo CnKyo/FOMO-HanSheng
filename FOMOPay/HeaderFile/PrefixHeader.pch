@@ -86,7 +86,7 @@
 #import "CLHistoryCertificateOfRemittance.h"
 #import "CLHistorySelctOfPayeeView.h"
 #import "CLHistorySelctOfPayeeView.h"
-
+#import "WKLoginManager.h"
 //网络模块头文件
 #import "PublicHeader.h"
 #import "WKBaseModel.h"

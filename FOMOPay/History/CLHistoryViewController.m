@@ -40,6 +40,8 @@
         }
     }];
     [self LoadCellType:3];
+    self.ctView = [UIImageView new];
+     self.ctLbale  = [UILabel new];
     __weak typeof(self)  weakSelf = self;
     self.mTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf headerLoadData];
@@ -53,8 +55,8 @@
 }
 - (void)headerLoadData{
     self.mPage--;
-    if (self.mPage<=1) {
-        self.mPage = 1;
+    if (self.mPage<=0) {
+        self.mPage = 0;
     }
     [self showLoading:nil];
     
@@ -169,12 +171,13 @@
 
 
 -(void)LoadNoDataView{
-    self.ctView = [UIImageView new];
+//    self.ctView = [UIImageView new];
     _ctView.image = [UIImage yh_imageNamed:@"pdf_history_home"];
     [self.view addSubview:_ctView];
-    self.ctLbale  = [UILabel new];
+//    self.ctLbale  = [UILabel new];
     _ctLbale.text = @"暂无历史消息";
     _ctLbale.font = kCommonFont(16);
+    _ctLbale.textColor = ssRGBHex(0x2b2b2b);
     [self.view addSubview:_ctLbale];
     [_ctView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).mas_offset(+kAppStatusBarHeight +44 + 143);

@@ -39,6 +39,8 @@
     [super viewWillAppear:animated];
 //    [self checkLoginStatus];
     [self loadConfig];
+//    DebugLog(@"%@",[WKAccountManager shareInstance].token);
+    
 }
 
 
@@ -95,6 +97,7 @@
 //
 //    }
 //}
+
 
 
 - (void)viewDidLoad {

@@ -88,7 +88,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headView = [UIView new];
-    headView.backgroundColor = ssRGBHex(0xF6F6F6);
+//    headView.backgroundColor = ssRGBHex(0xF6F6F6);
+    headView.backgroundColor = [UIColor clearColor];
     return headView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -111,17 +112,17 @@
 }
 
 
--(void)back
-{
-    UIActivityIndicatorView *ac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    ac.center=self.view.center;
-    ac.hidesWhenStopped=YES;
-    ac.color=clBlueRGB;
-    [self.view addSubview:ac];
-    [ac startAnimating];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [ac stopAnimating];   //动画
-        [self.navigationController popViewControllerAnimated:YES];
-    });
-}
+//-(void)back
+//{
+//    UIActivityIndicatorView *ac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    ac.center=self.view.center;
+//    ac.hidesWhenStopped=YES;
+//    ac.color=clBlueRGB;
+//    [self.view addSubview:ac];
+//    [ac startAnimating];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [ac stopAnimating];   //动画
+//        [self.navigationController popViewControllerAnimated:YES];
+//    });
+//}
 @end

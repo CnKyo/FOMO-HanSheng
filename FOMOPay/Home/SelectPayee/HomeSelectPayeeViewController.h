@@ -26,7 +26,12 @@ typedef void(^HomeSelectPayeeViewControllerBackBlock)(WKResipientInfoObj *mItem)
 
 @property (copy,nonatomic) HomeSelectPayeeViewControllerBackBlock mBlock;
 
+
+
 @property (strong,nonatomic) WKResipientInfoObj *mItem;
+
+
+@property (nonatomic,strong) NSIndexPath *mInx;
 
 @end
 

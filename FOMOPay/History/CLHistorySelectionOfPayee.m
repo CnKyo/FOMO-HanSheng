@@ -40,6 +40,9 @@
     }];
 
     [self LoadCellType:10];
+    self.mTabView.estimatedRowHeight = 0;
+    self.mTabView.estimatedSectionFooterHeight = 0;
+    self.mTabView.estimatedSectionHeaderHeight = 0; 
     self.ifSelected = NO;//是否被选中 默认为NO
 //    self.mData=@[@"ang",@"ang",@"ang"];
     //以下为按钮
@@ -64,7 +67,7 @@
     
     /////
     UIView *mbgView = [UIView new];
-    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
+    mbgView.backgroundColor = [UIColor clearColor];
     mbgView.frame = CGRectMake(0, 0,kScreenWidth , 55);
     UIView *mButtonView = [UIView new];
     mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);

@@ -81,8 +81,8 @@
 }
 - (void)mHeaderLoadData {
     self.mPage--;
-    if (self.mPage<=1) {
-        self.mPage = 1;
+    if (self.mPage<=0) {
+        self.mPage = 0;
     }
     [self showLoading:nil];
     [WKNetWorkManager WKGetRecipient:@{@"skip":[NSString stringWithFormat:@"%ld",self.mPage],@"take":@"150"} block:^(id result, BOOL success) {
@@ -150,6 +150,7 @@
         make.size.mas_equalTo(CGSizeMake(kScreenWidth, kScreenHeight));
         make.left.mas_equalTo(@0);
         make.top.mas_equalTo(@0);
+       
     }];
 }
 
@@ -231,32 +232,33 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if(section != self.DataSource.count -1){
+//    if(section != self.DataSource.count -1){
         UIView *mLineView = [UIView new];
-        mLineView.backgroundColor  = ssRGBHex(0xF6F5FA);
+        mLineView.backgroundColor = [UIColor clearColor];
+//        mLineView.backgroundColor  = ssRGBHex(0xF6F5FA);
         UIView *aview = [UIView new];
         aview.backgroundColor  = ssRGBHex(0xCCCCCC);
         [mLineView addSubview:aview];
         [aview mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(mLineView).offset(0);
-            make.height.offset(1);
+            make.height.offset(0.5);
             make.width.offset(kScreenWidth);
         }];
         return mLineView;
-    }else{
-        return nil;
-    }
+//    }else{
+//        return nil;
+//    }
     
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if(section == self.DataSource.count -1 ){
-        return 0.001;
-    }else{
-        return 11;
-    }
-    
+//    if(section == self.DataSource.count -1 ){
+//        return 1;
+//    }else{
+//        return 11;
+//    }
+    return 11;
 }
 #pragma mark - action
 - (void)tapGR:(UITapGestureRecognizer *)tapGR {

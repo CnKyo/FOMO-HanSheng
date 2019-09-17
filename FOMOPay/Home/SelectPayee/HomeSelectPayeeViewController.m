@@ -19,13 +19,18 @@
 @property (nonatomic, strong) NSIndexPath *lastIndex;
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) UIButton *changeButton;
-@property (nonatomic, assign)BOOL ifSelected;//是否选中
+//@property (nonatomic, assign)BOOL ifSelected;//是否选中
 
 @end
 
 @implementation HomeSelectPayeeViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if(_type == ShowButtonTypeDefault){
+        self.mInx = nil;
+        
+    
+    }
     [self loadData];
 
 }
@@ -40,8 +45,9 @@
     [self CLAddNavType:CLNavType_default andModel:nil completion:^(NSInteger tag) {
         
     }];
-    self.ifSelected = NO;//是否被选中 默认为NO
+//    self.ifSelected = NO;//是否被选中 默认为NO
     [self LoadCellType:10];
+//   
     [self loadButtonView];
     
 //    self.mTabView.tableFooterView =
@@ -49,7 +55,8 @@
     
     
     UIView *mbgView = [UIView new];
-    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
+    mbgView.backgroundColor = [UIColor clearColor];
+//    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
 //    mbgView.backgroundColor= [UIColor redColor];
     mbgView.frame = CGRectMake(0, 12,kScreenWidth , 55);
     UIView *mButtonView = [UIView new];
@@ -135,94 +142,72 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    CLHistorySelctOfPayeeView *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    static NSString *CellIdentifier = @"cell";
+    CLHistorySelctOfPayeeView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         
-        cell = [[CLHistorySelctOfPayeeView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[CLHistorySelctOfPayeeView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     [self.mTabView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-
-    if (self.ifSelected) {
+//    if(_type == ShowButtonTypeDefault){
+//    if (self.ifSelected) {
+//        [cell mCellStyle:0];
+//    }else{
+//        [cell mCellStyle:1];
+//    }
+//    }else{
+//        if(self.lastIndex != nil && self.lastIndex.row == indexPath.row){
+////        if(self.mInx.row == indexPath.row){
+//             [cell mCellStyle:0];
+//        }else{
+//            [cell mCellStyle:1];
+//        }
+//
+//    }
+    
+    [cell setMItem:self.mData[indexPath.row]];
+    if(self.mInx != nil && self.mInx.row == indexPath.row){
         [cell mCellStyle:0];
+        self.mItem = self.mData[indexPath.row];  
     }else{
         [cell mCellStyle:1];
     }
-    
-
-
-    [cell setMItem:self.mData[indexPath.row]];
-    
+    DebugLog(@"%@",self.mItem);
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    NSIndexPath * temp = self.lastIndex;//暂存上一次选中的行
-    if (temp && temp != indexPath)//如果上一次的选中的行存在,并且不是当前选中的这一行,则让上一行不选中
-    {
-        self.ifSelected = NO;//修改之前选中的cell的数据为不选中
-        [tableView reloadRowsAtIndexPaths:@[temp] withRowAnimation:UITableViewRowAnimationAutomatic];//刷新该行
-    }
-    self.lastIndex = indexPath;//选中的修改为当前行
-    self.ifSelected = YES;//修改这个被选中的一行
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-     self.mItem = self.mData[indexPath.row];
-    self.ifSelected = NO;
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    if(_type ==ShowButtonTypeDefault){
+//    NSIndexPath * temp = self.lastIndex;//暂存上一次选中的行
+//    if (temp && temp != indexPath)//如果上一次的选中的行存在,并且不是当前选中的这一行,则让上一行不选中
+//    {
+//        self.ifSelected = NO;//修改之前选中的cell的数据为不选中
+//        [tableView reloadRowsAtIndexPaths:@[temp] withRowAnimation:UITableViewRowAnimationAutomatic];//刷新该行
+//    }
+//    self.lastIndex = indexPath;//选中的修改为当前行
+//    self.ifSelected = YES;//修改这个被选中的一行
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    self.mItem = self.mData[indexPath.row];
+//    self.ifSelected = NO;
+//    DebugLog(@"我最后选中了好多%ld行",(long)_lastIndex.row);
+//
+//    }else{
+//        DebugLog(@"跳转界面还有%ld",self.mInx.row);
+//        self.mInx = indexPath;
+//        [self.mTabView reloadData];
+//        self.mItem = self.mData[indexPath.row];
+//    }
+    self.mInx = indexPath;
+    [self.mTabView reloadData];
+    
     
     
 }
-
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    UIView *mbgView = [UIView new];
-//    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
-//    mbgView.frame = CGRectMake(0, 10,kScreenWidth , 45);
-//    UIView *mButtonView = [UIView new];
-//    mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
-//    mButtonView.layer.cornerRadius = 4;
-//    mButtonView.layer.borderWidth = 1;
-//    mButtonView.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
-//    [mbgView addSubview:mButtonView];
-//
-//
-//    UIButton *addButton = [[UIButton alloc] init];  //添加新收款人
-//    //                           WithFrame:CGRectMake(50, 0, mButtonView.frame.size.width, mButtonView.frame.size.height)];
-//    [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
-//    [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
-//    [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
-//    addButton.titleLabel.font = kCommonFont(14);
-//    addButton.backgroundColor = [UIColor whiteColor];
-//    [addButton addTarget:self action:@selector(addButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-//    addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-//
-//    [mButtonView addSubview:addButton];
-//
-//    //
-//    [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(mbgView).mas_offset(15);
-//        make.right.equalTo(mbgView).mas_offset(-15);
-//        make.height.offset(44);
-//        make.top.equalTo(mbgView).offset(10);
-//    }];
-//    [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(mButtonView);
-//        make.height.equalTo(mButtonView.mas_height);
-//        make.width.equalTo(mButtonView.mas_width);
-//
-//    }];
-//    return mbgView;
-//}
-//
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    return 54;
-//}
-
 - (void)loadButtonView{
 
     NSInteger bottomSafeHeight = 0;
@@ -312,6 +297,7 @@
             }
             HomeChangePayeeVC *vc = [[HomeChangePayeeVC alloc] init];
             vc.mItem = self.mItem;
+            
             vc.mBackBlock = ^(WKResipientInfoObj * _Nonnull mItem, NSInteger backCount) {
                 weakSelf.mItem = mItem;
            
@@ -329,15 +315,17 @@
     //
 
 - (void)loadData{
-    [self showLoading:nil];
-    [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
-
+//    [self showLoading:nil];
+    [WKNetWorkManager WKGetRecipient:@{@"skip":@"0",@"take":@"50"} block:^(id result, BOOL success) {
+        self.mItem = nil;
         [self.mData removeAllObjects];
         [self hiddenLoading];
         if (success) {
+            
             NSDictionary *mResponse = [CLTool stringToDic:result];
             if ([[mResponse objectForKey:@"recipients"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary *dic in [mResponse objectForKey:@"recipients"]) {
+                    
                     WKResipientInfoObj *mRefundAcc = [WKResipientInfoObj yy_modelWithDictionary:dic];
                     [self.mData addObject:mRefundAcc];
                     
@@ -372,6 +360,7 @@
     }
     HomeSureInfoViewController *vc = [[HomeSureInfoViewController alloc] init];
     vc.mItem = self.mItem;
+    vc.mInx = self.mInx;
     vc.mCurrentRemmitance = self.mCurrentRemmitance;
 
     [self pushToViewController:vc];

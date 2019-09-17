@@ -117,7 +117,7 @@ static NSString *UserLanguage = @"UserLanguage";
         for (UIViewController *vc in navi.childViewControllers) {
             if ([vc isKindOfClass:[CLMeViewController class]]) {
 
-                [(CLMeViewController *)vc changeLanguage];
+//                [(CLMeViewController *)vc changeLanguage];
             }
             
             

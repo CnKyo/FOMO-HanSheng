@@ -27,7 +27,7 @@
         self.layer.borderWidth = 1;
         self.layer.borderColor =(ssRGBHex(0x2EB42E).CGColor);
         self.layer.cornerRadius = 8;
-        self.layer.masksToBounds = YES;
+//        self.layer.masksToBounds = YES;
         self.mSelectImg.hidden = NO;
         self.mSelectImg.image = [UIImage yh_imageNamed:@"pdf_home_selectPayee_icon.pdf"];
         self.mLogoImg.layer.cornerRadius = 20;

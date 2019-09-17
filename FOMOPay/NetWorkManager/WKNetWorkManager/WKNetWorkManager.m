@@ -114,7 +114,7 @@
 }
 + (void)newPostWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
     
-    WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:para andUrl:url andRequestMethod:YTKRequestMethodPOST];
+   WKYTKManager *mGetToken = [[WKYTKManager alloc] initWithPara:para andUrl:url andRequestMethod:YTKRequestMethodPOST];
     [mGetToken startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         DebugLog(@"请求的结果是:%@",request.responseString);
         block(request.responseString,YES);
@@ -129,6 +129,12 @@
             errorDes = request.error.localizedDescription;
         }
         block(errorDes,NO);
+        if([errorDes isEqualToString:@"Incorrect Session Info."]){
+            DebugLog(@"dengli");
+//            
+        }else{
+            
+        }
     }];
 }
 + (void)deleteWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
@@ -166,6 +172,14 @@
             errorDes = request.error.localizedDescription;
         }
         block(errorDes,NO);
+        if([errorDes isEqualToString:@"Incorrect Session Info."]){
+            DebugLog(@"dengli");
+//            [[WKAccountManager shareInstance] WKClearnAll];
+            
+//
+        }else{
+            
+        }
     }];
 }
 + (void)putWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{

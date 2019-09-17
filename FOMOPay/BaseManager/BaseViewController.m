@@ -83,7 +83,7 @@ void TOASTMESSAGE(NSString *message){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = ssRGBHex(0xF6F5FA);
-    self.mPage = 1;
+    self.mPage = 0;
 
     // Do any additional setup after loading the view.
 }
@@ -150,6 +150,11 @@ void TOASTMESSAGE(NSString *message){
 }
 
 -(void) addCLHistorySelctOfPayeeView{
+    if(@available(iOS 11.0, *)){
+        self.mTabView.estimatedRowHeight = 0;
+        self.mTabView.estimatedSectionHeaderHeight = 0;
+        self.mTabView.estimatedSectionFooterHeight = 0;
+    }
     UINib *nib = [UINib nibWithNibName:@"CLHistorySelctOfPayeeView" bundle:nil];
     [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
     [self.view addSubview:self.mTabView];

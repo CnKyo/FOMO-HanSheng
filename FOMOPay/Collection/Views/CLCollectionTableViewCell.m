@@ -38,10 +38,11 @@
     self.layer.masksToBounds= YES;
     self.layer.shadowColor = [[UIColor grayColor]CGColor];
     self.layer.shadowOffset = CGSizeMake(0, 1);
-    self.layer.shadowOpacity = 0.1;
+    self.layer.shadowOpacity = 0.2;
     self.clipsToBounds = false ;
     self.CLCollectionLeftImage.layer.cornerRadius = 20;
     self.CLCollectionDeleteIcon.image = [UIImage yh_imageNamed:@"pdf_collection_delete_icon.pdf"];
+    
 }
 
 - (void)setFrame:(CGRect)frame{

@@ -424,6 +424,7 @@
                 HomeSelectPayeeViewController *vc = [[HomeSelectPayeeViewController alloc] init];
                 vc.type = ShowButtonTypeChange;
                 vc.mItem = weakSelf.mItem;
+                vc.mInx = self.mInx;
                 vc.mBlock = ^(WKResipientInfoObj *mItem) {
                     weakSelf.mItem = mItem;
                     [weakSelf.myTableView reloadData];
