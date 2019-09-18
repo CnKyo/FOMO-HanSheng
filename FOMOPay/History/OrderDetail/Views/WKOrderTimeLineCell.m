@@ -39,7 +39,7 @@
 //    self.mTitle.text = mItem.operation;
     self.mTitle.text  = [self mOperation:mItem.operation];
     self.mContent.text = mItem.comment;
-    if (mItem.comment.length<=0) {
+    if (mItem.comment.length<0) {
         self.mContent.hidden = YES;
     }else{
         self.mContent.hidden = NO;

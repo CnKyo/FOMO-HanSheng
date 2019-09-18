@@ -5,7 +5,7 @@
 //  Created by clkj on 2019/9/5.
 //  Copyright © 2019 王钶. All rights reserved.
 //
-
+#import "AppDelegate.h"
 #import "WKLoginManager.h"
 #import "LogInViewController.h"
 #import "LogInVerifyViewController.h"
@@ -42,17 +42,21 @@ static WKLoginManager *mManager = nil;
 }
 
 -(void)presentLoginViewController:(void (^)(void))completion{
-    WS(weakSelf);
-    if(!self.mWindow){
-        self.mWindow = [WKWindowManager sharedWindowManager];
-    }
-    self.mRootLoginVC  = [LogInViewController new];
-    UINavigationController *mNav = [[UINavigationController alloc]initWithRootViewController:self.mRootLoginVC];
+//    WS(weakSelf);
+//    if(!self.mWindow){
+//        self.mWindow = [WKWindowManager sharedWindowManager];
+//    }
+//    self.mRootLoginVC  = [LogInViewController new];
+//    UINavigationController *mNav = [[UINavigationController alloc]initWithRootViewController:self.mRootLoginVC];
+//
+//
+//    UIWindow *window  = [WKWindowManager templateWindowForName:@"vc"];
+//    window.rootViewController = mNav;
+//   [self.mWindow.topWindow presentWindow:window animated:YES completion:nil];
 
-    
-    UIWindow *window  = [WKWindowManager templateWindowForName:@"vc"];
-    window.rootViewController = mNav;
-   [self.mWindow.topWindow presentWindow:window animated:YES completion:nil];
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UINavigationController *mnav = [[UINavigationController  alloc]initWithRootViewController:[LogInViewController new]];
+    delegate.window.rootViewController = mnav;
 }
 
 @end

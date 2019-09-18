@@ -116,6 +116,7 @@
                 mInfo.operation = @"正在处理退款";
             }else{
                 mInfo.operation = @"汇款成功";
+                
             }
 
         }else{

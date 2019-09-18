@@ -128,13 +128,17 @@
         }else{
             errorDes = request.error.localizedDescription;
         }
-        block(errorDes,NO);
         if([errorDes isEqualToString:@"Incorrect Session Info."]){
-            DebugLog(@"dengli");
-//            
-        }else{
             
+            [[WKAccountManager shareInstance] WKClearnAll];
+            [[WKLoginManager shareInstance]presentLoginViewController:^{
+                
+            }];
+            errorDes = @"您的账号在其他地方登录，本机已下线";
+            //
         }
+        block(errorDes,NO);
+      
     }];
 }
 + (void)deleteWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{
@@ -171,15 +175,17 @@
         }else{
             errorDes = request.error.localizedDescription;
         }
-        block(errorDes,NO);
         if([errorDes isEqualToString:@"Incorrect Session Info."]){
-            DebugLog(@"dengli");
-//            [[WKAccountManager shareInstance] WKClearnAll];
             
-//
-        }else{
-            
+            [[WKAccountManager shareInstance] WKClearnAll];
+            [[WKLoginManager shareInstance]presentLoginViewController:^{
+                
+            }];
+            errorDes = @"您的账号在其他地方登录，本机已下线";
+            //
         }
+        block(errorDes,NO);
+        
     }];
 }
 + (void)putWithUrl:(NSString *)url para:(NSDictionary *)para block:(void(^)(id result,BOOL success))block{

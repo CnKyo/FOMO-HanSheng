@@ -296,10 +296,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DebugLog(@"点击了列表进入修改");
-   
+    WS(weakSelf);
     CLCollectionAlter *vc = [CLCollectionAlter new];
     NSArray *mSection = self.DataSource[indexPath.section];
     vc.mData = mSection[indexPath.row];
+    vc.mBackBlock = ^(BOOL success) {
+        if (success) {
+            [weakSelf mHeaderLoadData];
+        }
+    };
     [self pushToViewController:vc];
 
 }

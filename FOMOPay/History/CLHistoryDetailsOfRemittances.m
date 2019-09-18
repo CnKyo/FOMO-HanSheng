@@ -12,6 +12,7 @@
 @property (nonatomic,strong) CLHistoryRemittancePlan *vc;
 @property (nonatomic,strong)NSArray *mData;
 @property (nonatomic,strong)NSArray *mRData;
+@property (nonatomic,strong)NSMutableArray *mRightData;
 @end
 @implementation CLHistoryDetailsOfRemittances
 - (void)viewDidLoad {
@@ -35,10 +36,7 @@
     }];
     [self LoadCellType:9];
      self.mData=@[@"订单号",@"收款人",@"汇款金额",@"汇率",@"获得金额",@"手续费",@"总金额",@"状态",@"订单时间"];
-    self.mRData=@[self.mItem.serialNumber,self.mItem.recipient.fullName,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],[self mStats:self.mItem.status],
-//                  self.mItem.status
-                  self.mItem.createdAt];
-    
+    self.mRData=@[self.mItem.serialNumber,self.mItem.recipient.fullName,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],[self mStats:self.mItem.status],self.mItem.createdAt];
     
    
     [self ResetLayout];
@@ -167,6 +165,18 @@
             [self hiddenLoading];
             if (success) {
                 TOASTMESSAGE(@"Cancel successful!");
+
+                
+               
+                
+//                if ([[mResponse objectForKey:@"order"] isKindOfClass:[NSArray class]]) {
+//                    for (NSDictionary *dic in [mResponse objectForKey:@"order"]) {
+//
+//                        [mTempArr addObject:[WKOrderInfo yy_modelWithDictionary:dic]];
+//                    }
+//                }
+                
+//                [self.mTabView reloadData];
                 [self popToViewController:2];
             }else{
                 TOASTMESSAGE(result);

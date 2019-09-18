@@ -144,6 +144,41 @@
     }
     return YES;
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if(_mIndexPath.row ==5){
+        // 每间隔4个字符插入一个空格并在删除时去掉
+        NSMutableString *strmText = [NSMutableString stringWithString:textField.text];
+        if ([textField.text length] == range.location) {
+            
+            // 插入
+            if ([textField.text length]%5 == 4) {
+                
+                [strmText appendString:@" "];
+            }
+            
+        } else {
+            
+            // 删除
+            if ([textField.text length] && [textField.text length]%5 == 0) {
+                
+                strmText = [NSMutableString stringWithString:[strmText substringToIndex:strmText.length - 1]];
+            }
+        }
+        
+        textField.text = strmText;
+    }
+    
+    //    if(_mIndexPath.row == 7 ){
+    //        if ([textField.text length] >11) {
+    //            DebugLog(@"请输入正确的联系号码");
+    //        }
+    //    }
+    return YES;
+}
+
+
+
 -(void)OpenSelect:(id)sender{
     if(self.mDataBlock){
         

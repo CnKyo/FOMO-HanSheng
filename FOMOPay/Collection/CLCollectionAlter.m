@@ -26,6 +26,7 @@
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
 @property (nonatomic,strong) NSMutableArray *mMdate;
+@property (nonatomic,strong) NSArray *mTemp;
 @property (nonatomic,strong) NSString *mText;
 @property (nonatomic,strong) NSString *mText2;
 @end
@@ -59,6 +60,8 @@
     self.mSendButton.backgroundColor = clBlueRGB;
     self.mSendButton.layer.cornerRadius = 4;
     [self.mSendButton addTarget:self action:@selector(successfullyadd:) forControlEvents:UIControlEventTouchUpInside];
+    self.mSendButton.enabled = NO;
+    self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
     [self.view addSubview:self.mSendButton];
     [self.mSendButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).offset(- BottomHeight - 10);
@@ -88,15 +91,17 @@
 //    _mModeString = @"请选择";
     _mTextName = self.mData.fullName;
     _mTextConNumber = self.mData.contactNumber;
-    _mTextAccNumber = self.mData.accountNumber;
+    _mTextAccNumber =[self formmatterBankCardNum:self.mData.accountNumber];
     _mTextcity = self.mData.bankCity;
     _mModeString = self.mData.nationality;
-    _mModeString2 = self.mData.gender;
+    _mModeString2 = [self mGender:self.mData.gender];
+//    _mModeString2 = self.mData.gender;
     _mModeString3 = self.mData.bankName;
     _mModeString4 = self.mData.relationship;
     
     self.mMdate  =[@[_mTextName, _mModeString, _mModeString2,_mModeString3,_mTextcity,_mTextAccNumber,_mModeString4,_mTextConNumber] mutableCopy];
     //    [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
+    _mTemp = @[_mTextName, _mModeString, _mModeString2,_mModeString3,_mTextcity,_mTextAccNumber,_mModeString4,_mTextConNumber];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _mAddLeftDateSource.count;
@@ -122,10 +127,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    NSString *String = @"cell";
+        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
         if (!cell) {
-            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:String];
             
         }
     
@@ -157,27 +162,16 @@
             cell.mAlterBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 weakSelf.mTextName = mText;
                 [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-
+                [self.mTabView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
             };}
 
         if(indexPath.row == 1){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//            UIView *mLineView = [UIView new];
-//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//            [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//
-//            }];
-//
             [cell updateView:CLCollectionAlter_button and:_mModeString];
 //            cell.mLb.text = self.mData.nationality;
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-//                NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+//           NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
                 self.mSelectView = [CLCollectionAddSelect new];
 //                self.mSelectView.delegate = self;//实现他的代理方法//代理传值第五步
                 self.mSelectView.modelArray  = [self.modelArray objectAtIndex:0];//把当前数据传入另一个j控制器的moderarrl里面;
@@ -189,8 +183,10 @@
                     [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
                     DebugLog(@"%@",weakSelf.mMdate[indexPath.row]);
                     weakSelf.mModeString = string;
+                    [self.mTabView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
                 };
                 self.mIndex = indexPath;
+                
 
             };}
         if(indexPath.row == 2){
@@ -199,13 +195,6 @@
             UIView *mLineView = [UIView new];
             mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
             [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//
-//            }];
             [cell updateView:CLCollectionAlter_button and:_mModeString2];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
 
@@ -219,22 +208,14 @@
                     weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
                      [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
                     weakSelf.mModeString2 = string;
+                    [self.mTabView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
                 };
                 self.mIndex = indexPath;
+                
             };}
         if(indexPath.row == 3){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//            UIView *mLineView = [UIView new];
-//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//            [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//
-//            }];
             [cell updateView:CLCollectionAlter_button and:_mModeString3];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
 
@@ -248,23 +229,15 @@
                     weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
                     [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
                     weakSelf.mModeString3 = string;
+                    [self.mTabView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
                 };
                 self.mIndex = indexPath;
+               
             };}
 
         if(indexPath.row == 6){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//            UIView *mLineView = [UIView new];
-//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//            [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//
-//            }];
             [cell updateView:CLCollectionAlter_button and:_mModeString4];
             cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
                 self.mSelectView = [CLCollectionAddSelect new];
@@ -277,8 +250,10 @@
                     weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
                     [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
                     weakSelf.mModeString4 = string;
+                    [self.mTabView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
                 };
                 self.mIndex = indexPath;
+               
             };}
 
 
@@ -287,37 +262,18 @@
         if(indexPath.row == 4 ){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//            UIView *mLineView = [UIView new];
-//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//            [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//
-//            }];
             [cell updateView:CLCollectionAlter_textFiled and:_mTextcity];
             cell.mAlterBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
                 //            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
                 weakSelf.mTextcity = mText;
                 [self.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
+                [self.mTabView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
 
             };}
 
         if(indexPath.row == 5){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//            UIView *mLineView = [UIView new];
-//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//            [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//
-//            }];
             UILabel *mHint = [UILabel new];
             mHint.font = kCommonFont(12);
             mHint.textColor = ssRGBHex(0xD50037);
@@ -354,15 +310,6 @@
         if(indexPath.row == 7){
             cell.mIndexPath = indexPath;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-//            UIView *mLineView = [UIView new];
-//            mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//            [cell.contentView addSubview:mLineView];
-//            [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.right.equalTo(cell);
-//                make.left.equalTo(cell).offset(15);
-//                make.height.offset(1);
-//                make.top.equalTo(cell.mLeftName.mas_bottom).mas_offset(11);
-//            }];
             UILabel *mHint = [UILabel new];
             mHint.font = kCommonFont(12);
             mHint.textColor = ssRGBHex(0xD50037);
@@ -401,7 +348,14 @@
             [cell updateView:CLCollectionAlter_other and:nil];
             cell.mLineView.hidden = YES;
         }
- 
+    for(int a=0;a<self.mMdate.count;a++){
+        if(_mMdate[a] !=_mTemp[a] ){
+            weakSelf.mSendButton.enabled = YES;
+            
+            weakSelf.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+        }
+        
+    }
     return cell;
 }
 
@@ -467,4 +421,33 @@
         }
     }];
 }
+
+- (NSString *)mGender:(NSString *)gender{
+    if([gender isEqualToString:@"MALE"]){
+        return @"男";
+        
+    }else{
+        return @"女";
+    }
+}
+
+#pragma mark----****----转化卡号为每4位加一个空格
+-(NSString *)formmatterBankCardNum:(NSString *)string{
+    NSString *tempStr = string;
+    
+    NSInteger size = (tempStr.length/4);
+    
+    NSMutableArray *tempStrArr = [[NSMutableArray alloc]init];
+    
+    for(int i=0;i<size;i++){
+        [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(i*4, 4)]];
+    }
+    
+    [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(size*4,(tempStr.length%4))]];
+    
+    tempStr = [tempStrArr componentsJoinedByString:@" "];
+    
+    return tempStr;
+}
+
 @end
