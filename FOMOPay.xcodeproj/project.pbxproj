@@ -190,6 +190,7 @@
 		CF2C42B0230E944700A16732 /* pdf_collection_hint_delete.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */; };
 		CF2C42B1230E944700A16732 /* pdf_collection_hint_modifysuccessfully.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */; };
 		CF2C42B3230E9A1400A16732 /* pdf_collection_delete_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */; };
+		CF30CFA5233246E8009097F2 /* CLCollectionAlterViewother.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF30CFA4233246E8009097F2 /* CLCollectionAlterViewother.xib */; };
 		CF3129DE231CA776002ED335 /* pdf_history_home.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF3129DD231CA776002ED335 /* pdf_history_home.pdf */; };
 		CF3129E0231D047D002ED335 /* pdf_home_home_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */; };
 		CF3129E3231D22E6002ED335 /* CLHistoryCancelRemittance.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3129E2231D22E6002ED335 /* CLHistoryCancelRemittance.m */; };
@@ -561,6 +562,7 @@
 		CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_delete.pdf; sourceTree = "<group>"; };
 		CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_modifysuccessfully.pdf; sourceTree = "<group>"; };
 		CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_delete_icon.pdf; sourceTree = "<group>"; };
+		CF30CFA4233246E8009097F2 /* CLCollectionAlterViewother.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLCollectionAlterViewother.xib; sourceTree = "<group>"; };
 		CF3129DD231CA776002ED335 /* pdf_history_home.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_home.pdf; sourceTree = "<group>"; };
 		CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbar.pdf; sourceTree = "<group>"; };
 		CF3129E1231D22E6002ED335 /* CLHistoryCancelRemittance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryCancelRemittance.h; sourceTree = "<group>"; };
@@ -1490,6 +1492,7 @@
 				CF274ABD23287E3C00998BC6 /* CLCollectionAlterView.h */,
 				CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */,
 				CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */,
+				CF30CFA4233246E8009097F2 /* CLCollectionAlterViewother.xib */,
 				CFEE0A2E232A528900C4C5E6 /* CLCollectionAddView.h */,
 				CFEE0A2F232A528900C4C5E6 /* CLCollectionAddView.m */,
 				CFEE0A30232A528900C4C5E6 /* CLCollectionAddView.xib */,
@@ -1648,6 +1651,7 @@
 				772D73DA230A9C0F0068AB48 /* pdf_pass_code_unselect.pdf in Resources */,
 				772D73D7230A89630068AB48 /* WKCustomCodeView.xib in Resources */,
 				18B5D85323288F2C00427CC6 /* WKOrderDetailView.xib in Resources */,
+				CF30CFA5233246E8009097F2 /* CLCollectionAlterViewother.xib in Resources */,
 				18FEAD65231E6BD000844806 /* pdf_MYR.pdf in Resources */,
 				18FEAD60231E6BD000844806 /* pdf_TWD.pdf in Resources */,
 				18B5D85F2328DBE000427CC6 /* pdf_guide_first.png in Resources */,

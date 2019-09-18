@@ -28,6 +28,7 @@
     
     DPLogInView *view = [[[NSBundle mainBundle] loadNibNamed:@"DPLogInView" owner:self options:nil] objectAtIndex:0];
     view.nextButton.layer.cornerRadius = 4.0;
+    view.nextButton.enabled = NO;
     [view.nextButton setTitle:languageStr(@"Next") forState:UIControlStateNormal];
     view.myTextField.delegate = view;
     view.myTextField.placeholder = languageStr(@"input");

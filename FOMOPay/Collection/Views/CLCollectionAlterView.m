@@ -5,8 +5,9 @@
 //  Created by clkj on 2019/9/11.
 //  Copyright © 2019 王钶. All rights reserved.
 //
-
+#import "CLCollectionAddSelect.h"
 #import "CLCollectionAlterView.h"
+#import "HomeRefundSelectBankView.h"
 @interface CLCollectionAlterView()<UITextFieldDelegate>
 //@property (strong,nonatomic) UITextField *mTextF;
 
@@ -14,9 +15,19 @@
 
 @property (strong,nonatomic) UIImageView *mImageV;
 
+//@property (strong,nonatomic)   UILabel *mHint;
+
 //@property (strong,nonatomic) UILabel *mLb;
 
 //@property (strong,nonatomic) NSMutableArray *mData;
+@property (strong,nonatomic)NSArray *mItem;
+
+@property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
+@property (nonatomic,strong) HomeRefundSelectBankView *purposeView;
+
+@property (nonatomic,strong) NSString *mModeString;
+
+@property (nonatomic,strong) NSString *mTextName;
 
 @end
 
@@ -25,6 +36,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.mTextF = [UITextField new];
+//    _mModeString = @"请选择";
+    _mTextName=@"";
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,12 +46,93 @@
     
 }
 
-//- (NSMutableArray *)mData{
-//    if(!_mData){
-//       _mData = [NSMutableArray arrayWithObjects:@"请选择",@"请选择",@"请选择" ,@"请选择",@"请选择",@"请选择",@"请选择",@"请选择", nil];
-//    }
-//    return _mData;
-//}
+-(void)setMItem:(NSArray *)mItem andIndex:(NSIndexPath *)index{
+    WS(weakSelf);
+    CGRect mFrame = [UIApplication sharedApplication].keyWindow.bounds;
+    self.mIndexPath = index;
+    self.mLeftName.text = mItem[index.row];
+    if([mItem[index.row] isEqualToString:@"全名"]){
+        [weakSelf updateView:CLCollectionAlter_textFiled and:_mTextName];
+         weakSelf.mAlterBlock = ^(NSIndexPath *mIndexPath, NSString *mText) {
+            weakSelf.mTextF.text  = mText;
+            weakSelf.mTextName = mText;
+        };
+        
+    }else if([mItem[index.row] isEqualToString:@"国籍"]){
+        [weakSelf updateView:CLCollectionAlter_button and:_mModeString];
+        NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+        weakSelf.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
+        weakSelf.purposeView = [HomeRefundSelectBankView shareView];
+        weakSelf.purposeView.frame = mFrame;
+        weakSelf.purposeView.titleLabel.text = @"汇款目的";
+        [weakSelf.purposeView updataSource:modelArray];
+        weakSelf.purposeView.HomeRefundSelectBankViewBlock = ^(NSString *string, NSInteger tag) {
+            [weakSelf.purposeView removeFromSuperview];
+            weakSelf.purposeView = nil;
+                
+                if (tag == 1001) {
+                    
+                    weakSelf.mLb.text = string;
+                    weakSelf.mModeString = string;
+                    
+                }
+            };
+            
+            [[UIApplication sharedApplication].keyWindow addSubview:weakSelf.purposeView];
+            
+            
+            };
+        
+    
+        
+        
+//        self.mDataBlock = ^(NSIndexPath *mIndexPath) {
+//            self.mSelectView = [CLCollectionAddSelect new];
+//
+//            self.mSelectView.modelArray = modelArray;
+//            [self addSubview:self.mSelectView.view];
+//            [self.mSelectView initWithModelArray:self.mItem and:index.row];
+//            self.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
+//
+//            };
+//        };
+       
+        
+    }else if([mItem[index.row] isEqualToString:@"性别"]){
+         [self updateView:CLCollectionAlter_button and:nil];
+    }else if([mItem[index.row] isEqualToString:@"银行"]){
+        [self updateView:CLCollectionAlter_button and:nil];
+        NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+        self.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
+            self.purposeView = [HomeRefundSelectBankView shareView];
+            self.purposeView.frame = mFrame;
+            self.purposeView.titleLabel.text = @"汇款目的";
+            [self.purposeView updataSource:modelArray];
+            self.purposeView.HomeRefundSelectBankViewBlock = ^(NSString *string, NSInteger tag) {
+                [self.purposeView removeFromSuperview];
+                self.purposeView = nil;
+                if (tag == 1001) {
+                    
+                    self.mLb.text = string;
+                    
+                }
+            };
+            
+            [[UIApplication sharedApplication].keyWindow addSubview:self.purposeView];
+
+        };
+    }else if([mItem[index.row] isEqualToString:@"开户地址/城市"]){
+         [self updateView:CLCollectionAlter_textFiled and:nil];
+    }else if([mItem[index.row] isEqualToString:@"账号号码"]){
+         [self updateView:CLCollectionAlter_textFiled and:nil];
+        
+    }else if([mItem[index.row] isEqualToString:@"关系"]){
+         [self updateView:CLCollectionAlter_button and:nil];
+    }else if([mItem[index.row] isEqualToString:@"联系号码"]){
+         [self updateView:CLCollectionAlter_textFiled and:nil];
+    }
+    
+}
 
 -(void)updateView:(CLCollectionAlterType)type and:(WKAddAccInfoObj *)EnterString{
     for(UIView *vvv in self.mRightView.subviews){
@@ -85,6 +180,7 @@
         self.mLb.font = kCommonFont(14);
         self.mLb.textColor = ssRGBHex(0xCCCCCC);
         self.mLb.text = EnterString;
+//        self.mLb.text = @"333";
         if([self.mLb.text isEqual:@"请选择"]){
             self.mLb.textColor = ssRGBHex(0xCCCCCC);
         }else{

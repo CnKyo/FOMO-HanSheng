@@ -31,6 +31,7 @@
 
 @property (nonatomic, strong) NSString *mSourceFund;
 
+
 @end
 
 @implementation HomeSureInfoViewController

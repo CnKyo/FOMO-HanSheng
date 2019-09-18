@@ -33,6 +33,7 @@ typedef void(^CLCollectionAlterButtonBlock)(NSIndexPath *mIndexPath);  //block ç
 //@property (nonatomic,strong)WKResipientInfoObj *mItem;
 -(void)updateView:(CLCollectionAlterType)type and:(WKResipientInfoObj *)EnterString;
 
+- (void)setMItem:(NSArray *)mItem andIndex:(NSIndexPath *)index;
 @end
 
 

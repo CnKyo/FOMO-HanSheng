@@ -123,7 +123,8 @@
 }
 - (void)confirmAction{
     if (self.mBankNumber.length<=0) {
-        TOASTMESSAGE(@"Please enter your bank account number!");
+//        TOASTMESSAGE(@"Please enter your bank account number!");
+        TOASTMESSAGE(@"您没有修改，不能提交");
         return;
     }
     NSMutableDictionary *para = [NSMutableDictionary new];
