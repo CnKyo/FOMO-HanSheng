@@ -32,23 +32,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma -----------这是右边的数据
-@property (nonatomic,strong) NSString *mName; //全名
+@property (strong,nonatomic) NSString *id;
+@property (strong,nonatomic) NSString *fullName;
+@property (strong,nonatomic) NSString *gender;
+@property (strong,nonatomic) NSString *nationality;
+@property (strong,nonatomic) NSString *currencyCode;
+@property (strong,nonatomic) NSString *contactNumber;
 
-@property (nonatomic,strong) NSString *mNationality; //国籍
+@property (strong,nonatomic) NSString *bankName;
+@property (strong,nonatomic) NSString *accountNumber;
+@property (strong,nonatomic) NSString *relationship;
+@property (strong,nonatomic) NSString *createdAt;
+@property (strong,nonatomic) NSString *updatedAt;
+@property (strong,nonatomic) NSString *bankCity;
 
-@property (nonatomic,strong) NSString *mGender; // 性别
-
-@property (nonatomic,strong) NSString *mBankName; //银行
-
-@property (nonatomic,strong) NSString *mBankCity; //开户城市
-
-@property (nonatomic,strong) NSString *mAccNumber; //账户号码
-
-@property (nonatomic,strong) NSString *mReleationShip; // 关系
-
-@property (nonatomic,strong) NSString *mContNumber; // 联系号码
-
-//@end
+@property (assign,nonatomic) BOOL needRefresh;
 @end
 
 

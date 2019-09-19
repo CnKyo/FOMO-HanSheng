@@ -32,6 +32,9 @@
 
 @property (nonatomic,strong) NSIndexPath *mCurrentIndex;
 
+
+@property (nonatomic,strong) NSDictionary *mDic;
+
 @end
 
 @implementation CLCollectionAlter
@@ -78,7 +81,7 @@
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tap1.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap1];//关闭键盘手势
-    
+    DebugLog(@"%@",_mModel.mLName);
 }
 
 
@@ -89,8 +92,26 @@
 }
 
 - (void)loadData{
+    self.mDic = @{
+                  @"mLName":@"全名",
+                  @"mLNationality":@"国籍",
+                  @"mLGender":@"性别",
+                  @"mLBankName":@"银行",
+                  @"mLBankCity":@"开户地址/城市",
+                  @"mLAccNumber":@"账户号码",
+                  @"mLReleationShip":@"关系",
+                  @"mLContNumber":@"联系号码"
+                  
+                  };
+//    [self.DataSource addObject:[xModel yy_modelWithDictionary:self.mDic]];
+//    self.mModel = self.DataSource[0];
+    self.mModel = [xModel yy_modelWithDictionary:self.mDic];
+//     [self.DataSource addObject:[WKOrderInfo yy_modelWithDictionary:dic]];
+    
     _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账户号码",@"关系",@"联系号码"];
     _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
+//    self.mModel = _mAddLeftDateSource;
+//    self.mModel = self.mData;
 //    _mModeString = @"请选择";
     _mTextName = self.mData.fullName;
     _mTextConNumber = self.mData.contactNumber;
@@ -111,27 +132,27 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (self.mCurrentIndex.row == indexPath.row) {
-        return 601;
-    }else{
-        if(indexPath.row == 6){
-            if([self.mText isEqualToString:@""]){
-                return 61;
-            }else{
-                return 49;
-            }
-        }else if(indexPath.row == 8){
-            if([self.mText2 isEqualToString:@""]){
-                return 55;
-            }else{
-                return 34;
-            }
-        }else{
-            return 49;
-            
-        }
-    }
+    return 49;
+//    if (self.mCurrentIndex.row == indexPath.row) {
+//        return 49;
+//    }else{
+//        if(indexPath.row == 6){
+//            if([self.mText isEqualToString:@""]){
+//                return 61;
+//            }else{
+//                return 49;
+//            }
+//        }else if(indexPath.row == 8){
+//            if([self.mText2 isEqualToString:@""]){
+//                return 55;
+//            }else{
+//                return 34;
+//            }
+//        }else{
+//            return 49;
+//
+//        }
+//    }
 
 }
 
@@ -141,6 +162,33 @@
     NSString *StringButton = @"cellButton";
 //    NSString *String = @"cellButton";
     
+    
+    
+    
+//    if([self.mModel.mLName isEqualToString:@"全名"]
+//       ||[self.mModel.mLBankCity isEqualToString:@"开户地址/城市"]
+//       ||[self.mModel.mLAccNumber isEqualToString:@"账户号码"]
+//       ||[self.mModel.mLContNumber isEqualToString:@"联系号码"]){
+//        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
+//        if (!cell) {
+//            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:String];
+//
+//        }
+//        cell.mLeftName.text=self.mAddLeftDateSource[indexPath.row];
+//        self.mTabView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+//        cell.selectionStyle = UITableViewCellEditingStyleNone;
+//        return cell;
+//    }else{
+//        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:StringButton forIndexPath:indexPath];
+//        if (!cell) {
+//            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:StringButton];
+//
+//        }
+//        cell.mLeftName.text =self.mAddLeftDateSource[indexPath.row];
+//        self.mTabView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+//        cell.selectionStyle = UITableViewCellEditingStyleNone;
+//        return cell;
+//    }
     
     
     if([self.mAddLeftDateSource[indexPath.row] isEqualToString:@"全名"]

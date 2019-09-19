@@ -52,6 +52,7 @@
         [weakSelf footerLoadData];
         [weakSelf.mTabView.mj_footer endRefreshing];
     }];
+    
 }
 - (void)headerLoadData{
     self.mPage--;
