@@ -64,7 +64,7 @@
     }else if(indexPath.row == 9){
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
-    
+    cell.mLeftName.textColor = ssRGBHex(0x8C9091);
     cell.mLeftName.text= [_mData objectAtIndex:indexPath.row];
     cell.mLeftName.textAlignment = NSTextAlignmentLeft;
     
@@ -74,6 +74,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 62;
+    return 49;
 }
 @end

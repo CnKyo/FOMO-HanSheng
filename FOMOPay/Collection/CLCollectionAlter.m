@@ -29,6 +29,9 @@
 @property (nonatomic,strong) NSArray *mTemp;
 @property (nonatomic,strong) NSString *mText;
 @property (nonatomic,strong) NSString *mText2;
+
+@property (nonatomic,strong) NSIndexPath *mCurrentIndex;
+
 @end
 
 @implementation CLCollectionAlter
@@ -86,7 +89,7 @@
 }
 
 - (void)loadData{
-    _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码"];
+    _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账户号码",@"关系",@"联系号码"];
     _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
 //    _mModeString = @"请选择";
     _mTextName = self.mData.fullName;
@@ -108,35 +111,87 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 6){
-        if([self.mText isEqualToString:@""]){
-            return 61;
+    
+    if (self.mCurrentIndex.row == indexPath.row) {
+        return 601;
+    }else{
+        if(indexPath.row == 6){
+            if([self.mText isEqualToString:@""]){
+                return 61;
+            }else{
+                return 49;
+            }
+        }else if(indexPath.row == 8){
+            if([self.mText2 isEqualToString:@""]){
+                return 55;
+            }else{
+                return 34;
+            }
         }else{
             return 49;
+            
         }
-    }else if(indexPath.row == 8){
-        if([self.mText2 isEqualToString:@""]){
-            return 55;
-        }else{
-            return 34;
-        }
-    }else{
-        return 49;
-        
     }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WS(weakSelf);
     NSString *String = @"cell";
+    NSString *StringButton = @"cellButton";
+//    NSString *String = @"cellButton";
+    
+    
+    
+    if([self.mAddLeftDateSource[indexPath.row] isEqualToString:@"全名"]
+       ||[self.mAddLeftDateSource[indexPath.row] isEqualToString:@"开户地址/城市"]
+       ||[self.mAddLeftDateSource[indexPath.row] isEqualToString:@"账户号码"]
+       ||[self.mAddLeftDateSource[indexPath.row] isEqualToString:@"联系号码"]){
         CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
         if (!cell) {
             cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:String];
             
         }
-        cell.selectionStyle = UITableViewCellEditingStyleNone;
+        cell.mLeftName.text =self.mAddLeftDateSource[indexPath.row];
         self.mTabView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+        cell.selectionStyle = UITableViewCellEditingStyleNone;
+        cell.mIndexPath = indexPath;
+        [cell setMItem:_mData andIndex:indexPath];
+//        [cell setMItem:self.mAddLeftDateSource andIndex:indexPath];
+       
+//        if(_mTextAccNumber.length >0){
+//             [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section], nil] withRowAnimation:UITableViewRowAnimationNone];
+//        }
+        cell.mRefreshCellBlock = ^(WKResipientInfoObj *mItem, NSIndexPath *mIndexPath) {
+            weakSelf.mCurrentIndex = mIndexPath;
+            [weakSelf.mTabView reloadData];
+        };
+        return  cell;
+    }else{
+        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:StringButton forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:StringButton];
+            
+        }
+        cell.mLeftName.text =self.mAddLeftDateSource[indexPath.row];
+        self.mTabView.separatorStyle =  UITableViewCellSeparatorStyleNone;
+        cell.selectionStyle = UITableViewCellEditingStyleNone;
+        
+        [cell setMItem:_mData andIndex:indexPath];
+//        mMode *mMode = [mMode new];
+//        mMode.bank
+        return cell;
+    }
+//        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
+//        if (!cell) {
+//            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:String];
+//
+//        }
+    
+//        cell.selectionStyle = UITableViewCellEditingStyleNone;
+//        self.mTabView.separatorStyle =  UITableViewCellSeparatorStyleNone;
 //        cell.mLeftName.text = _mAddLeftDateSource[indexPath.row];
-        [cell setMItem:self.mAddLeftDateSource andIndex:indexPath];
+//        [cell setMItem:self.mAddLeftDateSource andIndex:indexPath];
 //        self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
 //        __weak typeof(cell)  weakCell = cell;
 //                WS(weakSelf);
@@ -355,7 +410,7 @@
 //        }
 //
 //    }
-    return cell;
+//    return cell;
 }
 
 
@@ -371,6 +426,26 @@
 //    DebugLog(@"我现在的字符串的值为%@-----位置为%ld",self.mMdate,(long)_mIndex.row);
 //    [self.mTabView reloadRowsAtIndexPaths:@[_mIndex] withRowAnimation:UITableViewRowAnimationNone];
 //}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *mView = [UIView new];
+    mView.backgroundColor = ssRGBHex(0xffffff);
+    UIView *mLineView = [UIView new];
+    mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
+    [mView addSubview:mLineView];
+    [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(mView).mas_offset(0);
+        make.height.offset(1);
+        make.width.offset(kScreenWidth);
+    }];
+    return mView;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 34;
+//    return 55;
+}
+
 
 -(void)successfullyadd:(id)sender{
     DebugLog(@"%@",self.mMdate);

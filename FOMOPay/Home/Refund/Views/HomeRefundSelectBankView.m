@@ -28,8 +28,10 @@
     view.myTableView.delegate = view;
     view.myTableView.dataSource = view;
     view.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    view.bgButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+    view.backgroundColor = [UIColor clearColor];
+//    view.bgButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+    view.bgButton.backgroundColor = ssRGBHexAlpha(0x000000, 0.5);
+//    view.bgButton.backgroundColor = [UIColor redColor];
     
     return view;
 }
@@ -92,7 +94,8 @@
         line.backgroundColor = kCommonColor(230, 230, 230, 1);
         [cell addSubview:line];
     }
-    
+    cell.selectedBackgroundView = [[UIView alloc]initWithFrame: cell.frame];
+    cell.selectedBackgroundView.backgroundColor  = ssRGBHex(0xf2f2f2);
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:555];
     titleLabel.text = self.dataSourceArray[indexPath.row];
     

@@ -31,13 +31,21 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    _payNowView.layer.cornerRadius = 4.0;
-    _bankView.layer.cornerRadius = 4.0;
-    
+    _payNowView.layer.cornerRadius = 8.0;
+    _bankView.layer.cornerRadius = 8.0;
+    _alertLabel.textColor = ssRGBHex(0x999999);
     _logoImage.image = [UIImage yh_imageNamed:@"pdf_home_payType_payNow"];
     _logoImage1.image = [UIImage yh_imageNamed:@"pdf_home_payType_bank"];
     _allowImage.image = [UIImage yh_imageNamed:@"pdf_home_payType_allow"];
     _allowImage1.image = [UIImage yh_imageNamed:@"pdf_home_payType_allow"];
+    self.payNowView.layer.shadowColor = ssRGBHex(0x000000).CGColor;
+    self.payNowView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.payNowView.layer.shadowOpacity = 0.2;
+    self.payNowView.clipsToBounds = false;
+    self.bankView.layer.shadowColor = ssRGBHex(0x000000).CGColor;
+    self.bankView.layer.shadowOffset = CGSizeMake(0, 1);
+    self.bankView.layer.shadowOpacity = 0.2;
+    self.bankView.clipsToBounds = false;
     
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc] initWithString:@"请选择支付方式，仅接受汇款人本人账户付款"];
     [AttributedStr addAttribute:NSForegroundColorAttributeName value:kCommonColor(213, 0, 55, 1) range:NSMakeRange(11, 7)];

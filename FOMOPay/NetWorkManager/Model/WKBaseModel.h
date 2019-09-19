@@ -180,6 +180,7 @@
 @property (strong,nonatomic) NSString *updatedAt;
 @property (strong,nonatomic) NSString *bankCity;
 
+@property (assign,nonatomic) BOOL needRefresh;
 @end
 
 

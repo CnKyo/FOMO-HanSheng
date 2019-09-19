@@ -252,15 +252,18 @@
     if (sender.selected == YES) {
         
         if (sender.tag == 1000) {
-            
-            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+//            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+//            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _changeCountryButton1.selected = NO;
             
         }else{
             
-            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+//            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
 //            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
             _changeCountryButton.selected = NO;
             
         }
@@ -270,11 +273,12 @@
     }else{
         
         if (sender.tag == 1000) {
-            
-            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+//            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
 
         }else{
-            
+             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
         }
         _CountryView.hidden = YES;
@@ -349,8 +353,10 @@
     
     [self updateLogo:mUnit];
     _CountryView.hidden = YES;
+     self.changeCountryButton.selected = NO;
     self.changeCountryButton1.selected = NO;
     self.showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+    self.showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
 //    self.showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
 }
 

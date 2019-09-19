@@ -14,10 +14,11 @@
     [super awakeFromNib];
     self.layer.cornerRadius=10;
     self.layer.masksToBounds= YES;
-    
+    self.mName.textColor = ssRGBHex(0x2b2b2b);
+    self.mDate.textColor = ssRGBHex(0x8c9091);
     self.layer.shadowColor = [[UIColor grayColor]CGColor];
     self.layer.shadowOffset = CGSizeMake(0, 1);
-    self.layer.shadowOpacity = 0.1;
+    self.layer.shadowOpacity = 0.4;
     self.clipsToBounds = false ;
     
     
@@ -66,10 +67,12 @@
 }
 
 - (void)setMItem:(WKOrderInfo *)mItem{
-    self.mDate.text = mItem.createdAt;
+//    self.mDate.text = mItem.createdAt;
+    self.mDate.text = [mItem.createdAt substringToIndex:10];
     self.mName.text = mItem.recipient.fullName;
     self.mMoney.text = [NSString stringWithFormat:@"%@%@",mItem.remittable.chargable.currencyCode,mItem.remittable.chargable.amount];
     self.mStatus.text = mItem.status;
 }
+
 
 @end

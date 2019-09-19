@@ -257,8 +257,11 @@ void TOASTMESSAGE(NSString *message){
 }
 
 -(void)addCollectionAlterTabView{
-    UINib *nib = [UINib nibWithNibName:@"CLCollectionAlterView" bundle:nil];
-    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+//    UINib *nib = [UINib nibWithNibName:@"CLCollectionAlterView" bundle:nil];
+    
+    [self.mTabView registerNib:[UINib nibWithNibName:@"CLCollectionAlterView" bundle:nil] forCellReuseIdentifier:@"cell"];
+//    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.mTabView registerNib:[UINib nibWithNibName:@"CLCollectionAlterViewButton" bundle:nil] forCellReuseIdentifier:@"cellButton"];
     [self.view addSubview:self.mTabView];
     self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.mTabView.separatorInset = UIEdgeInsetsZero;

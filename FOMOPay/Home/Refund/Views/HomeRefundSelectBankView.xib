@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,20 +61,28 @@
                             <color key="textColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OL5-4o-bIk">
+                            <rect key="frame" x="0.0" y="43" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="90p-Jz-Qxc" secondAttribute="bottom" id="7fI-8z-g7G"/>
+                        <constraint firstItem="OL5-4o-bIk" firstAttribute="leading" secondItem="gk4-fW-xCb" secondAttribute="leading" id="8uq-fu-PhG"/>
                         <constraint firstAttribute="height" constant="44" id="9Lh-Pt-rVe"/>
                         <constraint firstItem="cvI-mc-xcK" firstAttribute="top" secondItem="gk4-fW-xCb" secondAttribute="top" id="Fpy-kQ-Dsy"/>
                         <constraint firstItem="90p-Jz-Qxc" firstAttribute="leading" secondItem="cvI-mc-xcK" secondAttribute="trailing" constant="10" id="K0C-Cy-cr7"/>
                         <constraint firstItem="90p-Jz-Qxc" firstAttribute="top" secondItem="gk4-fW-xCb" secondAttribute="top" id="KnH-xX-EbT"/>
                         <constraint firstAttribute="bottom" secondItem="Pdk-Fn-S6W" secondAttribute="bottom" id="PSt-0J-2ql"/>
+                        <constraint firstAttribute="bottom" secondItem="OL5-4o-bIk" secondAttribute="bottom" constant="0.5" id="bvp-V9-fub"/>
                         <constraint firstAttribute="trailing" secondItem="90p-Jz-Qxc" secondAttribute="trailing" id="dnb-qZ-2O6"/>
                         <constraint firstItem="Pdk-Fn-S6W" firstAttribute="leading" secondItem="gk4-fW-xCb" secondAttribute="leading" id="eIk-DT-kCv"/>
+                        <constraint firstAttribute="trailing" secondItem="OL5-4o-bIk" secondAttribute="trailing" id="iTK-pj-CfK"/>
                         <constraint firstAttribute="bottom" secondItem="cvI-mc-xcK" secondAttribute="bottom" id="maO-PY-9jL"/>
                         <constraint firstItem="cvI-mc-xcK" firstAttribute="leading" secondItem="Pdk-Fn-S6W" secondAttribute="trailing" constant="10" id="oCR-iN-LAq"/>
                         <constraint firstItem="Pdk-Fn-S6W" firstAttribute="top" secondItem="gk4-fW-xCb" secondAttribute="top" id="uhV-Ht-nbL"/>
+                        <constraint firstItem="OL5-4o-bIk" firstAttribute="top" secondItem="gk4-fW-xCb" secondAttribute="top" constant="43" id="xOI-zZ-CjC"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o4P-uM-Yzk">
@@ -105,6 +113,7 @@
                 <outlet property="tableViewHeight" destination="ar9-ge-rCM" id="3de-7C-Lng"/>
                 <outlet property="titleLabel" destination="cvI-mc-xcK" id="K2r-Px-JPU"/>
             </connections>
+            <point key="canvasLocation" x="132" y="154.27286356821591"/>
         </view>
     </objects>
 </document>

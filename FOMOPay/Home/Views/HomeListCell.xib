@@ -52,14 +52,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-qO-xKn">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YCy-qO-xKn">
                                         <rect key="frame" x="116" y="15" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="S3t-d0-H2p"/>
                                             <constraint firstAttribute="height" constant="24" id="cPD-2W-wbG"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBW-4G-D1F">
+                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBW-4G-D1F">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                         <connections>
                                             <action selector="showButtonClicked:" destination="0m1-kn-9VF" eventType="touchUpInside" id="2k6-I5-Gov"/>
@@ -218,13 +218,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGv-at-xhJ">
-                                <rect key="frame" x="150" y="0.0" width="225" height="70"/>
+                                <rect key="frame" x="150" y="-0.5" width="225" height="70.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0W-9F-Y10">
-                                        <rect key="frame" x="10" y="10" width="205" height="50"/>
+                                        <rect key="frame" x="10" y="10" width="205" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获得" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nir-uG-raz">
-                                                <rect key="frame" x="10" y="15" width="35" height="20"/>
+                                                <rect key="frame" x="10" y="15.5" width="35" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="MoX-KK-M2v"/>
                                                     <constraint firstAttribute="height" constant="20" id="t48-bB-dEO"/>
@@ -234,7 +234,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" tag="4001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入获得金额" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-CO-RPb">
-                                                <rect key="frame" x="45" y="10" width="150" height="30"/>
+                                                <rect key="frame" x="45" y="10.5" width="150" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JLk-yM-MIE"/>
                                                 </constraints>
@@ -266,7 +266,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="hGv-at-xhJ" secondAttribute="trailing" id="5Fa-kk-sX5"/>
                             <constraint firstItem="enG-uJ-n45" firstAttribute="leading" secondItem="Hji-XE-uHL" secondAttribute="leading" id="5Yg-F4-ANP"/>
-                            <constraint firstItem="hGv-at-xhJ" firstAttribute="top" secondItem="Hji-XE-uHL" secondAttribute="top" id="7bN-Ws-CCz"/>
+                            <constraint firstItem="hGv-at-xhJ" firstAttribute="top" secondItem="Hji-XE-uHL" secondAttribute="top" constant="-0.5" id="7bN-Ws-CCz"/>
                             <constraint firstAttribute="bottom" secondItem="hGv-at-xhJ" secondAttribute="bottom" id="BEH-g6-2ut"/>
                             <constraint firstItem="5Xu-UJ-m4k" firstAttribute="leading" secondItem="Hji-XE-uHL" secondAttribute="leading" id="Qdv-80-xRD"/>
                             <constraint firstItem="hGv-at-xhJ" firstAttribute="leading" secondItem="enG-uJ-n45" secondAttribute="trailing" id="gFK-5J-uG7"/>

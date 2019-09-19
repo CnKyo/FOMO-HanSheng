@@ -18,22 +18,40 @@ typedef enum :NSUInteger{
 typedef void(^CLCollectionAlterBlock)(NSIndexPath *mIndexPath,NSString *mText);
 typedef void(^CLCollectionAlterButtonBlock)(NSIndexPath *mIndexPath);  //block 第一步
 
+typedef void(^CLCollectionAlterrefreshBlock)(WKResipientInfoObj *mItem,NSIndexPath *mIndexPath);  //block 第一步
 
 @interface CLCollectionAlterView : UITableViewCell
 
 @property (copy,nonatomic) CLCollectionAlterBlock mAlterBlock;
 @property (copy,nonatomic) CLCollectionAlterButtonBlock mDataBlock;
-@property (weak, nonatomic) IBOutlet UILabel *mLeftName;
-@property (weak, nonatomic) IBOutlet UIView *mRightView;
+
+
 @property (strong,nonatomic) UITextField *mTextF;
 @property (strong,nonatomic) UILabel *mLb;
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
-@property (weak, nonatomic) IBOutlet UIView *mLineView;
+#pragma mark----****----第一种类型参数
+@property (weak, nonatomic) IBOutlet UILabel *mLeftName;
+@property (weak, nonatomic) IBOutlet UIView *mRightView;
+@property (weak, nonatomic) IBOutlet UITextField *mText;
 
-//@property (nonatomic,strong)WKResipientInfoObj *mItem;
+
+
+#pragma mark----****----第二种类型参数
+@property (weak, nonatomic) IBOutlet UIView *mLineView;
+@property (weak, nonatomic) IBOutlet UILabel *mButtonLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *mButtonImg;
+@property (weak, nonatomic) IBOutlet UIButton *mButton;
+
+@property (nonatomic,strong)WKResipientInfoObj *mItem;
 -(void)updateView:(CLCollectionAlterType)type and:(WKResipientInfoObj *)EnterString;
 
-- (void)setMItem:(NSArray *)mItem andIndex:(NSIndexPath *)index;
+- (void)setMItem:(WKResipientInfoObj *)mItem andIndex:(NSIndexPath *)index;
+
+-(void)setString:(NSString *)mString andIndex:(NSIndexPath *)index;
+
+@property (copy,nonatomic) CLCollectionAlterrefreshBlock mRefreshCellBlock;
+
+
 @end
 
 

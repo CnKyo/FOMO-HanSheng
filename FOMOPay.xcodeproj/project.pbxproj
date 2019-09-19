@@ -161,6 +161,7 @@
 		CCB32EA8231D70A70027FD84 /* CLHistoryDetailsOfRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */; };
 		CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */; };
 		CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */; };
+		CF009EC223339D0F00D32857 /* xModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF009EC123339D0F00D32857 /* xModel.m */; };
 		CF20E262231F89A300EEB9AD /* pdf_history_beingprocessed_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF20E25F231F89A200EEB9AD /* pdf_history_beingprocessed_icon.pdf */; };
 		CF20E263231F89A300EEB9AD /* pdf_history_cancel_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF20E260231F89A300EEB9AD /* pdf_history_cancel_icon.pdf */; };
 		CF20E264231F89A300EEB9AD /* pdf_history_finish_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF20E261231F89A300EEB9AD /* pdf_history_finish_icon.pdf */; };
@@ -186,11 +187,11 @@
 		CF2A16C3231E70E4007E110D /* CLHistoryCertificateOfRemittance.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A16C2231E70E4007E110D /* CLHistoryCertificateOfRemittance.m */; };
 		CF2A16C7231E8062007E110D /* CLHistorySelctOfPayeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A16C5231E8062007E110D /* CLHistorySelctOfPayeeView.m */; };
 		CF2A16C8231E8062007E110D /* CLHistorySelctOfPayeeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2A16C6231E8062007E110D /* CLHistorySelctOfPayeeView.xib */; };
+		CF2BF0462333129E00F816B5 /* CLCollectionAlterViewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2BF0452333129D00F816B5 /* CLCollectionAlterViewButton.xib */; };
 		CF2C42AF230E944700A16732 /* pdf_collection_hint_success.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AC230E944500A16732 /* pdf_collection_hint_success.pdf */; };
 		CF2C42B0230E944700A16732 /* pdf_collection_hint_delete.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */; };
 		CF2C42B1230E944700A16732 /* pdf_collection_hint_modifysuccessfully.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */; };
 		CF2C42B3230E9A1400A16732 /* pdf_collection_delete_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */; };
-		CF30CFA5233246E8009097F2 /* CLCollectionAlterViewother.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF30CFA4233246E8009097F2 /* CLCollectionAlterViewother.xib */; };
 		CF3129DE231CA776002ED335 /* pdf_history_home.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF3129DD231CA776002ED335 /* pdf_history_home.pdf */; };
 		CF3129E0231D047D002ED335 /* pdf_home_home_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */; };
 		CF3129E3231D22E6002ED335 /* CLHistoryCancelRemittance.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3129E2231D22E6002ED335 /* CLHistoryCancelRemittance.m */; };
@@ -523,6 +524,8 @@
 		CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryDetailsOfRefund.m; sourceTree = "<group>"; };
 		CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_language_selected.pdf; sourceTree = "<group>"; };
 		CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_message_logo.pdf; sourceTree = "<group>"; };
+		CF009EC023339D0F00D32857 /* xModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xModel.h; sourceTree = "<group>"; };
+		CF009EC123339D0F00D32857 /* xModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xModel.m; sourceTree = "<group>"; };
 		CF20E25F231F89A200EEB9AD /* pdf_history_beingprocessed_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_beingprocessed_icon.pdf; sourceTree = "<group>"; };
 		CF20E260231F89A300EEB9AD /* pdf_history_cancel_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_cancel_icon.pdf; sourceTree = "<group>"; };
 		CF20E261231F89A300EEB9AD /* pdf_history_finish_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_finish_icon.pdf; sourceTree = "<group>"; };
@@ -558,11 +561,11 @@
 		CF2A16C4231E8062007E110D /* CLHistorySelctOfPayeeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistorySelctOfPayeeView.h; sourceTree = "<group>"; };
 		CF2A16C5231E8062007E110D /* CLHistorySelctOfPayeeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistorySelctOfPayeeView.m; sourceTree = "<group>"; };
 		CF2A16C6231E8062007E110D /* CLHistorySelctOfPayeeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLHistorySelctOfPayeeView.xib; sourceTree = "<group>"; };
+		CF2BF0452333129D00F816B5 /* CLCollectionAlterViewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLCollectionAlterViewButton.xib; sourceTree = "<group>"; };
 		CF2C42AC230E944500A16732 /* pdf_collection_hint_success.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_success.pdf; sourceTree = "<group>"; };
 		CF2C42AD230E944600A16732 /* pdf_collection_hint_delete.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_delete.pdf; sourceTree = "<group>"; };
 		CF2C42AE230E944600A16732 /* pdf_collection_hint_modifysuccessfully.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_hint_modifysuccessfully.pdf; sourceTree = "<group>"; };
 		CF2C42B2230E9A1300A16732 /* pdf_collection_delete_icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_collection_delete_icon.pdf; sourceTree = "<group>"; };
-		CF30CFA4233246E8009097F2 /* CLCollectionAlterViewother.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLCollectionAlterViewother.xib; sourceTree = "<group>"; };
 		CF3129DD231CA776002ED335 /* pdf_history_home.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_history_home.pdf; sourceTree = "<group>"; };
 		CF3129DF231D047D002ED335 /* pdf_home_home_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbar.pdf; sourceTree = "<group>"; };
 		CF3129E1231D22E6002ED335 /* CLHistoryCancelRemittance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryCancelRemittance.h; sourceTree = "<group>"; };
@@ -1029,6 +1032,7 @@
 				CF6264EA231525E5001AF5FC /* CLCollectionAlter.h */,
 				CF6264EC231525E5001AF5FC /* CLCollectionAlter.m */,
 				CF6264F623152625001AF5FC /* Views */,
+				CF009EBF23339CBB00D32857 /* Model */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -1455,6 +1459,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF009EBF23339CBB00D32857 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF009EC023339D0F00D32857 /* xModel.h */,
+				CF009EC123339D0F00D32857 /* xModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CF6264D223152206001AF5FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1492,7 +1505,7 @@
 				CF274ABD23287E3C00998BC6 /* CLCollectionAlterView.h */,
 				CF274ABE23287E3C00998BC6 /* CLCollectionAlterView.m */,
 				CF274ABF23287E3C00998BC6 /* CLCollectionAlterView.xib */,
-				CF30CFA4233246E8009097F2 /* CLCollectionAlterViewother.xib */,
+				CF2BF0452333129D00F816B5 /* CLCollectionAlterViewButton.xib */,
 				CFEE0A2E232A528900C4C5E6 /* CLCollectionAddView.h */,
 				CFEE0A2F232A528900C4C5E6 /* CLCollectionAddView.m */,
 				CFEE0A30232A528900C4C5E6 /* CLCollectionAddView.xib */,
@@ -1651,7 +1664,6 @@
 				772D73DA230A9C0F0068AB48 /* pdf_pass_code_unselect.pdf in Resources */,
 				772D73D7230A89630068AB48 /* WKCustomCodeView.xib in Resources */,
 				18B5D85323288F2C00427CC6 /* WKOrderDetailView.xib in Resources */,
-				CF30CFA5233246E8009097F2 /* CLCollectionAlterViewother.xib in Resources */,
 				18FEAD65231E6BD000844806 /* pdf_MYR.pdf in Resources */,
 				18FEAD60231E6BD000844806 /* pdf_TWD.pdf in Resources */,
 				18B5D85F2328DBE000427CC6 /* pdf_guide_first.png in Resources */,
@@ -1753,6 +1765,7 @@
 				18FEAD62231E6BD000844806 /* pdf_PHP.pdf in Resources */,
 				CF62652B23152801001AF5FC /* CLTitleView.xib in Resources */,
 				CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */,
+				CF2BF0462333129E00F816B5 /* CLCollectionAlterViewButton.xib in Resources */,
 				CF20E262231F89A300EEB9AD /* pdf_history_beingprocessed_icon.pdf in Resources */,
 				CF25C349232249AA000311DC /* pdf_guideView_one_icon.pdf in Resources */,
 				CF26171823176FEE00448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.xib in Resources */,
@@ -1853,6 +1866,7 @@
 				CF2A16C0231E0BD4007E110D /* CLHistorySelectionOfPayee.m in Sources */,
 				1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */,
 				CF6264D823152487001AF5FC /* CLHistoryViewController.m in Sources */,
+				CF009EC223339D0F00D32857 /* xModel.m in Sources */,
 				CF277DAF23055C0100A37B5C /* CLNavgationView_button.m in Sources */,
 				18851847231F97450009D088 /* NSString+WPAttributedMarkup.m in Sources */,
 				18851849231F97450009D088 /* WPHotspotLabel.m in Sources */,

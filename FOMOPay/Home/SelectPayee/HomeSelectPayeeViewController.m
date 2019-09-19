@@ -60,7 +60,7 @@
 //    mbgView.backgroundColor= [UIColor redColor];
     mbgView.frame = CGRectMake(0, 12,kScreenWidth , 55);
     UIView *mButtonView = [UIView new];
-    mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
+    mButtonView.backgroundColor = [UIColor clearColor];
 //    mButtonView.backgroundColor = [UIColor redColor];
     mButtonView.layer.cornerRadius = 4;
     mButtonView.layer.borderWidth = 1;
@@ -72,6 +72,7 @@
     //                           WithFrame:CGRectMake(50, 0, mButtonView.frame.size.width, mButtonView.frame.size.height)];
     [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
     [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
+    addButton.layer.cornerRadius = 4;
     [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
     addButton.titleLabel.font = kCommonFont(14);
     addButton.backgroundColor = [UIColor whiteColor];
@@ -82,8 +83,8 @@
     
     //
     [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(mbgView).mas_offset(15);
-        make.right.equalTo(mbgView).mas_offset(-15);
+        make.left.equalTo(mbgView).mas_offset(10);
+        make.right.equalTo(mbgView).mas_offset(-10);
         make.height.offset(44);
         make.top.equalTo(mbgView).offset(10);
     }];
