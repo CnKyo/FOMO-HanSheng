@@ -13,7 +13,7 @@ typedef void(^CLCollectionAlterBackBlock)(BOOL success);
 @interface CLCollectionAlter : BaseViewController
 @property (nonatomic,strong)WKResipientInfoObj *mData;
 @property (nonatomic,copy) CLCollectionAlterBackBlock mBackBlock;////////
-@property (nonatomic,strong)xModel *mModel;
+
 
 
 

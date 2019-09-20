@@ -8,26 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import "WKBaseModel.h"
+#import "xModel.h"
 
-typedef enum :NSUInteger{
-    CLCollectionAlter_textFiled,
-    CLCollectionAlter_button,
-    CLCollectionAlter_other,
-}CLCollectionAlterType;
+//typedef enum :NSUInteger{
+//    CLCollectionAlter_textFiled,
+//    CLCollectionAlter_button,
+//    CLCollectionAlter_other,
+//}CLCollectionAlterType;
 
-typedef void(^CLCollectionAlterBlock)(NSIndexPath *mIndexPath,NSString *mText);
-typedef void(^CLCollectionAlterButtonBlock)(NSIndexPath *mIndexPath);  //block 第一步
+//typedef void(^CLCollectionAlterBlock)(NSIndexPath *mIndexPath,NSString *mText);
+//typedef void(^CLCollectionAlterButtonBlock)(NSIndexPath *mIndexPath);  //block 第一步
 
-typedef void(^CLCollectionAlterrefreshBlock)(WKResipientInfoObj *mItem,NSIndexPath *mIndexPath);  //block 第一步
+//typedef void(^CLCollectionAlterrefreshBlock)(WKResipientInfoObj *mItem,NSIndexPath *mIndexPath);  //block 第一步
+typedef void(^TextCellBlock)(NSIndexPath *mIndexPath,FormObj *mItem);
 
+typedef void(^ButtonCellBlock)(NSIndexPath *mIndexPath,FormObj *mItem);
+
+typedef void(^CellBlock)(NSIndexPath *mIndexPath,NSInteger i);
 @interface CLCollectionAlterView : UITableViewCell
 
-@property (copy,nonatomic) CLCollectionAlterBlock mAlterBlock;
-@property (copy,nonatomic) CLCollectionAlterButtonBlock mDataBlock;
+
+@property (assign,nonatomic) NSInteger i;
 
 
-@property (strong,nonatomic) UITextField *mTextF;
-@property (strong,nonatomic) UILabel *mLb;
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
 #pragma mark----****----第一种类型参数
 @property (weak, nonatomic) IBOutlet UILabel *mLeftName;
@@ -42,14 +45,16 @@ typedef void(^CLCollectionAlterrefreshBlock)(WKResipientInfoObj *mItem,NSIndexPa
 @property (weak, nonatomic) IBOutlet UIImageView *mButtonImg;
 @property (weak, nonatomic) IBOutlet UIButton *mButton;
 
-@property (nonatomic,strong)WKResipientInfoObj *mItem;
--(void)updateView:(CLCollectionAlterType)type and:(WKResipientInfoObj *)EnterString;
+@property (copy, nonatomic) TextCellBlock mResultBlock;
 
-- (void)setMItem:(WKResipientInfoObj *)mItem andIndex:(NSIndexPath *)index;
+@property (copy, nonatomic) ButtonCellBlock mBackBlcok;
 
--(void)setString:(NSString *)mString andIndex:(NSIndexPath *)index;
+@property (copy, nonatomic) CellBlock mLineBlock;
 
-@property (copy,nonatomic) CLCollectionAlterrefreshBlock mRefreshCellBlock;
+@property (strong, nonatomic) FormObj *mItem;
+
+- (void)updateItemText:(FormObj *)mItem;
+- (void)updateItemButton:(FormObj *)mItem;
 
 
 @end

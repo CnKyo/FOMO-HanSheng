@@ -11,3 +11,12 @@
 @implementation xModel
 
 @end
+
+@implementation FormObj
+
+@end
+
+@implementation ResultObj
+
+@end
+

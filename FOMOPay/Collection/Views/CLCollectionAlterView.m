@@ -11,9 +11,9 @@
 @interface CLCollectionAlterView()<UITextFieldDelegate>
 //@property (strong,nonatomic) UITextField *mTextF;
 
-@property (strong,nonatomic) UIButton *mBtn;
-
-@property (strong,nonatomic) UIImageView *mImageV;
+//@property (strong,nonatomic) UIButton *mBtn;
+//
+//@property (strong,nonatomic) UIImageView *mImageV;
 
 //@property (strong,nonatomic)   UILabel *mHint;
 
@@ -23,26 +23,26 @@
 
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
 @property (nonatomic,strong) HomeRefundSelectBankView *purposeView;
-
-@property (nonatomic,strong) NSString *mModeString;
-
-@property (nonatomic,strong) NSString *mTextName;
-
-@property (nonatomic,strong) NSString *mName; //全名
-
-@property (nonatomic,strong) NSString *mNationality; //国籍
-
-@property (nonatomic,strong) NSString *mGender; // 性别
-
-@property (nonatomic,strong) NSString *mBankName; //银行
-
-@property (nonatomic,strong) NSString *mBankCity; //开户城市
-
-@property (nonatomic,strong) NSString *mAccNumber; //账户号码
-
-@property (nonatomic,strong) NSString *mReleationShip; // 关系
-
-@property (nonatomic,strong) NSString *mContNumber; // 联系号码
+//
+//@property (nonatomic,strong) NSString *mModeString;
+//
+//@property (nonatomic,strong) NSString *mTextName;
+//
+//@property (nonatomic,strong) NSString *mName; //全名
+//
+//@property (nonatomic,strong) NSString *mNationality; //国籍
+//
+//@property (nonatomic,strong) NSString *mGender; // 性别
+//
+//@property (nonatomic,strong) NSString *mBankName; //银行
+//
+//@property (nonatomic,strong) NSString *mBankCity; //开户城市
+//
+//@property (nonatomic,strong) NSString *mAccNumber; //账户号码
+//
+//@property (nonatomic,strong) NSString *mReleationShip; // 关系
+//
+//@property (nonatomic,strong) NSString *mContNumber; // 联系号码
 
 @end
 
@@ -71,49 +71,53 @@
     [super setSelected:selected animated:animated];
     
 }
-- (void)setMItem:(WKResipientInfoObj *)mItem andIndex:(NSIndexPath *)index{
-    self.mIndexPath = index;
-    _mName = mItem.fullName;
-    _mNationality = mItem.nationality;
-    _mGender = mItem.gender;
-    _mBankName = mItem.bankName;
-    _mBankCity = mItem.bankCity;
-    _mAccNumber = mItem.accountNumber;
-    _mReleationShip = mItem.relationship;
-    _mContNumber = mItem.contactNumber;
-    if(self.mIndexPath.row ==0){
-        self.mText.placeholder = @"请输入姓名";
-        _mText.text = _mName;
-    }else if(self.mIndexPath.row == 1){
-//      self.mButtonLabel.text = @"请选择";
-        self.mButtonLabel.text = _mNationality;
-    }else if(self.mIndexPath.row == 2){
-        self.mButtonLabel.text = @"请选择";
-        
-    }else if(self.mIndexPath.row == 3){
-        self.mButtonLabel.text = @"请选择";
-        
-    }else if(self.mIndexPath.row == 4){
-        self.mText.placeholder = @"请输入开户城市";
-        
-    }else if(self.mIndexPath.row == 5){
-        self.mText.placeholder = @"请输入账户号码";
-        
-    }else if(self.mIndexPath.row == 6){
-        self.mButtonLabel.text = @"请选择";
-        
-    }else if(self.mIndexPath.row == 7){
-        self.mText.placeholder = @"请输入联系号码";
-        
-    }
-    if([self.mButtonLabel.text isEqualToString:@"请选择"]){
-        self.mButtonLabel.textColor = ssRGBHex(0xcccccc);
-    }else{
-        self.mButtonLabel.textColor = ssRGBHex(0x2B2B2B);
-    }
-    
-    
-}
+
+
+
+
+//- (void)setMItem:(WKResipientInfoObj *)mItem andIndex:(NSIndexPath *)index{
+//    self.mIndexPath = index;
+//    _mName = mItem.fullName;
+//    _mNationality = mItem.nationality;
+//    _mGender = mItem.gender;
+//    _mBankName = mItem.bankName;
+//    _mBankCity = mItem.bankCity;
+//    _mAccNumber = mItem.accountNumber;
+//    _mReleationShip = mItem.relationship;
+//    _mContNumber = mItem.contactNumber;
+//    if(self.mIndexPath.row ==0){
+//        self.mText.placeholder = @"请输入姓名";
+//        _mText.text = _mName;
+//    }else if(self.mIndexPath.row == 1){
+////      self.mButtonLabel.text = @"请选择";
+//        self.mButtonLabel.text = _mNationality;
+//    }else if(self.mIndexPath.row == 2){
+//        self.mButtonLabel.text = @"请选择";
+//
+//    }else if(self.mIndexPath.row == 3){
+//        self.mButtonLabel.text = @"请选择";
+//
+//    }else if(self.mIndexPath.row == 4){
+//        self.mText.placeholder = @"请输入开户城市";
+//
+//    }else if(self.mIndexPath.row == 5){
+//        self.mText.placeholder = @"请输入账户号码";
+//
+//    }else if(self.mIndexPath.row == 6){
+//        self.mButtonLabel.text = @"请选择";
+//
+//    }else if(self.mIndexPath.row == 7){
+//        self.mText.placeholder = @"请输入联系号码";
+//
+//    }
+//    if([self.mButtonLabel.text isEqualToString:@"请选择"]){
+//        self.mButtonLabel.textColor = ssRGBHex(0xcccccc);
+//    }else{
+//        self.mButtonLabel.textColor = ssRGBHex(0x2B2B2B);
+//    }
+//
+//
+//}
 
 //-(void)setMItem:(NSArray *)mItem andIndex:(NSIndexPath *)index{
 //    WS(weakSelf);
@@ -295,32 +299,43 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [textField resignFirstResponder];
     self.mLineView.backgroundColor =ssRGBHex(0xe6e6e6); // 编辑完成改变下划线的颜色
-    if (self.mAlterBlock) {
-        self.mAlterBlock(self.mIndexPath,textField.text);
-    }
-    BOOL needRefresh;
-    if (textField.text.length<6) {
-        needRefresh = YES;
+    self.mItem.mContent = textField.text;
+    if(textField.text.length<=0 &&(self.mIndexPath.row == 5 || self.mIndexPath.row== 7 )){
+//        self.mItem.needRefresh = YES;
+        self.i = 0;
+        
+        
+//        self.mItem.needRefresh = YES;
+        self.mLineView.backgroundColor = [UIColor redColor];
+        
     }else{
-        needRefresh = NO;
+        self.i=1;
+        
+        
+//        self.mItem.needRefresh = NO;
     }
-    self.mItem.needRefresh = needRefresh;
-    if (self.mRefreshCellBlock) {
-        self.mRefreshCellBlock(self.mItem,self.mIndexPath);
+    if(self.mLineBlock){
+        self.mLineBlock(self.mIndexPath,self.i);
     }
-    DebugLog(@"%@",_mName);
-    DebugLog(@"%@,%@",self.mIndexPath,textField.text);
-//    if(_mIndexPath.row==0){
-    
+//    if(self.mItem.needRefresh ==YES){
+//        self.i=0;
+//    }else{
+//        self.i=1;
 //    }
+    
+   
+    if(self.mResultBlock){
+        self.mResultBlock(self.mIndexPath, self.mItem);
+    }
+
     
     
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    if (self.mAlterBlock) {
-        self.mAlterBlock(self.mIndexPath,textField.text);
-    }
+//    if (self.mAlterBlock) {
+//        self.mAlterBlock(self.mIndexPath,textField.text);
+//    }
     return YES;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -358,10 +373,10 @@
 
 
 -(void)OpenSelect:(id)sender{
-    if(self.mDataBlock){
-        
-        self.mDataBlock(self.mIndexPath);
-    }
+//    if(self.mDataBlock){
+//        
+//        self.mDataBlock(self.mIndexPath);
+//    }
     
 }
 
@@ -377,10 +392,12 @@
         [weakSelf.purposeView removeFromSuperview];
         weakSelf.purposeView = nil;
         if (tag == 1001) {
-            
             weakSelf.mButtonLabel.text = string;
+            weakSelf.mItem.mContent = string;
             weakSelf.mButtonLabel.textColor = ssRGBHex(0x2b2b2b);
-            
+            if(weakSelf.mBackBlcok){
+                weakSelf.mBackBlcok(weakSelf.mIndexPath,weakSelf.mItem);
+            }
         }
     };
     
@@ -388,25 +405,14 @@
     
 }
 
-//- (void)setString:(NSString *)mString andIndex:(NSIndexPath *)index{
-//    WS(weakSelf);
-//    _mIndexPath = index;
-//    self.mAlterBlock = ^(NSIndexPath *mIndexPath, NSString *mText) {
-//        if([mString isEqualToString:@"全名"]){
-//            weakSelf.mName = mText;
-//        }
-//    };
-//   
-//}
-
-
-
-//- (NSString *)setTextHeigh:(NSIndexPath *)index{
-//    self.mIndexPath = index;
-//
-//
-//    return _mModeString;
-//}
-
-
+- (void)updateItemText:(FormObj *)mItem{
+    self.mItem = mItem;
+    self.mLeftName.text = mItem.mTitle;
+    self.mText.text = mItem.mContent;
+}
+- (void)updateItemButton:(FormObj *)mItem{
+    self.mItem = mItem;
+    self.mLeftName.text = mItem.mTitle;
+    self.mButtonLabel.text = mItem.mContent;
+}
 @end
