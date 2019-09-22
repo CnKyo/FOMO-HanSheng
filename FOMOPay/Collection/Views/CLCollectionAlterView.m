@@ -23,6 +23,8 @@
 
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
 @property (nonatomic,strong) HomeRefundSelectBankView *purposeView;
+
+@property (nonatomic,strong) NSArray * modelArray;
 //
 //@property (nonatomic,strong) NSString *mModeString;
 //
@@ -301,29 +303,11 @@
     self.mLineView.backgroundColor =ssRGBHex(0xe6e6e6); // 编辑完成改变下划线的颜色
     self.mItem.mContent = textField.text;
     if(textField.text.length<=0 &&(self.mIndexPath.row == 5 || self.mIndexPath.row== 7 )){
-//        self.mItem.needRefresh = YES;
-        self.i = 0;
-        
-        
-//        self.mItem.needRefresh = YES;
+        self.mItem.needRefresh = YES;
         self.mLineView.backgroundColor = [UIColor redColor];
-        
     }else{
-        self.i=1;
-        
-        
-//        self.mItem.needRefresh = NO;
+        self.mItem.needRefresh = NO;
     }
-    if(self.mLineBlock){
-        self.mLineBlock(self.mIndexPath,self.i);
-    }
-//    if(self.mItem.needRefresh ==YES){
-//        self.i=0;
-//    }else{
-//        self.i=1;
-//    }
-    
-   
     if(self.mResultBlock){
         self.mResultBlock(self.mIndexPath, self.mItem);
     }
@@ -385,9 +369,19 @@
     CGRect mFrame = [UIApplication sharedApplication].keyWindow.bounds;
     self.purposeView = [HomeRefundSelectBankView shareView];
     self.purposeView.frame = mFrame;
-    self.purposeView.titleLabel.text = @"汇款目的";
-    NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
-    [self.purposeView updataSource:modelArray];
+    self.purposeView.titleLabel.text = _mItem.mTitle;
+    if([_mItem.mTitle isEqualToString:@"国籍"]){
+        _modelArray = @[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"];
+    }else if([_mItem.mTitle isEqualToString:@"关系"]){
+        _modelArray =@[@"本人",@"亲人",@"好友",@"同事"];
+    }else if([_mItem.mTitle isEqualToString:@"性别"]){
+        _modelArray =@[@"男",@"女"];
+    }else if([_mItem.mTitle isEqualToString:@"银行"]){
+        _modelArray =@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"];
+    }
+//    self.purposeView.titleLabel.text = @"汇款目的";
+//    NSArray *modelArray = @[@"语言",@"联系我们",@"条约条款",@"消息通知",@"登出"];
+    [self.purposeView updataSource:_modelArray];
     self.purposeView.HomeRefundSelectBankViewBlock = ^(NSString *string, NSInteger tag) {
         [weakSelf.purposeView removeFromSuperview];
         weakSelf.purposeView = nil;

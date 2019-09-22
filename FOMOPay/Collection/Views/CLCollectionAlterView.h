@@ -24,11 +24,11 @@ typedef void(^TextCellBlock)(NSIndexPath *mIndexPath,FormObj *mItem);
 
 typedef void(^ButtonCellBlock)(NSIndexPath *mIndexPath,FormObj *mItem);
 
-typedef void(^CellBlock)(NSIndexPath *mIndexPath,NSInteger i);
+//typedef void(^CellBlock)(NSIndexPath *mIndexPath,NSInteger i);
 @interface CLCollectionAlterView : UITableViewCell
 
 
-@property (assign,nonatomic) NSInteger i;
+//@property (assign,nonatomic) NSInteger i;
 
 
 @property (strong,nonatomic) NSIndexPath *mIndexPath;
@@ -49,7 +49,7 @@ typedef void(^CellBlock)(NSIndexPath *mIndexPath,NSInteger i);
 
 @property (copy, nonatomic) ButtonCellBlock mBackBlcok;
 
-@property (copy, nonatomic) CellBlock mLineBlock;
+//@property (copy, nonatomic) CellBlock mLineBlock;
 
 @property (strong, nonatomic) FormObj *mItem;
 

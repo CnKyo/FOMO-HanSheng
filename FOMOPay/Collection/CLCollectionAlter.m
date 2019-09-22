@@ -82,6 +82,23 @@
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tap1.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap1];//关闭键盘手势
+    
+    UIView *mFooterView = [UIView new];
+    mFooterView.backgroundColor = ssRGBHex(0xFFFFFF);
+    //    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
+    //    mbgView.backgroundColor= [UIColor redColor];
+    mFooterView.frame = CGRectMake(0, 12,kScreenWidth , 34);
+    UIView *mFootLine = [UIView new];
+    mFootLine.backgroundColor = ssRGBHex(0xcccccc);
+    [mFooterView addSubview:mFootLine];
+    [mFootLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(kScreenWidth);
+        make.height.offset(1);
+        make.bottom.equalTo(mFooterView);
+    }];
+    self.mTabView.tableFooterView =mFooterView;
+   
+    
    
 }
 
@@ -102,8 +119,8 @@
 
 
 - (void)loadData{
-    NSArray *mArr = @[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账户号码",@"关系",@"联系号码",@""];
-    _mTemp = @[_mData.fullName,_mData.nationality,[self mGender:_mData.gender],_mData.bankName,_mData.bankCity,[self formmatterBankCardNum:_mData.accountNumber],_mData.relationship,_mData.contactNumber,@""];
+    NSArray *mArr = @[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账户号码",@"关系",@"联系号码"];
+    _mTemp = @[_mData.fullName,_mData.nationality,[self mGender:_mData.gender],_mData.bankName,_mData.bankCity,[self formmatterBankCardNum:_mData.accountNumber],_mData.relationship,_mData.contactNumber];
     
     [self.mDataArr removeAllObjects];
     for(int i=0;i<mArr.count;i++){
@@ -133,11 +150,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     FormObj *mItem = self.mDataArr[indexPath.row];
-    if(mItem.needRefresh &&mItem.tag ==6 ){
-        return 61;
+    if(mItem.needRefresh ){
+        return 65;
         
     }
-    return 49;
+    return 50;
 //    if (self.mCurrentIndex.row == indexPath.row) {
 //        return 49;
 //    }else{
@@ -176,17 +193,17 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
         cell.mIndexPath = indexPath;
-        cell.mLineBlock = ^(NSIndexPath *mIndexPath, NSInteger i) {
-             FormObj *mCItem = self.mDataArr[mIndexPath.row +1];
-            if(i == 0){
-                mCItem.needRefresh = YES;
-                
-            }else{
-                mCItem.needRefresh =NO;
-            }
-            
-             [self.mTabView reloadData];
-        };
+//        cell.mLineBlock = ^(NSIndexPath *mIndexPath, NSInteger i) {
+//             FormObj *mCItem = self.mDataArr[mIndexPath.row +1];
+//            if(i == 0){
+//                mCItem.needRefresh = YES;
+//                
+//            }else{
+//                mCItem.needRefresh =NO;
+//            }
+//            
+//             [self.mTabView reloadData];
+//        };
 //        cell.mLineBlock = ^(NSIndexPath *mIndexPath,NSInteger ) {
 //            FormObj *mCItem = self.mDataArr[mIndexPath.row +1];
 //            mCItem.needRefresh = YES;
@@ -197,24 +214,39 @@
                 self.mSendButton.enabled = YES;
                 self.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
             }
+            if(mItem.needRefresh ==YES && mIndexPath.row == 5){
+                
+                weakSelf.mAcHintLable.text =@"请输入正确的账户号码";
+                weakSelf.mAcHintLable.font = kCommonFont(12);
+                weakSelf.mAcHintLable.textColor = ssRGBHex(0xD50037);
+                [weakCell addSubview:weakSelf.mAcHintLable];
+                [weakSelf.mAcHintLable mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(weakCell.mLineView.mas_bottom).mas_offset(7);
+                    make.right.equalTo(weakCell).mas_offset(-15);
+                }];
+            }else if(mItem.needRefresh == NO && mIndexPath.row == 5){
+                 [weakSelf.mAcHintLable removeFromSuperview];
+            }else if(mItem.needRefresh == YES && mIndexPath.row == 7){
+                weakSelf.mCoHitLabele.text =@"请输入正确的账户号码";
+                weakSelf.mCoHitLabele.font = kCommonFont(12);
+                weakSelf.mCoHitLabele.textColor = ssRGBHex(0xD50037);
+                [weakSelf.mTabView.tableFooterView addSubview:weakSelf.mCoHitLabele];
+                [weakSelf.mCoHitLabele mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(weakCell.mLineView.mas_bottom).mas_offset(7);
+                    make.right.equalTo(weakCell).mas_offset(-15);
+                }];
+            }else if(mItem.needRefresh == NO && mIndexPath.row == 7){
+               
+                [weakSelf.mCoHitLabele removeFromSuperview];
+                
+            };
             [weakSelf.mDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if(idx == mIndexPath.row){
                     [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
                     [weakSelf.mTabView reloadData];
                 }
               
-                if(mItem.needRefresh ==YES){
-                   
-                    weakSelf.mAcHintLable.text =@"aaa";
-                    [weakCell addSubview:weakSelf.mAcHintLable];
-                    [weakSelf.mAcHintLable mas_makeConstraints:^(MASConstraintMaker *make) {
-                        make.top.equalTo(weakCell.mLineView.mas_bottom).mas_offset(7);
-                        make.right.equalTo(weakCell).mas_offset(-15);
-                    }];
-                }else{
-//
-                    
-                };
+              
                 
             }];
         };
