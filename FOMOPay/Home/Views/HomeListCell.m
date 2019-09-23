@@ -9,7 +9,8 @@
 #import "HomeListCell.h"
 #import "HomeListCollectionCell.h"
 #import "HomeListCollectionModel.h"
-#import "CLCollectionAddSelect.h"
+
+#import "HomeListCollection.h"
 @interface HomeListCell()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
@@ -54,6 +55,8 @@
 @property (nonatomic, strong) NSString *mIn;
 
 @property (nonatomic,strong) NSMutableArray *mDataArr;
+
+@property (nonatomic,strong) HomeListCollection *mCollView;
 
 
 
@@ -295,12 +298,17 @@
     if (sender.selected == YES) {
         
         if (sender.tag == 1000) {
-            
+//            self.ContryViewOne.backgroundColor = [UIColor redColor];
+           
+//            self.mCollView = [HomeListCollection new];
+//            self.mCollView.view.frame = self.ContryViewOne.frame;
+//            [self.ContryViewOne addSubview:self.mCollView.view];
 //            CLCollectionAddSelect *m = [CLCollectionAddSelect new];
 ////            m.view.frame = self.ContryViewOne.frame;
 //            m.view.frame = self.CountryView.frame;
 //            [self.ContryViewOne addSubview:m.view];
 //            self.ContryViewOne.hidden = NO;
+            
 //            self.ContryViewOne.backgroundColor = [UIColor redColor];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];

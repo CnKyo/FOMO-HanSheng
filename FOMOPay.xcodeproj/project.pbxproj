@@ -160,6 +160,7 @@
 		CCB32EA5231D6F470027FD84 /* CLHistoryRefundProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32EA4231D6F470027FD84 /* CLHistoryRefundProgress.m */; };
 		CCB32EA8231D70A70027FD84 /* CLHistoryDetailsOfRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */; };
 		CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */; };
+		CCC9FAAC23390563003F962A /* HomeListCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC9FAAB23390563003F962A /* HomeListCollection.m */; };
 		CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */; };
 		CF009EC223339D0F00D32857 /* xModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF009EC123339D0F00D32857 /* xModel.m */; };
 		CF20E262231F89A300EEB9AD /* pdf_history_beingprocessed_icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF20E25F231F89A200EEB9AD /* pdf_history_beingprocessed_icon.pdf */; };
@@ -524,6 +525,8 @@
 		CCB32EA6231D70A70027FD84 /* CLHistoryDetailsOfRefund.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryDetailsOfRefund.h; sourceTree = "<group>"; };
 		CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryDetailsOfRefund.m; sourceTree = "<group>"; };
 		CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_language_selected.pdf; sourceTree = "<group>"; };
+		CCC9FAAA23390563003F962A /* HomeListCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListCollection.h; sourceTree = "<group>"; };
+		CCC9FAAB23390563003F962A /* HomeListCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeListCollection.m; sourceTree = "<group>"; };
 		CCFBE3D623096407004210A1 /* pdf_me_message_logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_message_logo.pdf; sourceTree = "<group>"; };
 		CF009EC023339D0F00D32857 /* xModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xModel.h; sourceTree = "<group>"; };
 		CF009EC123339D0F00D32857 /* xModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xModel.m; sourceTree = "<group>"; };
@@ -1076,6 +1079,8 @@
 				77023995230BDD7F00EE8C31 /* HomeListCollectionCell.h */,
 				77023996230BDD7F00EE8C31 /* HomeListCollectionCell.m */,
 				77023997230BDD7F00EE8C31 /* HomeListCollectionCell.xib */,
+				CCC9FAAA23390563003F962A /* HomeListCollection.h */,
+				CCC9FAAB23390563003F962A /* HomeListCollection.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1957,6 +1962,7 @@
 				CCB32EA5231D6F470027FD84 /* CLHistoryRefundProgress.m in Sources */,
 				77F882D823136EAA0010A884 /* HomeSelectPayeeListCell.m in Sources */,
 				18851848231F97450009D088 /* NSMutableString+TagReplace.m in Sources */,
+				CCC9FAAC23390563003F962A /* HomeListCollection.m in Sources */,
 				CF2A16C7231E8062007E110D /* CLHistorySelctOfPayeeView.m in Sources */,
 				18B7BEEC2304F572007B496A /* CLNavModel.m in Sources */,
 				CF930D3723211ED9000D4618 /* WKLoginManager.m in Sources */,
