@@ -7,7 +7,7 @@
 //
 #import "WKHudManager.h"
 #import "CLCollectionAdd.h"
-
+#import "CLCollectionAlterView.h"
 @interface CLCollectionAdd ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 //CLCollectionAddSelectDelegate>//代理传值第4步
 @property (nonatomic,strong) NSArray *mAddLeftDateSource;
@@ -25,6 +25,11 @@
 @property (nonatomic,strong) NSMutableArray *mMdate;
 @property (nonatomic,strong) NSString *mText;
 @property (nonatomic,strong) NSString *mText2;
+@property (strong,nonatomic)UILabel *mAcHintLable;
+
+@property (strong,nonatomic)UILabel *mCoHitLabele;
+
+@property (strong,nonatomic) NSMutableArray *mDataArr;
 
 @end
 
@@ -49,10 +54,14 @@
                 break;
         }
     }];
-    [self LoadCellType:6];
+    self.mAcHintLable = [UILabel new];
+    self.mCoHitLabele = [UILabel new];
+    [self LoadCellType:12];
     self.mSendButton = [UIButton new];
     [self.mSendButton setTitle:@"提交" forState:UIControlStateNormal];
-    self.mSendButton.backgroundColor = clBlueRGB;
+    self.mSendButton.enabled = NO;
+    self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+//    self.mSendButton.backgroundColor = clBlueRGB;
     self.mSendButton.layer.cornerRadius = 4;
     [self.mSendButton addTarget:self action:@selector(successfullyadd:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.mSendButton];
@@ -69,6 +78,21 @@
     tap1.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap1];
     
+    UIView *mFooterView = [UIView new];
+    mFooterView.backgroundColor = ssRGBHex(0xFFFFFF);
+    //    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
+    //    mbgView.backgroundColor= [UIColor redColor];
+    mFooterView.frame = CGRectMake(0, 0,kScreenWidth , 34);
+    UIView *mFootLine = [UIView new];
+    mFootLine.backgroundColor = ssRGBHex(0xcccccc);
+    [mFooterView addSubview:mFootLine];
+    [mFootLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.offset(kScreenWidth);
+        make.height.offset(1);
+        make.bottom.equalTo(mFooterView);
+    }];
+    self.mTabView.tableFooterView =mFooterView;
+    
 }
 
 -(void)viewTapped:(UITapGestureRecognizer*)tap1
@@ -77,247 +101,183 @@
 }
 
 
+- (NSMutableArray *)mDataArr{
+    if(!_mDataArr){
+        _mDataArr = [NSMutableArray new];
+    }
+    return _mDataArr;
+}
+
 - (void)loadData{
-    _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码",@"c"];
-    _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
-    _mModeString =@"请选择";
-    _mModeString2=@"请选择";
-    _mModeString3=@"请选择";
-    _mModeString4=@"请选择";
+     NSArray *mArr = @[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账户号码",@"关系",@"联系号码"];
+//    _mAddLeftDateSource=@[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账号号码",@"关系",@"联系号码",@"c"];
+//    _modelArray = @[@[@"中国",@"马来西亚",@"菲律宾",@"越南",@"台湾",@"泰国",@"香港",@"新加坡",@"日本"],@[@"男",@"女"],@[@"DBS Bank Ltd",@"POSB国家储蓄银行",@"UOB大华银行",@"OCBC华侨银行"],@[@"本人",@"亲人",@"好友",@"同事"] ];
+    [self.mDataArr removeAllObjects];
+    for(int i=0;i<mArr.count;i++){
+        FormObj *mItem = [FormObj new];
+        mItem.tag = i;
+        mItem.mTitle = mArr[i];
+//        mItem.mContent = _mTemp[i];
+        if(i==0 || i==4 ||i==5 ||i==7){
+            mItem.type = 2;
+        }else{
+            mItem.type = 1;
+        }
+        [self.mDataArr addObject:mItem];
+        
+        
+        
+    }
+    [self.mTabView reloadData];
     
-    self.mMdate  =[@[@"", @"", @"",@"",@"",@"",@"",@""] mutableCopy];
-//    [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"", nil];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _mAddLeftDateSource.count;
+    return self.mDataArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 6){
-        if([self.mText isEqualToString:@""]){
-            return 61;
-        }else{
-            return 49;
-        }
-    }else if(indexPath.row == 8){
-        if([self.mText2 isEqualToString:@""]){
-            return 55;
-        }else{
-            return 34;
-        }
-    }else{
-    return 49;
+    FormObj *mItem = self.mDataArr[indexPath.row];
+    if(mItem.needRefresh ){
+        return 65;
         
     }
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *String = @"cell";
-    CLMeLanguage *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[CLMeLanguage alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:String];
-        
-    }
     WS(weakSelf);
-     __weak typeof(cell)  weakCell = cell;
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    self.mTabView.separatorStyle= UITableViewCellSeparatorStyleNone;
-//    cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
-    cell.mMeLanguageLeftLabel.text = _mAddLeftDateSource[indexPath.row];
-    cell.mMeLanguageLeftLabel.font = kCommonFont(14);
-    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-    
-    if(indexPath.row == 0 ){
-    cell.mIndexPath = indexPath;
-    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-    [cell updateView:CLMeLanguageType_textFiled and:nil];
-    cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-    [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-    };}
-    
-    
-    if(indexPath.row == 1){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        [cell updateView:CLMeLanguageType_button and:_mModeString];
-        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-                    weakSelf.mSelectView = [CLCollectionAddSelect new];
-                    weakSelf.mSelectView.modelArray  = [self.modelArray objectAtIndex:0];//把当前数据传入另一个j控制器的moderarrl里面;
-                    [weakSelf.view addSubview:weakSelf.mSelectView.view];
-                    [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
-                    weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
-                        weakCell.mLb.text = string;
-                        weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
-                    weakSelf.mModeString = string;
-                    [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
-            };
-            
-    };}
-    
-    if(indexPath.row == 2){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        [cell updateView:CLMeLanguageType_button and:_mModeString2];
-        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-            weakSelf.mSelectView = [CLCollectionAddSelect new];
-//                weakSelf.mSelectView.delegate = self;//实现他的代理方法
-                weakSelf.mSelectView.modelArray  = [self.modelArray objectAtIndex:1];//把当前数据传入另一个j控制器的moderarrl里面;
-                [weakSelf.view addSubview:self.mSelectView.view];
-                [weakSelf.mSelectView initWithModelArray:self.mAddLeftDateSource and:indexPath.row];
-                weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
-                    weakCell.mLb.text = string;
-                    weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
-                    weakSelf.mModeString2= string;
-                    [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
-                };
-            
-            };}
-    
-    
-    if(indexPath.row == 3){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        [cell updateView:CLMeLanguageType_button and:_mModeString3];
-        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-            weakSelf.mSelectView = [CLCollectionAddSelect new];
-//            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
-            weakSelf.mSelectView.modelArray  = [weakSelf.modelArray objectAtIndex:2];//把当前数据传入另一个j控制器的moderarrl里面;
-            [weakSelf.view addSubview:weakSelf.mSelectView.view];
-            [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
-            weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
-                weakCell.mLb.text = string;
-                weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
-                weakSelf.mModeString3 = string;
-                 [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
-            };
-        };}
-  
-    
-    if(indexPath.row == 6){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        [cell updateView:CLMeLanguageType_button and:_mModeString4];
-        cell.mDataBlock = ^(NSIndexPath * _Nonnull mIndexPath) {
-            weakSelf.mSelectView = [CLCollectionAddSelect new];
-//            weakSelf.mSelectView.delegate = weakSelf;//实现他的代理方法
-            weakSelf.mSelectView.modelArray  = [weakSelf.modelArray objectAtIndex:3];//把当前数据传入另一个j控制器的moderarrl里面;
-            [weakSelf.view addSubview:weakSelf.mSelectView.view];
-            [weakSelf.mSelectView initWithModelArray:weakSelf.mAddLeftDateSource and:indexPath.row];
-            weakSelf.mSelectView.CLCollectionAddSelectBlock = ^(NSString * _Nonnull string, NSInteger tag) {
-                weakCell.mLb.text = string;
-                weakCell.mLb.textColor = ssRGBHex(0x2b2b2b);
-                weakSelf.mModeString4 = string;
-                 [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:string];
-            };
-           
-        };}
-    
-    
-    
-    //////////////////////////////////////////////////////////////////////////////////以下为textfiled
-    if(indexPath.row == 4 ){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        [cell updateView:CLMeLanguageType_textFiled and:nil];
-        cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-//            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-             [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-            
-        };}
-
-    if(indexPath.row == 5){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UILabel *mHint = [UILabel new];
-        mHint.font = kCommonFont(12);
-        mHint.textColor = ssRGBHex(0xD50037);
-        mHint.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:mHint];
-        [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(cell.mLineView.mas_bottom).offset(7);
-            make.right.equalTo(cell).offset(-15);
-            make.height.offset(12);
-            
-            
-        }];
-        [cell updateView:CLMeLanguageType_textFiled and:nil];
-        cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-                self.mText  = mText;
-                if(mText.length <=0 ){
-                weakCell.mLineView.backgroundColor = ssRGBHex(0xD50037);
-                mHint.hidden = NO;
-                mHint.text = @"请输入正确的账户号码";
-                }else{
-                weakCell.mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-                mHint.text = @"";
-                mHint.hidden = YES;
-                [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-            }
-            
-                NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
-            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-//
-        };}
-
-    
-    if(indexPath.row == 7){
-        cell.mIndexPath = indexPath;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
-        UILabel *mHint = [UILabel new];
-        mHint.font = kCommonFont(12);
-        mHint.textColor = ssRGBHex(0xD50037);
-        mHint.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:mHint];
-        [mHint mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(cell.mLineView.mas_bottom).offset(7);
-            make.right.equalTo(cell).offset(-15);
-            make.height.offset(12);
-
-        }];
-        [cell updateView:CLMeLanguageType_textFiled and:nil];
-        cell.mBlock = ^(NSIndexPath * _Nonnull mIndexPath, NSString * _Nonnull mText) {
-//            DebugLog(@"当前的索引:%ld,内容是:%@",(long)mIndexPath.row,mText);
-            weakSelf.mText2 = mText;
-            if(mText.length <= 0){
-            weakCell.mLineView.backgroundColor = ssRGBHex(0xD50037);
-               mHint.text = @"请输入正确的联系号码";
-            }else{
-               weakCell.mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//                [WeakSelf.mHint removeFromSuperview];
-                mHint.text = @"";
-                 [weakSelf.mMdate replaceObjectAtIndex:indexPath.row withObject:mText];
-            }
-            NSIndexPath *mindexPath=[NSIndexPath indexPathForRow:8 inSection:0];
-            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:mindexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-        };}
-    
-    
-    if(indexPath.row == 8){
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        cell.mMeLanguageLeftLabel.hidden = YES;
-        cell.mMeLanguageLeftLabel.text = @"";
-        cell.mLineView.hidden = YES;
-        [cell updateView:CLMeLanguageType_other and:nil];
-    }
-    
-    
-    for(int i = 0 ;i<self.mMdate.count;i++){
-        if([weakSelf.mMdate[i] isEqual:@""] || [weakSelf.mMdate[i] isEqual:@"请选择"]){
-            weakSelf.mSendButton.enabled = NO;
-            weakSelf.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
-        }else{
-            weakSelf.mSendButton.enabled = YES;
-            weakSelf.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+    NSString *String = @"cell";
+    NSString *StringButton = @"cellButton";
+    FormObj *mCellItem = self.mDataArr[indexPath.row];
+    if(mCellItem.type == 2){
+        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
+        if (!cell){
+            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:String];
         }
+        __weak __typeof(cell)weakCell = cell;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        cell.mIndexPath = indexPath;
+        cell.mResultBlock = ^(NSIndexPath *mIndexPath, FormObj *mItem) {
+//            if((![mItem.mContent isEqualToString:@""]) && (mItem.mContent.length >0)){
+//                self.mSendButton.enabled = YES;
+//                self.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+//            }
+            if(mItem.needRefresh ==YES && mIndexPath.row == 5){
+                
+                weakSelf.mAcHintLable.text =@"请输入正确的账户号码";
+                weakSelf.mAcHintLable.font = kCommonFont(12);
+                weakSelf.mAcHintLable.textColor = ssRGBHex(0xD50037);
+                [weakCell addSubview:weakSelf.mAcHintLable];
+                [weakSelf.mAcHintLable mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(weakCell.mLineView.mas_bottom).mas_offset(7);
+                    make.right.equalTo(weakCell).mas_offset(-15);
+                }];
+            }else if(mItem.needRefresh == NO && mIndexPath.row == 5){
+                [weakSelf.mAcHintLable removeFromSuperview];
+            }else if(mItem.needRefresh == YES && mIndexPath.row == 7){
+                weakSelf.mCoHitLabele.text =@"请输入正确的联系号码";
+                weakSelf.mCoHitLabele.font = kCommonFont(12);
+                weakSelf.mCoHitLabele.textColor = ssRGBHex(0xD50037);
+                [weakSelf.mTabView.tableFooterView addSubview:weakSelf.mCoHitLabele];
+                [weakSelf.mCoHitLabele mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(weakCell.mLineView.mas_bottom).mas_offset(7);
+                    make.right.equalTo(weakCell).mas_offset(-15);
+                }];
+            }else if(mItem.needRefresh == NO && mIndexPath.row == 7){
+                
+                [weakSelf.mCoHitLabele removeFromSuperview];
+                
+            };
+            [weakSelf.mDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if(idx == mIndexPath.row){
+                    [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
+                    [weakSelf.mTabView reloadData];
+                }
+//                if((mCellItem.mContent != nil) && (mCellItem.mContent.length >0)){
+//                    self.mSendButton.enabled = YES;
+//                    self.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+//                }else{
+//                    self.mSendButton.enabled = NO;
+//                    self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+//                };
+////
+                
+                
+            }];
+            for(int a=0;a<weakSelf.mDataArr.count;a++){
+                FormObj *m = weakSelf.mDataArr[a];
+                 if(m.mContent !=nil &&m.mContent.length >0){
+                self.mSendButton.enabled = YES;
+                self.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+                }else{
+                    self.mSendButton.enabled = NO;
+                    self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+                    break;
+                }
+            }
+          
+        };
+        
+        [cell updateItemText:mCellItem];
+        return cell;
+        
+        
+        
+        
+    }else{
+        CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:StringButton forIndexPath:indexPath];
+        if (!cell){
+            cell = [[CLCollectionAlterView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:StringButton];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        cell.mIndexPath = indexPath;
+        [cell updateItemButton:mCellItem];
+        cell.mBackBlcok = ^(NSIndexPath *mIndexPath, FormObj *mItem) {
+            [weakSelf.mDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if(idx == mIndexPath.row){
+                    [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
+                    [weakSelf.mTabView reloadData];
+                }
+//                if([mItem.mContent isEqualToString:@""]){
+//                    weakSelf.mSendButton.enabled = YES;
+//                    weakSelf.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+//                };
+            }];
+            for(int a=0;a<weakSelf.mDataArr.count;a++){
+                FormObj *m = weakSelf.mDataArr[a];
+                if(m.mContent !=nil &&m.mContent.length >0){
+                    self.mSendButton.enabled = YES;
+                    self.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+                }else{
+                    self.mSendButton.enabled = NO;
+                    self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+                    break;
+                }
+            }
+        };
+        //        cell.mResultBlock = ^(NSIndexPath *mIndexPath, FormObj *mItem) {
+        //            [weakSelf.mDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //                if(idx == mIndexPath.row){
+        //                    [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
+        //                    [weakSelf.mTabView reloadData];
+        //                }
+        //            }];
+        //        };
+        return cell;
     }
-
-    return cell;
+    
+    
+    
+    
 }
+
 
 -(void)successfullyadd:(id)sender{
     DebugLog(@"%@",self.mMdate);
-    [self AddAccount:self.mMdate];
+    [self AddAccount:self.mDataArr];
     
 
     
@@ -331,23 +291,33 @@
     }
     
     NSMutableDictionary *para = [NSMutableDictionary new];
-    [para setObject:Array[0] forKey:@"fullName"];
-    [para setObject:Array[1] forKey:@"nationality"];
-    
-    
-    if ([Array[2] isEqualToString:@"男"]) {
-        [para setObject:@"MALE" forKey:@"gender"];
+    for(int i=0;i<_mDataArr.count;i++){
+        FormObj *m = _mDataArr[i];
+        if([m.mTitle isEqualToString:@"全名"]){
+            [para setObject:m.mContent forKey:@"fullName"];
+        }else if([m.mTitle isEqualToString:@"国籍"]){
+            [para setObject:m.mContent  forKey:@"nationality"];
+            [para setObject:[CLTool getCuurenceCode:m.mContent] forKey:@"currencyCode"];
+        }else if([m.mTitle isEqualToString:@"性别"]){
+            if([m.mContent isEqualToString:@"男"]){
+                [para setObject:@"MALE" forKey:@"gender"];
+            }else if([m.mContent isEqualToString:@"女"]){
+                [para setObject:@"FEMALE" forKey:@"gender"];
+            }
+        }else if([m.mTitle isEqualToString:@"银行"]){
+            [para setObject:m.mContent  forKey:@"bankName"];
+        }else if([m.mTitle isEqualToString:@"开户地址/城市"]){
+            [para setObject:m.mContent  forKey:@"bankCity"];
+        }else if([m.mTitle isEqualToString:@"账户号码"]){
+            [para setObject:[CLTool deleteSpace:m.mContent] forKey:@"accountNumber"];
+            
+        }else if([m.mTitle isEqualToString:@"关系"]){
+            [para setObject:m.mContent  forKey:@"relationship"];
+        }else if([m.mTitle isEqualToString:@"联系号码"]){
+            [para setObject:m.mContent  forKey:@"contactNumber"];
+        }
         
-    }else if ([Array[2] isEqualToString:@"女"]){
-        [para setObject:@"FEMALE" forKey:@"gender"];
     }
-    
-    [para setObject:Array[3] forKey:@"bankName"];
-    [para setObject:Array[4] forKey:@"bankCity"];
-    [para setObject:[CLTool deleteSpace:Array[5]] forKey:@"accountNumber"];
-    [para setObject:Array[6] forKey:@"relationship"];
-    [para setObject:Array[7] forKey:@"contactNumber"];
-    [para setObject:[CLTool getCuurenceCode:Array[1]] forKey:@"currencyCode"];
     
     [self showLoading:@"Creating..."];
     [WKNetWorkManager WKCreateRecipientAcc:para block:^(id result, BOOL success) {

@@ -173,6 +173,7 @@
     if (self.mFetchAmount.length>0) {
         cell.myTextField1.text = [NSString stringWithFormat:@"%ld",[self.mFetchAmount integerValue]*[[WKAccountManager shareInstance].mRate integerValue]];
     }
+   
     if (self.mTotleAmount.length>0) {
         cell.myTextField2.text = self.mTotleAmount;
     }

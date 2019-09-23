@@ -303,6 +303,11 @@
                 weakSelf.mItem = mItem;
            
             };
+//            vc.mDeleteBlock = ^(BOOL success) {
+//                if(success){
+//                    self.mInx = nil;
+//                }
+//            };
             [self pushToViewController:vc];
     
         }else{  //确认
@@ -316,7 +321,7 @@
     //
 
 - (void)loadData{
-//    [self showLoading:nil];
+    [self showLoading:nil];
     [WKNetWorkManager WKGetRecipient:@{@"skip":@"0",@"take":@"50"} block:^(id result, BOOL success) {
         self.mItem = nil;
         [self.mData removeAllObjects];

@@ -16,13 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
  @param mItem 当前的对象
  @param backCount 返回几级视图
  */
+
 typedef void(^HomeChangePayeeVCBackBlock)(WKResipientInfoObj *mItem,NSInteger backCount);
+
+typedef void(^HomeChangePayeeVCDeleteBlock)(BOOL success);
 
 @interface HomeChangePayeeVC : BaseViewController
 @property (strong,nonatomic) WKResipientInfoObj *mItem;
 
 @property (copy,nonatomic) HomeChangePayeeVCBackBlock mBackBlock;
 
+@property (copy,nonatomic) HomeChangePayeeVCDeleteBlock mDeleteBlock;
 @end
 
 NS_ASSUME_NONNULL_END

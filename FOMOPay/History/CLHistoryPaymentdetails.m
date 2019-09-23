@@ -41,7 +41,11 @@
 
     self.mData=@[@"收款人",@"账户号码",@"关系",@"汇款金额",@"获得金额",@"汇率",@"手续费",@"汇款目的",@"资金来源",@"总金额"];
     
-    self.mRightData = @[self.mItem.recipient.fullName,self.mItem.recipient.accountNumber,self.mItem.recipient.relationship,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],self.mItem.purpose,self.mItem.sourceOfFund,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount]];
+    self.mRightData = @[self.mItem.recipient.fullName,[NSString stringWithFormat:@"****%@",[self.mItem.recipient.accountNumber substringWithRange:NSMakeRange(4, self.mItem.recipient.accountNumber.length - 4)]],
+                     
+                        
+                        self.mItem.recipient.accountNumber,
+                        self.mItem.recipient.relationship,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount],self.mItem.remittable.rate,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.serviceCharge.currencyCode,self.mItem.remittable.serviceCharge.amount],self.mItem.purpose,self.mItem.sourceOfFund,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount]];
 
 }
 

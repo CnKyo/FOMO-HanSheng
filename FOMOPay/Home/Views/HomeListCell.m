@@ -164,6 +164,21 @@
         _HomeListCellBlock(textField.text,textField.tag);
     }
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if(string.length >0){
+        unichar single = [string characterAtIndex:0];
+        if(single == '0'){
+            TOASTMESSAGE(@"汇出金额必须大于0");
+             [textField.text stringByReplacingCharactersInRange:range withString:@""];
+            return NO;
+        }
+        
+    }
+    return [self validateNumber:string];
+}
+
+
 - (void)textFieldDidChange:(UITextField *)textField{
     
 //    if (textField.tag == 4000) {
@@ -446,4 +461,26 @@
         [self.exchangeRateButton setTitle:@"修改" forState:0];
     }
 }
+
+- (BOOL)validateNumber:(NSString*)number {
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    int i = 0;
+    while (i < number.length) {
+        NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length == 0) {
+            res = NO;
+          
+            TOASTMESSAGE(@"金额只能输入数字!");
+            break;
+        }
+        i++;
+    }
+    return res;
+}
+
+
+
+
 @end

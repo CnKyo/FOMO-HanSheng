@@ -14,26 +14,29 @@
 //@property (nonatomic,strong) UILabel *mLabel;
 //@property (nonatomic,strong) UIImageView *mImageView ;
 @property (nonatomic,strong) NSArray *modelArray;
-@property (nonatomic,strong) NSIndexPath *mIndex;
+//@property (nonatomic,strong) NSIndexPath *mIndex;
 @property (nonatomic,strong) UIButton *mSendButton;
-@property (nonatomic,strong) NSArray *mAddLeftDateSource;
+//@property (nonatomic,strong) NSArray *mAddLeftDateSource;
 @property (nonatomic,strong) CLCollectionAddSelect *mSelectView;
-@property (nonatomic,strong) NSMutableArray *mMdate;
-@property (nonatomic,strong) NSArray *mTemp;
-@property (nonatomic,strong) NSString *mText;
-@property (nonatomic,strong) NSString *mText2;
+//@property (nonatomic,strong) NSMutableArray *mMdate;
 
-@property (nonatomic,strong) NSIndexPath *mCurrentIndex;
+//@property (nonatomic,strong) NSString *mText;
+//@property (nonatomic,strong) NSString *mText2;
+
+//@property (nonatomic,strong) NSIndexPath *mCurrentIndex;
 
 
-@property (nonatomic,strong) NSDictionary *mDic;
+
 
 @property (strong,nonatomic) NSMutableArray *mDataArr;
-@property (strong,nonatomic) NSArray *mTempArr;
+//@property (strong,nonatomic) NSArray *mTempArr;
+@property (nonatomic,strong) NSArray *mTemp;
 
 @property (strong,nonatomic)UILabel *mAcHintLable;
 
 @property (strong,nonatomic)UILabel *mCoHitLabele;
+
+@property (assign,nonatomic) BOOL needEnable;
 
 @end
 
@@ -59,12 +62,13 @@
                 break;
         }
     }];
+    self.needEnable = YES;
     self.mAcHintLable = [UILabel new];
     self.mCoHitLabele = [UILabel new];
     [self LoadCellType:12];
     self.mSendButton = [UIButton new];
     [self.mSendButton setTitle:@"提交" forState:UIControlStateNormal];
-    self.mSendButton.backgroundColor = clBlueRGB;
+//    self.mSendButton.backgroundColor = clBlueRGB;
     self.mSendButton.layer.cornerRadius = 4;
     [self.mSendButton addTarget:self action:@selector(successfullyadd:) forControlEvents:UIControlEventTouchUpInside];
     self.mSendButton.enabled = NO;
@@ -87,7 +91,7 @@
     mFooterView.backgroundColor = ssRGBHex(0xFFFFFF);
     //    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
     //    mbgView.backgroundColor= [UIColor redColor];
-    mFooterView.frame = CGRectMake(0, 12,kScreenWidth , 34);
+    mFooterView.frame = CGRectMake(0, 0,kScreenWidth , 34);
     UIView *mFootLine = [UIView new];
     mFootLine.backgroundColor = ssRGBHex(0xcccccc);
     [mFooterView addSubview:mFootLine];
@@ -155,26 +159,6 @@
         
     }
     return 50;
-//    if (self.mCurrentIndex.row == indexPath.row) {
-//        return 49;
-//    }else{
-//        if(indexPath.row == 6){
-//            if([self.mText isEqualToString:@""]){
-//                return 61;
-//            }else{
-//                return 49;
-//            }
-//        }else if(indexPath.row == 8){
-//            if([self.mText2 isEqualToString:@""]){
-//                return 55;
-//            }else{
-//                return 34;
-//            }
-//        }else{
-//            return 49;
-//
-//        }
-//    }
 
 }
 
@@ -183,6 +167,7 @@
     
     NSString *String = @"cell";
     NSString *StringButton = @"cellButton";
+    
     FormObj *mCellItem = self.mDataArr[indexPath.row];
     if(mCellItem.type == 2){
         CLCollectionAlterView *cell = [tableView dequeueReusableCellWithIdentifier:String forIndexPath:indexPath];
@@ -193,27 +178,19 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.mTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
         cell.mIndexPath = indexPath;
-//        cell.mLineBlock = ^(NSIndexPath *mIndexPath, NSInteger i) {
-//             FormObj *mCItem = self.mDataArr[mIndexPath.row +1];
-//            if(i == 0){
-//                mCItem.needRefresh = YES;
-//                
-//            }else{
-//                mCItem.needRefresh =NO;
-//            }
-//            
-//             [self.mTabView reloadData];
-//        };
-//        cell.mLineBlock = ^(NSIndexPath *mIndexPath,NSInteger ) {
-//            FormObj *mCItem = self.mDataArr[mIndexPath.row +1];
-//            mCItem.needRefresh = YES;
-//            [self.mTabView reloadData];
-//        };
         cell.mResultBlock = ^(NSIndexPath *mIndexPath, FormObj *mItem) {
             if((![mItem.mContent isEqualToString:self.mTemp[mIndexPath.row]]) && (mItem.mContent.length >0)){
                 self.mSendButton.enabled = YES;
                 self.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
-            }
+                self.needEnable = YES;
+                
+            }else{
+                self.mSendButton.enabled = NO;
+                self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+                self.needEnable = NO;
+//                return ;
+                
+            };
             if(mItem.needRefresh ==YES && mIndexPath.row == 5){
                 
                 weakSelf.mAcHintLable.text =@"请输入正确的账户号码";
@@ -227,7 +204,7 @@
             }else if(mItem.needRefresh == NO && mIndexPath.row == 5){
                  [weakSelf.mAcHintLable removeFromSuperview];
             }else if(mItem.needRefresh == YES && mIndexPath.row == 7){
-                weakSelf.mCoHitLabele.text =@"请输入正确的账户号码";
+                weakSelf.mCoHitLabele.text =@"请输入正确的联系号码";
                 weakSelf.mCoHitLabele.font = kCommonFont(12);
                 weakSelf.mCoHitLabele.textColor = ssRGBHex(0xD50037);
                 [weakSelf.mTabView.tableFooterView addSubview:weakSelf.mCoHitLabele];
@@ -267,16 +244,30 @@
         cell.mIndexPath = indexPath;
         [cell updateItemButton:mCellItem];
         cell.mBackBlcok = ^(NSIndexPath *mIndexPath, FormObj *mItem) {
+            if(mItem.mContent != weakSelf.mTemp[mIndexPath.row] &&mItem.mContent !=nil &&weakSelf.needEnable ==YES){
+                                    weakSelf.mSendButton.enabled = YES;
+                                    weakSelf.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+                                }else{
+                                    self.mSendButton.enabled = NO;
+                                    self.mSendButton.backgroundColor = ssRGBHex(0x8C9091);
+                                };
+            
+            
             [weakSelf.mDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
                 if(idx == mIndexPath.row){
                     [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
                     [weakSelf.mTabView reloadData];
                 }
-                if(mItem.mContent != weakSelf.mTemp[mIndexPath.row]){
-                    weakSelf.mSendButton.enabled = YES;
-                    weakSelf.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
-                };
+//                if(![mItem.mContent isEqualToString:weakSelf.mTemp[mIndexPath.row]]){
+////                if(mItem.mContent != weakSelf.mTemp[mIndexPath.row] &&mItem.mContent !=nil){
+//                    weakSelf.mSendButton.enabled = YES;
+//                    weakSelf.mSendButton.backgroundColor = ssRGBHex(0x005CB6);
+//                }else{
+//                    DebugLog(@"");
+//                };
             }];
+//           
         };
 //        cell.mResultBlock = ^(NSIndexPath *mIndexPath, FormObj *mItem) {
 //            [weakSelf.mDataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -294,29 +285,10 @@
 
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    UIView *mView = [UIView new];
-//    mView.backgroundColor = ssRGBHex(0xffffff);
-//    UIView *mLineView = [UIView new];
-//    mLineView.backgroundColor = ssRGBHex(0xe6e6e6);
-//    [mView addSubview:mLineView];
-//    [mLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(mView).mas_offset(0);
-//        make.height.offset(1);
-//        make.width.offset(kScreenWidth);
-//    }];
-//    return mView;
-//}
-//
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    return 34;
-////    return 55;
-//}
 
 
 -(void)successfullyadd:(id)sender{
-    DebugLog(@"%@",self.mMdate);
+    
     [self AlterAccount:self.mDataArr];
 }
 
@@ -348,13 +320,13 @@
             [para setObject:m.mContent  forKey:@"bankCity"];
         }else if([m.mTitle isEqualToString:@"账户号码"]){
             [para setObject:[CLTool deleteSpace:m.mContent] forKey:@"accountNumber"];
-//            [para setObject:m.mContent  forKey:@"accountNumber"];
+
         }else if([m.mTitle isEqualToString:@"关系"]){
             [para setObject:m.mContent  forKey:@"relationship"];
         }else if([m.mTitle isEqualToString:@"联系号码"]){
              [para setObject:m.mContent  forKey:@"contactNumber"];
         }
-//        [para setObject:[CLTool getCuurenceCode:Array[1]] forKey:@"currencyCode"];
+     
     }
     
 //    NSMutableDictionary *para = [NSMutableDictionary new];

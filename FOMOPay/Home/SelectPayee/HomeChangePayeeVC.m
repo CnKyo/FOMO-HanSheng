@@ -160,6 +160,7 @@
     [WKNetWorkManager WKDeleteRecipientInfo:self.mItem.id block:^(id result, BOOL success) {
         [self hiddenLoading];
         if (success) {
+           
             TOASTMESSAGE(@"Delete successful!");
             [self popToViewController:3];
         }else{
