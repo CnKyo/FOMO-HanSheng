@@ -455,6 +455,10 @@
                             <constraint firstItem="AID-8O-i1m" firstAttribute="leading" secondItem="Ezf-Ee-AHP" secondAttribute="leading" id="sQq-3A-S9C"/>
                         </constraints>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKQ-PZ-S7B">
+                        <rect key="frame" x="0.0" y="70" width="375" height="70"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6P-Bi-57U">
                         <rect key="frame" x="0.0" y="445" width="375" height="44"/>
                         <subviews>
@@ -484,15 +488,18 @@
                 <constraints>
                     <constraint firstItem="Hji-XE-uHL" firstAttribute="top" secondItem="gU8-MT-J8O" secondAttribute="bottom" id="0vZ-IW-Et7"/>
                     <constraint firstItem="f4y-YA-D3O" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="1iG-Dj-g6y"/>
+                    <constraint firstItem="YKQ-PZ-S7B" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="4bo-uE-Axc"/>
                     <constraint firstItem="g6P-Bi-57U" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="4fd-7L-cb2"/>
                     <constraint firstItem="ENc-IH-l3E" firstAttribute="top" secondItem="Hji-XE-uHL" secondAttribute="bottom" id="8v6-36-It8"/>
                     <constraint firstItem="f4y-YA-D3O" firstAttribute="top" secondItem="ENc-IH-l3E" secondAttribute="bottom" id="E5D-Ng-PVH"/>
                     <constraint firstItem="ENc-IH-l3E" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="Eqe-KV-Xkt"/>
+                    <constraint firstItem="ENc-IH-l3E" firstAttribute="top" secondItem="YKQ-PZ-S7B" secondAttribute="bottom" id="Mb6-bN-Bgl"/>
                     <constraint firstAttribute="trailing" secondItem="g6P-Bi-57U" secondAttribute="trailing" id="MjX-gv-qwB"/>
                     <constraint firstItem="Ezf-Ee-AHP" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="Pr1-ma-Pnt"/>
                     <constraint firstAttribute="trailing" secondItem="f4y-YA-D3O" secondAttribute="trailing" id="Sd0-Ul-Ppm"/>
                     <constraint firstItem="Ezf-Ee-AHP" firstAttribute="top" secondItem="Hji-XE-uHL" secondAttribute="bottom" id="WmU-zC-bq4"/>
                     <constraint firstAttribute="bottom" secondItem="g6P-Bi-57U" secondAttribute="bottom" constant="10.5" id="XPe-se-nCU"/>
+                    <constraint firstAttribute="trailing" secondItem="YKQ-PZ-S7B" secondAttribute="trailing" id="Ywz-C0-LXH"/>
                     <constraint firstItem="g6P-Bi-57U" firstAttribute="top" secondItem="Ezf-Ee-AHP" secondAttribute="bottom" constant="30" id="beY-m8-UVC"/>
                     <constraint firstAttribute="trailing" secondItem="Hji-XE-uHL" secondAttribute="trailing" id="cHx-cd-zaz"/>
                     <constraint firstAttribute="trailing" secondItem="Ezf-Ee-AHP" secondAttribute="trailing" id="caA-tS-bBX"/>
@@ -500,12 +507,14 @@
                     <constraint firstAttribute="trailing" secondItem="ENc-IH-l3E" secondAttribute="trailing" id="lKp-AW-ieY"/>
                     <constraint firstAttribute="trailing" secondItem="gU8-MT-J8O" secondAttribute="trailing" id="mlO-qI-pRL"/>
                     <constraint firstItem="Hji-XE-uHL" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="muT-RD-aoq"/>
+                    <constraint firstItem="YKQ-PZ-S7B" firstAttribute="top" secondItem="gU8-MT-J8O" secondAttribute="bottom" id="vha-4r-qXo"/>
                     <constraint firstItem="gU8-MT-J8O" firstAttribute="leading" secondItem="bT4-nL-sBI" secondAttribute="leading" id="y6A-ub-B1Z"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96470588235294119" green="0.96078431372549022" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
             <viewLayoutGuide key="safeArea" id="vfU-jq-Hih"/>
             <connections>
+                <outlet property="ContryViewOne" destination="YKQ-PZ-S7B" id="GEW-Ib-fLI"/>
                 <outlet property="CountryView" destination="Ezf-Ee-AHP" id="qGm-ba-era"/>
                 <outlet property="amountView" destination="f4y-YA-D3O" id="ot4-Ea-B43"/>
                 <outlet property="changeCountryButton" destination="VBW-4G-D1F" id="LYx-5J-nbr"/>

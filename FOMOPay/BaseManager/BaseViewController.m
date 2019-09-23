@@ -486,7 +486,7 @@ void TOASTMESSAGE(NSString *message){
 
 -(void)ResetLayoutSelect{
     [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-70);
+        make.bottom.equalTo(self.view).offset(-BottomHeight - 65);
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.view).offset( 44 + kAppStatusBarHeight );
     }];

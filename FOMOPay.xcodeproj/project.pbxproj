@@ -203,6 +203,7 @@
 		CF36E2762302A76800F1AE2B /* pdf_home_transfer_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF36E2752302A76800F1AE2B /* pdf_home_transfer_1.pdf */; };
 		CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48882523164B5B00582B44 /* LocalizationManager.m */; };
 		CF48882E23164F3400582B44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF48883023164F3500582B44 /* Localizable.strings */; };
+		CF4FA4BF2338BECF00E1B909 /* HomeListCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4FA4BE2338BECF00E1B909 /* HomeListCollectionModel.m */; };
 		CF5A794D2325F45E0006AF82 /* CLMeLanguage_other.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A794B2325F45E0006AF82 /* CLMeLanguage_other.m */; };
 		CF5A794E2325F45E0006AF82 /* CLMeLanguage_other.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5A794C2325F45E0006AF82 /* CLMeLanguage_other.xib */; };
 		CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF5A8C3923068A5000745FE9 /* pdf_me_userImage.pdf */; };
@@ -584,6 +585,8 @@
 		CF48882D23164F2E00582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		CF48882F23164F3500582B44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF48883123164F3800582B44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CF4FA4BD2338BECF00E1B909 /* HomeListCollectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListCollectionModel.h; sourceTree = "<group>"; };
+		CF4FA4BE2338BECF00E1B909 /* HomeListCollectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeListCollectionModel.m; sourceTree = "<group>"; };
 		CF5A794A2325F45E0006AF82 /* CLMeLanguage_other.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMeLanguage_other.h; sourceTree = "<group>"; };
 		CF5A794B2325F45E0006AF82 /* CLMeLanguage_other.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMeLanguage_other.m; sourceTree = "<group>"; };
 		CF5A794C2325F45E0006AF82 /* CLMeLanguage_other.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLMeLanguage_other.xib; sourceTree = "<group>"; };
@@ -1214,6 +1217,8 @@
 			children = (
 				7702398F230B8AE000EE8C31 /* HomeDataObject.h */,
 				77023990230B8AE000EE8C31 /* HomeDataObject.m */,
+				CF4FA4BD2338BECF00E1B909 /* HomeListCollectionModel.h */,
+				CF4FA4BE2338BECF00E1B909 /* HomeListCollectionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1910,6 +1915,7 @@
 				182DBA5D231CDBCC0009E745 /* YTKChainRequest+AnimatingAccessory.m in Sources */,
 				77047DF823161D0A000453A0 /* HomePayTypeViewController.m in Sources */,
 				CF6264F5231525E6001AF5FC /* CLCollectionAddSelect.m in Sources */,
+				CF4FA4BF2338BECF00E1B909 /* HomeListCollectionModel.m in Sources */,
 				772D73C8230A845D0068AB48 /* LogInVerifyViewController.m in Sources */,
 				CF62650D231526B3001AF5FC /* CLMeCallMeViewController.m in Sources */,
 				CCB32E9C231D5D560027FD84 /* CLHistoryConfirmRefund.m in Sources */,

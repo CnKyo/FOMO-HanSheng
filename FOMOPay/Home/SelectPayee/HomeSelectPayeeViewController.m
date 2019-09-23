@@ -50,6 +50,8 @@
 //   
     [self loadButtonView];
     
+    self.mTabView.backgroundColor = [UIColor clearColor];
+    
 //    self.mTabView.tableFooterView =
     
     

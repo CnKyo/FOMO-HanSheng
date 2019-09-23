@@ -8,7 +8,8 @@
 
 #import "HomeListCell.h"
 #import "HomeListCollectionCell.h"
-
+#import "HomeListCollectionModel.h"
+#import "CLCollectionAddSelect.h"
 @interface HomeListCell()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
@@ -37,7 +38,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *exchangeRateButton;
 @property (weak, nonatomic) IBOutlet UIView *CountryView;
+@property (weak, nonatomic) IBOutlet UIView *ContryViewOne;
 @property (weak, nonatomic) IBOutlet UICollectionView *myCollectionView;
+
 
 @property (nonatomic, strong) NSArray *array1;
 @property (nonatomic, strong) NSArray *array2;
@@ -49,6 +52,8 @@
 
 @property (nonatomic, strong) NSString *mOut;
 @property (nonatomic, strong) NSString *mIn;
+
+@property (nonatomic,strong) NSMutableArray *mDataArr;
 
 
 
@@ -125,7 +130,30 @@
     _myCollectionView.dataSource = self;
     
     [_myCollectionView registerNib:[UINib nibWithNibName:@"HomeListCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"HomeListCollectionCell"];
+    [self loadData];
     
+}
+- (NSMutableArray *)mDataArr{
+    if(!_mDataArr){
+        _mDataArr = [NSMutableArray new];
+    }
+    return _mDataArr;
+}
+
+-(void)loadData{
+    NSArray *mLogoArr =@[@"pdf_CNY",@"pdf_TWD",@"pdf_MYR",@"pdf_HKD",@"pdf_IDR",@"pdf_PHP"];
+    NSArray *mTitleArr =@[@"CNY",@"TWD",@"MYR",@"HKD",@"IDR",@"PHP"];
+    NSArray *mNameArr =@[@"(人民币)",@"(新台币)",@"(令吉)",@"(港元)",@"(印尼卢比)",@"(菲律宾比索)"];
+    [self.mDataArr removeAllObjects];
+    for (int i=0; i<mLogoArr.count; i++) {
+        ForCollection *mItem = [ForCollection new];
+        mItem.tag = i;
+        mItem.mLogo = mLogoArr[i];
+        mItem.mTitle = mTitleArr[i];
+        mItem.mName = mNameArr[i];
+        [self.mDataArr addObject:mItem];
+    }
+    [self.myCollectionView reloadData];
     
 }
 
@@ -267,6 +295,13 @@
     if (sender.selected == YES) {
         
         if (sender.tag == 1000) {
+            
+//            CLCollectionAddSelect *m = [CLCollectionAddSelect new];
+////            m.view.frame = self.ContryViewOne.frame;
+//            m.view.frame = self.CountryView.frame;
+//            [self.ContryViewOne addSubview:m.view];
+//            self.ContryViewOne.hidden = NO;
+//            self.ContryViewOne.backgroundColor = [UIColor redColor];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
 //            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
@@ -303,7 +338,8 @@
 #pragma mark ---- UICollectionViewDataSource ----
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 6;
+    return self.mDataArr.count;
+//    return 6;
 }
 
 - (NSInteger)nmumberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -331,35 +367,50 @@
     if(indexPath.section == 0){
       
     }
-    
-    cell.iconImage.image = [UIImage yh_imageNamed:_array1[indexPath.row]];
-    cell.unitLabel.text = _array2[indexPath.row];
-    cell.nameLabel.text = _array3[indexPath.row];
+    ForCollection *mCellmItem = _mDataArr[indexPath.row];
+    cell.iconImage.image = [UIImage yh_imageNamed:mCellmItem.mLogo];
+    cell.unitLabel.text = mCellmItem.mTitle;
+    cell.nameLabel.text = mCellmItem.mName;
+//    cell.iconImage.image = [UIImage yh_imageNamed:_array1[indexPath.row]];
+//    cell.unitLabel.text = _array2[indexPath.row];
+//    cell.nameLabel.text = _array3[indexPath.row];
 
     return cell;
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ForCollection *m =_mDataArr[indexPath.row];
     NSString *mUnit = _array2[indexPath.row];
     NSString *mName = _array3[indexPath.row];
 
     if (self.mTag == 1000) {
         
-        self.mOut = mUnit;
+//        self.mOut = mUnit;
+        self.mOut = m.mTitle;
         
-        self.unitNameLabel2.text = mUnit;
-        self.chinaNameLabel2.text = mName;
+//        self.unitNameLabel2.text = mUnit;
+        self.unitNameLabel2.text = m.mTitle;
         
-        self.unitNameLabel.text = mUnit;
-        self.chinaNameLabel.text = mName;
+        self.chinaNameLabel2.text = m.mName;
+//        self.chinaNameLabel2.text = mName;
         
+        self.unitNameLabel.text = m.mTitle;
+//        self.unitNameLabel.text = mUnit;
+//        self.chinaNameLabel.text = mName;
+        self.chinaNameLabel.text = m.mName;
+        [self.mDataArr replaceObjectAtIndex:indexPath.row withObject:m];
+//        [self.myCollectionView reloadData];
+//     [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
     }else{
         
-        self.mIn = mUnit;
+//        self.mIn = mUnit;
+        self.mIn = m.mTitle;
         
-        self.unitNameLabel1.text = mUnit;
-        self.chinaNameLabel1.text = mName;
+//        self.unitNameLabel1.text = mUnit;
+        self.unitNameLabel.text = m.mTitle;
+//        self.chinaNameLabel1.text = mName;
+        self.chinaNameLabel1.text = m.mName;
     }
     
     if (self.mSelectedBlock) {
