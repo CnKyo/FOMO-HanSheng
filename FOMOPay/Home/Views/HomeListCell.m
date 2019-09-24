@@ -122,6 +122,8 @@
     _array1 = @[@"pdf_CNY",@"pdf_TWD",@"pdf_MYR",@"pdf_HKD",@"pdf_IDR",@"pdf_PHP"];
     _array2 = @[@"CNY",@"TWD",@"MYR",@"HKD",@"IDR",@"PHP"];
     _array3 = @[@"(人民币)",@"(新台币)",@"(令吉)",@"(港元)",@"(印尼卢比)",@"(菲律宾比索)"];
+    
+   
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     //纵向间距
@@ -133,6 +135,8 @@
     _myCollectionView.dataSource = self;
     
     [_myCollectionView registerNib:[UINib nibWithNibName:@"HomeListCollectionCell" bundle:nil] forCellWithReuseIdentifier:@"HomeListCollectionCell"];
+    
+    self.mCollView = [HomeListCollection new];
     [self loadData];
     
 }
@@ -197,16 +201,21 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//
     if(string.length >0){
         unichar single = [string characterAtIndex:0];
         if(single == '0'){
             TOASTMESSAGE(@"汇出金额必须大于0");
+            [textField resignFirstResponder];
              [textField.text stringByReplacingCharactersInRange:range withString:@""];
             return NO;
         }
         
+        
     }
+//    return YES;
     return [self validateNumber:string];
+    
 }
 
 
@@ -292,22 +301,43 @@
 }
 
 - (IBAction)showButtonClicked:(UIButton *)sender {
-    
+    WS(weakSelf);
     sender.selected = !sender.selected;
     self.mTag = sender.tag;
     if (sender.selected == YES) {
         
         if (sender.tag == 1000) {
+            [self.ContryViewOne addSubview:self.mCollView.view];
+//            self.mCollView.view.frame = self.ContryViewOne.frame;
+            self.mCollView.view.frame = CGRectMake(self.ContryViewOne.bounds.origin.x, self.ContryViewOne.bounds.origin.x, self.ContryViewOne.bounds.size.width,self.ContryViewOne.bounds.size.height);
+            self.mCollView.mBlock = ^(ForCollection * _Nonnull mItem) {
+                DebugLog(@"%@",mItem);
+                weakSelf.mOut = mItem.mTitle;
+                weakSelf.unitNameLabel2.text  =mItem.mTitle;
+                weakSelf.chinaNameLabel2.text = mItem.mName;
+                weakSelf.unitNameLabel.text = mItem.mTitle;
+                weakSelf.chinaNameLabel.text = mItem.mName;
+                [weakSelf updateLogo:mItem.mTitle];
+                weakSelf.ContryViewOne.hidden = YES;
+                 weakSelf.changeCountryButton.selected = NO;
+                weakSelf.showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+                if (weakSelf.mSelectedBlock) {
+                    weakSelf.mSelectedBlock(weakSelf.unitNameLabel.text,weakSelf.unitNameLabel1.text);
+                }
+                
+            };
+            
 //            self.ContryViewOne.backgroundColor = [UIColor redColor];
+            
            
 //            self.mCollView = [HomeListCollection new];
 //            self.mCollView.view.frame = self.ContryViewOne.frame;
-//            [self.ContryViewOne addSubview:self.mCollView.view];
+            
 //            CLCollectionAddSelect *m = [CLCollectionAddSelect new];
 ////            m.view.frame = self.ContryViewOne.frame;
 //            m.view.frame = self.CountryView.frame;
 //            [self.ContryViewOne addSubview:m.view];
-//            self.ContryViewOne.hidden = NO;
+           
             
 //            self.ContryViewOne.backgroundColor = [UIColor redColor];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
@@ -315,6 +345,8 @@
 //            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
 //            _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _changeCountryButton1.selected = NO;
+            self.ContryViewOne.hidden = NO;
+            _CountryView.hidden = YES;
             
         }else{
             
@@ -323,9 +355,10 @@
             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
             _changeCountryButton.selected = NO;
-            
+            _CountryView.hidden = NO;
         }
-        _CountryView.hidden = NO;
+//        _CountryView.hidden = NO;
+        
         
         
     }else{
@@ -334,12 +367,15 @@
             _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
 //            _showImage.image = [UIImage yh_imageNamed:@"pdf_home_packUp_icon"];
+            self.ContryViewOne.hidden = YES;
 
         }else{
              _showImage.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
             _showImage1.image = [UIImage yh_imageNamed:@"pdf_home_cell_out"];
+             _CountryView.hidden = YES;
         }
-        _CountryView.hidden = YES;
+//        _CountryView.hidden = YES;
+       
     }
 }
 
@@ -357,7 +393,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake(kScreenWidth/2,90);
+    return CGSizeMake(kScreenWidth/2,82);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -379,6 +415,7 @@
     cell.iconImage.image = [UIImage yh_imageNamed:mCellmItem.mLogo];
     cell.unitLabel.text = mCellmItem.mTitle;
     cell.nameLabel.text = mCellmItem.mName;
+//    cell.nameLabel.text = [NSString stringWithFormat:@"(%@)",mCellmItem.mName];
 //    cell.iconImage.image = [UIImage yh_imageNamed:_array1[indexPath.row]];
 //    cell.unitLabel.text = _array2[indexPath.row];
 //    cell.nameLabel.text = _array3[indexPath.row];
@@ -394,20 +431,20 @@
 
     if (self.mTag == 1000) {
         
-//        self.mOut = mUnit;
-        self.mOut = m.mTitle;
+        self.mOut = mUnit;
+//        self.mOut = m.mTitle;
         
-//        self.unitNameLabel2.text = mUnit;
-        self.unitNameLabel2.text = m.mTitle;
+        self.unitNameLabel2.text = mUnit;
+//        self.unitNameLabel2.text = m.mTitle;
         
-        self.chinaNameLabel2.text = m.mName;
-//        self.chinaNameLabel2.text = mName;
+//        self.chinaNameLabel2.text = m.mName;
+        self.chinaNameLabel2.text = mName;
         
-        self.unitNameLabel.text = m.mTitle;
-//        self.unitNameLabel.text = mUnit;
-//        self.chinaNameLabel.text = mName;
-        self.chinaNameLabel.text = m.mName;
-        [self.mDataArr replaceObjectAtIndex:indexPath.row withObject:m];
+//        self.unitNameLabel.text = m.mTitle;
+        self.unitNameLabel.text = mUnit;
+        self.chinaNameLabel.text = mName;
+//        self.chinaNameLabel.text = m.mName;
+//        [self.mDataArr replaceObjectAtIndex:indexPath.row withObject:m];
 //        [self.myCollectionView reloadData];
 //     [weakSelf.mDataArr replaceObjectAtIndex:mIndexPath.row withObject:mItem];
     }else{
@@ -416,16 +453,17 @@
         self.mIn = m.mTitle;
         
 //        self.unitNameLabel1.text = mUnit;
-        self.unitNameLabel.text = m.mTitle;
+         self.unitNameLabel1.text = m.mTitle;
 //        self.chinaNameLabel1.text = mName;
-        self.chinaNameLabel1.text = m.mName;
+       self.chinaNameLabel1.text = m.mName;
     }
     
     if (self.mSelectedBlock) {
         self.mSelectedBlock(self.unitNameLabel.text,self.unitNameLabel1.text);
     }
     
-    [self updateLogo:mUnit];
+//    [self updateLogo:mUnit];
+    [self updateLogo:m.mTitle];
     _CountryView.hidden = YES;
      self.changeCountryButton.selected = NO;
     self.changeCountryButton1.selected = NO;
@@ -447,6 +485,8 @@
             mImg = @"pdf_HKD";
         }else if ([text isEqualToString:@"IDR"]){
             mImg = @"pdf_IDR";
+        }else if ([text isEqualToString:@"SGD"]){
+            mImg = @"pdf_home_transfer_2";
         }else{
             mImg = @"pdf_PHP";
         }
@@ -532,6 +572,7 @@
             res = NO;
           
             TOASTMESSAGE(@"金额只能输入数字!");
+            
             break;
         }
         i++;

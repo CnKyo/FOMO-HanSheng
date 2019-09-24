@@ -70,6 +70,7 @@
     if (sender.selected == YES) {
         
         _languageView.hidden = NO;
+        self.allowImage.image = [UIImage yh_imageNamed:@"pdf_unlogin_language"];
         if ([_languageLabel.text isEqualToString:@"简体中文"]) {
             [_chinaButton setTitleColor:kLoginTitleColor forState:UIControlStateNormal];
             [_englishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -83,6 +84,7 @@
     }else{
         
         _languageView.hidden = YES;
+         self.allowImage.image = [UIImage yh_imageNamed:@"pdf_login_language"];
     }
 }
 

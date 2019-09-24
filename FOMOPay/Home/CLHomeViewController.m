@@ -103,6 +103,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+  
+    
     if (self.mCurrentRemmitance.rate.length<=0) {
         self.mCurrentRemmitance = [WKRemiitableEntity new];
     }

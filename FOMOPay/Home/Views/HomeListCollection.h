@@ -7,11 +7,12 @@
 //
 
 #import "BaseViewController.h"
-
+#import "HomeListCollectionModel.h"
 NS_ASSUME_NONNULL_BEGIN
-
+typedef void(^HomeListCollectionBlock)(ForCollection *mItem);
 @interface HomeListCollection : BaseViewController
-
+@property (copy,nonatomic)HomeListCollectionBlock mBlock;
+//@property (nonatomic,strong)ForCollection *mItem;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -100,21 +100,24 @@
    //背景二
     UIImageView *bgtwoView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, kScreenHeight)];
     bgtwoView.backgroundColor = [UIColor yellowColor];
-    bgtwoView.image = [UIImage yh_imageNamed:@"pdf_guide_one"];
+    bgtwoView.image =[UIImage imageNamed:@"Convenient"];
+//    bgtwoView.image = [UIImage yh_imageNamed:@"pdf_guide_one"];
 
     
     
    //背景三
     UIImageView *bgthreeView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth*2, 0, kScreenWidth, kScreenHeight)];
     bgthreeView.backgroundColor = [UIColor blueColor];
-    bgthreeView.image = [UIImage yh_imageNamed:@"pdf_guide_two"];
+    bgthreeView.image = [UIImage imageNamed:@"Credible"];
+//    bgthreeView.image = [UIImage yh_imageNamed:@"pdf_guide_two"];
 
     
     
    //背景四
     UIImageView *bgfourView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth*3, 0, kScreenWidth, kScreenHeight)];
     bgfourView.backgroundColor = [UIColor grayColor];
-    bgfourView.image = [UIImage yh_imageNamed:@"pdf_guide_three"];
+//    bgfourView.image = [UIImage yh_imageNamed:@"pdf_guide_three"];
+    bgfourView.image = [UIImage imageNamed:@"Comprehensive"];
 
     [_myScrollView addSubview:bgoneView];
     [_myScrollView addSubview:bgtwoView];
@@ -417,7 +420,7 @@
 - (void)changeButtonClicked:(UIButton *)sender{
     if(sender.selected){
         _languageView.hidden = YES;
-        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconclose"];
+        _showImageView.image = [UIImage yh_imageNamed:@"pdf_guideView_iconopen"];
 //        sender.selected = NO;
     }else{
         _languageView.hidden = NO;
