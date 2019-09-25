@@ -60,9 +60,13 @@
 
 -(void)setMItem:(WKResipientInfoObj *)mItem{
     self.mName.text = mItem.fullName;
-    self.mAccountNumber.text = mItem.accountNumber;
-    self.mBank.text = [NSString stringWithFormat:@"%@(%@)",mItem.bankName,mItem.bankCity];
+//    self.mAccountNumber.text = mItem.accountNumber;
+    self.mAccountNumber.text = [CLTool formmatterBankCardNum:mItem.accountNumber];
+    self.mBank.text = [NSString stringWithFormat:@"%@  (%@)",mItem.bankName,mItem.bankCity];
     self.CLCollectionLeftImage.image = [UIImage yh_imageNamed:[CLTool GetCountryLogo:mItem.currencyCode]];
 }
+
+
+
 
 @end

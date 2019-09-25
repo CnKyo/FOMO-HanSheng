@@ -169,23 +169,7 @@
 }
 
 
-//-(void)loadData{
-//    [self showLoading:nil];
-//        [WKNetWorkManager WKGetOrderDetail:self.mItem.serialNumber block:^(id result, BOOL success) {
-//            [self hiddenLoading];
-//            if (success) {
-//                NSDictionary *mResponse = [CLTool stringToDic:result];
-//                if ([[mResponse objectForKey:@"order"] isKindOfClass:[NSDictionary class]]) {
-//                    self.mItem = [WKOrderInfo yy_modelWithDictionary:[mResponse objectForKey:@"order"]];
-//                }
-//            }else{
-//                TOASTMESSAGE(result);
-//            }
-//            self.mRData=@[self.mItem.recipient.fullName,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.target.currencyCode,self.mItem.remittable.target.amount]];
-//
-//            [self.mTabView reloadData];
-//        }];
-//    }
+
 
 
 @end

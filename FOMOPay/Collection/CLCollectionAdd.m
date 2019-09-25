@@ -309,7 +309,8 @@
         }else if([m.mTitle isEqualToString:@"开户地址/城市"]){
             [para setObject:m.mContent  forKey:@"bankCity"];
         }else if([m.mTitle isEqualToString:@"账户号码"]){
-            [para setObject:[CLTool deleteSpace:m.mContent] forKey:@"accountNumber"];
+//            [para setObject:[CLTool deleteSpace:m.mContent] forKey:@"accountNumber"];
+//            [para setObject:m.mContent forKey:@"accountNumber"]
             
         }else if([m.mTitle isEqualToString:@"关系"]){
             [para setObject:m.mContent  forKey:@"relationship"];

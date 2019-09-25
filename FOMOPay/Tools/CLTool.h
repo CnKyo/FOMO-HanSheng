@@ -65,6 +65,10 @@ NS_ASSUME_NONNULL_BEGIN
  如果用户关闭推送通知就跳转到设置界面设置
  */
 + (void)WKGoToOpenAppSystemSetting;
+
+#pragma mark----****----转化卡号为每4位加一个空格
++(NSString *)formmatterBankCardNum:(NSString *)string;
+
 @end
 
 NS_ASSUME_NONNULL_END

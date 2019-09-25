@@ -36,9 +36,19 @@
         }
     }];
     [self LoadCellType:11];
-    _mMeCallmeDateSource = @[@"电话",@"传真",@"邮箱",@"地址",@"个人资料保护法案(PDPA)相关查询",@"联系技术支持"];
-    _mMeCallmeRightDataSource=@[@"+6565386280",@"+6565386288",@"hello@hanshanmoney.com",
-                                @"People's Park Complex\n 1 Park Road #02-K87/88 Singapore 059108",@"pdpa@hanshanmoney.com",@"tech@hanshanmoney.com"];
+    [self loadData];
+
+}
+
+-(void)loadData{
+     _mMeCallmeDateSource = @[@"电话",@"传真",@"邮箱",@"地址",@"个人资料保护法案(PDPA)相关查询",@"联系技术支持"];
+    if(kScreenWidth == 320   &&kScreenHeight == 568){
+        _mMeCallmeRightDataSource=@[@"+6565386280",@"+6565386288",@"hello@hanshanmoney.com",
+                                    @"People's Park Complex 1 Park Road #02-K87/88 Singapore 059108",@"pdpa@hanshanmoney.com",@"tech@hanshanmoney.com"];
+    }else{
+        _mMeCallmeRightDataSource=@[@"+6565386280",@"+6565386288",@"hello@hanshanmoney.com",
+                                                                    @"People's Park Complex\n 1 Park Road #02-K87/88\n Singapore 059108",@"pdpa@hanshanmoney.com",@"tech@hanshanmoney.com"];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -46,9 +56,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CLMeLanguage_other *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    NSString *stirng = @"cell";
+    CLMeLanguage_other *cell = [tableView dequeueReusableCellWithIdentifier:stirng forIndexPath:indexPath];
     if (!cell) {
-        cell = [[CLMeLanguage_other alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[CLMeLanguage_other alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stirng];
         
     }
    
@@ -56,10 +67,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.mMeLanguageLeftLabel.text = [_mMeCallmeDateSource objectAtIndex:indexPath.row];
     cell.mMeLanguageLeftLabel.numberOfLines = 0;//表示label可以多行显示
+    
 //    cell.mMeLanguageLeftLabel.lineBreakMode = UILineBreakModeCharacterWrap;//换行模式，与上面的计算保持一致。
     cell.mRightLable.text = [_mMeCallmeRightDataSource objectAtIndex:indexPath.row];
     cell.mRightLable.numberOfLines = 0;//表示label可以多行显示
     cell.mRightLable.textAlignment = NSTextAlignmentRight;
+//    cell.mRightLable.lineBreakMode = NSLineBreakByCharWrapping;
 //    RightLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     
     

@@ -102,7 +102,9 @@
 
         }else{
             DebugLog(@"错误信息:%@",token);
-            TOASTMESSAGE(token);
+            [self showMessage];
+//            TOASTMESSAGE(token);
+            
         }
     }];
     
@@ -130,6 +132,23 @@
     [self mResendAction];
 }
 
+
+-(void)showMessage{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"验证码输入错误，请重新输入" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *mCancel = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+    [mCancel setValue:ssRGBHex(0x007AFF) forKey:@"titleTextColor"];
+    
+   
+    
+    
+    NSMutableAttributedString *alertControllerMessagestr = [[NSMutableAttributedString alloc]initWithString:@"验证码输入错误，请重新输入"];
+    [alertControllerMessagestr addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(0, 4)];
+    [alertControllerMessagestr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFangSC-Regular"size:17] range:NSMakeRange(0, alertControllerMessagestr.length)];
+    [alertController setValue:alertControllerMessagestr forKey:@"attributedMessage"];
+    
+    [alertController addAction:mCancel];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

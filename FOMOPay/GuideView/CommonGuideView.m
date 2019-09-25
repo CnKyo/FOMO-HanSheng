@@ -119,6 +119,7 @@
 //    bgfourView.image = [UIImage yh_imageNamed:@"pdf_guide_three"];
     bgfourView.image = [UIImage imageNamed:@"Comprehensive"];
 
+
     [_myScrollView addSubview:bgoneView];
     [_myScrollView addSubview:bgtwoView];
     [_myScrollView addSubview:bgthreeView];

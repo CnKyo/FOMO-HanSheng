@@ -222,4 +222,23 @@
     }
     
 }
+
+#pragma mark----****----转化卡号为每4位加一个空格
++(NSString *)formmatterBankCardNum:(NSString *)string{
+    NSString *tempStr = string;
+    
+    NSInteger size = (tempStr.length/4);
+    
+    NSMutableArray *tempStrArr = [[NSMutableArray alloc]init];
+    
+    for(int i=0;i<size;i++){
+        [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(i*4, 4)]];
+    }
+    
+    [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(size*4,(tempStr.length%4))]];
+    
+    tempStr = [tempStrArr componentsJoinedByString:@" "];
+    
+    return tempStr;
+}
 @end

@@ -125,6 +125,8 @@
     }
     
     [self loadTableView];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    //监听键盘高度
 }
 
 - (void)loadTableView{
@@ -154,6 +156,7 @@
     }
     
     [_myTableView registerNib:[UINib nibWithNibName:@"HomeListCell" bundle:nil] forCellReuseIdentifier:@"HomeListCell"];
+    _myTableView.scrollEnabled = NO;  //设置这个tabview不能滚动
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -242,7 +245,9 @@
 }
 - (void)caculateAmount{
     if ([self.mAmount floatValue]<=0) {
-        TOASTMESSAGE(@"汇出金额必须大于0");
+//        TOASTMESSAGE(@"汇出金额必须大于0");
+        [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:@"汇出金额必须大于0"];
+        
         return;
     }
     NSMutableDictionary *para = [NSMutableDictionary new];
@@ -315,4 +320,22 @@
     }];
 
 }
+
+#pragma ----****----获取键盘的高度
+//- (void)keyboardWillShow:(NSNotification *)aNotification
+//{
+//    //获取键盘的高度
+//    NSDictionary *userInfo = [aNotification userInfo];
+//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+//    CGRect keyboardRect = [aValue CGRectValue];
+//    int height = keyboardRect.size.height;
+//    DebugLog(@"他的键盘的高度是%d",height);
+//
+//}
+
+////移除通知
+//- (void)dealloc{
+//
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 @end

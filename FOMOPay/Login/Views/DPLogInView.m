@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *englishButton;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (weak, nonatomic) IBOutlet UILabel *NameOrNumber;
+@property (weak, nonatomic) IBOutlet UIButton *mLanguageButton;
 
 @end
 
@@ -146,4 +147,23 @@
     }
 }
 
+
+
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//
+//    CGPoint point = [[touches anyObject] locationInView:self];
+//    point = [self.languageView.layer convertPoint:point fromLayer:self.layer];
+//    if (![self.languageView.layer containsPoint:point]) {
+//
+//        self.languageView.hidden = YES;
+//    }
+//}
+
+//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+//    self.languageView.hidden = YES;
+//    self.mLanguageButton.selected  = NO;
+//    self.allowImage.image = [UIImage yh_imageNamed:@"pdf_login_language"];
+//    
+//    return YES;
+//}
 @end

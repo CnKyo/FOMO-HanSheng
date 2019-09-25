@@ -124,7 +124,7 @@
 
 - (void)loadData{
     NSArray *mArr = @[@"全名",@"国籍",@"性别",@"银行",@"开户地址/城市",@"账户号码",@"关系",@"联系号码"];
-    _mTemp = @[_mData.fullName,_mData.nationality,[self mGender:_mData.gender],_mData.bankName,_mData.bankCity,[self formmatterBankCardNum:_mData.accountNumber],_mData.relationship,_mData.contactNumber];
+    _mTemp = @[_mData.fullName,_mData.nationality,[self mGender:_mData.gender],_mData.bankName,_mData.bankCity,[CLTool formmatterBankCardNum:_mData.accountNumber],_mData.relationship,_mData.contactNumber];
     
     [self.mDataArr removeAllObjects];
     for(int i=0;i<mArr.count;i++){
@@ -375,23 +375,6 @@
     }
 }
 
-#pragma mark----****----转化卡号为每4位加一个空格
--(NSString *)formmatterBankCardNum:(NSString *)string{
-    NSString *tempStr = string;
-    
-    NSInteger size = (tempStr.length/4);
-    
-    NSMutableArray *tempStrArr = [[NSMutableArray alloc]init];
-    
-    for(int i=0;i<size;i++){
-        [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(i*4, 4)]];
-    }
-    
-    [tempStrArr addObject:[tempStr substringWithRange:NSMakeRange(size*4,(tempStr.length%4))]];
-    
-    tempStr = [tempStrArr componentsJoinedByString:@" "];
-    
-    return tempStr;
-}
+
 
 @end

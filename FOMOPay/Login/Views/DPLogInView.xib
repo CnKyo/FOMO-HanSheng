@@ -184,6 +184,7 @@
                 <outlet property="languageView" destination="P1H-nx-Xhr" id="50p-AV-ydI"/>
                 <outlet property="lineView" destination="Naj-1J-IRq" id="2OL-RC-aIi"/>
                 <outlet property="logoImage" destination="6iC-Sv-nxK" id="iBV-97-mWx"/>
+                <outlet property="mLanguageButton" destination="Jel-Lk-2D3" id="4jZ-tN-GNn"/>
                 <outlet property="myTextField" destination="2ol-9E-cjo" id="u7w-WG-5en"/>
                 <outlet property="nextButton" destination="ete-Qi-EmS" id="AZs-T7-cLu"/>
             </connections>
