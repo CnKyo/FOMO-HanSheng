@@ -97,7 +97,7 @@
     [mFooterView addSubview:mFootLine];
     [mFootLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.offset(kScreenWidth);
-        make.height.offset(1);
+        make.height.offset(0.5);
         make.bottom.equalTo(mFooterView);
     }];
     self.mTabView.tableFooterView =mFooterView;
