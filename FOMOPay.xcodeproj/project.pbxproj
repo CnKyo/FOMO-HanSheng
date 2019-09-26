@@ -147,6 +147,7 @@
 		77F882D423136E740010A884 /* HomeSelectPayeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F882D323136E740010A884 /* HomeSelectPayeeViewController.m */; };
 		77F882D823136EAA0010A884 /* HomeSelectPayeeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F882D623136EAA0010A884 /* HomeSelectPayeeListCell.m */; };
 		77F882D923136EAA0010A884 /* HomeSelectPayeeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77F882D723136EAA0010A884 /* HomeSelectPayeeListCell.xib */; };
+		CC447C90233CFC0C003AF27C /* pdf_CNY.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC447C8F233CFC0C003AF27C /* pdf_CNY.pdf */; };
 		CC49F1CB2322CA230052566B /* pdf_guideView_iconopen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC49F1C92322CA230052566B /* pdf_guideView_iconopen.pdf */; };
 		CC49F1CC2322CA230052566B /* pdf_guideView_iconclose.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */; };
 		CCA748C92303046400846BDF /* CLMainTabBarControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */; };
@@ -250,7 +251,6 @@
 		CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5C2303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf */; };
 		CF6BBB612303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */; };
 		CF6EB34F2339B68D002CD4C1 /* msyh.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF6EB34E2339B42D002CD4C1 /* msyh.ttf */; };
-		CF6EB3512339EC72002CD4C1 /* pdf_CNY.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6EB3502339EC72002CD4C1 /* pdf_CNY.pdf */; };
 		CF6EB3532339EC94002CD4C1 /* pdf_HKD.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6EB3522339EC93002CD4C1 /* pdf_HKD.pdf */; };
 		CF6EB3572339ECF6002CD4C1 /* pdf_TWD.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6EB3562339ECF6002CD4C1 /* pdf_TWD.pdf */; };
 		CF6EB3592339ED11002CD4C1 /* pdf_PHP.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6EB3582339ED11002CD4C1 /* pdf_PHP.pdf */; };
@@ -512,6 +512,7 @@
 		77F882D523136EAA0010A884 /* HomeSelectPayeeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSelectPayeeListCell.h; sourceTree = "<group>"; };
 		77F882D623136EAA0010A884 /* HomeSelectPayeeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSelectPayeeListCell.m; sourceTree = "<group>"; };
 		77F882D723136EAA0010A884 /* HomeSelectPayeeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSelectPayeeListCell.xib; sourceTree = "<group>"; };
+		CC447C8F233CFC0C003AF27C /* pdf_CNY.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_CNY.pdf; sourceTree = "<group>"; };
 		CC49F1C92322CA230052566B /* pdf_guideView_iconopen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guideView_iconopen.pdf; sourceTree = "<group>"; };
 		CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guideView_iconclose.pdf; sourceTree = "<group>"; };
 		CCA748C72303046400846BDF /* CLMainTabBarControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMainTabBarControllerConfig.h; sourceTree = "<group>"; };
@@ -668,7 +669,6 @@
 		CF6BBB5C2303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_collection_tabbarselected.pdf; sourceTree = "<group>"; };
 		CF6BBB5D2303ACD400EB5BBB /* pdf_home_collection_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_collection_tabbar.pdf; sourceTree = "<group>"; };
 		CF6EB34E2339B42D002CD4C1 /* msyh.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = msyh.ttf; sourceTree = "<group>"; };
-		CF6EB3502339EC72002CD4C1 /* pdf_CNY.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = pdf_CNY.pdf; path = ../../../Desktop/pdf_CNY.pdf; sourceTree = "<group>"; };
 		CF6EB3522339EC93002CD4C1 /* pdf_HKD.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_HKD.pdf; sourceTree = "<group>"; };
 		CF6EB3562339ECF6002CD4C1 /* pdf_TWD.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_TWD.pdf; sourceTree = "<group>"; };
 		CF6EB3582339ED11002CD4C1 /* pdf_PHP.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_PHP.pdf; sourceTree = "<group>"; };
@@ -868,7 +868,7 @@
 				CF20E25F231F89A200EEB9AD /* pdf_history_beingprocessed_icon.pdf */,
 				CF20E260231F89A300EEB9AD /* pdf_history_cancel_icon.pdf */,
 				CF20E261231F89A300EEB9AD /* pdf_history_finish_icon.pdf */,
-				CF6EB3502339EC72002CD4C1 /* pdf_CNY.pdf */,
+				CC447C8F233CFC0C003AF27C /* pdf_CNY.pdf */,
 				CF6EB3522339EC93002CD4C1 /* pdf_HKD.pdf */,
 				18FEAD5B231E6BCF00844806 /* pdf_IDR.pdf */,
 				18FEAD5F231E6BD000844806 /* pdf_MYR.pdf */,
@@ -1737,6 +1737,7 @@
 				77DD6BB62313E12A00BFDD11 /* HomeSureInfoListCell.xib in Resources */,
 				773880D42314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy.pdf in Resources */,
 				CFEE0A32232A528900C4C5E6 /* CLCollectionAddView.xib in Resources */,
+				CC447C90233CFC0C003AF27C /* pdf_CNY.pdf in Resources */,
 				CF6428CB233C6DCB00DD411E /* CLHistoryAlterRemittanceView.xib in Resources */,
 				7707E2A92313B1E10029EB0B /* pdf_home_selectPayee_add_icon.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
@@ -1831,7 +1832,6 @@
 				CF6BBB602303ACD400EB5BBB /* pdf_home_collection_tabbarselected.pdf in Resources */,
 				77047E0C231676E6000453A0 /* pdf_home_payType_payNow.pdf in Resources */,
 				770239AD230BFD2A00EE8C31 /* pdf.guideView_icon_china_2.pdf in Resources */,
-				CF6EB3512339EC72002CD4C1 /* pdf_CNY.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2224,7 +2224,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7RUNT626SG;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2249,7 +2249,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7RUNT626SG;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

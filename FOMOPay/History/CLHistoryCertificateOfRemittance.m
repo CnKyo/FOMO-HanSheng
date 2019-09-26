@@ -133,40 +133,48 @@
 //    [self.mWebView.layer renderInContext:UIGraphicsGetCurrentContext()];
 //    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
 //    UIGraphicsEndImageContext();
-    if([self isOrUsePhotos]){
-        UIImageWriteToSavedPhotosAlbum([self imageRepresentation], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+//    if([self isOrUsePhotos]){
+     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+        if (status == PHAuthorizationStatusRestricted ||
+                status == PHAuthorizationStatusDenied) {
+            UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self openJurisdiction];
+            }];
+            
+            
+            
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            
+            [alertCtrl addAction:action1];
+            
+            [alertCtrl addAction:action2];
+            
+            [self presentViewController:alertCtrl animated:YES completion:nil];
+        
+//        UIImageWriteToSavedPhotosAlbum([self imageRepresentation], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }else{
         
-        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
+          UIImageWriteToSavedPhotosAlbum([self imageRepresentation], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
         
-        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            
-//            if([[UIApplication sharedApplication] canOpenURL:url]) {
+//        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
 //
-//                NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
-//                [[UIApplication sharedApplication] openURL:url];
+//        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 //
-//            }
-          
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:^(BOOL success) {
-                DebugLog(@"%id",success);
-
-
-            }];
-//             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-        }];
-        
-        
-        
-        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        
-        [alertCtrl addAction:action1];
-        
-        [alertCtrl addAction:action2];
-        
-        [self presentViewController:alertCtrl animated:YES completion:nil];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+//            [self openJurisdiction];
+//        }];
+//
+//
+//
+//        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//
+//        [alertCtrl addAction:action1];
+//
+//        [alertCtrl addAction:action2];
+//
+//        [self presentViewController:alertCtrl animated:YES completion:nil];
     }
 }
 
@@ -275,19 +283,19 @@
         
         PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
         
-//        if (status == PHAuthorizationStatusRestricted ||
-//
-//            status == PHAuthorizationStatusDenied) {
-        if(status == PHAuthorizationStatusAuthorized){
+        if (status == PHAuthorizationStatusRestricted ||
+
+            status == PHAuthorizationStatusDenied) {
+//        if(status == PHAuthorizationStatusAuthorized){
             //无权限
            
-            return YES;
+            return NO;
             
         }
         
     }
     
-    return NO;
+    return YES;
     
 }
 
@@ -382,6 +390,19 @@
     
     return pdfData;
     
+} -(void)openJurisdiction{
+    
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            DebugLog(@"%id",success);
+            
+            
+        }];
+//        [[UIApplication sharedApplication] openURL:url];
+    }
+    
 }
+
 
 @end
