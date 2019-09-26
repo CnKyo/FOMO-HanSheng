@@ -16,7 +16,7 @@
 @interface CLHistorySelectionOfPayee ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *mData;
 @property (nonatomic, strong) NSIndexPath *lastIndex;
-@property (nonatomic, assign)BOOL ifSelected;//是否选中
+
 @property (nonatomic, strong) UIButton *changeButton;
 @property (strong,nonatomic) WKResipientInfoObj *mItem;
 @end
@@ -43,24 +43,8 @@
     self.mTabView.estimatedRowHeight = 0;
     self.mTabView.estimatedSectionFooterHeight = 0;
     self.mTabView.estimatedSectionHeaderHeight = 0; 
-    self.ifSelected = NO;//是否被选中 默认为NO
-//    self.mData=@[@"ang",@"ang",@"ang"];
-    //以下为按钮
-//    UIButton *mSureButton = [UIButton new];
-//    [mSureButton setTitle:@"确认" forState:UIControlStateNormal];
-//    mSureButton.layer.cornerRadius  =4;
-//    mSureButton.backgroundColor = ssRGBHex(0x005CB6);
-//    mSureButton.titleLabel.font = kCommonFont(14);
-//    [mSureButton setTitleColor:ssRGBHex(0xFFFFFF) forState:UIControlStateNormal];
-//    [mSureButton addTarget:self action:@selector(SureBUtton:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:mSureButton];
-//    [mSureButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.view).offset(-BottomHeight - 10);
-//        make.left.equalTo(self.view).offset(10);
-//        make.right.equalTo(self.view).offset(-10);
-//        make.height.offset(44);
-//
-//    }];
+   
+
     [self LoadSureButton];
     [self loadData];
     
@@ -92,8 +76,8 @@
     
     //
     [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(mbgView).mas_offset(15);
-        make.right.equalTo(mbgView).mas_offset(-15);
+        make.left.equalTo(mbgView).mas_offset(10);
+        make.right.equalTo(mbgView).mas_offset(-10);
         make.height.offset(44);
         make.top.equalTo(mbgView).offset(10);
     }];
@@ -107,6 +91,10 @@
     [self ResetLayoutSelect];
     
 }
+
+
+
+
 
 -(void)LoadSureButton{
     UIButton *mSureButton = [UIButton new];
@@ -151,74 +139,41 @@
 //        [cell mCellStyle:0];
 //    }else
 //        [cell mCellStyle:1];
-    if (self.ifSelected) {
-        [cell mCellStyle:0];
-    }else{
-        [cell mCellStyle:1];
-    }
+//    if (self.ifSelected) {
+//        [cell mCellStyle:0];
+//    }else{
+//        [cell mCellStyle:1];
+//    }
     
     [cell setMItem:self.mData[indexPath.row]];
 //    DebugLog(@"2222%@",self.mData[indexPath.row]);
+    if(self.mInx != nil && self.mInx.row == indexPath.row){
+        [cell mCellStyle:0];
+        self.mItem = self.mData[indexPath.row];
+    }else{
+        [cell mCellStyle:1];
+    }
+    DebugLog(@"%@",self.mItem);
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSIndexPath * temp = self.lastIndex;//暂存上一次选中的行
-    if (temp && temp != indexPath)//如果上一次的选中的行存在,并且不是当前选中的这一行,则让上一行不选中
-    {
-        self.ifSelected = NO;//修改之前选中的cell的数据为不选中
-        [tableView reloadRowsAtIndexPaths:@[temp] withRowAnimation:UITableViewRowAnimationAutomatic];//刷新该行
-    }
-    self.lastIndex = indexPath;//选中的修改为当前行
-    self.ifSelected = YES;//修改这个被选中的一行
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        self.mItem = self.mData[indexPath.row];
+//    NSIndexPath * temp = self.lastIndex;//暂存上一次选中的行
+//    if (temp && temp != indexPath)//如果上一次的选中的行存在,并且不是当前选中的这一行,则让上一行不选中
+//    {
+//        self.ifSelected = NO;//修改之前选中的cell的数据为不选中
+//        [tableView reloadRowsAtIndexPaths:@[temp] withRowAnimation:UITableViewRowAnimationAutomatic];//刷新该行
+//    }
+//    self.lastIndex = indexPath;//选中的修改为当前行
+//    self.ifSelected = YES;//修改这个被选中的一行
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        self.mItem = self.mData[indexPath.row];
+    self.mInx = indexPath;
+    [self.mTabView reloadData];
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    UIView *mbgView = [UIView new];
-//    mbgView.backgroundColor = ssRGBHex(0xF6F5FA);
-//    mbgView.frame = CGRectMake(0, 0,kScreenWidth , 45);
-//    UIView *mButtonView = [UIView new];
-//    mButtonView.backgroundColor = ssRGBHex(0xFFFFFF);
-//    mButtonView.layer.cornerRadius = 4;
-//    mButtonView.layer.borderWidth = 1;
-//    mButtonView.layer.borderColor = ssRGBHex(0xE6E6E6).CGColor;
-//    [mbgView addSubview:mButtonView];
-//
-//
-//    UIButton *addButton = [[UIButton alloc] init];
-////                           WithFrame:CGRectMake(50, 0, mButtonView.frame.size.width, mButtonView.frame.size.height)];
-//    [addButton setTitle:@"添加新收款人" forState:UIControlStateNormal];
-//    [addButton setImage:[UIImage yh_imageNamed:@"pdf_home_selectPayee_add_icon"] forState:UIControlStateNormal];
-//    [addButton setTitleColor:kCommonColor(140, 144, 145, 1) forState:UIControlStateNormal];
-//    addButton.titleLabel.font = kCommonFont(14);
-//    addButton.backgroundColor = [UIColor whiteColor];
-//    [addButton addTarget:self action:@selector(addButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-//    addButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-//
-//    [mButtonView addSubview:addButton];
-//
-////
-//    [mButtonView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(mbgView).mas_offset(15);
-//        make.right.equalTo(mbgView).mas_offset(-15);
-//        make.height.offset(44);
-//        make.top.equalTo(mbgView).offset(10);
-//    }];
-//    [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(mButtonView);
-//        make.height.equalTo(mButtonView.mas_height);
-//        make.width.equalTo(mButtonView.mas_width);
-//
-//    }];
-//    return mbgView;
-//}
-//
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    return 54;
-//}
+
 //////---------------按钮的点击事件
 - (void)addButtonClicked{
     WS(weakSelf);
@@ -236,7 +191,7 @@
 - (void)loadData{
     [self showLoading:nil];
     [WKNetWorkManager WKGetRecipient:@{@"skip":@"1",@"take":@"50"} block:^(id result, BOOL success) {
-        
+        [self.mData removeAllObjects];
         [self.DataSource removeAllObjects];
         [self hiddenLoading];
         if (success) {

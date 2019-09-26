@@ -7,7 +7,7 @@
 //
 
 #import "CLHistoryConfirmRefund.h"
-
+#import "CLHisotyRefundView.h"
 @interface CLHistoryConfirmRefund ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)NSArray *mData;
 @property (nonatomic,strong)NSArray *mRightData;
@@ -39,7 +39,7 @@
     self.mData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请确认您的退款账户，以便安全退款",@"银行名",@"开户城市",@"帐号名称",@"账户号码"];
     self.mRightData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请确认您的退款账户，以便安全退款",self.mItem.recipient.bankName,self.mItem.recipient.bankCity,self.mItem.recipient.fullName,self.mItem.recipient.accountNumber];
 
-    [self LoadCellType:9];
+    [self LoadCellType:14];
     [self LoadButtonConfirmPayAndBackAlter];
     [self ResetLayout];
    
@@ -55,9 +55,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    CLHisotyRefundView *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if(cell == nil){
-       cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+       cell = [[CLHisotyRefundView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
@@ -74,10 +74,6 @@
     }else  if(indexPath.row == 2){
         [cell mTitleViewStyle:0];
         cell.BankLabel.text = self.mItem.recipient.bankName; ////显示银行名
-        
-        
-    }else{
-        cell.mRightData.text = @"3213"; //显示除了银行外的其他数据;
         
     }
     cell.mRightData.text = [self.mRightData objectAtIndex:indexPath.row];
@@ -172,6 +168,7 @@
 
 -(void)ConfirmPayButton:(UIButton *)sender{
     CLHistoryRefund *vc = [CLHistoryRefund new];
+    vc.mItem = self.mItem;
     [self pushToViewController:vc];
 }
 

@@ -150,7 +150,7 @@
     }else if ([CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Cancel){
         [cell mCLHistoryHomeCellStyle:2];  /////样式2取消汇款状态
     }else if ([CLTool WKGetOrderStatus:mItem.status] == WKOrderStatus_Sucess){
-      [cell mCLHistoryHomeCellStyle:3];    /////样式3汇款完成跟退款成功状态
+        [cell mCLHistoryHomeCellStyle:3];    /////样式3汇款完成跟退款成功状态
     }else{
         [cell mCLHistoryHomeCellStyle:1];  /////样式1为汇款出错状态
     }
@@ -164,9 +164,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
-//    CLHistoryRefundProgress *vc =[CLHistoryRefundProgress new];
-    vc.mItem = self.DataSource[indexPath.row];
+// CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
+    CLHistoryCertificateOfRemittance *vc = [CLHistoryCertificateOfRemittance new];
+//    vc.mItem = self.DataSource[indexPath.row];
     [self pushToViewController:vc];
 }
 

@@ -73,6 +73,10 @@ void TOASTMESSAGE(NSString *message){
         [self addCollectionAlterTabView];
     }else if(Type == 13){
         [self addCollectionAdd];
+    }else if(Type == 14){
+        [self addRefundView];
+    }else if(Type == 15){
+        [self addAlterRemittanceView];
     }
 }
 
@@ -342,6 +346,43 @@ void TOASTMESSAGE(NSString *message){
     }];
 }
 
+-(void)addRefundView{
+    UINib *nib = [UINib nibWithNibName:@"CLHisotyRefundView" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
+        make.left.bottom.right.equalTo(self.view);
+        
+    }];
+}
+
+-(void)addAlterRemittanceView{
+    UINib *nib = [UINib nibWithNibName:@"CLHistoryAlterRemittanceView" bundle:nil];
+    [self.mTabView registerNib:nib forCellReuseIdentifier:@"cell"];
+    [self.view addSubview:self.mTabView];
+    self.mTabView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    self.mTabView.separatorInset = UIEdgeInsetsZero;
+    _mTabView.layoutMargins = UIEdgeInsetsZero;
+    [_mTabView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    self.mTabView.backgroundColor = ssRGBHex(0xF6F5FA);
+    self.mTabView.delegate = self;
+    self.mTabView.dataSource = self;
+    
+    [self.mTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset( 44 + kAppStatusBarHeight );
+        make.left.bottom.right.equalTo(self.view);
+        
+    }];
+}
 
 
 

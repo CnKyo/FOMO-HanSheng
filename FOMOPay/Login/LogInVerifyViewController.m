@@ -142,7 +142,7 @@
     
     
     NSMutableAttributedString *alertControllerMessagestr = [[NSMutableAttributedString alloc]initWithString:@"验证码输入错误，请重新输入"];
-    [alertControllerMessagestr addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(0, 4)];
+    [alertControllerMessagestr addAttribute:NSForegroundColorAttributeName value:ssRGBHex(0x000000) range:NSMakeRange(0, alertControllerMessagestr.length)];
     [alertControllerMessagestr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFangSC-Regular"size:17] range:NSMakeRange(0, alertControllerMessagestr.length)];
     [alertController setValue:alertControllerMessagestr forKey:@"attributedMessage"];
     

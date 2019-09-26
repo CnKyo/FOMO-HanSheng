@@ -150,10 +150,6 @@
 		CC49F1CB2322CA230052566B /* pdf_guideView_iconopen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC49F1C92322CA230052566B /* pdf_guideView_iconopen.pdf */; };
 		CC49F1CC2322CA230052566B /* pdf_guideView_iconclose.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */; };
 		CCA748C92303046400846BDF /* CLMainTabBarControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */; };
-		CCB32E9C231D5D560027FD84 /* CLHistoryConfirmRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32E9B231D5D560027FD84 /* CLHistoryConfirmRefund.m */; };
-		CCB32E9F231D69260027FD84 /* CLHistoryRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32E9E231D69260027FD84 /* CLHistoryRefund.m */; };
-		CCB32EA2231D6D500027FD84 /* CLHistoryAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32EA1231D6D500027FD84 /* CLHistoryAuthentication.m */; };
-		CCB32EA5231D6F470027FD84 /* CLHistoryRefundProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32EA4231D6F470027FD84 /* CLHistoryRefundProgress.m */; };
 		CCB32EA8231D70A70027FD84 /* CLHistoryDetailsOfRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */; };
 		CCBCE3DD2307DB5800EE5DA1 /* pdf_me_language_selected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */; };
 		CCC9FAAC23390563003F962A /* HomeListCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC9FAAB23390563003F962A /* HomeListCollection.m */; };
@@ -238,6 +234,14 @@
 		CF62652A23152801001AF5FC /* CLTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF62652823152801001AF5FC /* CLTitleView.m */; };
 		CF62652B23152801001AF5FC /* CLTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF62652923152801001AF5FC /* CLTitleView.xib */; };
 		CF63204C232F701400B84CBD /* CLCollectionAddTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF63204B232F701400B84CBD /* CLCollectionAddTabView.m */; };
+		CF6428B8233C644700DD411E /* CLHisotyRefundView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6428B6233C644700DD411E /* CLHisotyRefundView.m */; };
+		CF6428B9233C644700DD411E /* CLHisotyRefundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6428B7233C644700DD411E /* CLHisotyRefundView.xib */; };
+		CF6428BD233C6ABA00DD411E /* CLHistoryConfirmRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6428BB233C6AB900DD411E /* CLHistoryConfirmRefund.m */; };
+		CF6428C0233C6AE500DD411E /* CLHistoryRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6428BF233C6AE500DD411E /* CLHistoryRefund.m */; };
+		CF6428C3233C6B1400DD411E /* CLHistoryAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6428C1233C6B1400DD411E /* CLHistoryAuthentication.m */; };
+		CF6428C6233C6B4100DD411E /* CLHistoryRefundProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6428C5233C6B4100DD411E /* CLHistoryRefundProgress.m */; };
+		CF6428CA233C6DCB00DD411E /* CLHistoryAlterRemittanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6428C8233C6DCB00DD411E /* CLHistoryAlterRemittanceView.m */; };
+		CF6428CB233C6DCB00DD411E /* CLHistoryAlterRemittanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6428C9233C6DCB00DD411E /* CLHistoryAlterRemittanceView.xib */; };
 		CF6BBB532303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */; };
 		CF6BBB582303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */; };
 		CF6BBB592303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6BBB572303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf */; };
@@ -512,14 +516,6 @@
 		CC49F1CA2322CA230052566B /* pdf_guideView_iconclose.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_guideView_iconclose.pdf; sourceTree = "<group>"; };
 		CCA748C72303046400846BDF /* CLMainTabBarControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLMainTabBarControllerConfig.h; sourceTree = "<group>"; };
 		CCA748C82303046400846BDF /* CLMainTabBarControllerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLMainTabBarControllerConfig.m; sourceTree = "<group>"; };
-		CCB32E9A231D5D560027FD84 /* CLHistoryConfirmRefund.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryConfirmRefund.h; sourceTree = "<group>"; };
-		CCB32E9B231D5D560027FD84 /* CLHistoryConfirmRefund.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryConfirmRefund.m; sourceTree = "<group>"; };
-		CCB32E9D231D69260027FD84 /* CLHistoryRefund.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryRefund.h; sourceTree = "<group>"; };
-		CCB32E9E231D69260027FD84 /* CLHistoryRefund.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryRefund.m; sourceTree = "<group>"; };
-		CCB32EA0231D6D500027FD84 /* CLHistoryAuthentication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryAuthentication.h; sourceTree = "<group>"; };
-		CCB32EA1231D6D500027FD84 /* CLHistoryAuthentication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryAuthentication.m; sourceTree = "<group>"; };
-		CCB32EA3231D6F470027FD84 /* CLHistoryRefundProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryRefundProgress.h; sourceTree = "<group>"; };
-		CCB32EA4231D6F470027FD84 /* CLHistoryRefundProgress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryRefundProgress.m; sourceTree = "<group>"; };
 		CCB32EA6231D70A70027FD84 /* CLHistoryDetailsOfRefund.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryDetailsOfRefund.h; sourceTree = "<group>"; };
 		CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryDetailsOfRefund.m; sourceTree = "<group>"; };
 		CCBCE3DC2307DB5800EE5DA1 /* pdf_me_language_selected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_me_language_selected.pdf; sourceTree = "<group>"; };
@@ -650,6 +646,20 @@
 		CF62652D23152849001AF5FC /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		CF63204A232F701400B84CBD /* CLCollectionAddTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLCollectionAddTabView.h; sourceTree = "<group>"; };
 		CF63204B232F701400B84CBD /* CLCollectionAddTabView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLCollectionAddTabView.m; sourceTree = "<group>"; };
+		CF6428B5233C644700DD411E /* CLHisotyRefundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHisotyRefundView.h; sourceTree = "<group>"; };
+		CF6428B6233C644700DD411E /* CLHisotyRefundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHisotyRefundView.m; sourceTree = "<group>"; };
+		CF6428B7233C644700DD411E /* CLHisotyRefundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLHisotyRefundView.xib; sourceTree = "<group>"; };
+		CF6428BB233C6AB900DD411E /* CLHistoryConfirmRefund.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHistoryConfirmRefund.m; sourceTree = "<group>"; };
+		CF6428BC233C6ABA00DD411E /* CLHistoryConfirmRefund.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHistoryConfirmRefund.h; sourceTree = "<group>"; };
+		CF6428BE233C6AE500DD411E /* CLHistoryRefund.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHistoryRefund.h; sourceTree = "<group>"; };
+		CF6428BF233C6AE500DD411E /* CLHistoryRefund.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHistoryRefund.m; sourceTree = "<group>"; };
+		CF6428C1233C6B1400DD411E /* CLHistoryAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHistoryAuthentication.m; sourceTree = "<group>"; };
+		CF6428C2233C6B1400DD411E /* CLHistoryAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHistoryAuthentication.h; sourceTree = "<group>"; };
+		CF6428C4233C6B4000DD411E /* CLHistoryRefundProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHistoryRefundProgress.h; sourceTree = "<group>"; };
+		CF6428C5233C6B4100DD411E /* CLHistoryRefundProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHistoryRefundProgress.m; sourceTree = "<group>"; };
+		CF6428C7233C6DCB00DD411E /* CLHistoryAlterRemittanceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLHistoryAlterRemittanceView.h; sourceTree = "<group>"; };
+		CF6428C8233C6DCB00DD411E /* CLHistoryAlterRemittanceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLHistoryAlterRemittanceView.m; sourceTree = "<group>"; };
+		CF6428C9233C6DCB00DD411E /* CLHistoryAlterRemittanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CLHistoryAlterRemittanceView.xib; sourceTree = "<group>"; };
 		CF6BBB522303AA1000EB5BBB /* pdf_home_home_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_home_tabbarselected.pdf; sourceTree = "<group>"; };
 		CF6BBB562303AC3B00EB5BBB /* pdf_home_history_tabbar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_history_tabbar.pdf; sourceTree = "<group>"; };
 		CF6BBB572303AC3B00EB5BBB /* pdf_home_history_tabbarselected.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf_home_history_tabbarselected.pdf; sourceTree = "<group>"; };
@@ -1011,14 +1021,7 @@
 				CF3129E5231D2D7F002ED335 /* CLHistoryAlterRemittance.m */,
 				CF2A16BE231E0BD4007E110D /* CLHistorySelectionOfPayee.h */,
 				CF2A16BF231E0BD4007E110D /* CLHistorySelectionOfPayee.m */,
-				CCB32E9A231D5D560027FD84 /* CLHistoryConfirmRefund.h */,
-				CCB32E9B231D5D560027FD84 /* CLHistoryConfirmRefund.m */,
-				CCB32E9D231D69260027FD84 /* CLHistoryRefund.h */,
-				CCB32E9E231D69260027FD84 /* CLHistoryRefund.m */,
-				CCB32EA0231D6D500027FD84 /* CLHistoryAuthentication.h */,
-				CCB32EA1231D6D500027FD84 /* CLHistoryAuthentication.m */,
-				CCB32EA3231D6F470027FD84 /* CLHistoryRefundProgress.h */,
-				CCB32EA4231D6F470027FD84 /* CLHistoryRefundProgress.m */,
+				CF6428BA233C6A5300DD411E /* Refund */,
 				CCB32EA6231D70A70027FD84 /* CLHistoryDetailsOfRefund.h */,
 				CCB32EA7231D70A70027FD84 /* CLHistoryDetailsOfRefund.m */,
 				CF26171C23179C9700448AA4 /* CLHistoryPaymentdetails.h */,
@@ -1505,6 +1508,12 @@
 				CF2A16C4231E8062007E110D /* CLHistorySelctOfPayeeView.h */,
 				CF2A16C5231E8062007E110D /* CLHistorySelctOfPayeeView.m */,
 				CF2A16C6231E8062007E110D /* CLHistorySelctOfPayeeView.xib */,
+				CF6428B5233C644700DD411E /* CLHisotyRefundView.h */,
+				CF6428B6233C644700DD411E /* CLHisotyRefundView.m */,
+				CF6428B7233C644700DD411E /* CLHisotyRefundView.xib */,
+				CF6428C7233C6DCB00DD411E /* CLHistoryAlterRemittanceView.h */,
+				CF6428C8233C6DCB00DD411E /* CLHistoryAlterRemittanceView.m */,
+				CF6428C9233C6DCB00DD411E /* CLHistoryAlterRemittanceView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1558,6 +1567,22 @@
 			);
 			path = Views;
 			sourceTree = "<group>";
+		};
+		CF6428BA233C6A5300DD411E /* Refund */ = {
+			isa = PBXGroup;
+			children = (
+				CF6428BC233C6ABA00DD411E /* CLHistoryConfirmRefund.h */,
+				CF6428BB233C6AB900DD411E /* CLHistoryConfirmRefund.m */,
+				CF6428BE233C6AE500DD411E /* CLHistoryRefund.h */,
+				CF6428BF233C6AE500DD411E /* CLHistoryRefund.m */,
+				CF6428C2233C6B1400DD411E /* CLHistoryAuthentication.h */,
+				CF6428C1233C6B1400DD411E /* CLHistoryAuthentication.m */,
+				CF6428C4233C6B4000DD411E /* CLHistoryRefundProgress.h */,
+				CF6428C5233C6B4100DD411E /* CLHistoryRefundProgress.m */,
+			);
+			name = Refund;
+			path = FOMOPay/History/Refund;
+			sourceTree = SOURCE_ROOT;
 		};
 		CF6EB34D2339B416002CD4C1 /* Font */ = {
 			isa = PBXGroup;
@@ -1712,6 +1737,7 @@
 				77DD6BB62313E12A00BFDD11 /* HomeSureInfoListCell.xib in Resources */,
 				773880D42314BDF4002ACEC4 /* pdf_home_sureInfo_PrivacyPolicy.pdf in Resources */,
 				CFEE0A32232A528900C4C5E6 /* CLCollectionAddView.xib in Resources */,
+				CF6428CB233C6DCB00DD411E /* CLHistoryAlterRemittanceView.xib in Resources */,
 				7707E2A92313B1E10029EB0B /* pdf_home_selectPayee_add_icon.pdf in Resources */,
 				1863DA5323011A08000969FE /* Assets.xcassets in Resources */,
 				CF20E263231F89A300EEB9AD /* pdf_history_cancel_icon.pdf in Resources */,
@@ -1751,6 +1777,7 @@
 				18851846231F97450009D088 /* README.md in Resources */,
 				18C3D921232A3088009DE830 /* pdf_guide_three.pdf in Resources */,
 				CF5A8C3A23068A5000745FE9 /* pdf_me_userImage.pdf in Resources */,
+				CF6428B9233C644700DD411E /* CLHisotyRefundView.xib in Resources */,
 				CF6EB3532339EC94002CD4C1 /* pdf_HKD.pdf in Resources */,
 				CCFBE3D723096407004210A1 /* pdf_me_message_logo.pdf in Resources */,
 				772D73C5230A798C0068AB48 /* pdf_login_language.pdf in Resources */,
@@ -1884,10 +1911,12 @@
 				182DBA67231CDBCC0009E745 /* YTKRequest.m in Sources */,
 				189E06D62319044B00FDEA10 /* WKUserDefault.m in Sources */,
 				1863DA4E23011A07000969FE /* ViewController.m in Sources */,
+				CF6428BD233C6ABA00DD411E /* CLHistoryConfirmRefund.m in Sources */,
 				CF626512231526B3001AF5FC /* CLMeViewController.m in Sources */,
 				1863DA9723013A87000969FE /* NSString+YHMD5.m in Sources */,
 				18B5D8572328986800427CC6 /* WKOrderTimeLineCell.m in Sources */,
 				182DBA65231CDBCC0009E745 /* YTKChainRequestAgent.m in Sources */,
+				CF6428C0233C6AE500DD411E /* CLHistoryRefund.m in Sources */,
 				1885184A231F97450009D088 /* WPTappableLabel.m in Sources */,
 				CF2A16C0231E0BD4007E110D /* CLHistorySelectionOfPayee.m in Sources */,
 				1863DAAC23014511000969FE /* WRCustomNavigationBar.m in Sources */,
@@ -1917,12 +1946,13 @@
 				772D73B3230A3F670068AB48 /* LogInViewController.m in Sources */,
 				182DBA5B231CDBCC0009E745 /* YTKAnimatingRequestAccessory.m in Sources */,
 				CF274AC023287E3C00998BC6 /* CLCollectionAlterView.m in Sources */,
+				CF6428B8233C644700DD411E /* CLHisotyRefundView.m in Sources */,
 				CF48882623164B5B00582B44 /* LocalizationManager.m in Sources */,
 				771501892311176B0016B449 /* HomeRefundListCell.m in Sources */,
-				CCB32EA2231D6D500027FD84 /* CLHistoryAuthentication.m in Sources */,
 				1863DA5923011A08000969FE /* main.m in Sources */,
 				7702398C230B83C100EE8C31 /* HomeListCell.m in Sources */,
 				182DBA64231CDBCC0009E745 /* YTKNetworkAgent.m in Sources */,
+				CF6428C3233C6B1400DD411E /* CLHistoryAuthentication.m in Sources */,
 				772D73D2230A86860068AB48 /* LogInVerifyCodeView.m in Sources */,
 				CF3129E3231D22E6002ED335 /* CLHistoryCancelRemittance.m in Sources */,
 				CF62651E23152734001AF5FC /* CLMeTableViewCell.m in Sources */,
@@ -1939,7 +1969,6 @@
 				CF4FA4BF2338BECF00E1B909 /* HomeListCollectionModel.m in Sources */,
 				772D73C8230A845D0068AB48 /* LogInVerifyViewController.m in Sources */,
 				CF62650D231526B3001AF5FC /* CLMeCallMeViewController.m in Sources */,
-				CCB32E9C231D5D560027FD84 /* CLHistoryConfirmRefund.m in Sources */,
 				77BE822423153B1900519F66 /* SVProgressHUD.m in Sources */,
 				CFE7966123016589004C09C4 /* BaseViewController.m in Sources */,
 				77047E1523167D0B000453A0 /* HomeBankTransferVC.m in Sources */,
@@ -1958,7 +1987,6 @@
 				773880E2231509DC002ACEC4 /* HomeChangeAmountVC.m in Sources */,
 				CFE7966423016614004C09C4 /* CLHomeViewController.m in Sources */,
 				182DBA6E231CED650009E745 /* SVStatusHUD.m in Sources */,
-				CCB32E9F231D69260027FD84 /* CLHistoryRefund.m in Sources */,
 				1863DA9623013A87000969FE /* YHPDFImageCache.m in Sources */,
 				77BE820E23151C4A00519F66 /* HomeChangePayeeCell.m in Sources */,
 				CFEE0A31232A528900C4C5E6 /* CLCollectionAddView.m in Sources */,
@@ -1975,7 +2003,6 @@
 				1863DA9B23013A87000969FE /* YHPDFImageDraw.m in Sources */,
 				1863DA9A23013A87000969FE /* UIImage+YHPDFIcon.m in Sources */,
 				1885184B231F97450009D088 /* WPAttributedStyleAction.m in Sources */,
-				CCB32EA5231D6F470027FD84 /* CLHistoryRefundProgress.m in Sources */,
 				77F882D823136EAA0010A884 /* HomeSelectPayeeListCell.m in Sources */,
 				18851848231F97450009D088 /* NSMutableString+TagReplace.m in Sources */,
 				CCC9FAAC23390563003F962A /* HomeListCollection.m in Sources */,
@@ -1993,6 +2020,7 @@
 				182DBA63231CDBCC0009E745 /* YTKBatchRequest.m in Sources */,
 				77047DFC23161E2F000453A0 /* HomePayTypeListCell.m in Sources */,
 				77150183231114D60016B449 /* HomeRefundViewController.m in Sources */,
+				CF6428CA233C6DCB00DD411E /* CLHistoryAlterRemittanceView.m in Sources */,
 				CF62652023152734001AF5FC /* CLMeSwitchLanguage.m in Sources */,
 				CF26171B2317779900448AA4 /* CLHistoryDetailsOfRemittancesCellTableViewCell.m in Sources */,
 				CF626510231526B3001AF5FC /* CLMeMessageSetViewController.m in Sources */,
@@ -2009,6 +2037,7 @@
 				18B7BEF12304FC9E007B496A /* CLHomeDetailVC.m in Sources */,
 				CF62652223152734001AF5FC /* CLMeLanguage.m in Sources */,
 				77047E1123167CE8000453A0 /* HomeBankTransferCell.m in Sources */,
+				CF6428C6233C6B4100DD411E /* CLHistoryRefundProgress.m in Sources */,
 				CF62650F231526B3001AF5FC /* CLMeClauseOfTreaty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

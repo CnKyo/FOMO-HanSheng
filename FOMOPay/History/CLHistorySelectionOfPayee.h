@@ -16,6 +16,8 @@ typedef void(^CLHistorySelectionOfPayeeBlock)(WKResipientInfoObj *mItem);
 
 @property (copy,nonatomic) CLHistorySelectionOfPayeeBlock mBlock;
 
+@property (nonatomic,strong)NSIndexPath *mInx;
+
 @end
 
 NS_ASSUME_NONNULL_END

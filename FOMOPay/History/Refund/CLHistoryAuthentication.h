@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLHistoryAuthentication : BaseViewController
 @property (nonatomic, copy) NSString *mobile;
+
 @end
 
 NS_ASSUME_NONNULL_END

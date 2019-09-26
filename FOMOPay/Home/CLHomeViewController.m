@@ -127,6 +127,7 @@
     [self loadTableView];
 //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     //监听键盘高度
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];//在这里注册通知
 }
 
 - (void)loadTableView{
@@ -245,6 +246,8 @@
 }
 - (void)caculateAmount{
     if ([self.mAmount floatValue]<=0) {
+       
+        
 //        TOASTMESSAGE(@"汇出金额必须大于0");
         [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_hud"] status:@"汇出金额必须大于0"];
         
@@ -323,19 +326,23 @@
 
 #pragma ----****----获取键盘的高度
 //- (void)keyboardWillShow:(NSNotification *)aNotification
-//{
-//    //获取键盘的高度
-//    NSDictionary *userInfo = [aNotification userInfo];
-//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-//    CGRect keyboardRect = [aValue CGRectValue];
-//    int height = keyboardRect.size.height;
-//    DebugLog(@"他的键盘的高度是%d",height);
-//
-//}
 
 ////移除通知
 //- (void)dealloc{
 //
 //    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
+
+//-(void)keyboardWillChangeFrame:(NSNotification *)notification{
+//    NSDictionary *userInfo = [notification userInfo];
+//        NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+//        CGRect keyboardRect = [aValue CGRectValue];
+//        int height = keyboardRect.size.height;
+//        DebugLog(@"他的键盘的高度是%d",height);
+//    NSInteger count = [[UIApplication sharedApplication]windows].count;
+//    if(count>1){
+//        UIWindow *tempWindow = [[[UIApplication sharedApplication]windows]objectAtIndex:1];
+//       
+//    }
 //}
 @end

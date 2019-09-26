@@ -7,7 +7,7 @@
 //
 
 #import "CLHistoryRefund.h"
-
+#import "CLHisotyRefundView.h"
 @interface CLHistoryRefund ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) NSArray *mData;
 @property (nonatomic,strong) NSArray *mRightData;
@@ -37,8 +37,8 @@
             }
         }];
         self.mData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请检查退款详情",@"订单号",@"汇款金额",@"出售汇率",@"买入汇率",@"退款金额"];
-        self.mRightData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请确认您的退款账户，以便安全退款",@"R201906061234",@"SGD1000.00",@"5.0200",@"5.0780",@"SGD 990.00"];
-        [self LoadCellType:9];
+        self.mRightData=@[@"退款会有一定的金额损失，请谨慎操作！",@"请确认您的退款账户，以便安全退款",self.mItem.serialNumber,[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],@"5.0200",@"5.0780",@"SGD 990.00"];
+        [self LoadCellType:14];
         [self LoadSubmitButton];
         [self ResetLayout];
     
@@ -52,9 +52,9 @@
     }
     
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-        CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        CLHisotyRefundView *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         if(cell == nil){
-            cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell = [[CLHisotyRefundView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
         cell.selectionStyle = UITableViewCellSeparatorStyleNone;
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
@@ -87,7 +87,7 @@
         }else if(indexPath.row == 1){
             return 31;
         }else{
-            return 49;
+            return 45;
         }
     }
 
@@ -117,6 +117,7 @@
 
 -(void)Submit:(UIButton *)sender{
     CLHistoryAuthentication *vc = [CLHistoryAuthentication new];
+    vc.mobile = self.mItem.recipient.contactNumber;
     [self pushToViewController:vc];
 }
 @end

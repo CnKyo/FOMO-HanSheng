@@ -8,6 +8,7 @@
 
 #import "CLHistoryAlterRemittance.h"
 #import "CLHistorySelectionOfPayee.h"
+#import "CLHistoryAlterRemittanceView.h"
 @interface CLHistoryAlterRemittance ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic,strong)NSArray *mData;
 @property (nonatomic,strong)NSArray *mTopData;
@@ -15,7 +16,8 @@
 @property (nonatomic,strong)NSArray *mRightData;
 @property (nonatomic,strong)NSArray *mRightTopData;
 
-
+@property (nonatomic,strong)UITextField *mTexF;
+;
 @end
 
 @implementation CLHistoryAlterRemittance
@@ -60,18 +62,32 @@
                 break;
         }
     }];
-     [self LoadCellType:9];
-    self.mData=@[@"无效的账号",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
+     [self LoadCellType:15];
+    self.mTexF = [UITextField new];
+    self.mTexF.delegate = self;
+    
+//    self.mData=@[@"无效的账号:",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
+//    self.mTopData = @[@"汇款金额",@"获得金额",@"汇率"];
+//    
+//    self.mRightData=@[@"请更正账户号码或者更换汇款账号",self.mItem.serialNumber,self.mItem.recipient.fullName,self.mItem.recipient.bankName,self.mItem.recipient.bankCity,self.mItem.recipient.accountNumber];
+//    self.mRightTopData = @[[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],self.mItem.remittable.rate];
+
+    [self loadData];
+    [self LoadContactAndConfirm];
+    [self ResetLayout];  //底部按钮适配5s的约束
+    
+}
+
+-(void)loadData{
+    self.mData=@[@"无效的账号:",@"订单号",@"全名",@"银行",@"分行",@"账户号码"];
     self.mTopData = @[@"汇款金额",@"获得金额",@"汇率"];
     
     self.mRightData=@[@"请更正账户号码或者更换汇款账号",self.mItem.serialNumber,self.mItem.recipient.fullName,self.mItem.recipient.bankName,self.mItem.recipient.bankCity,self.mItem.recipient.accountNumber];
     self.mRightTopData = @[[NSString stringWithFormat:@"%@%@",self.mItem.remittable.source.currencyCode,self.mItem.remittable.source.amount],[NSString stringWithFormat:@"%@%@",self.mItem.remittable.chargable.currencyCode,self.mItem.remittable.chargable.amount],self.mItem.remittable.rate];
 
-    
-    [self LoadContactAndConfirm];
-   [self ResetLayout];  //底部按钮适配5s的约束
-    
 }
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
@@ -86,48 +102,49 @@
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CLHistoryDetailsOfRemittancesCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    NSString *string = @"cell";
+    CLHistoryAlterRemittanceView *cell = [tableView dequeueReusableCellWithIdentifier:string forIndexPath:indexPath];
     if(cell == nil){
-        cell = [[CLHistoryDetailsOfRemittancesCellTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[CLHistoryAlterRemittanceView alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
     }
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
-//    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+
     if(indexPath.section ==0){
         cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
+        
         cell.mRightData.text = [self.mRightData objectAtIndex:indexPath.row];
         if(indexPath.row == 0){
-            cell.mLeftName.text = [NSString stringWithFormat:@"%@:",[self.mData objectAtIndex:indexPath.row]];
             cell.mLeftName.textColor = ssRGBHex(0xD50037);
-            cell.mRightData.hidden = YES;
-            UILabel *mTitleLabel = [UILabel new];
-            mTitleLabel.font =  kCommonFont(16);
-            mTitleLabel.textColor = ssRGBHex(0x8C9091);
-            mTitleLabel.text = @"请更正账户号码或者更换汇款账号";
-            mTitleLabel.textAlignment = NSTextAlignmentLeft;
-            [cell.contentView addSubview:mTitleLabel];
-            [mTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(cell.mLeftName.mas_right).offset(12);
-                make.centerY.equalTo(cell.mLeftName);
-            }];
+
+            cell.mRightData.font = kCommonFont(16);
+
+            cell.mRightData.textColor = ssRGBHex(0x8c9091);
+            cell.mRightData.textAlignment = NSTextAlignmentLeft;
+
         }
         if(indexPath.row == 1){
              cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
            
         }else if(indexPath.row ==2 ||indexPath.row ==3 ||indexPath.row==4){
              cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+            
             cell.mRightData.textColor = ssRGBHex(0x8C9091);
         }else if(indexPath.row ==5){
             cell.mRightData.hidden = YES;
-            UITextField *mTextF = [UITextField new];
-            mTextF.textAlignment = NSTextAlignmentRight;
-            mTextF.font = kCommonFont(14);
-            mTextF.clearButtonMode =UITextFieldViewModeAlways;
-            mTextF.delegate = self;
-            mTextF.returnKeyType = UIReturnKeyDone;
-            mTextF.placeholder = @"请输入账户号码";
-            mTextF.text = self.mItem.recipient.accountNumber;
-            [cell.contentView addSubview:mTextF];
-            [mTextF mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            self.mTexF.textAlignment = NSTextAlignmentRight;
+            
+            self.mTexF.font = kCommonFont(14);
+            self.mTexF.clearButtonMode =UITextFieldViewModeAlways;
+            
+            self.mTexF.returnKeyType = UIReturnKeyDone;
+            
+            self.mTexF.placeholder = @"请输入账户号码";
+            
+            self.mTexF.text = [CLTool formmatterBankCardNum:self.mItem.recipient.accountNumber];
+            [cell.contentView addSubview:self.mTexF];
+            
+            [self.mTexF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(cell).offset(-10.5);
                 make.centerY.equalTo(cell.mLeftName);
             }];
@@ -140,26 +157,7 @@
 
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
     }
-//    if(indexPath.row == 0){
-//        cell.mLeftName.text = @"无效的账号:";
-//        cell.mLeftName.textColor = ssRGBHex(0xD50037);
-//        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-//        cell.mRightData.text = @"请更正账户号码或者更换汇款账号";
-//        cell.mRightData.textAlignment = NSTextAlignmentLeft;
-//    }else{
-//        cell.mLeftName.text = [self.mData objectAtIndex:indexPath.row];
-//
-////    }else if(indexPath.row == 2){
-////        cell.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
-////    }else if(indexPath.row == 6){
-////        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-////    }else if(indexPath.row == 8){
-////        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-////    }
-//
-////    cell.mLeftName.text= [_mData objectAtIndex:indexPath.row];
-////    cell.mLeftName.textAlignment = NSTextAlignmentLeft;
-//    }
+
     return cell;
 }
 
@@ -318,6 +316,10 @@
 
 -(void)ContactButton:(UIButton *)sender{
     //联系客服查询按钮
+    NSString *str= [NSString stringWithFormat:@"tel:%@",@"1008611"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:@{} completionHandler:^(BOOL success) {
+        DebugLog(@"OpenSuccess=%d",success);
+    }];
 }
 
 -(void)ConfirmButton:(UIButton *)sender{
@@ -331,6 +333,7 @@
     CLHistorySelectionOfPayee *vc = [CLHistorySelectionOfPayee new];
     vc.mBlock = ^(WKResipientInfoObj * _Nonnull mItem) {
         weakSelf.mItem.recipient = mItem;
+        [weakSelf loadData];
         [weakSelf.mTabView reloadData];
     };
     [self pushToViewController:vc];
