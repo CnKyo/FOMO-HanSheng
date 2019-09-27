@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLTool : NSObject
 + (BOOL)isIphoneX;
+
 + (CGFloat)bottmHeight;
 
 + (NSDictionary *)stringToDic:(NSString *)text;
@@ -69,6 +70,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark----****----转化卡号为每4位加一个空格
 +(NSString *)formmatterBankCardNum:(NSString *)string;
 
+#pragma mark----****----检测相册是否授权
++ (BOOL)checkVideoPhotoAuthorization;
 @end
 
 NS_ASSUME_NONNULL_END

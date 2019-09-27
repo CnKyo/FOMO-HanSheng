@@ -11,7 +11,6 @@
 @interface CLHistoryCertificateOfRemittance ()<UIScrollViewDelegate,UIWebViewDelegate>
 @property(nonatomic,strong)UIWebView *mWebView;
 
-//@property (nonatomic,assign)CGFloat webHeihgt;
 @end
 
 @implementation CLHistoryCertificateOfRemittance
@@ -50,7 +49,7 @@
     self.mWebView.delegate = self;
 
 //    [NSURL URLWithString:[WKAccountManager shareInstance].appConfig.tncLink]
-    [self.mWebView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:@"http://www.baidu.com"]]];
+    [self.mWebView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:@"https://www.baidu.com"]]];
     
     [self.view addSubview:self.mWebView];
     
@@ -128,53 +127,27 @@
 }
 
 -(void)SavaImg:(UIButton *)sender{
-//    UIGraphicsBeginImageContextWithOptions(CGSizeMake(kScreenWidth, self.webHeihgt), NO, 0.0);
-////    UIGraphicsBeginImageContextWithOptions(self.mWebView.bounds.size,NO,0.0);
-//    [self.mWebView.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    if([self isOrUsePhotos]){
-     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-        if (status == PHAuthorizationStatusRestricted ||
-                status == PHAuthorizationStatusDenied) {
-            UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [self openJurisdiction];
-            }];
-            
-            
-            
-            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-            
-            [alertCtrl addAction:action1];
-            
-            [alertCtrl addAction:action2];
-            
-            [self presentViewController:alertCtrl animated:YES completion:nil];
-        
-//        UIImageWriteToSavedPhotosAlbum([self imageRepresentation], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    if([CLTool checkVideoPhotoAuthorization ]){
+        UIImageWriteToSavedPhotosAlbum([self imageRepresentation], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+//        [self savePDF];
     }else{
-        
-          UIImageWriteToSavedPhotosAlbum([self imageRepresentation], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-        
-//        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
 //
-//        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//
-//            [self openJurisdiction];
-//        }];
-//
-//
-//
-//        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//
-//        [alertCtrl addAction:action1];
-//
-//        [alertCtrl addAction:action2];
-//
-//        [self presentViewController:alertCtrl animated:YES completion:nil];
+        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"权限不足" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+            [CLTool WKGoToOpenAppSystemSetting];
+        }];
+
+
+
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+
+        [alertCtrl addAction:action1];
+
+        [alertCtrl addAction:action2];
+
+        [self presentViewController:alertCtrl animated:YES completion:nil];
     }
 }
 
@@ -185,7 +158,8 @@
         TOASTMESSAGE(@"导出失败");
     } else {
         // 保存成功
-        TOASTMESSAGE(@"导出成功");
+         [SVStatusHUD showWithImage:[UIImage yh_imageNamed:@"pdf_info_success"] status:@"导出成功"];
+        
     }
 }
 
@@ -233,71 +207,6 @@
     return fullImage;
 }
 
-
-//- (NSData *)PDFData{
-//    UIViewPrintFormatter *fmt = [self viewPrintFormatter];
-//    UIPrintPageRenderer *render = [[UIPrintPageRenderer alloc] init];
-//    [render addPrintFormatter:fmt startingAtPageAtIndex:0];
-//    CGRect page;
-//    page.origin.x=0;
-//    page.origin.y=0;
-//    page.size.width=600;
-//    page.size.height=768;
-//
-//    CGRect printable=CGRectInset( page, 50, 50 );
-//    [render setValue:[NSValue valueWithCGRect:page] forKey:@"paperRect"];
-//    [render setValue:[NSValue valueWithCGRect:printable] forKey:@"printableRect"];
-//
-//    NSMutableData * pdfData = [NSMutableData data];
-//    UIGraphicsBeginPDFContextToData( pdfData, CGRectZero, nil );
-//
-//    for (NSInteger i=0; i < [render numberOfPages]; i++)
-//    {
-//        UIGraphicsBeginPDFPage();
-//        CGRect bounds = UIGraphicsGetPDFContextBounds();
-//        [render drawPageAtIndex:i inRect:bounds];
-//
-//    }
-//    UIGraphicsEndPDFContext();
-//    return pdfData;
-//}
-
-//判断用户是否开了权限
-- (BOOL)isOrUsePhotos{
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
-        
-        ALAuthorizationStatus author =[ALAssetsLibrary authorizationStatus];
-        
-        if (author == kCLAuthorizationStatusRestricted || author == kCLAuthorizationStatusDenied) {
-            
-            //无权限
-          
-            return  NO;
-            
-        }
-        
-    }
-    
-    else{
-        
-        PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-        
-        if (status == PHAuthorizationStatusRestricted ||
-
-            status == PHAuthorizationStatusDenied) {
-//        if(status == PHAuthorizationStatusAuthorized){
-            //无权限
-           
-            return NO;
-            
-        }
-        
-    }
-    
-    return YES;
-    
-}
 
 #pragma mark---保存为pdf数据
 - (void)savePDF{
@@ -390,19 +299,10 @@
     
     return pdfData;
     
-} -(void)openJurisdiction{
-    
-    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-            DebugLog(@"%id",success);
-            
-            
-        }];
-//        [[UIApplication sharedApplication] openURL:url];
-    }
-    
 }
+
+
+
 
 
 @end

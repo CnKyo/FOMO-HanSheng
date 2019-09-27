@@ -27,9 +27,10 @@ typedef enum: NSUInteger{
 + (void)setUserlanguage:(NSString *)language;
 /// 通过Key获得对应的string
 + (NSString *)getStringByKey:(NSString *)key;
-
+//获取系统语言
 + (NSString *)getSystemLanguage;
-
+//获取用户设置语言
++ (NSString *)getUserLanguage;
 
 + (void)setGuidelanguage:(NSString *)language andType:(NSUInteger)mType;//设置引导页的语言
 @end

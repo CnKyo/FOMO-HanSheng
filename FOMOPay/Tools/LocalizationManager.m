@@ -161,13 +161,20 @@ static NSString *UserLanguage = @"UserLanguage";
     
     
 }
-
+//获取系统语言
 +(NSString *)getSystemLanguage
 {
     NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+   
     NSString *languageName = [appLanguages objectAtIndex:0];
     
     return languageName;
+}
+//获取用户设置语言
++(NSString *)getUserLanguage
+{
+     NSString *userLanguages = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserLanguage"];
+    return userLanguages;
 }
 
 @end

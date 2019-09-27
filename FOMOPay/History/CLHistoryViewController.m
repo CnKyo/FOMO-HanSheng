@@ -164,9 +164,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-// CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
-    CLHistoryCertificateOfRemittance *vc = [CLHistoryCertificateOfRemittance new];
-//    vc.mItem = self.DataSource[indexPath.row];
+ CLHistoryRemittancePlan *vc = [CLHistoryRemittancePlan new];
+//    CLHistoryCertificateOfRemittance *vc = [CLHistoryCertificateOfRemittance new];
+    vc.mItem = self.DataSource[indexPath.row];
     [self pushToViewController:vc];
 }
 

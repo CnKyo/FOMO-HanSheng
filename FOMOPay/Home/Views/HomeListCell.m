@@ -201,19 +201,46 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-//
+    CGFloat maxLength = 5;
+   
     if(string.length >0){
+       
         unichar single = [string characterAtIndex:0];
-        if(single == '0'){
-            TOASTMESSAGE(@"汇出金额必须大于0");
-            [textField resignFirstResponder];
-             [textField.text stringByReplacingCharactersInRange:range withString:@""];
-            return NO;
+        if(single >='0' && single<='9'){
+            if([textField.text length] == 0){
+                if(single == '0'){
+                    TOASTMESSAGE(@"最低汇出金额为1");
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
+                
+            }else if([textField.text length]>maxLength){
+                TOASTMESSAGE(@"最高汇出金额为100000");
+//                textField.text = @"100000";
+                [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                return NO;
+            }
+//            else if([textField.text length]==maxLength){
+//                NSString *mString = [textField.text substringToIndex:1];
+//                if(![mString isEqualToString:@"1"]){
+//                     TOASTMESSAGE(@"最高汇出金额为100000");
+////                    textField.text = @"100000";
+//                     [textField.text stringByReplacingCharactersInRange:range withString:@""];
+//                    return NO;
+//                }
+//
+//            }
+//
         }
+//        
         
         
     }
-//    return YES;
+
+    
+    
+    
+
     return [self validateNumber:string];
     
 }
@@ -286,6 +313,14 @@
         
         _exchangeRateButton.enabled = NO;
         _exchangeRateButton.backgroundColor = kCommonColor(140, 144, 145, 1);
+    }
+    if(textField.text.length == 6 ){
+        if(![textField.text isEqualToString:@"100000"]){
+            TOASTMESSAGE(@"最高汇出金额为100000");
+            textField.text = @"100000";
+        }
+    }else{
+    textField.text = [self getTheCorrectNum:textField.text];
     }
     
     
@@ -579,7 +614,23 @@
     }
     return res;
 }
+-(NSString*) getTheCorrectNum:(NSString*)tempString
 
+{
+    
+    while ([tempString hasPrefix:@"0"])
+        
+    {
+        
+        tempString = [tempString substringFromIndex:1];
+        
+        NSLog(@"压缩之后的tempString:%@",tempString);
+        
+    }
+    
+    return tempString;
+    
+}
 
 
 

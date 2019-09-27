@@ -39,7 +39,15 @@
     [super viewWillAppear:animated];
 //    [self checkLoginStatus];
     [self loadConfig];
-//    DebugLog(@"%@",[WKAccountManager shareInstance].token);
+    
+    DebugLog(@"%@",[LocalizationManager getUserLanguage]);
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    DebugLog(@"%@",app_Version);
+//    [WKNetWorkManager WKGetAppVersion:nil block:^(WKBaseModel *info) {
+//       
+//    }];
+   
     
 }
 

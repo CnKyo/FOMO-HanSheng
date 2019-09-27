@@ -241,4 +241,66 @@
     
     return tempStr;
 }
+
+
+
+
+#pragma mark----****----检测相册是否授权
+/**
+ 检测相册是否授权
+ */
++ (BOOL)checkVideoPhotoAuthorization
+{
+    __block BOOL isAvalible = NO;
+//    __weak __typeof__(self) weakSelf = self;
+    //iOS8.0之前
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) {
+        
+        ALAuthorizationStatus author =[ALAssetsLibrary authorizationStatus];
+        
+        if (author == kCLAuthorizationStatusRestricted || author == kCLAuthorizationStatusDenied) {
+            
+            //无权限
+            
+            isAvalible = NO;
+            
+        }
+        isAvalible = YES;
+        
+    }else{ // ios8.0之后
+        PHAuthorizationStatus photoStatus =  [PHPhotoLibrary authorizationStatus];
+        switch (photoStatus) {
+            case PHAuthorizationStatusAuthorized:
+                isAvalible = YES;
+                break;
+            case PHAuthorizationStatusDenied:
+            {
+    
+                isAvalible = NO;
+            }
+                break;
+            case PHAuthorizationStatusNotDetermined:
+            {
+                [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                    if (status == PHAuthorizationStatusAuthorized) {
+                        isAvalible = YES;
+                    }else{
+                        isAvalible = NO;
+                    }
+                }];
+            }
+                break;
+            case PHAuthorizationStatusRestricted:
+                isAvalible = NO;
+                break;
+            default:
+                break;
+        }
+    }
+    return isAvalible;
+};
+
+
+
 @end

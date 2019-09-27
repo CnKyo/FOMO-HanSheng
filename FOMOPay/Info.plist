@@ -38,6 +38,8 @@
 	</dict>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fomo需要访问您的照片</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansHans-Light.otf</string>

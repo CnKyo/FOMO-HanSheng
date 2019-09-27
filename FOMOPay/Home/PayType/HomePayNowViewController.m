@@ -100,7 +100,28 @@
         if (tag == 0) {     //下载二维码
             
 //            UIImage *image = cell.codeImage.image;
-            UIImageWriteToSavedPhotosAlbum(weakCell.codeImage.image, weakSelf, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+//            UIImageWriteToSavedPhotosAlbum(weakCell.codeImage.image, weakSelf, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            if([CLTool checkVideoPhotoAuthorization ]){
+                UIImageWriteToSavedPhotosAlbum(weakCell.codeImage.image, weakSelf, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            }else{
+                //
+                UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"权限不足" message:@"权限不足，点击确定前往设置" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    [CLTool WKGoToOpenAppSystemSetting];
+                }];
+                
+                
+                
+                UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                
+                [alertCtrl addAction:action1];
+                
+                [alertCtrl addAction:action2];
+                
+                [self presentViewController:alertCtrl animated:YES completion:nil];
+            }
         
         }else{  //完成
             
