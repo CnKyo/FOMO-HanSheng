@@ -1,1 +1,1 @@
-fomo@@fyinformatio=cc@@hansheng
+fomo@@fyinformation=cc@@hansheng
